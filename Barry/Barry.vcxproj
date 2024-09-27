@@ -123,14 +123,13 @@
     <ClInclude Include="Barry.h" />
     <ClInclude Include="Dispenser.h" />
     <ClInclude Include="Food.h" />
-    <ClInclude Include="InternalUsers.h" />
+    <ClInclude Include="InternalUser.h" />
     <ClInclude Include="pch.h" />
-    <ClInclude Include="Pets.h" />
-    <ClInclude Include="PortalUsers.h" />
+    <ClInclude Include="Pet.h" />
+    <ClInclude Include="PortalUser.h" />
     <ClInclude Include="Report.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SistemaDeAlimentacion.h" />
-    <ClInclude Include="Users.h" />
+    <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Administrator.cpp" />
@@ -138,18 +137,17 @@
     <ClCompile Include="Barry.cpp" />
     <ClCompile Include="Dispenser.cpp" />
     <ClCompile Include="Food.cpp" />
-    <ClCompile Include="InternalUsers.cpp" />
+    <ClCompile Include="InternalUser.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Pets.cpp" />
-    <ClCompile Include="PortalUsers.cpp" />
+    <ClCompile Include="Pet.cpp" />
+    <ClCompile Include="PortalUser.cpp" />
     <ClCompile Include="Report.cpp" />
-    <ClCompile Include="SistemaDeAlimentacion.cpp" />
-    <ClCompile Include="Users.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />

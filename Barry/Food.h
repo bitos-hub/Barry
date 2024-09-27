@@ -1,7 +1,3 @@
-/**
- * Project Untitled
- */
-
 
 #pragma once
 
@@ -14,5 +10,7 @@ namespace Barry {
         float FoodPrice;
         String^ Name;
         int Stock;
+    public:
+
     };
 }

@@ -1,38 +1,19 @@
-/**
- * Project Untitled
- */
-
-
-
 #pragma once
-#include "Users.h"
-#include "InternalUsers.h"
-#include "PortalUsers.h"
-#include "Pets.h"
+#include "User.h";
+//#include "InternalUser.h"
+//#include "PortalUser.h"
+//#include "Pet.h";
 using namespace System;
 
 namespace Barry {
-    public ref class Administrator : public Users {
+    public ref class Administrator : public User {
     public:
-
-        /**
-         * @param Pets^
-         */
-        bool AddPets(Pets^);
-
-        /**
-         * @param InternalUsers^
-         */
-        bool AddIUsers(InternalUsers^);
-
-        /**
-         * @param RegularUsers^
-         */
-        bool EditPermissions(InternalUsers^,PortalUsers^);
-
-        /**
-         * @param PortalUsers^
-         */
-        bool AddPUsers(PortalUsers^);
+        //;
+        //static void ActualizarMascota(int);
+        //static bool AddIUser(InternalUser^);
+        //static bool EditPermissions(InternalUser^,PortalUser^);
+        //static bool AddPUsers(PortalUser^);
+        Administrator(int id, String^ name, String^ password, String^ role, int phoneNumber)
+            : User(id, name, password, role, phoneNumber) {}
     };
 }

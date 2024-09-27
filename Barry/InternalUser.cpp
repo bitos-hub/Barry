@@ -3,7 +3,7 @@
  */
 
 #include "pch.h"
-#include "InternalUsers.h"
+#include "InternalUser.h"
 
 /**
  * InternalUsers implementation
