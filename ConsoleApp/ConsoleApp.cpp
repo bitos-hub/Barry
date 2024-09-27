@@ -8,7 +8,7 @@ using namespace ServiceBarry;
 int main(array<System::String ^> ^args)
 {
     User^ usuario1 = gcnew User(1,"A","A", "Admin", 1);
-    User^ usuario2 = gcnew User(2, "B", "B", "A", 1);
+    User^ usuario2 = gcnew User(2, "B", "B", "D", 1);
     User^ usuario3 = gcnew User(3, "C", "C", "InternalUser", 1);
     Service::AddUsuario(usuario1);
     Service::AddUsuario(usuario2);
