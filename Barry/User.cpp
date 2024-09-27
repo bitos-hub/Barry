@@ -3,7 +3,7 @@
  */
 
 #include "pch.h"
-#include "Users.h"
+#include "User.h"
 
 /**
  * Users implementation
@@ -17,20 +17,21 @@
  * @param Food^
  * @return void
  */
+ /*
 void Barry::Users::ConfigureSystem(Dispenser^, Food^) {
     return;
-}
+}*/
 
 /**
  * @return bool
  */
-bool Barry::Users::CheckReport() {
+bool Barry::User::CheckReport() {
     return false;
 }
 
 /**
  * @return bool
  */
-bool Barry::Users::CheckGeneralReport() {
+bool Barry::User::CheckGeneralReport() {
     return false;
 }

@@ -4,7 +4,6 @@
 
 #pragma once
 #include "Food.h"
-#include "SistemaDeAlimentacion.h"
 #include "Report.h"
 using namespace System;
 using namespace System::Collections::Generic;
@@ -16,13 +15,9 @@ namespace Barry {
         double FoodAmount;
         bool IsPlateFull;
         double DispenserFood;
-        SistemaDeAlimentacion^ ControlledBy;
         Report^ AssignedTo;
-        /**
-         * @param Food^
-         */
+
         bool DispenseFood(Food^);
-        //hola xd
         bool DispenseWater();
     };
 }

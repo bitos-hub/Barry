@@ -4,8 +4,9 @@
 
 
 #pragma once
+#include "User.h"
 #include "Food.h"
-#include "Pets.h"
+#include "Pet.h"
 using namespace System;
 using namespace System::Collections::Generic;
 
@@ -13,12 +14,12 @@ namespace Barry {
     public ref class Report {
     public:
         String^ GeneratorUserName;
-        List<Pets^>^ WeightTable;
+        List<Pet^>^ WeightTable;
         String^ EmissionDate;
         String^ DateRange;
         List<Food^>^ BrandTable;
         int FullFeeding;
-
+        User^ UsarioGeneraReporte;
         void OrganizeInfo();
     };
 }
