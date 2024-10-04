@@ -82,7 +82,7 @@
     <Link>
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
-      <EntryPointSymbol>Main</EntryPointSymbol>
+      <EntryPointSymbol>PetMain</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -122,12 +122,16 @@
   <ItemGroup>
     <ClCompile Include="AddFood.cpp" />
     <ClCompile Include="AgregarUsuarios.cpp" />
+    <ClCompile Include="PetForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddFood.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AgregarUsuarios.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="PetForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -138,6 +142,17 @@
     <EmbeddedResource Include="AgregarUsuarios.resx">
       <DependentUpon>AgregarUsuarios.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PetForm.resx">
+      <DependentUpon>PetForm.h</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Barry\Barry.vcxproj">
+      <Project>{a4393418-c8ba-492f-a222-ea838ca261a8}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Service\Service.vcxproj">
+      <Project>{f017bf2e-ff54-4b54-946c-341c28594ea2}</Project>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Barry\Barry.vcxproj">
