@@ -18,6 +18,12 @@
     <ClCompile Include="AgregarUsuarios.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="MainScreenForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="LoginForm.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
     <ClCompile Include="PetForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
@@ -27,6 +33,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgregarUsuarios.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="MainScreenForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginForm.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="PetForm.h">

@@ -12,9 +12,9 @@ namespace Barry {
     public ref class Dispenser {
     public:
         List<int>^ FeedingSchedule;
-        double FoodAmount;
-        bool IsPlateFull;
-        double DispenserFood;
+        double FoodAmount; //Cantidad en el plato
+        bool IsPlateFull; //estado
+        double DispenserFood;//cant comida
         Report^ AssignedTo;
 
         bool DispenseFood(Food^);
