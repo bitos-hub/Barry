@@ -15,11 +15,10 @@ namespace Barry {
         String^ Status;
         List<Food^>^ OpcionesComida;
         double FoodServing;
-        double WaterServing;
         User^ Owner;
     public:
-        Pet(int id, String^ name,double weight,String^ specie,String^ status, double foodServing, double waterServing)
-            : Id(id), Name(name), Weight(weight), Specie(specie), Status(status), FoodServing(foodServing), WaterServing(waterServing) {}
+        Pet(int id, String^ name, double weight, String^ specie, String^ status, double foodServing)
+            : Id(id), Name(name), Weight(weight), Specie(specie), Status(status), FoodServing(foodServing) {}
         
         Pet(List<Food^>^ opcionesComida): OpcionesComida(opcionesComida){}
     };

@@ -49,6 +49,46 @@ List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 	return lista_usuarios;
 }
 
+void ServiceBarry::Service::AddPet(Pet^ pet)
+{
+	PetsList->Add(pet);
+}
+
+void ServiceBarry::Service::UpdatePet(Pet^ pet)
+{
+	for (int i = 0; i < PetsList->Count; i++) {
+		if (PetsList[i]->Id == pet->Id) {
+			PetsList[i] = pet;
+			return;
+		}
+	}
+}
+
+void ServiceBarry::Service::DeletePet(int id)
+{
+	for (int i = 0; i < PetsList->Count; i++) {
+		if (PetsList[i]->Id == id) {
+			PetsList->RemoveAt(i);
+			return;
+		}
+	}
+}
+
+Pet^ ServiceBarry::Service::QueryPetById(int id)
+{
+	for each (Pet ^ pet in PetsList) {
+		if (pet->Id == id) {
+			return pet;
+		}
+	}
+	return nullptr;
+}
+
+List<Pet^>^ ServiceBarry::Service::QueryAllPets()
+{
+	return PetsList;
+}
+
 //CRUD FOOD
 void ServiceBarry::Service::AddFood(Food^ food)
 {
