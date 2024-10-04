@@ -1,12 +1,12 @@
-#include "AgregarUsuarios.h"
-/*
+#include "AddFood.h"
+
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThreadAttribute]
 void Main(array<String^>^ args) {
 	Application::EnableVisualStyles();
 	Application::SetCompatibleTextRenderingDefault(false);
-	Interfaz::AgregarUsuarios form;
+	Interfaz::AddFood form;
 	Application::Run(% form);
 }
-*/
+

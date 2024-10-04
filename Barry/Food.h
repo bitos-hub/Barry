@@ -6,11 +6,21 @@ using namespace System;
 namespace Barry {
     public ref class Food {
     public:
+        int Id;
         String^ FoodBrand;
-        float FoodPrice;
+        double FoodPrice;
         String^ Name;
-        int Stock;
-    public:
+        String^ Status;
+        double FoodAmount;
 
+        Food(int id, String^ foodbrand, double  foodPrice, String^ name, String^ status, double foodAmount) {
+            Id =  id;
+            FoodBrand = foodbrand;
+            FoodPrice = foodPrice;
+            Name = name;
+            Status = status;
+            FoodAmount = foodAmount;
+        }
+        
     };
 }

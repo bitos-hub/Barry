@@ -49,6 +49,47 @@ List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 	return lista_usuarios;
 }
 
+//CRUD FOOD
+void ServiceBarry::Service::AddFood(Food^ food)
+{
+	FoodList->Add(food);
+	
+}
+
+void ServiceBarry::Service::UpdateFood(Food^ food)
+{
+	for (int i = 0; i < FoodList->Count; i++) {
+		if (FoodList[i]->Id == food->Id) {
+			FoodList[i] = food;
+			return;
+		}
+	}
+}
+
+void ServiceBarry::Service::DeleteFood(int id)
+{
+	for (int i = 0; i < FoodList->Count; i++) {
+		if (FoodList[i]->Id == id) {
+			FoodList->RemoveAt(i);
+			return;
+		}
+	}
+}
+
+Food^ ServiceBarry::Service::QueryFoodbyId(int id)
+{
+	for each (Food ^ food in FoodList) {
+		if (food->Id == id) {
+			return food;
+		}
+	}
+	return nullptr;
+}
+List<Food^>^ ServiceBarry::Service::QueryAllFoods()
+{
+	return FoodList;
+}
+
 
 
 
