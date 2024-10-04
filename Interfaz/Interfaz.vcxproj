@@ -122,6 +122,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AddFood.cpp" />
+    <ClCompile Include="AgregarHorarios.cpp" />
     <ClCompile Include="AgregarUsuarios.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainScreenForm.cpp" />
@@ -129,6 +130,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddFood.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="AgregarHorarios.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AgregarUsuarios.h">
@@ -147,6 +151,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AddFood.resx">
       <DependentUpon>AddFood.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgregarHorarios.resx">
+      <DependentUpon>AgregarHorarios.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarUsuarios.resx">
       <DependentUpon>AgregarUsuarios.h</DependentUpon>
