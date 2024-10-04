@@ -1,5 +1,5 @@
 #include "AgregarUsuarios.h"
-/*
+
 using namespace System;
 using namespace System::Windows::Forms;
 [STAThreadAttribute]
@@ -9,4 +9,3 @@ void Main(array<String^>^ args) {
 	Interfaz::AgregarUsuarios form;
 	Application::Run(% form);
 }
-*/
