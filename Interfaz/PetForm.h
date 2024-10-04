@@ -82,6 +82,8 @@ namespace Interfaz {
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesiónToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^ semanalToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ mensualToolStripMenuItem;
 
 
 
@@ -128,7 +130,7 @@ namespace Interfaz {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PetForm::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -163,6 +165,8 @@ namespace Interfaz {
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->semanalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mensualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPets))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -342,15 +346,15 @@ namespace Interfaz {
 			// 
 			// dgvPets
 			// 
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dgvPets->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvPets->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->PetId, this->PetName,
@@ -453,6 +457,10 @@ namespace Interfaz {
 			// 
 			// generarReporteToolStripMenuItem
 			// 
+			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->semanalToolStripMenuItem,
+					this->mensualToolStripMenuItem
+			});
 			this->generarReporteToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"generarReporteToolStripMenuItem.Image")));
 			this->generarReporteToolStripMenuItem->Name = L"generarReporteToolStripMenuItem";
 			this->generarReporteToolStripMenuItem->Size = System::Drawing::Size(188, 34);
@@ -483,6 +491,20 @@ namespace Interfaz {
 			this->salirToolStripMenuItem1->Size = System::Drawing::Size(205, 34);
 			this->salirToolStripMenuItem1->Text = L"Salir";
 			this->salirToolStripMenuItem1->Click += gcnew System::EventHandler(this, &PetForm::salirToolStripMenuItem1_Click);
+			// 
+			// semanalToolStripMenuItem
+			// 
+			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
+			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
+			this->semanalToolStripMenuItem->Size = System::Drawing::Size(180, 34);
+			this->semanalToolStripMenuItem->Text = L"Semanal";
+			// 
+			// mensualToolStripMenuItem
+			// 
+			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
+			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
+			this->mensualToolStripMenuItem->Size = System::Drawing::Size(180, 34);
+			this->mensualToolStripMenuItem->Text = L"Mensual";
 			// 
 			// PetForm
 			// 
