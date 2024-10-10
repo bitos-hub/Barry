@@ -3,10 +3,13 @@
 using namespace System;
 using namespace System::Collections::Generic;
 using namespace Barry;
+using namespace BarryPersistance;
 
 namespace ServiceBarry {
 	public ref class Service
 	{
+	public:
+		static String^ BIN_FOOD_FILE_NAME = "foods.bin";
 	private:
 		//static List<Pet^>^ lista_mascotas = gcnew List<Pet^>();
 		static List<User^>^ lista_usuarios = gcnew List<User^>();

@@ -20,10 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{F017BF2E-FF54-4B54-946C-341C28594EA2}</ProjectGuid>
+    <ProjectGuid>{1E925B7F-8E04-4344-BFCE-2643E47FE788}</ProjectGuid>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
-    <RootNamespace>Service</RootNamespace>
+    <RootNamespace>Persistance</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -119,10 +119,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\ConsoleApp\Excepcion_existe_admin.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="Persistance.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="Service.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
@@ -132,7 +131,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="Service.cpp" />
+    <ClCompile Include="Persistance.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="app.rc" />
@@ -148,9 +147,6 @@
   <ItemGroup>
     <ProjectReference Include="..\Barry\Barry.vcxproj">
       <Project>{a4393418-c8ba-492f-a222-ea838ca261a8}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\Persistance\Persistance.vcxproj">
-      <Project>{5cbeeb29-8ac6-46e8-8ba3-aa8bc4a8db6a}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
