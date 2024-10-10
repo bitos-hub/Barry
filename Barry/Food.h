@@ -4,7 +4,7 @@
 using namespace System;
 
 namespace Barry {
-    public ref class Food {
+    [Serializable] public ref class Food {
     public:
         int Id;
         String^ FoodBrand;
@@ -12,6 +12,8 @@ namespace Barry {
         String^ Name;
         String^ Status;
         double FoodAmount;
+
+        Food() {}
 
         Food(int id, String^ foodbrand, double  foodPrice, String^ name, String^ status, double foodAmount) {
             Id =  id;

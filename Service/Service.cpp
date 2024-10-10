@@ -1,8 +1,9 @@
 #include "pch.h"
-
+	
 #include "Service.h"
 #include "Excepcion_existe_admin.h"
 
+using namespace System::IO;
 
 void ServiceBarry::Service::AddUsuario(User^ usuario)
 {
@@ -93,6 +94,9 @@ List<Pet^>^ ServiceBarry::Service::QueryAllPets()
 void ServiceBarry::Service::AddFood(Food^ food)
 {
 	FoodList->Add(food);
+	//Persistance::PersistTextFile(TXT_ROBOT_FILE_NAME, robotsList);
+	//Persistance::PersistXMLFile(XML_ROBOT_FILE_NAME, robotsList);
+	Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 	
 }
 
@@ -101,6 +105,7 @@ void ServiceBarry::Service::UpdateFood(Food^ food)
 	for (int i = 0; i < FoodList->Count; i++) {
 		if (FoodList[i]->Id == food->Id) {
 			FoodList[i] = food;
+			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 			return;
 		}
 	}
@@ -111,6 +116,7 @@ void ServiceBarry::Service::DeleteFood(int id)
 	for (int i = 0; i < FoodList->Count; i++) {
 		if (FoodList[i]->Id == id) {
 			FoodList->RemoveAt(i);
+			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 			return;
 		}
 	}
@@ -127,6 +133,16 @@ Food^ ServiceBarry::Service::QueryFoodbyId(int id)
 }
 List<Food^>^ ServiceBarry::Service::QueryAllFoods()
 {
+	
+	try {
+		
+		FoodList = (List<Food^>^)Persistance::LoadBinaryFile(BIN_FOOD_FILE_NAME);
+		if (FoodList == nullptr)
+			FoodList = gcnew List<Food^>();
+	}
+	catch (FileNotFoundException^ ex) {
+	}
+	
 	return FoodList;
 }
 
