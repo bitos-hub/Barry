@@ -24,7 +24,7 @@
     <ClInclude Include="pch.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="..\ConsoleApp\Excepcion_existe_admin.h">
+    <ClInclude Include="Excepcion_existe_admin.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

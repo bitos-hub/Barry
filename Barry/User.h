@@ -4,7 +4,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 
 namespace Barry {
-    public ref class User {
+    [Serializable]public ref class User {
     public:
         int Id;
         String^ Name;
@@ -14,6 +14,7 @@ namespace Barry {
         bool ProfileStatus;
         List<String^>^ HistorialActividades;
     public:
+        User() {}
         User(int id, String^ name, String^ password, String^ role, int phoneNumber){
             Id = id;
             Name = name;
