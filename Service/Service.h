@@ -10,6 +10,7 @@ namespace ServiceBarry {
 	{
 	public:
 		static String^ BIN_FOOD_FILE_NAME = "foods.bin";
+		static String^ BIN_USER_FILE_NAME = "users.bin";
 		static String^ BIN_PET_FILE_NAME = "pets.bin";
 	private:
 		//static List<Pet^>^ lista_mascotas = gcnew List<Pet^>();
@@ -17,10 +18,11 @@ namespace ServiceBarry {
 		static List<Pet^>^ PetsList = gcnew List<Pet^>();
 		static List<Food^>^ FoodList = gcnew List<Food^>();
 	public:
+		static void cargarUsuarios();
 		static void AddUsuario(User^);
 		static void ActualizarUsuario(User^);
 		static void EliminarUsuario(int id);
-		static User^ ConsultarUsuario(int id);
+		static User^ ConsultarUsuario(String^ UserName);
 		static List<User^>^ ConsultarTodosUsuarios();
 		static void AddPet(Pet^);
 		static void UpdatePet(Pet^);

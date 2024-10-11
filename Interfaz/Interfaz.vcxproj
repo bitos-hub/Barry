@@ -83,7 +83,8 @@
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>LoginScreen</EntryPointSymbol>
-      <EntryPointSymbol>MainScreen</EntryPointSymbol>
+      <EntryPointSymbol>LoginScreen</EntryPointSymbol>
+      <EntryPointSymbol>LoginScreen</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
