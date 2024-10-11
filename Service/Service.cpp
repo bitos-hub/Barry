@@ -53,6 +53,7 @@ List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 void ServiceBarry::Service::AddPet(Pet^ pet)
 {
 	PetsList->Add(pet);
+	Persistance::PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
 }
 
 void ServiceBarry::Service::UpdatePet(Pet^ pet)
@@ -60,6 +61,7 @@ void ServiceBarry::Service::UpdatePet(Pet^ pet)
 	for (int i = 0; i < PetsList->Count; i++) {
 		if (PetsList[i]->Id == pet->Id) {
 			PetsList[i] = pet;
+			Persistance::PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
 			return;
 		}
 	}
@@ -70,6 +72,7 @@ void ServiceBarry::Service::DeletePet(int id)
 	for (int i = 0; i < PetsList->Count; i++) {
 		if (PetsList[i]->Id == id) {
 			PetsList->RemoveAt(i);
+			Persistance::PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
 			return;
 		}
 	}
@@ -87,6 +90,14 @@ Pet^ ServiceBarry::Service::QueryPetById(int id)
 
 List<Pet^>^ ServiceBarry::Service::QueryAllPets()
 {
+	try {
+
+		PetsList = (List<Pet^>^)Persistance::LoadBinaryFile(BIN_PET_FILE_NAME);
+		if (PetsList == nullptr)
+			PetsList = gcnew List<Pet^>();
+	}
+	catch (FileNotFoundException^ ex) {
+	}
 	return PetsList;
 }
 
