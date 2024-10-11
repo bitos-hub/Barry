@@ -83,7 +83,7 @@
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>LoginScreen</EntryPointSymbol>
-      <EntryPointSymbol>FoodMain</EntryPointSymbol>
+      <EntryPointSymbol>PetMain</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
