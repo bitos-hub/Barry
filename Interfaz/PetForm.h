@@ -84,6 +84,9 @@ namespace Interfaz {
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem1;
 	private: System::Windows::Forms::ToolStripMenuItem^ semanalToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mensualToolStripMenuItem;
+	private: System::Windows::Forms::Button^ btnPetPhoto;
+	private: System::Windows::Forms::PictureBox^ pbPetPhoto;
+
 
 
 
@@ -130,7 +133,7 @@ namespace Interfaz {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(PetForm::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -162,14 +165,17 @@ namespace Interfaz {
 			this->añadirDispensadorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->programarComidaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->generarReporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->semanalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->mensualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->semanalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->mensualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->btnPetPhoto = (gcnew System::Windows::Forms::Button());
+			this->pbPetPhoto = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPets))->BeginInit();
 			this->menuStrip1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPetPhoto))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
@@ -201,9 +207,9 @@ namespace Interfaz {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(148, 394);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(62, 27);
+			this->label3->Size = System::Drawing::Size(108, 27);
 			this->label3->TabIndex = 2;
-			this->label3->Text = L"Peso";
+			this->label3->Text = L"Peso (kg)";
 			// 
 			// label4
 			// 
@@ -234,9 +240,9 @@ namespace Interfaz {
 				static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(151, 471);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(90, 27);
+			this->label6->Size = System::Drawing::Size(124, 27);
 			this->label6->TabIndex = 5;
-			this->label6->Text = L"Porción";
+			this->label6->Text = L"Porción (g)";
 			this->label6->Click += gcnew System::EventHandler(this, &PetForm::label6_Click);
 			// 
 			// txtPetName
@@ -346,21 +352,21 @@ namespace Interfaz {
 			// 
 			// dgvPets
 			// 
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this->dgvPets->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvPets->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->PetId, this->PetName,
 					this->Specie, this->Weight, this->FoodServing, this->Status
 			});
-			this->dgvPets->Location = System::Drawing::Point(385, 177);
+			this->dgvPets->Location = System::Drawing::Point(368, 172);
 			this->dgvPets->Name = L"dgvPets";
 			this->dgvPets->Size = System::Drawing::Size(763, 349);
 			this->dgvPets->TabIndex = 17;
@@ -466,6 +472,20 @@ namespace Interfaz {
 			this->generarReporteToolStripMenuItem->Size = System::Drawing::Size(188, 34);
 			this->generarReporteToolStripMenuItem->Text = L"Generar Reporte";
 			// 
+			// semanalToolStripMenuItem
+			// 
+			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
+			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
+			this->semanalToolStripMenuItem->Size = System::Drawing::Size(164, 34);
+			this->semanalToolStripMenuItem->Text = L"Semanal";
+			// 
+			// mensualToolStripMenuItem
+			// 
+			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
+			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
+			this->mensualToolStripMenuItem->Size = System::Drawing::Size(164, 34);
+			this->mensualToolStripMenuItem->Text = L"Mensual";
+			// 
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
@@ -492,25 +512,36 @@ namespace Interfaz {
 			this->salirToolStripMenuItem1->Text = L"Salir";
 			this->salirToolStripMenuItem1->Click += gcnew System::EventHandler(this, &PetForm::salirToolStripMenuItem1_Click);
 			// 
-			// semanalToolStripMenuItem
+			// btnPetPhoto
 			// 
-			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
-			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
-			this->semanalToolStripMenuItem->Size = System::Drawing::Size(180, 34);
-			this->semanalToolStripMenuItem->Text = L"Semanal";
+			this->btnPetPhoto->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnPetPhoto->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnPetPhoto->Location = System::Drawing::Point(1156, 483);
+			this->btnPetPhoto->Name = L"btnPetPhoto";
+			this->btnPetPhoto->Size = System::Drawing::Size(193, 38);
+			this->btnPetPhoto->TabIndex = 19;
+			this->btnPetPhoto->Text = L"Foto";
+			this->btnPetPhoto->UseVisualStyleBackColor = false;
+			this->btnPetPhoto->Click += gcnew System::EventHandler(this, &PetForm::btnPetPhoto_Click);
 			// 
-			// mensualToolStripMenuItem
+			// pbPetPhoto
 			// 
-			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
-			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
-			this->mensualToolStripMenuItem->Size = System::Drawing::Size(180, 34);
-			this->mensualToolStripMenuItem->Text = L"Mensual";
+			this->pbPetPhoto->Location = System::Drawing::Point(1146, 259);
+			this->pbPetPhoto->Name = L"pbPetPhoto";
+			this->pbPetPhoto->Size = System::Drawing::Size(212, 206);
+			this->pbPetPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pbPetPhoto->TabIndex = 20;
+			this->pbPetPhoto->TabStop = false;
 			// 
 			// PetForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1370, 749);
+			this->Controls->Add(this->pbPetPhoto);
+			this->Controls->Add(this->btnPetPhoto);
 			this->Controls->Add(this->dgvPets);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label7);
@@ -533,10 +564,12 @@ namespace Interfaz {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"PetForm";
 			this->Text = L"PetForm";
+			this->Load += gcnew System::EventHandler(this, &PetForm::PetForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPets))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPetPhoto))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -553,7 +586,11 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 		String^ status = txtStatus->Text;
 		double foodServing = Convert::ToDouble(txtFood->Text);
 		Pet^ pet = gcnew Pet(id,name, weight, specie, status, foodServing);
-		
+		if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+			pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+			pet->Photo = ms->ToArray();
+		}
 		Service::AddPet(pet);
 		ShowPets();
 		MessageBox::Show("Se ha agregado la mascota " + id + " - " + name);
@@ -583,6 +620,10 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 				if (control->GetType() == TextBox::typeid) {
 					dynamic_cast<TextBox^>(control)->Text = "";
 				}
+				if (control->GetType() == PictureBox::typeid) {
+					dynamic_cast<PictureBox^>(control)->Image = nullptr;
+					dynamic_cast<PictureBox^>(control)->Invalidate();
+				}
 			}
 		}
 
@@ -595,6 +636,14 @@ private: System::Void dgvPets_CellClick(System::Object^ sender, System::Windows:
 	txtSpecie->Text = pet->Specie;
 	txtStatus->Text = pet->Status;
 	txtFood->Text = "" + pet->FoodServing;
+	if (pet->Photo != nullptr) {
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+		pbPetPhoto->Image = Image::FromStream(ms);
+	}
+	else {
+		pbPetPhoto->Image = nullptr;
+		pbPetPhoto->Invalidate();
+	}
 }
 private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
 	String^ petId = txtPetId->Text->Trim();
@@ -610,6 +659,11 @@ private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^
 		String^ status = txtStatus->Text;
 		double foodServing = Convert::ToDouble(txtFood->Text);
 		Pet^ pet = gcnew Pet(id, name, weight, specie, status, foodServing);
+		if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+			pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+			pet->Photo = ms->ToArray();
+		}
 		Service::UpdatePet(pet);
 		ShowPets();
 		MessageBox::Show("Se ha modificado la mascota " + petId + "-" + name);
@@ -627,6 +681,8 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 	}
 	try {
 		Service::DeletePet(Convert::ToInt32(petId));
+		pbPetPhoto->Image = nullptr;
+		pbPetPhoto->Invalidate();
 		ShowPets();
 		ClearControls();
 		MessageBox::Show("Se ha eliminado la mascota con Id = " + petId + " de manera exitosa.");
@@ -638,6 +694,16 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void salirToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
 	this->Close();
+}
+private: System::Void PetForm_Load(System::Object^ sender, System::EventArgs^ e) {
+	ShowPets();
+}
+private: System::Void btnPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
+	OpenFileDialog^ ofd = gcnew OpenFileDialog();
+	ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+		pbPetPhoto->Image = gcnew Bitmap(ofd->FileName);
+	}
 }
 };
 }

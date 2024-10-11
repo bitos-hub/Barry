@@ -5,9 +5,12 @@ namespace Interfaz {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace ServiceBarry;
+	using namespace Barry;
 
 	/// <summary>
 	/// Resumen de MainScreenForm
@@ -53,7 +56,8 @@ namespace Interfaz {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::DataGridView^ dataGridView2;
-	private: System::Windows::Forms::DataGridView^ dataGridView1;
+	private: System::Windows::Forms::DataGridView^ dgvPets;
+
 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetId;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Species;
@@ -69,6 +73,8 @@ namespace Interfaz {
 	private: System::Windows::Forms::ToolStripMenuItem^ añadirMascotaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ semanalToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mensualToolStripMenuItem;
+	private: System::Windows::Forms::PictureBox^ pbPetPhoto;
+
 
 
 
@@ -118,8 +124,8 @@ namespace Interfaz {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainScreenForm::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->añadirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->añadirUsuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -143,16 +149,18 @@ namespace Interfaz {
 			this->FoodQuantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->FoodQuantityDispenser = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->AssignedPet = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->dgvPets = (gcnew System::Windows::Forms::DataGridView());
 			this->PetId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Species = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PetName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Weight = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PetStatus = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->pbPetPhoto = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPets))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPetPhoto))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// menuStrip1
@@ -195,7 +203,6 @@ namespace Interfaz {
 			this->añadirComidaToolStripMenuItem->Name = L"añadirComidaToolStripMenuItem";
 			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(325, 42);
 			this->añadirComidaToolStripMenuItem->Text = L"Añadir Comida";
-			this->añadirComidaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirComidaToolStripMenuItem_Click);
 			// 
 			// añadirDispensadorToolStripMenuItem
 			// 
@@ -322,15 +329,15 @@ namespace Interfaz {
 			// 
 			// dataGridView2
 			// 
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->DispenserId,
@@ -378,28 +385,29 @@ namespace Interfaz {
 			this->AssignedPet->Name = L"AssignedPet";
 			this->AssignedPet->Width = 400;
 			// 
-			// dataGridView1
+			// dgvPets
 			// 
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView1->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-			this->dataGridView1->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridView1->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
-				this->PetId,
-					this->Species, this->PetName, this->Weight, this->PetStatus
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+			this->dgvPets->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dgvPets->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+				this->PetId, this->Species,
+					this->PetName, this->Weight, this->PetStatus
 			});
-			this->dataGridView1->Location = System::Drawing::Point(31, 238);
-			this->dataGridView1->Name = L"dataGridView1";
-			this->dataGridView1->RowHeadersWidth = 51;
-			this->dataGridView1->Size = System::Drawing::Size(1701, 320);
-			this->dataGridView1->TabIndex = 16;
-			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MainScreenForm::dataGridView1_CellContentClick);
+			this->dgvPets->Location = System::Drawing::Point(31, 238);
+			this->dgvPets->Name = L"dgvPets";
+			this->dgvPets->RowHeadersWidth = 51;
+			this->dgvPets->Size = System::Drawing::Size(1701, 320);
+			this->dgvPets->TabIndex = 16;
+			this->dgvPets->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MainScreenForm::dgvPets_CellClick);
+			this->dgvPets->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MainScreenForm::dataGridView1_CellContentClick);
 			// 
 			// PetId
 			// 
@@ -441,12 +449,23 @@ namespace Interfaz {
 			this->PetStatus->Name = L"PetStatus";
 			this->PetStatus->Width = 400;
 			// 
+			// pbPetPhoto
+			// 
+			this->pbPetPhoto->Location = System::Drawing::Point(1743, 308);
+			this->pbPetPhoto->Name = L"pbPetPhoto";
+			this->pbPetPhoto->Size = System::Drawing::Size(169, 159);
+			this->pbPetPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
+			this->pbPetPhoto->TabIndex = 17;
+			this->pbPetPhoto->TabStop = false;
+			this->pbPetPhoto->Click += gcnew System::EventHandler(this, &MainScreenForm::pbPetPhoto_Click);
+			// 
 			// MainScreenForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1924, 1000);
-			this->Controls->Add(this->dataGridView1);
+			this->Controls->Add(this->pbPetPhoto);
+			this->Controls->Add(this->dgvPets);
 			this->Controls->Add(this->dataGridView2);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -461,13 +480,36 @@ namespace Interfaz {
 			this->menuStrip1->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPets))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPetPhoto))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 		public:
+			void ShowPets() {
+				List<Pet^>^ petsList = Service::QueryAllPets();
+				if (petsList != nullptr) {
+					dgvPets->Rows->Clear();
+					for (int i = 0; i < petsList->Count; i++) {
+							dgvPets->Rows->Add(gcnew array<String^> {"" + petsList[i]->Id,
+								petsList[i]->Specie,
+								petsList[i]->Name,
+								"" + petsList[i]->Weight,
+								petsList[i]->Status});
+					}
+				}
+			}
+
+
+			void ClearControls() {
+				for each (Control ^ control in this->Controls) {
+					if (control->GetType() == TextBox::typeid) {
+						dynamic_cast<TextBox^>(control)->Text = "";
+					}
+				}
+			}
 
 	private: System::Void hisoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -476,16 +518,33 @@ private: System::Void añadirToolStripMenuItem_Click(System::Object^ sender, Syst
 private: System::Void dataGridView2_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 }
 private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	
 }
 private: System::Void cerrarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void semanalToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+
+
+
 private: System::Void MainScreenForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	
+	ShowPets();
 }
-private: System::Void añadirComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	
+private: System::Void pbPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
+
+}
+private: System::Void dgvPets_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	//a
+	int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+	Pet^ pet = Service::QueryPetById(Id);
+	if (pet->Photo != nullptr) {
+		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+		pbPetPhoto->Image = Image::FromStream(ms);
+	}
+	else {
+		pbPetPhoto->Image = nullptr;
+		pbPetPhoto->Invalidate();
+	}
 }
 };
 }

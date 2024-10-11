@@ -6,7 +6,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 
 namespace Barry {
-    public ref class Pet {
+    [Serializable] public ref class Pet {
     public:
         int Id;
         String^ Name;
@@ -16,7 +16,11 @@ namespace Barry {
         List<Food^>^ OpcionesComida;
         double FoodServing;
         User^ Owner;
+        array<Byte>^ Photo;
     public:
+        Pet() {
+
+        }
         Pet(int id, String^ name, double weight, String^ specie, String^ status, double foodServing)
             : Id(id), Name(name), Weight(weight), Specie(specie), Status(status), FoodServing(foodServing) {}
         
