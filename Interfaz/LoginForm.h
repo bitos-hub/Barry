@@ -1,10 +1,16 @@
 #pragma once
+#include "MainScreenForm.h"
+#include "AddFood.h"
+#include "AgregarUsuarios.h"
 
 namespace Interfaz {
 
+	using namespace Barry;
+	using namespace ServiceBarry;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
@@ -46,6 +52,8 @@ namespace Interfaz {
 
 
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+
 
 
 	protected:
@@ -73,7 +81,9 @@ namespace Interfaz {
 			this->linkCreateAccount = (gcnew System::Windows::Forms::LinkLabel());
 			this->linkPasswordForgotten = (gcnew System::Windows::Forms::LinkLabel());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label3
@@ -90,7 +100,7 @@ namespace Interfaz {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(339, 111);
+			this->pictureBox1->Location = System::Drawing::Point(346, 110);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(168, 198);
@@ -128,6 +138,7 @@ namespace Interfaz {
 			this->btnAcces->TabIndex = 19;
 			this->btnAcces->Text = L"Acceder";
 			this->btnAcces->UseVisualStyleBackColor = false;
+			this->btnAcces->Click += gcnew System::EventHandler(this, &LoginForm::btnAcces_Click);
 			// 
 			// label1
 			// 
@@ -149,6 +160,7 @@ namespace Interfaz {
 			this->linkCreateAccount->TabIndex = 22;
 			this->linkCreateAccount->TabStop = true;
 			this->linkCreateAccount->Text = L"Crear cuenta";
+			this->linkCreateAccount->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &LoginForm::linkCreateAccount_LinkClicked);
 			// 
 			// linkPasswordForgotten
 			// 
@@ -171,6 +183,14 @@ namespace Interfaz {
 			this->label2->TabIndex = 24;
 			this->label2->Text = L"Contraseña";
 			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->Location = System::Drawing::Point(5, 3);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(835, 523);
+			this->pictureBox2->TabIndex = 26;
+			this->pictureBox2->TabStop = false;
+			// 
 			// LoginForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -185,13 +205,112 @@ namespace Interfaz {
 			this->Controls->Add(this->txtUser);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label3);
+			this->Controls->Add(this->pictureBox2);
+			this->IsMdiContainer = true;
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
+			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+		public:
+			void Hide() {
+				for each (Control ^ control in this->Controls) {
+					if (control->GetType() == TextBox::typeid) {
+						dynamic_cast<TextBox^>(control)->Visible = false;
+					}
+					if (control->GetType() == PictureBox::typeid) {
+						dynamic_cast<PictureBox^>(control)->Visible = false;
+					}
+					if (control->GetType() == Label::typeid) {
+						dynamic_cast<Label^>(control)->Visible = false;
+					}
+					if (control->GetType() == Button::typeid) {
+						dynamic_cast<Button^>(control)->Visible = false;
+					}
+					if (control->GetType() == LinkLabel::typeid) {
+						dynamic_cast<LinkLabel^>(control)->Visible = false;
+					}
+				}
+			}
+			void Show() {
+				for each (Control ^ control in this->Controls) {
+					if (control->GetType() == TextBox::typeid) {
+						dynamic_cast<TextBox^>(control)->Visible = true;
+					}
+					if (control->GetType() == PictureBox::typeid) {
+						dynamic_cast<PictureBox^>(control)->Visible = true;
+					}
+					if (control->GetType() == Label::typeid) {
+						dynamic_cast<Label^>(control)->Visible = true;
+					}
+					if (control->GetType() == Button::typeid) {
+						dynamic_cast<Button^>(control)->Visible = true;
+					}
+					if (control->GetType() == LinkLabel::typeid) {
+						dynamic_cast<LinkLabel^>(control)->Visible = true;
+					}
+				}
+			}
+
+			Boolean VerifyUser(String^ UserName, String^ Password) {
+				User^ usuario = Service::ConsultarUsuario(UserName);
+				if (usuario == nullptr) {
+					return false;
+				}
+				else {
+					if (usuario->Password == Password) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+			}
+
+			void AccessMainForm() {
+				MainScreenForm^ form = gcnew MainScreenForm();
+				form->MdiParent = this;
+				form->Show();
+				Hide();
+
+			}
+			void AccessAddFoodForm() {
+				AddFood^ form = gcnew AddFood();
+				form->MdiParent = this;
+				form->Show();
+				Hide();
+			}
+			void AccessAddUserForm() {
+				AgregarUsuarios^ form = gcnew AgregarUsuarios();
+				form->MdiParent = this;
+				form->Show();
+				Hide();
+			}
+
+
+	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		Service::cargarUsuarios();
+
+	}
+private: System::Void btnAcces_Click(System::Object^ sender, System::EventArgs^ e) {
+	String^ UserName = txtUser->Text;
+	String^ Password = txtPassword->Text;
+	if (VerifyUser(UserName, Password)) {
+		AccessMainForm();
+	}
+	else {
+		MessageBox::Show("Contraseña o usuario incorrectos");
+	}
+
+
+}
+private: System::Void linkCreateAccount_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	AccessAddUserForm();
+}
+};
 }

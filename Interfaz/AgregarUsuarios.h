@@ -3,6 +3,8 @@
 namespace Interfaz {
 
 	using namespace System;
+	using namespace Barry;
+	using namespace ServiceBarry;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
 	using namespace System::Windows::Forms;
@@ -256,6 +258,7 @@ namespace Interfaz {
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AgregarUsuarios";
 			this->Text = L"AgregarUsuarios";
+			this->Load += gcnew System::EventHandler(this, &AgregarUsuarios::AgregarUsuarios_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
@@ -268,7 +271,20 @@ namespace Interfaz {
 		String^ contrasena = txtContrasena->Text;
 		int numero_telefono = Convert::ToInt32(txtNumeroTelefono->Text);
 		String^ rol = txtRol->Text;
-		MessageBox::Show(nombre_usuario + " " + contrasena + " " + numero_telefono + " " + rol,"Usuario creado con éxito");
+		User^ usuario = gcnew User();
+		usuario->Name = nombre_usuario;
+		usuario->Password = contrasena;
+		usuario->PhoneNumber = numero_telefono;
+		usuario->Role = rol;
+
+		try {
+			Service::AddUsuario(usuario);
+			MessageBox::Show(nombre_usuario + " " + contrasena + " " + numero_telefono + " " + rol, "Usuario creado con éxito");
+
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show(""+ ex);
+		}
 
 	}
 private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -288,6 +304,8 @@ private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e)
 private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void AgregarUsuarios_Load(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

@@ -5,14 +5,20 @@
 
 using namespace System::IO;
 
+void ServiceBarry::Service::cargarUsuarios()
+{
+	lista_usuarios = Service::ConsultarTodosUsuarios();
+}
+
 void ServiceBarry::Service::AddUsuario(User^ usuario)
 {
-	for each (User ^ _usuario in lista_usuarios) {
+	/*for each (User ^ _usuario in lista_usuarios) {
 		if (_usuario->Role == usuario->Role) {
 			throw gcnew Excepcion_existe_admin("Ya existe un administrador");
 		}
-	}
+	}*/
 	lista_usuarios->Add(usuario);
+	Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 }
 
 void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
@@ -20,6 +26,7 @@ void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
 	for (int i = 0; i < lista_usuarios->Count; i++) {
 		if (lista_usuarios[i]->Id == usuario->Id) {
 			lista_usuarios[i] = usuario;
+			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -30,15 +37,16 @@ void ServiceBarry::Service::EliminarUsuario(int id)
 	for (int i = 0; i < lista_usuarios->Count; i++) {
 		if (lista_usuarios[i]->Id == id) {
 			lista_usuarios->RemoveAt(i);
+			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
 }
 
-User^ ServiceBarry::Service::ConsultarUsuario(int id)
+User^ ServiceBarry::Service::ConsultarUsuario(String^ UserName)
 {
 	for each (User^ user in lista_usuarios) {
-		if (user->Id == id) {
+		if (user->Name == UserName) {
 			return user;
 		}
 	}
@@ -47,6 +55,15 @@ User^ ServiceBarry::Service::ConsultarUsuario(int id)
 
 List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 {
+	try {
+
+		lista_usuarios = (List<User^>^)Persistance::LoadBinaryFile(BIN_USER_FILE_NAME);
+		if (lista_usuarios == nullptr)
+			lista_usuarios = gcnew List<User^>();
+	}
+	catch (FileNotFoundException^ ex) {
+	}
+
 	return lista_usuarios;
 }
 
