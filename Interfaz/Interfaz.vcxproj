@@ -83,6 +83,7 @@
       <AdditionalDependencies />
       <SubSystem>Windows</SubSystem>
       <EntryPointSymbol>LoginScreen</EntryPointSymbol>
+      <EntryPointSymbol>LoginScreen</EntryPointSymbol>
       <EntryPointSymbol>MainScreen</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
