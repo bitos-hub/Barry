@@ -17,7 +17,7 @@ namespace Interfaz {
 	public ref class AgregarUsuarios : public System::Windows::Forms::Form
 	{
 	public:
-		AgregarUsuarios(void)
+		AgregarUsuarios()
 		{
 			InitializeComponent();
 			//
@@ -100,29 +100,26 @@ namespace Interfaz {
 			// txtNombreUsuario
 			// 
 			this->txtNombreUsuario->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->txtNombreUsuario->Location = System::Drawing::Point(252, 225);
-			this->txtNombreUsuario->Margin = System::Windows::Forms::Padding(4);
+			this->txtNombreUsuario->Location = System::Drawing::Point(189, 183);
 			this->txtNombreUsuario->Name = L"txtNombreUsuario";
-			this->txtNombreUsuario->Size = System::Drawing::Size(283, 22);
+			this->txtNombreUsuario->Size = System::Drawing::Size(213, 20);
 			this->txtNombreUsuario->TabIndex = 1;
 			this->txtNombreUsuario->TextChanged += gcnew System::EventHandler(this, &AgregarUsuarios::txtNombreUsuario_TextChanged);
 			// 
 			// txtContrasena
 			// 
-			this->txtContrasena->Location = System::Drawing::Point(252, 295);
-			this->txtContrasena->Margin = System::Windows::Forms::Padding(4);
+			this->txtContrasena->Location = System::Drawing::Point(189, 240);
 			this->txtContrasena->Name = L"txtContrasena";
 			this->txtContrasena->PasswordChar = '*';
-			this->txtContrasena->Size = System::Drawing::Size(283, 22);
+			this->txtContrasena->Size = System::Drawing::Size(213, 20);
 			this->txtContrasena->TabIndex = 3;
 			this->txtContrasena->TextChanged += gcnew System::EventHandler(this, &AgregarUsuarios::txtContrasena_TextChanged);
 			// 
 			// txtNumeroTelefono
 			// 
-			this->txtNumeroTelefono->Location = System::Drawing::Point(252, 444);
-			this->txtNumeroTelefono->Margin = System::Windows::Forms::Padding(4);
+			this->txtNumeroTelefono->Location = System::Drawing::Point(189, 361);
 			this->txtNumeroTelefono->Name = L"txtNumeroTelefono";
-			this->txtNumeroTelefono->Size = System::Drawing::Size(283, 22);
+			this->txtNumeroTelefono->Size = System::Drawing::Size(213, 20);
 			this->txtNumeroTelefono->TabIndex = 7;
 			// 
 			// label4
@@ -131,10 +128,9 @@ namespace Interfaz {
 			this->label4->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(248, 418);
-			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label4->Location = System::Drawing::Point(186, 340);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(155, 19);
+			this->label4->Size = System::Drawing::Size(121, 16);
 			this->label4->TabIndex = 6;
 			this->label4->Text = L"Número de teléfono";
 			// 
@@ -144,10 +140,9 @@ namespace Interfaz {
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->btnCreateUser->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCreateUser->Location = System::Drawing::Point(300, 489);
-			this->btnCreateUser->Margin = System::Windows::Forms::Padding(4);
+			this->btnCreateUser->Location = System::Drawing::Point(225, 397);
 			this->btnCreateUser->Name = L"btnCreateUser";
-			this->btnCreateUser->Size = System::Drawing::Size(181, 42);
+			this->btnCreateUser->Size = System::Drawing::Size(136, 34);
 			this->btnCreateUser->TabIndex = 8;
 			this->btnCreateUser->Text = L"Crear";
 			this->btnCreateUser->UseVisualStyleBackColor = false;
@@ -156,11 +151,10 @@ namespace Interfaz {
 			// txtRol
 			// 
 			this->txtRol->FormattingEnabled = true;
-			this->txtRol->Items->AddRange(gcnew cli::array< System::Object^  >(1) { L"Administrador" });
-			this->txtRol->Location = System::Drawing::Point(252, 367);
-			this->txtRol->Margin = System::Windows::Forms::Padding(4);
+			this->txtRol->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Administrador", L"Usuario interno", L"Usuario portal" });
+			this->txtRol->Location = System::Drawing::Point(189, 298);
 			this->txtRol->Name = L"txtRol";
-			this->txtRol->Size = System::Drawing::Size(283, 24);
+			this->txtRol->Size = System::Drawing::Size(213, 21);
 			this->txtRol->TabIndex = 9;
 			this->txtRol->SelectedIndexChanged += gcnew System::EventHandler(this, &AgregarUsuarios::dspRol_SelectedIndexChanged);
 			// 
@@ -170,10 +164,9 @@ namespace Interfaz {
 			this->label5->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(248, 344);
-			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label5->Location = System::Drawing::Point(186, 280);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(32, 19);
+			this->label5->Size = System::Drawing::Size(25, 16);
 			this->label5->TabIndex = 10;
 			this->label5->Text = L"Rol";
 			this->label5->Click += gcnew System::EventHandler(this, &AgregarUsuarios::label5_Click);
@@ -184,10 +177,9 @@ namespace Interfaz {
 			this->label1->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(248, 272);
-			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label1->Location = System::Drawing::Point(186, 221);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(94, 19);
+			this->label1->Size = System::Drawing::Size(74, 16);
 			this->label1->TabIndex = 11;
 			this->label1->Text = L"Contraseña";
 			// 
@@ -197,19 +189,19 @@ namespace Interfaz {
 			this->label2->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(248, 202);
-			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label2->Location = System::Drawing::Point(186, 164);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(151, 19);
+			this->label2->Size = System::Drawing::Size(117, 16);
 			this->label2->TabIndex = 12;
 			this->label2->Text = L"Nombre de Usuario";
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::SystemColors::ButtonFace;
-			this->pictureBox1->Location = System::Drawing::Point(95, 152);
+			this->pictureBox1->Location = System::Drawing::Point(71, 124);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(595, 435);
+			this->pictureBox1->Size = System::Drawing::Size(446, 353);
 			this->pictureBox1->TabIndex = 13;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -219,10 +211,9 @@ namespace Interfaz {
 			this->label3->BackColor = System::Drawing::Color::Transparent;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(13, 9);
-			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label3->Location = System::Drawing::Point(10, 7);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(221, 42);
+			this->label3->Size = System::Drawing::Size(171, 31);
 			this->label3->TabIndex = 14;
 			this->label3->Text = L"Barry Bites";
 			this->label3->Click += gcnew System::EventHandler(this, &AgregarUsuarios::label3_Click);
@@ -230,19 +221,20 @@ namespace Interfaz {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(730, 12);
+			this->pictureBox2->Location = System::Drawing::Point(548, 10);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(90, 123);
+			this->pictureBox2->Size = System::Drawing::Size(68, 100);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 15;
 			this->pictureBox2->TabStop = false;
 			// 
 			// AgregarUsuarios
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(832, 653);
+			this->ClientSize = System::Drawing::Size(624, 531);
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->label2);
@@ -255,7 +247,6 @@ namespace Interfaz {
 			this->Controls->Add(this->txtContrasena);
 			this->Controls->Add(this->txtNombreUsuario);
 			this->Controls->Add(this->pictureBox1);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AgregarUsuarios";
 			this->Text = L"AgregarUsuarios";
 			this->Load += gcnew System::EventHandler(this, &AgregarUsuarios::AgregarUsuarios_Load);
@@ -271,16 +262,36 @@ namespace Interfaz {
 		String^ contrasena = txtContrasena->Text;
 		int numero_telefono = Convert::ToInt32(txtNumeroTelefono->Text);
 		String^ rol = txtRol->Text;
-		User^ usuario = gcnew User();
-		usuario->Name = nombre_usuario;
-		usuario->Password = contrasena;
-		usuario->PhoneNumber = numero_telefono;
-		usuario->Role = rol;
+		if (txtRol->Text == "Administrador") {
+			Administrator^ admin = gcnew Administrator();
+			admin->Name = nombre_usuario;
+			admin->Password = contrasena;
+			admin->PhoneNumber = numero_telefono;
+			admin->Role = rol;
+			Service::AddUsuario(admin);
+		}
+		else {
+			if (txtRol->Text == "Usuario interno") {
+				InternalUser^ iuser = gcnew InternalUser();
+				iuser->Name = nombre_usuario;
+				iuser->Password = contrasena;
+				iuser->PhoneNumber = numero_telefono;
+				iuser->Role = rol;
+				Service::AddUsuario(iuser);
+			}
+			else {
+				PortalUser^ puser = gcnew PortalUser();
+				puser->Name = nombre_usuario;
+				puser->Password = contrasena;
+				puser->PhoneNumber = numero_telefono;
+				puser->Role = rol;
+				Service::AddUsuario(puser);
+			}
+		}
 
 		try {
-			Service::AddUsuario(usuario);
 			MessageBox::Show(nombre_usuario + " " + contrasena + " " + numero_telefono + " " + rol, "Usuario creado con éxito");
-
+			this->Close();
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show(""+ ex);
