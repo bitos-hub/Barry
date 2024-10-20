@@ -174,6 +174,21 @@ List<Food^>^ ServiceBarry::Service::QueryAllFoods()
 	return FoodList;
 }
 
+void ServiceBarry::Service::AddHorario(int horario)
+{
+	return Persistance::AddHorario(horario);
+}
+
+void ServiceBarry::Service::EliminarHorario(int horario)
+{
+	return Persistance::EliminarHorario(horario);
+}
+
+List<int>^ ServiceBarry::Service::ConsultarTodosHorarios()
+{
+	return Persistance::ConsultarTodosHorarios();
+}
+
 
 
 

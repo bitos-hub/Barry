@@ -35,5 +35,9 @@ namespace ServiceBarry {
 		static void DeleteFood(int id);
 		static Food^ QueryFoodbyId(int id);
 		static List<Food^>^ QueryAllFoods();
+
+		static void AddHorario(int horario);
+		static void EliminarHorario(int horario);
+		static List<int>^ ConsultarTodosHorarios();
 	};
 }
