@@ -4,7 +4,7 @@ using namespace System;
 
 public ref class ComboBoxItem
 {
-public:
+public: 
 	int Value;
 	String^ Name;
 
@@ -19,6 +19,6 @@ public:
 	String^ ToString() override {
 		return this->Name;
 		
-	}
+ 	}
 };
 

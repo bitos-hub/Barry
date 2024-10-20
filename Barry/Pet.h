@@ -2,6 +2,11 @@
 #pragma once
 #include "User.h"
 #include "Food.h"
+
+namespace Barry {
+    ref class Dispenser;
+}
+
 using namespace System;
 using namespace System::Collections::Generic;
 
@@ -17,6 +22,7 @@ namespace Barry {
         double FoodServing;
         User^ Owner;
         array<Byte>^ Photo;
+        Dispenser^ PetDispenser; //se agregó este atributo para tener un dispensador por mascota
     public:
         Pet() {
 
