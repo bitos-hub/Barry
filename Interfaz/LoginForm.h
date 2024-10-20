@@ -1,7 +1,6 @@
 #pragma once
-#include "MainScreenForm.h"
-#include "AddFood.h"
 #include "AgregarUsuarios.h"
+
 
 namespace Interfaz {
 
@@ -20,9 +19,12 @@ namespace Interfaz {
 	/// </summary>
 	public ref class LoginForm : public System::Windows::Forms::Form
 	{
+	private:
+		Form^ refMainForm;
 	public:
-		LoginForm(void)
+		LoginForm(Form^ form)
 		{
+			refMainForm=form;
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -91,19 +93,19 @@ namespace Interfaz {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(202, 9);
+			this->label3->Location = System::Drawing::Point(152, 7);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(445, 110);
+			this->label3->Size = System::Drawing::Size(354, 88);
 			this->label3->TabIndex = 15;
 			this->label3->Text = L"Barry Bites";
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(346, 110);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
+			this->pictureBox1->Location = System::Drawing::Point(260, 89);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(168, 198);
+			this->pictureBox1->Size = System::Drawing::Size(126, 161);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 16;
 			this->pictureBox1->TabStop = false;
@@ -112,18 +114,20 @@ namespace Interfaz {
 			// 
 			this->txtUser->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtUser->Location = System::Drawing::Point(318, 350);
+			this->txtUser->Location = System::Drawing::Point(238, 284);
+			this->txtUser->Margin = System::Windows::Forms::Padding(2);
 			this->txtUser->Name = L"txtUser";
-			this->txtUser->Size = System::Drawing::Size(213, 24);
+			this->txtUser->Size = System::Drawing::Size(161, 21);
 			this->txtUser->TabIndex = 17;
 			// 
 			// txtPassword
 			// 
 			this->txtPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtPassword->Location = System::Drawing::Point(318, 408);
+			this->txtPassword->Location = System::Drawing::Point(238, 332);
+			this->txtPassword->Margin = System::Windows::Forms::Padding(2);
 			this->txtPassword->Name = L"txtPassword";
-			this->txtPassword->Size = System::Drawing::Size(213, 24);
+			this->txtPassword->Size = System::Drawing::Size(161, 21);
 			this->txtPassword->TabIndex = 18;
 			// 
 			// btnAcces
@@ -132,9 +136,10 @@ namespace Interfaz {
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->btnAcces->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnAcces->Location = System::Drawing::Point(318, 465);
+			this->btnAcces->Location = System::Drawing::Point(238, 378);
+			this->btnAcces->Margin = System::Windows::Forms::Padding(2);
 			this->btnAcces->Name = L"btnAcces";
-			this->btnAcces->Size = System::Drawing::Size(213, 41);
+			this->btnAcces->Size = System::Drawing::Size(160, 33);
 			this->btnAcces->TabIndex = 19;
 			this->btnAcces->Text = L"Acceder";
 			this->btnAcces->UseVisualStyleBackColor = false;
@@ -145,18 +150,20 @@ namespace Interfaz {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(314, 327);
+			this->label1->Location = System::Drawing::Point(236, 266);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(70, 19);
+			this->label1->Size = System::Drawing::Size(57, 16);
 			this->label1->TabIndex = 20;
 			this->label1->Text = L"Usuario";
 			// 
 			// linkCreateAccount
 			// 
 			this->linkCreateAccount->AutoSize = true;
-			this->linkCreateAccount->Location = System::Drawing::Point(693, 490);
+			this->linkCreateAccount->Location = System::Drawing::Point(520, 398);
+			this->linkCreateAccount->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->linkCreateAccount->Name = L"linkCreateAccount";
-			this->linkCreateAccount->Size = System::Drawing::Size(83, 16);
+			this->linkCreateAccount->Size = System::Drawing::Size(68, 13);
 			this->linkCreateAccount->TabIndex = 22;
 			this->linkCreateAccount->TabStop = true;
 			this->linkCreateAccount->Text = L"Crear cuenta";
@@ -165,9 +172,10 @@ namespace Interfaz {
 			// linkPasswordForgotten
 			// 
 			this->linkPasswordForgotten->AutoSize = true;
-			this->linkPasswordForgotten->Location = System::Drawing::Point(50, 490);
+			this->linkPasswordForgotten->Location = System::Drawing::Point(38, 398);
+			this->linkPasswordForgotten->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->linkPasswordForgotten->Name = L"linkPasswordForgotten";
-			this->linkPasswordForgotten->Size = System::Drawing::Size(186, 16);
+			this->linkPasswordForgotten->Size = System::Drawing::Size(148, 13);
 			this->linkPasswordForgotten->TabIndex = 23;
 			this->linkPasswordForgotten->TabStop = true;
 			this->linkPasswordForgotten->Text = L"¿Has olvidado la contraseña\?";
@@ -177,25 +185,27 @@ namespace Interfaz {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(314, 386);
+			this->label2->Location = System::Drawing::Point(236, 314);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(98, 19);
+			this->label2->Size = System::Drawing::Size(81, 16);
 			this->label2->TabIndex = 24;
 			this->label2->Text = L"Contraseña";
 			// 
 			// pictureBox2
 			// 
-			this->pictureBox2->Location = System::Drawing::Point(5, 3);
+			this->pictureBox2->Location = System::Drawing::Point(4, 2);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(835, 523);
+			this->pictureBox2->Size = System::Drawing::Size(626, 425);
 			this->pictureBox2->TabIndex = 26;
 			this->pictureBox2->TabStop = false;
 			// 
 			// LoginForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(842, 525);
+			this->ClientSize = System::Drawing::Size(632, 427);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->linkPasswordForgotten);
 			this->Controls->Add(this->linkCreateAccount);
@@ -207,6 +217,7 @@ namespace Interfaz {
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->pictureBox2);
 			this->IsMdiContainer = true;
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"LoginForm";
 			this->Text = L"LoginForm";
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
@@ -257,8 +268,16 @@ namespace Interfaz {
 				}
 			}
 
-			Boolean VerifyUser(String^ UserName, String^ Password) {
-				User^ usuario = Service::ConsultarUsuario(UserName);
+			User^ VerifyUser(String^ UserName, String^ Password) {
+				User^ result = nullptr;
+				List<User^>^ usersList = Service::ConsultarTodosUsuarios();
+				for (int i = 0; i < usersList->Count; i++) {
+					User^ user = usersList[i];
+					if (user->Name->Equals(UserName) && user->Password->Equals(Password))
+						result = user;
+				}
+				return result;
+				/*User^ usuario = Service::ConsultarUsuario(UserName);
 				if (usuario == nullptr) {
 					return false;
 				}
@@ -269,27 +288,11 @@ namespace Interfaz {
 					else {
 						return false;
 					}
-				}
-			}
-
-			void AccessMainForm() {
-				MainScreenForm^ form = gcnew MainScreenForm();
-				form->MdiParent = this;
-				form->Show();
-				Hide();
-
-			}
-			void AccessAddFoodForm() {
-				AddFood^ form = gcnew AddFood();
-				form->MdiParent = this;
-				form->Show();
-				Hide();
+				}*/
 			}
 			void AccessAddUserForm() {
 				AgregarUsuarios^ form = gcnew AgregarUsuarios();
-				form->MdiParent = this;
-				form->Show();
-				Hide();
+				form->ShowDialog();
 			}
 
 
@@ -297,20 +300,7 @@ namespace Interfaz {
 		Service::cargarUsuarios();
 
 	}
-private: System::Void btnAcces_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ UserName = txtUser->Text;
-	String^ Password = txtPassword->Text;
-	if (VerifyUser(UserName, Password)) {
-		AccessMainForm();
-	}
-	else {
-		MessageBox::Show("Contraseña o usuario incorrectos");
-	}
-
-
-}
-private: System::Void linkCreateAccount_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
-	AccessAddUserForm();
-}
+private: System::Void btnAcces_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void linkCreateAccount_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e);
 };
 }
