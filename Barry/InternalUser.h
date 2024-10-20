@@ -4,7 +4,7 @@
 using namespace System;
 
 namespace Barry {
-    public ref class InternalUser : public User {
+    [Serializable] public ref class InternalUser : public User {
     public:
         bool EditSchedule;
         bool EditFood;

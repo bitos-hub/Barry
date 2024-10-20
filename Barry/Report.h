@@ -11,7 +11,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 
 namespace Barry {
-    public ref class Report {
+    [Serializable] public ref class Report {
     public:
         String^ GeneratorUserName;
         List<Pet^>^ WeightTable;

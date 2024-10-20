@@ -5,7 +5,7 @@
 using namespace System;
 
 namespace Barry {
-    public ref class PortalUser : public User {
+    [Serializable] public ref class PortalUser : public User {
     public:
         bool CheckReport;
         bool CheckGeneralReport;

@@ -6,7 +6,7 @@
 using namespace System;
 
 namespace Barry {
-    public ref class Administrator : public User {
+    [Serializable] public ref class Administrator : public User {
     public:
         //;
         //static void ActualizarMascota(int);
