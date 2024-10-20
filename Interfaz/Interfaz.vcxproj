@@ -85,6 +85,7 @@
       <EntryPointSymbol>LoginScreen</EntryPointSymbol>
       <EntryPointSymbol>LoginScreen</EntryPointSymbol>
       <EntryPointSymbol>MainScreen</EntryPointSymbol>
+      <EntryPointSymbol>AgregarHorarios</EntryPointSymbol>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
