@@ -58,7 +58,6 @@ namespace Interfaz {
 
 
 
-
 	protected:
 
 	private:
@@ -102,7 +101,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(347, 110);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(168, 198);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -126,8 +125,10 @@ namespace Interfaz {
 			this->txtPassword->Location = System::Drawing::Point(317, 409);
 			this->txtPassword->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtPassword->Name = L"txtPassword";
+			this->txtPassword->PasswordChar = '*';
 			this->txtPassword->Size = System::Drawing::Size(213, 24);
 			this->txtPassword->TabIndex = 18;
+			this->txtPassword->UseSystemPasswordChar = true;
 			// 
 			// btnAcces
 			// 
@@ -282,6 +283,9 @@ namespace Interfaz {
 
 	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		Service::cargarUsuarios();
+		if (Service::VerifyAdmin()) {
+			linkCreateAccount->Hide();
+		}
 
 	}
 private: System::Void btnAcces_Click(System::Object^ sender, System::EventArgs^ e);

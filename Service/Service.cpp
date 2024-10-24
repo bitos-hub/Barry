@@ -10,13 +10,18 @@ void ServiceBarry::Service::cargarUsuarios()
 	lista_usuarios = Service::ConsultarTodosUsuarios();
 }
 
+int ServiceBarry::Service::VerifyAdmin()
+{
+	for each (User ^ _usuario in lista_usuarios) {
+		if (_usuario->Role == "Administrador") {
+			return 1;
+		}
+	}
+	return 0;
+}
+
 void ServiceBarry::Service::AddUsuario(User^ usuario)
 {
-	/*for each (User ^ _usuario in lista_usuarios) {
-		if (_usuario->Role == usuario->Role) {
-			throw gcnew Excepcion_existe_admin("Ya existe un administrador");
-		}
-	}*/
 	lista_usuarios->Add(usuario);
 	Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 }
