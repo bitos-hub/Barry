@@ -19,6 +19,7 @@ namespace ServiceBarry {
 		static List<Food^>^ FoodList = gcnew List<Food^>();
 	public:
 		static void cargarUsuarios();
+		static int VerifyAdmin();
 		static void AddUsuario(User^);
 		static void ActualizarUsuario(User^);
 		static void EliminarUsuario(int id);
@@ -35,5 +36,6 @@ namespace ServiceBarry {
 		static void DeleteFood(int id);
 		static Food^ QueryFoodbyId(int id);
 		static List<Food^>^ QueryAllFoods();
+
 	};
 }

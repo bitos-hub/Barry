@@ -125,6 +125,7 @@
     <ClCompile Include="AddFood.cpp" />
     <ClCompile Include="AgregarHorarios.cpp" />
     <ClCompile Include="AgregarUsuarios.cpp" />
+    <ClCompile Include="ComboBoxItem.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainScreenForm.cpp" />
     <ClCompile Include="PetForm.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="AgregarUsuarios.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ComboBoxItem.h" />
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>

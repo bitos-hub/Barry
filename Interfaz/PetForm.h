@@ -503,14 +503,14 @@ namespace Interfaz {
 			// 
 			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
 			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
-			this->semanalToolStripMenuItem->Size = System::Drawing::Size(224, 42);
+			this->semanalToolStripMenuItem->Size = System::Drawing::Size(206, 42);
 			this->semanalToolStripMenuItem->Text = L"Semanal";
 			// 
 			// mensualToolStripMenuItem
 			// 
 			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
 			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
-			this->mensualToolStripMenuItem->Size = System::Drawing::Size(224, 42);
+			this->mensualToolStripMenuItem->Size = System::Drawing::Size(206, 42);
 			this->mensualToolStripMenuItem->Text = L"Mensual";
 			// 
 			// salirToolStripMenuItem
@@ -660,21 +660,28 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 		}
 
 private: System::Void dgvPets_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-	Pet^ pet = Service::QueryPetById(Id);
-	txtPetId->Text = "" + pet->Id;
-	txtPetName->Text = pet->Name;
-	txtWeight->Text = "" + pet->Weight;
-	txtSpecie->Text = pet->Specie;
-	txtStatus->Text = pet->Status;
-	txtFood->Text = "" + pet->FoodServing;
-	if (pet->Photo != nullptr) {
-		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
-		pbPetPhoto->Image = Image::FromStream(ms);
+	if (dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
+
+
+		int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+		Pet^ pet = Service::QueryPetById(Id);
+		txtPetId->Text = "" + pet->Id;
+		txtPetName->Text = pet->Name;
+		txtWeight->Text = "" + pet->Weight;
+		txtSpecie->Text = pet->Specie;
+		txtStatus->Text = pet->Status;
+		txtFood->Text = "" + pet->FoodServing;
+		if (pet->Photo != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+			pbPetPhoto->Image = Image::FromStream(ms);
+		}
+		else {
+			pbPetPhoto->Image = nullptr;
+			pbPetPhoto->Invalidate();
+		}
 	}
 	else {
-		pbPetPhoto->Image = nullptr;
-		pbPetPhoto->Invalidate();
+		MessageBox::Show("Debe seleccionar una casilla válida");
 	}
 }
 private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {

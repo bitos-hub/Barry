@@ -679,14 +679,21 @@ private: System::Void DeleteFoodbtn_Click(System::Object^ sender, System::EventA
 	}
 }
 private: System::Void foodGrid_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	int Id = Convert::ToInt32(foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-	Food^ food = Service::QueryFoodbyId(Id);
-	FoodIdtxt->Text =  ""+ Id;
-	FoodNametxt->Text = food->Name;
-	FoodBrandtxt->Text = food->FoodBrand;
-	Statustxt->Text = food->Status;
-	FoodPricetxt->Text = "" + food->FoodPrice;
-	FoodAmountxt->Text = "" + food->FoodAmount;
+	if (foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
+
+
+		int Id = Convert::ToInt32(foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+		Food^ food = Service::QueryFoodbyId(Id);
+		FoodIdtxt->Text = "" + Id;
+		FoodNametxt->Text = food->Name;
+		FoodBrandtxt->Text = food->FoodBrand;
+		Statustxt->Text = food->Status;
+		FoodPricetxt->Text = "" + food->FoodPrice;
+		FoodAmountxt->Text = "" + food->FoodAmount;
+	}
+	else {
+		MessageBox::Show("Debe seleccionar una casilla válida.");
+	}
 }
 private: System::Void añadirMascotasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 }

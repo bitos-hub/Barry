@@ -65,11 +65,11 @@ namespace Interfaz {
 	private: System::Windows::Forms::DataGridView^ dgvPets;
 
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetId;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Species;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetName;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Weight;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetStatus;
+
+
+
+
+
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DispenserId;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DispenserStatus;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FoodQuantity;
@@ -80,6 +80,14 @@ namespace Interfaz {
 	private: System::Windows::Forms::ToolStripMenuItem^ semanalToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mensualToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pbPetPhoto;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetId;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Species;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetName;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Weight;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetStatus;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+	private: System::Windows::Forms::ToolStripMenuItem^ recargarToolStripMenuItem;
 
 
 
@@ -130,8 +138,9 @@ namespace Interfaz {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainScreenForm::typeid));
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->addToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->añadirUsuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -142,6 +151,7 @@ namespace Interfaz {
 			this->generarReporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->semanalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mensualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->recargarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesionToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -161,6 +171,8 @@ namespace Interfaz {
 			this->PetName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Weight = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PetStatus = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->pbPetPhoto = (gcnew System::Windows::Forms::PictureBox());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
@@ -172,14 +184,14 @@ namespace Interfaz {
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
 				this->addToolStripMenuItem,
-					this->programarComidaToolStripMenuItem, this->generarReporteToolStripMenuItem, this->cerrarSesiónToolStripMenuItem
+					this->programarComidaToolStripMenuItem, this->generarReporteToolStripMenuItem, this->recargarToolStripMenuItem, this->cerrarSesiónToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1371, 46);
+			this->menuStrip1->Size = System::Drawing::Size(1924, 46);
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -219,6 +231,7 @@ namespace Interfaz {
 			this->añadirDispensadorToolStripMenuItem->Name = L"añadirDispensadorToolStripMenuItem";
 			this->añadirDispensadorToolStripMenuItem->Size = System::Drawing::Size(325, 42);
 			this->añadirDispensadorToolStripMenuItem->Text = L"Añadir Dispensador";
+			this->añadirDispensadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirDispensadorToolStripMenuItem_Click);
 			// 
 			// añadirMascotaToolStripMenuItem
 			// 
@@ -265,6 +278,16 @@ namespace Interfaz {
 			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
 			this->mensualToolStripMenuItem->Size = System::Drawing::Size(206, 42);
 			this->mensualToolStripMenuItem->Text = L"Mensual";
+			// 
+			// recargarToolStripMenuItem
+			// 
+			this->recargarToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->recargarToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"recargarToolStripMenuItem.Image")));
+			this->recargarToolStripMenuItem->Name = L"recargarToolStripMenuItem";
+			this->recargarToolStripMenuItem->Size = System::Drawing::Size(160, 42);
+			this->recargarToolStripMenuItem->Text = L"Actualizar";
+			this->recargarToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::recargarToolStripMenuItem_Click);
 			// 
 			// cerrarSesiónToolStripMenuItem
 			// 
@@ -411,10 +434,20 @@ namespace Interfaz {
 			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
 			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvPets->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvPets->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+			this->dgvPets->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->PetId, this->Species,
-					this->PetName, this->Weight, this->PetStatus
+					this->PetName, this->Weight, this->PetStatus, this->Column1, this->Column2
 			});
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvPets->DefaultCellStyle = dataGridViewCellStyle3;
+			this->dgvPets->GridColor = System::Drawing::SystemColors::ButtonShadow;
 			this->dgvPets->Location = System::Drawing::Point(31, 238);
 			this->dgvPets->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvPets->Name = L"dgvPets";
@@ -464,9 +497,25 @@ namespace Interfaz {
 			this->PetStatus->Name = L"PetStatus";
 			this->PetStatus->Width = 400;
 			// 
+			// Column1
+			// 
+			this->Column1->HeaderText = L"Column1";
+			this->Column1->MinimumWidth = 6;
+			this->Column1->Name = L"Column1";
+			this->Column1->Width = 125;
+			// 
+			// Column2
+			// 
+			this->Column2->HeaderText = L"Column2";
+			this->Column2->MinimumWidth = 6;
+			this->Column2->Name = L"Column2";
+			this->Column2->Width = 125;
+			// 
 			// pbPetPhoto
 			// 
-			this->pbPetPhoto->Location = System::Drawing::Point(1743, 308);
+			this->pbPetPhoto->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->pbPetPhoto->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pbPetPhoto->Location = System::Drawing::Point(1755, 399);
 			this->pbPetPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbPetPhoto->Name = L"pbPetPhoto";
 			this->pbPetPhoto->Size = System::Drawing::Size(169, 159);
@@ -479,7 +528,7 @@ namespace Interfaz {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1371, 750);
+			this->ClientSize = System::Drawing::Size(1924, 750);
 			this->Controls->Add(this->pbPetPhoto);
 			this->Controls->Add(this->dgvPets);
 			this->Controls->Add(this->dataGridView2);
@@ -488,7 +537,6 @@ namespace Interfaz {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->menuStrip1);
 			this->Controls->Add(this->pictureBox1);
-			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"MainScreenForm";
@@ -521,13 +569,6 @@ namespace Interfaz {
 			}
 
 
-			void ClearControls() {
-				for each (Control ^ control in this->Controls) {
-					if (control->GetType() == TextBox::typeid) {
-						dynamic_cast<TextBox^>(control)->Text = "";
-					}
-				}
-			}
 
 	private: System::Void hisoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
@@ -575,75 +616,56 @@ private: System::Void pbPetPhoto_Click(System::Object^ sender, System::EventArgs
 }
 private: System::Void dgvPets_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 	//a
-	int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-	Pet^ pet = Service::QueryPetById(Id);
-	if (pet->Photo != nullptr) {
-		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
-		pbPetPhoto->Image = Image::FromStream(ms);
+	if (dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
+
+
+		int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+		Pet^ pet = Service::QueryPetById(Id);
+		if (pet->Photo != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+			pbPetPhoto->Image = Image::FromStream(ms);
+		}
+		else {
+			pbPetPhoto->Image = nullptr;
+			pbPetPhoto->Invalidate();
+		}
 	}
 	else {
-		pbPetPhoto->Image = nullptr;
-		pbPetPhoto->Invalidate();
+		MessageBox::Show("Debe seleccionar una casilla válida");
 	}
 }
 private: System::Void añadirUsuarioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	AgregarUsuarios^ UserForm = gcnew AgregarUsuarios();
 	UserForm->ShowDialog();
 }
-	   public:
-		   void Hide() {
-			   for each (Control ^ control in this->Controls) {
-				   if (control->GetType() == TextBox::typeid) {
-					   dynamic_cast<TextBox^>(control)->Visible = false;
-				   }
-				   if (control->GetType() == PictureBox::typeid) {
-					   dynamic_cast<PictureBox^>(control)->Visible = false;
-				   }
-				   if (control->GetType() == Label::typeid) {
-					   dynamic_cast<Label^>(control)->Visible = false;
-				   }
-				   if (control->GetType() == Button::typeid) {
-					   dynamic_cast<Button^>(control)->Visible = false;
-				   }
-				   if (control->GetType() == LinkLabel::typeid) {
-					   dynamic_cast<LinkLabel^>(control)->Visible = false;
-				   }
-			   }
-		   }
-		   void Show() {
-			   for each (Control ^ control in this->Controls) {
-				   if (control->GetType() == TextBox::typeid) {
-					   dynamic_cast<TextBox^>(control)->Visible = true;
-				   }
-				   if (control->GetType() == PictureBox::typeid) {
-					   dynamic_cast<PictureBox^>(control)->Visible = true;
-				   }
-				   if (control->GetType() == Label::typeid) {
-					   dynamic_cast<Label^>(control)->Visible = true;
-				   }
-				   if (control->GetType() == Button::typeid) {
-					   dynamic_cast<Button^>(control)->Visible = true;
-				   }
-				   if (control->GetType() == LinkLabel::typeid) {
-					   dynamic_cast<LinkLabel^>(control)->Visible = true;
-				   }
-			   }
-		   }
+	   
 private: System::Void añadirComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	AddFood^ FoodForm = gcnew AddFood();
 	FoodForm->ShowDialog();
-	Hide();
-	Show();
+	
 }
 private: System::Void añadirMascotaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	PetForm^ petForm = gcnew PetForm();
 	petForm->ShowDialog();
-	Hide();
-	Show();
+	
 }
 private: System::Void programarComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	AgregarHorarios^ ScheduleForm = gcnew AgregarHorarios();
 	ScheduleForm->ShowDialog();
+	
+}
+private: System::Void cerrarSesiónToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+
+}
+private: System::Void añadirDispensadorToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void recargarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	ShowPets();
+
 	Hide();
 	Show();
 }
