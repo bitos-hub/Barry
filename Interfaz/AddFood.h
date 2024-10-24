@@ -84,7 +84,8 @@ namespace Interfaz {
 	private: System::Windows::Forms::ToolStripMenuItem^ generarReporteToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesiónToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesionToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem1;
 
 
@@ -149,7 +150,7 @@ namespace Interfaz {
 			this->programarComidaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->generarReporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->cerrarSesionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -505,7 +506,7 @@ namespace Interfaz {
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->cerrarSesiónToolStripMenuItem,
+				this->cerrarSesionToolStripMenuItem,
 					this->salirToolStripMenuItem1
 			});
 			this->salirToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"salirToolStripMenuItem.Image")));
@@ -513,12 +514,13 @@ namespace Interfaz {
 			this->salirToolStripMenuItem->Size = System::Drawing::Size(102, 42);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			// 
-			// cerrarSesiónToolStripMenuItem
+			// cerrarSesionToolStripMenuItem
 			// 
-			this->cerrarSesiónToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"cerrarSesiónToolStripMenuItem.Image")));
-			this->cerrarSesiónToolStripMenuItem->Name = L"cerrarSesiónToolStripMenuItem";
-			this->cerrarSesiónToolStripMenuItem->Size = System::Drawing::Size(256, 42);
-			this->cerrarSesiónToolStripMenuItem->Text = L"Cerrar Sesión";
+			this->cerrarSesionToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"cerrarSesionToolStripMenuItem.Image")));
+			this->cerrarSesionToolStripMenuItem->Name = L"cerrarSesionToolStripMenuItem";
+			this->cerrarSesionToolStripMenuItem->Size = System::Drawing::Size(256, 42);
+			this->cerrarSesionToolStripMenuItem->Text = L"Cerrar Sesión";
+			this->cerrarSesionToolStripMenuItem->Click += gcnew System::EventHandler(this, &AddFood::cerrarSesionToolStripMenuItem_Click);
 			// 
 			// salirToolStripMenuItem1
 			// 
@@ -695,6 +697,10 @@ private: System::Void FoodIdtxt_TextChanged(System::Object^ sender, System::Even
 }
 private: System::Void AddFood_Load(System::Object^ sender, System::EventArgs^ e) {
 	ShowFoods();
+}
+private: System::Void cerrarSesionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+	Application::Restart();
 }
 };
 }

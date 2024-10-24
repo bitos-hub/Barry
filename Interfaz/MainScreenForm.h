@@ -55,7 +55,8 @@ namespace Interfaz {
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::ToolStripMenuItem^ añadirUsuarioToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ añadirComidaToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesiónToolStripMenuItem1;
+	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesionToolStripMenuItem1;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label2;
@@ -129,8 +130,8 @@ namespace Interfaz {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainScreenForm::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->addToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->añadirUsuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -142,7 +143,7 @@ namespace Interfaz {
 			this->semanalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->mensualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->cerrarSesiónToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->cerrarSesionToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -177,8 +178,8 @@ namespace Interfaz {
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1028, 38);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(1371, 46);
 			this->menuStrip1->TabIndex = 2;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -192,7 +193,7 @@ namespace Interfaz {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->addToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"addToolStripMenuItem.Image")));
 			this->addToolStripMenuItem->Name = L"addToolStripMenuItem";
-			this->addToolStripMenuItem->Size = System::Drawing::Size(102, 34);
+			this->addToolStripMenuItem->Size = System::Drawing::Size(123, 42);
 			this->addToolStripMenuItem->Text = L"Añadir";
 			this->addToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirToolStripMenuItem_Click);
 			// 
@@ -200,7 +201,7 @@ namespace Interfaz {
 			// 
 			this->añadirUsuarioToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirUsuarioToolStripMenuItem.Image")));
 			this->añadirUsuarioToolStripMenuItem->Name = L"añadirUsuarioToolStripMenuItem";
-			this->añadirUsuarioToolStripMenuItem->Size = System::Drawing::Size(260, 34);
+			this->añadirUsuarioToolStripMenuItem->Size = System::Drawing::Size(325, 42);
 			this->añadirUsuarioToolStripMenuItem->Text = L"Añadir Usuario";
 			this->añadirUsuarioToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirUsuarioToolStripMenuItem_Click);
 			// 
@@ -208,7 +209,7 @@ namespace Interfaz {
 			// 
 			this->añadirComidaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirComidaToolStripMenuItem.Image")));
 			this->añadirComidaToolStripMenuItem->Name = L"añadirComidaToolStripMenuItem";
-			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(260, 34);
+			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(325, 42);
 			this->añadirComidaToolStripMenuItem->Text = L"Añadir Comida";
 			this->añadirComidaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirComidaToolStripMenuItem_Click);
 			// 
@@ -216,14 +217,14 @@ namespace Interfaz {
 			// 
 			this->añadirDispensadorToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirDispensadorToolStripMenuItem.Image")));
 			this->añadirDispensadorToolStripMenuItem->Name = L"añadirDispensadorToolStripMenuItem";
-			this->añadirDispensadorToolStripMenuItem->Size = System::Drawing::Size(260, 34);
+			this->añadirDispensadorToolStripMenuItem->Size = System::Drawing::Size(325, 42);
 			this->añadirDispensadorToolStripMenuItem->Text = L"Añadir Dispensador";
 			// 
 			// añadirMascotaToolStripMenuItem
 			// 
 			this->añadirMascotaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirMascotaToolStripMenuItem.Image")));
 			this->añadirMascotaToolStripMenuItem->Name = L"añadirMascotaToolStripMenuItem";
-			this->añadirMascotaToolStripMenuItem->Size = System::Drawing::Size(260, 34);
+			this->añadirMascotaToolStripMenuItem->Size = System::Drawing::Size(325, 42);
 			this->añadirMascotaToolStripMenuItem->Text = L"Añadir Mascota";
 			this->añadirMascotaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirMascotaToolStripMenuItem_Click);
 			// 
@@ -233,7 +234,7 @@ namespace Interfaz {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->programarComidaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"programarComidaToolStripMenuItem.Image")));
 			this->programarComidaToolStripMenuItem->Name = L"programarComidaToolStripMenuItem";
-			this->programarComidaToolStripMenuItem->Size = System::Drawing::Size(211, 34);
+			this->programarComidaToolStripMenuItem->Size = System::Drawing::Size(258, 42);
 			this->programarComidaToolStripMenuItem->Text = L"Programar Comida";
 			this->programarComidaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::programarComidaToolStripMenuItem_Click);
 			// 
@@ -247,14 +248,14 @@ namespace Interfaz {
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->generarReporteToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"generarReporteToolStripMenuItem.Image")));
 			this->generarReporteToolStripMenuItem->Name = L"generarReporteToolStripMenuItem";
-			this->generarReporteToolStripMenuItem->Size = System::Drawing::Size(192, 34);
+			this->generarReporteToolStripMenuItem->Size = System::Drawing::Size(230, 42);
 			this->generarReporteToolStripMenuItem->Text = L"Generar Reporte";
 			// 
 			// semanalToolStripMenuItem
 			// 
 			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
 			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
-			this->semanalToolStripMenuItem->Size = System::Drawing::Size(164, 34);
+			this->semanalToolStripMenuItem->Size = System::Drawing::Size(206, 42);
 			this->semanalToolStripMenuItem->Text = L"Semanal";
 			this->semanalToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::semanalToolStripMenuItem_Click);
 			// 
@@ -262,43 +263,46 @@ namespace Interfaz {
 			// 
 			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
 			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
-			this->mensualToolStripMenuItem->Size = System::Drawing::Size(164, 34);
+			this->mensualToolStripMenuItem->Size = System::Drawing::Size(206, 42);
 			this->mensualToolStripMenuItem->Text = L"Mensual";
 			// 
 			// cerrarSesiónToolStripMenuItem
 			// 
 			this->cerrarSesiónToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
-				this->cerrarSesiónToolStripMenuItem1,
+				this->cerrarSesionToolStripMenuItem1,
 					this->salirToolStripMenuItem
 			});
 			this->cerrarSesiónToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->cerrarSesiónToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"cerrarSesiónToolStripMenuItem.Image")));
 			this->cerrarSesiónToolStripMenuItem->Name = L"cerrarSesiónToolStripMenuItem";
-			this->cerrarSesiónToolStripMenuItem->Size = System::Drawing::Size(85, 34);
+			this->cerrarSesiónToolStripMenuItem->Size = System::Drawing::Size(102, 42);
 			this->cerrarSesiónToolStripMenuItem->Text = L"Salir";
 			this->cerrarSesiónToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::cerrarSesiónToolStripMenuItem_Click);
 			// 
-			// cerrarSesiónToolStripMenuItem1
+			// cerrarSesionToolStripMenuItem1
 			// 
-			this->cerrarSesiónToolStripMenuItem1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"cerrarSesiónToolStripMenuItem1.Image")));
-			this->cerrarSesiónToolStripMenuItem1->Name = L"cerrarSesiónToolStripMenuItem1";
-			this->cerrarSesiónToolStripMenuItem1->Size = System::Drawing::Size(205, 34);
-			this->cerrarSesiónToolStripMenuItem1->Text = L"Cerrar Sesión";
+			this->cerrarSesionToolStripMenuItem1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"cerrarSesionToolStripMenuItem1.Image")));
+			this->cerrarSesionToolStripMenuItem1->Name = L"cerrarSesionToolStripMenuItem1";
+			this->cerrarSesionToolStripMenuItem1->Size = System::Drawing::Size(256, 42);
+			this->cerrarSesionToolStripMenuItem1->Text = L"Cerrar Sesión";
+			this->cerrarSesionToolStripMenuItem1->Click += gcnew System::EventHandler(this, &MainScreenForm::cerrarSesionToolStripMenuItem1_Click);
 			// 
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"salirToolStripMenuItem.Image")));
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(205, 34);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(256, 42);
 			this->salirToolStripMenuItem->Text = L"Salir";
+			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::salirToolStripMenuItem_Click);
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1348, 37);
+			this->pictureBox1->Location = System::Drawing::Point(1797, 46);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(126, 161);
+			this->pictureBox1->Size = System::Drawing::Size(168, 198);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 11;
 			this->pictureBox1->TabStop = false;
@@ -308,10 +312,9 @@ namespace Interfaz {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 19.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(17, 154);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(23, 190);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(118, 36);
+			this->label1->Size = System::Drawing::Size(148, 45);
 			this->label1->TabIndex = 12;
 			this->label1->Text = L"Mascotas";
 			// 
@@ -320,10 +323,9 @@ namespace Interfaz {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 19.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(17, 470);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(23, 578);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(181, 36);
+			this->label2->Size = System::Drawing::Size(224, 45);
 			this->label2->TabIndex = 13;
 			this->label2->Text = L"Dispensadores";
 			// 
@@ -332,34 +334,33 @@ namespace Interfaz {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(9, 37);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(12, 46);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(354, 88);
+			this->label3->Size = System::Drawing::Size(445, 110);
 			this->label3->TabIndex = 14;
 			this->label3->Text = L"Barry Bites";
 			// 
 			// dataGridView2
 			// 
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->DispenserId,
 					this->DispenserStatus, this->FoodQuantity, this->FoodQuantityDispenser, this->AssignedPet
 			});
-			this->dataGridView2->Location = System::Drawing::Point(23, 525);
-			this->dataGridView2->Margin = System::Windows::Forms::Padding(2);
+			this->dataGridView2->Location = System::Drawing::Point(31, 646);
+			this->dataGridView2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dataGridView2->Name = L"dataGridView2";
 			this->dataGridView2->RowHeadersWidth = 51;
-			this->dataGridView2->Size = System::Drawing::Size(1276, 260);
+			this->dataGridView2->Size = System::Drawing::Size(1701, 320);
 			this->dataGridView2->TabIndex = 15;
 			this->dataGridView2->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MainScreenForm::dataGridView2_CellContentClick);
 			// 
@@ -400,25 +401,25 @@ namespace Interfaz {
 			// 
 			// dgvPets
 			// 
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvPets->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvPets->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->PetId, this->Species,
 					this->PetName, this->Weight, this->PetStatus
 			});
-			this->dgvPets->Location = System::Drawing::Point(23, 193);
-			this->dgvPets->Margin = System::Windows::Forms::Padding(2);
+			this->dgvPets->Location = System::Drawing::Point(31, 238);
+			this->dgvPets->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvPets->Name = L"dgvPets";
 			this->dgvPets->RowHeadersWidth = 51;
-			this->dgvPets->Size = System::Drawing::Size(1276, 260);
+			this->dgvPets->Size = System::Drawing::Size(1701, 320);
 			this->dgvPets->TabIndex = 16;
 			this->dgvPets->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MainScreenForm::dgvPets_CellClick);
 			this->dgvPets->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MainScreenForm::dataGridView1_CellContentClick);
@@ -465,10 +466,10 @@ namespace Interfaz {
 			// 
 			// pbPetPhoto
 			// 
-			this->pbPetPhoto->Location = System::Drawing::Point(1307, 250);
-			this->pbPetPhoto->Margin = System::Windows::Forms::Padding(2);
+			this->pbPetPhoto->Location = System::Drawing::Point(1743, 308);
+			this->pbPetPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbPetPhoto->Name = L"pbPetPhoto";
-			this->pbPetPhoto->Size = System::Drawing::Size(127, 129);
+			this->pbPetPhoto->Size = System::Drawing::Size(169, 159);
 			this->pbPetPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbPetPhoto->TabIndex = 17;
 			this->pbPetPhoto->TabStop = false;
@@ -476,9 +477,9 @@ namespace Interfaz {
 			// 
 			// MainScreenForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1028, 609);
+			this->ClientSize = System::Drawing::Size(1371, 750);
 			this->Controls->Add(this->pbPetPhoto);
 			this->Controls->Add(this->dgvPets);
 			this->Controls->Add(this->dataGridView2);
@@ -489,7 +490,7 @@ namespace Interfaz {
 			this->Controls->Add(this->pictureBox1);
 			this->IsMdiContainer = true;
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"MainScreenForm";
 			this->Text = L"MainScreenForm";
 			this->Load += gcnew System::EventHandler(this, &MainScreenForm::MainScreenForm_Load);
@@ -632,16 +633,26 @@ private: System::Void añadirComidaToolStripMenuItem_Click(System::Object^ sender
 	AddFood^ FoodForm = gcnew AddFood();
 	FoodForm->ShowDialog();
 	Hide();
+	Show();
 }
 private: System::Void añadirMascotaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	PetForm^ petForm = gcnew PetForm();
 	petForm->ShowDialog();
 	Hide();
+	Show();
 }
 private: System::Void programarComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	AgregarHorarios^ ScheduleForm = gcnew AgregarHorarios();
 	ScheduleForm->ShowDialog();
 	Hide();
+	Show();
+}
+private: System::Void cerrarSesionToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+	Application::Restart();	
+}
+private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	Application::Exit();
 }
 };
 }
