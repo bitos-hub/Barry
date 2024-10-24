@@ -76,12 +76,12 @@ namespace Interfaz {
 	private: System::Windows::Forms::TextBox^ FoodBrandtxt;
 	private: System::Windows::Forms::TextBox^ FoodIdtxt;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
-	private: System::Windows::Forms::ToolStripMenuItem^ añadirToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ añadirUsuarioToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ añadirToolStripMenuItem1;
-	private: System::Windows::Forms::ToolStripMenuItem^ añadirMascotasToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ programarComidaToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ generarReporteToolStripMenuItem;
+
+
+
+
+
+
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesionToolStripMenuItem;
@@ -143,12 +143,6 @@ namespace Interfaz {
 			this->FoodBrandtxt = (gcnew System::Windows::Forms::TextBox());
 			this->FoodIdtxt = (gcnew System::Windows::Forms::TextBox());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
-			this->añadirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->añadirUsuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->añadirToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->añadirMascotasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->programarComidaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->generarReporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -446,62 +440,12 @@ namespace Interfaz {
 			this->menuStrip1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
-				this->añadirToolStripMenuItem,
-					this->programarComidaToolStripMenuItem, this->generarReporteToolStripMenuItem, this->salirToolStripMenuItem
-			});
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(1924, 46);
 			this->menuStrip1->TabIndex = 34;
 			this->menuStrip1->Text = L"menuStrip1";
-			// 
-			// añadirToolStripMenuItem
-			// 
-			this->añadirToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
-				this->añadirUsuarioToolStripMenuItem,
-					this->añadirToolStripMenuItem1, this->añadirMascotasToolStripMenuItem
-			});
-			this->añadirToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirToolStripMenuItem.Image")));
-			this->añadirToolStripMenuItem->Name = L"añadirToolStripMenuItem";
-			this->añadirToolStripMenuItem->Size = System::Drawing::Size(123, 42);
-			this->añadirToolStripMenuItem->Text = L"Añadir";
-			// 
-			// añadirUsuarioToolStripMenuItem
-			// 
-			this->añadirUsuarioToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirUsuarioToolStripMenuItem.Image")));
-			this->añadirUsuarioToolStripMenuItem->Name = L"añadirUsuarioToolStripMenuItem";
-			this->añadirUsuarioToolStripMenuItem->Size = System::Drawing::Size(325, 42);
-			this->añadirUsuarioToolStripMenuItem->Text = L"Añadir Usuario";
-			// 
-			// añadirToolStripMenuItem1
-			// 
-			this->añadirToolStripMenuItem1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirToolStripMenuItem1.Image")));
-			this->añadirToolStripMenuItem1->Name = L"añadirToolStripMenuItem1";
-			this->añadirToolStripMenuItem1->Size = System::Drawing::Size(325, 42);
-			this->añadirToolStripMenuItem1->Text = L"Añadir Dispensador";
-			// 
-			// añadirMascotasToolStripMenuItem
-			// 
-			this->añadirMascotasToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirMascotasToolStripMenuItem.Image")));
-			this->añadirMascotasToolStripMenuItem->Name = L"añadirMascotasToolStripMenuItem";
-			this->añadirMascotasToolStripMenuItem->Size = System::Drawing::Size(325, 42);
-			this->añadirMascotasToolStripMenuItem->Text = L"Añadir Mascota";
-			this->añadirMascotasToolStripMenuItem->Click += gcnew System::EventHandler(this, &AddFood::añadirMascotasToolStripMenuItem_Click);
-			// 
-			// programarComidaToolStripMenuItem
-			// 
-			this->programarComidaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"programarComidaToolStripMenuItem.Image")));
-			this->programarComidaToolStripMenuItem->Name = L"programarComidaToolStripMenuItem";
-			this->programarComidaToolStripMenuItem->Size = System::Drawing::Size(258, 42);
-			this->programarComidaToolStripMenuItem->Text = L"Programar Comida";
-			// 
-			// generarReporteToolStripMenuItem
-			// 
-			this->generarReporteToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"generarReporteToolStripMenuItem.Image")));
-			this->generarReporteToolStripMenuItem->Name = L"generarReporteToolStripMenuItem";
-			this->generarReporteToolStripMenuItem->Size = System::Drawing::Size(224, 42);
-			this->generarReporteToolStripMenuItem->Text = L"GenerarReporte";
 			// 
 			// salirToolStripMenuItem
 			// 
