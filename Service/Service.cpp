@@ -70,7 +70,7 @@ List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 void ServiceBarry::Service::AddPet(Pet^ pet)
 {
 	PetsList->Add(pet);
-	Persistance::PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
+	Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, PetsList);
 }
 
 void ServiceBarry::Service::UpdatePet(Pet^ pet)
@@ -78,7 +78,7 @@ void ServiceBarry::Service::UpdatePet(Pet^ pet)
 	for (int i = 0; i < PetsList->Count; i++) {
 		if (PetsList[i]->Id == pet->Id) {
 			PetsList[i] = pet;
-			Persistance::PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
+			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, PetsList);
 			return;
 		}
 	}
@@ -89,7 +89,7 @@ void ServiceBarry::Service::DeletePet(int id)
 	for (int i = 0; i < PetsList->Count; i++) {
 		if (PetsList[i]->Id == id) {
 			PetsList->RemoveAt(i);
-			Persistance::PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
+			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, PetsList);
 			return;
 		}
 	}
@@ -97,6 +97,7 @@ void ServiceBarry::Service::DeletePet(int id)
 
 Pet^ ServiceBarry::Service::QueryPetById(int id)
 {
+	PetsList = QueryAllPets();
 	for each (Pet ^ pet in PetsList) {
 		if (pet->Id == id) {
 			return pet;
@@ -109,7 +110,7 @@ List<Pet^>^ ServiceBarry::Service::QueryAllPets()
 {
 	try {
 
-		PetsList = (List<Pet^>^)Persistance::LoadBinaryFile(BIN_PET_FILE_NAME);
+		PetsList = (List<Pet^>^)Persistance::LoadBinaryFile(Persistance::BIN_PET_FILE_NAME);
 		if (PetsList == nullptr)
 			PetsList = gcnew List<Pet^>();
 	}
@@ -174,20 +175,39 @@ List<Food^>^ ServiceBarry::Service::QueryAllFoods()
 	return FoodList;
 }
 
-void ServiceBarry::Service::AddHorario(int horario)
+void ServiceBarry::Service::AddDispensadorPorMascota(Pet^ mascota, int idDispensador,int horario)
 {
-	return Persistance::AddHorario(horario);
+	return Persistance::AddDispensadorPorMascota(mascota, idDispensador,horario);
 }
 
-void ServiceBarry::Service::EliminarHorario(int horario)
+void ServiceBarry::Service::EliminarHorarioDeMascota(Pet^ mascota, int horario)
 {
-	return Persistance::EliminarHorario(horario);
+	return EliminarHorarioDeMascota(mascota,horario);
 }
 
-List<int>^ ServiceBarry::Service::ConsultarTodosHorarios()
+List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorMascota(Pet^ mascota)
 {
-	return Persistance::ConsultarTodosHorarios();
+	Pet^ pet = QueryPetById(mascota->Id);
+	if (pet->PetDispenser == nullptr) {
+		pet->PetDispenser = gcnew Dispenser();
+	}
+	if (pet->PetDispenser->FeedingSchedule == nullptr) {
+		pet->PetDispenser->FeedingSchedule = gcnew List<int>();
+	}
+	return pet->PetDispenser->FeedingSchedule;
 }
+
+Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
+{
+	for each (Pet ^ p in PetsList) {
+		if (p->Name == nombreMascota) {
+			return p;
+		}
+	}
+	return nullptr;
+}
+
+
 
 
 

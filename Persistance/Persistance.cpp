@@ -30,7 +30,7 @@ Object^ BarryPersistance::Persistance::LoadXMLFile(String^ fileName)
     try {
         if (File::Exists(fileName)) {
             reader = gcnew StreamReader(fileName);
-            if (fileName->Equals(XML_PETS_FILE_NAME)) {
+            if (fileName->Equals(XML_PET_FILE_NAME)) {
                 xmlSerializer = gcnew XmlSerializer(List<Pet^>::typeid);
                 result = xmlSerializer->Deserialize(reader);
             }
@@ -84,35 +84,47 @@ Object^ BarryPersistance::Persistance::LoadBinaryFile(String^ fileName)
     // TODO: Insertar una instrucción "return" aquí
 }
 
-void BarryPersistance::Persistance::AddHorario(int horario)
+void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario)
 {
-    for each (int h in lista_horarios) {
-        if (h == horario) {
-            throw gcnew System::InvalidOperationException("Ya existe ese horario");
+    if (mascota == nullptr) {
+        throw gcnew System::ArgumentNullException("La mascota no puede ser nula.");
+    }
+
+    if (mascota->PetDispenser == nullptr) {
+        mascota->PetDispenser = gcnew Dispenser();
+    }
+    for each (int id in lista_dispensadores) {
+        if (idDispensador == id) {
+            throw gcnew System::InvalidOperationException("Ya hay una mascota asignada a este dispensador");
+        }
+        else {
+            mascota->PetDispenser->Id = idDispensador;
+            mascota->PetDispenser->FeedingSchedule->Add(horario);
+            lista_mascotas->Add(mascota);
+            //PersistBinaryFile(BIN_HORARIOS_MASCOTAS_FILE_NAME, mascota->PetDispenser->FeedingSchedule);
+            //PersistXMLFile(XML_HORARIOS_MASCOTAS_FILE_NAME, mascota->PetDispenser->FeedingSchedule);
+            PersistBinaryFile(BIN_PET_FILE_NAME, lista_mascotas);
+            PersistXMLFile(XML_PET_FILE_NAME, lista_mascotas);
+            PersistBinaryFile(BIN_PET_FILE_NAME, lista_dispensadores);
+            PersistXMLFile(XML_PET_FILE_NAME, lista_dispensadores);
         }
     }
-    lista_horarios->Add(horario);
-    Persistance::PersistBinaryFile(BIN_HORARIOS_FILE_NAME, lista_horarios);
-    Persistance::PersistXMLFile(XML_HORARIOS_FILE_NAME,lista_horarios);
 }
 
-void BarryPersistance::Persistance::EliminarHorario(int horario)
+void BarryPersistance::Persistance::EliminarHorarioDeMascota(Pet^ mascota, int horario)
 {
-    for (int i = 0; i < lista_horarios->Count; i++) {
-        if (lista_horarios[i] == horario) {
-            lista_horarios->RemoveAt(i);
+    if (mascota->PetDispenser != nullptr) { // se verifica si el horario está en el FeedingSchedule
+        if (mascota->PetDispenser->FeedingSchedule->Contains(horario)) {
+            mascota->PetDispenser->FeedingSchedule->Remove(horario);
+            PersistBinaryFile(BIN_PET_FILE_NAME, mascota->PetDispenser->FeedingSchedule);
+            PersistXMLFile(XML_PET_FILE_NAME, mascota->PetDispenser->FeedingSchedule);
             return;
         }
+        else {
+            throw gcnew System::InvalidOperationException("El horario no se encontró en la lista de horarios.");
+        }
     }
-    throw gcnew System::InvalidOperationException("El horario no se encontró.");
+    else {
+        throw gcnew System::InvalidOperationException("La mascota no tiene un dispensador asignado.");
+    }
 }
-
-List<int>^ BarryPersistance::Persistance::ConsultarTodosHorarios()
-{
-    lista_horarios = (List<int>^)LoadBinaryFile(BIN_HORARIOS_FILE_NAME);
-
-    if (lista_horarios == nullptr)
-        lista_horarios = gcnew List<int>();
-    return lista_horarios;
-}
-

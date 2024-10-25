@@ -9,12 +9,14 @@ namespace BarryPersistance {
 	public ref class Persistance
 	{
 	public:
-		static String^ BIN_HORARIOS_FILE_NAME = "horarios.bin";
-		static String^ XML_HORARIOS_FILE_NAME = "horarios.xml";
-		static String^ XML_PETS_FILE_NAME = "pets.xml";
-		
+		//static String^ XML_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.xml";
+		//static String^ BIN_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.bin";
+		static String^ XML_PET_FILE_NAME = "pets.xml";
+		static String^ BIN_PET_FILE_NAME = "pets.bin";
 	private:
-		static List<int>^ lista_horarios = gcnew List<int>();
+		//static List<int>^ lista_horarios = gcnew List<int>();
+		static List<Pet^>^ lista_mascotas = gcnew List<Pet^>();
+		static List<int>^ lista_dispensadores = gcnew List<int>();
 	public:
 		//static void PersistTextFile(String^ fileName, Object^ persistObject);
 		//static Object^ LoadTextFile(String^ fileName);
@@ -23,9 +25,11 @@ namespace BarryPersistance {
 		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
 		static Object^ LoadBinaryFile(String^ fileName);
 
-		static void AddHorario(int horario);
-		static void EliminarHorario(int horario);
-		static List<int>^ ConsultarTodosHorarios();
+		static void AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario);
+		static void EliminarHorarioDeMascota(Pet^ mascota, int horario);
+		
+		
+		
 
 	};
 }
