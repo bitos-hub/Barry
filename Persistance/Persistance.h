@@ -11,5 +11,7 @@ namespace BarryPersistance {
 	public:
 		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
 		static Object^ LoadBinaryFile(String^ fileName);
+		static void PersistTextFile(String^ fileName, Object^ persistObject);
+
 	};
 }

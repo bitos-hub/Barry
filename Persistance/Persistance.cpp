@@ -41,3 +41,25 @@ Object^ BarryPersistance::Persistance::LoadBinaryFile(String^ fileName)
     return result;
     // TODO: Insertar una instrucción "return" aquí
 }
+
+void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ persistObject)
+{
+    FileStream^ file;
+    StreamWriter^ writer;
+    try {
+        file = gcnew FileStream(fileName, FileMode::Append, FileAccess::Write);
+        writer = gcnew StreamWriter(file);
+        if (persistObject->GetType() == List<String^>::typeid) {
+            List<String^>^ commands = (List<String^>^) persistObject;
+            for (int i = 0; i < commands->Count; i++) {
+                String^ r = commands[i];
+                writer->WriteLine(r);
+            }
+        }
+    }
+    catch (Exception^ ex) { throw ex; }
+    finally {
+        if (writer != nullptr) writer->Close();
+        if (file != nullptr) file->Close();
+    }
+}

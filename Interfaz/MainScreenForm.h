@@ -4,6 +4,7 @@
 #include "AgregarUsuarios.h"
 #include "LoginForm.h"
 #include "PetForm.h"
+#include "DispenserConfiguration.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -88,6 +89,7 @@ namespace Interfaz {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 	private: System::Windows::Forms::ToolStripMenuItem^ recargarToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ configurarArduinoToolStripMenuItem;
 
 
 
@@ -138,8 +140,8 @@ namespace Interfaz {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainScreenForm::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->addToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->añadirUsuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -173,6 +175,7 @@ namespace Interfaz {
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->pbPetPhoto = (gcnew System::Windows::Forms::PictureBox());
+			this->configurarArduinoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView2))->BeginInit();
@@ -183,9 +186,10 @@ namespace Interfaz {
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
 				this->addToolStripMenuItem,
-					this->programarComidaToolStripMenuItem, this->generarReporteToolStripMenuItem, this->recargarToolStripMenuItem, this->cerrarSesiónToolStripMenuItem
+					this->programarComidaToolStripMenuItem, this->generarReporteToolStripMenuItem, this->recargarToolStripMenuItem, this->configurarArduinoToolStripMenuItem,
+					this->cerrarSesiónToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
@@ -363,15 +367,15 @@ namespace Interfaz {
 			// 
 			// dataGridView2
 			// 
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Window;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::ControlText;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dataGridView2->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->dataGridView2->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dataGridView2->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
 				this->DispenserId,
@@ -422,21 +426,21 @@ namespace Interfaz {
 			// 
 			// dgvPets
 			// 
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle4->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle4->Font = (gcnew System::Drawing::Font(L"Microsoft YaHei", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle4->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvPets->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvPets->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvPets->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(7) {
 				this->PetId, this->Species,
 					this->PetName, this->Weight, this->PetStatus, this->Column1, this->Column2
 			});
-			this->dgvPets->DefaultCellStyle = dataGridViewCellStyle1;
+			this->dgvPets->DefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvPets->GridColor = System::Drawing::SystemColors::ButtonShadow;
 			this->dgvPets->Location = System::Drawing::Point(31, 238);
 			this->dgvPets->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -513,6 +517,15 @@ namespace Interfaz {
 			this->pbPetPhoto->TabIndex = 17;
 			this->pbPetPhoto->TabStop = false;
 			this->pbPetPhoto->Click += gcnew System::EventHandler(this, &MainScreenForm::pbPetPhoto_Click);
+			// 
+			// configurarArduinoToolStripMenuItem
+			// 
+			this->configurarArduinoToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->configurarArduinoToolStripMenuItem->Name = L"configurarArduinoToolStripMenuItem";
+			this->configurarArduinoToolStripMenuItem->Size = System::Drawing::Size(239, 42);
+			this->configurarArduinoToolStripMenuItem->Text = L"Configurar Arduino";
+			this->configurarArduinoToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::configurarArduinoToolStripMenuItem_Click);
 			// 
 			// MainScreenForm
 			// 
@@ -656,6 +669,10 @@ private: System::Void cerrarSesionToolStripMenuItem1_Click(System::Object^ sende
 }
 private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	Application::Exit();
+}
+private: System::Void configurarArduinoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	DispenserConfiguration^ form = gcnew DispenserConfiguration();
+	form->ShowDialog();
 }
 };
 }

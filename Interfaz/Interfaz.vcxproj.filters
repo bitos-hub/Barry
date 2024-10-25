@@ -36,6 +36,9 @@
     <ClCompile Include="ComboBoxItem.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="DispenserConfiguration.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgregarUsuarios.h">
@@ -57,6 +60,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="ComboBoxItem.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="DispenserConfiguration.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
