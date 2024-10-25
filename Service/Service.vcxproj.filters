@@ -27,6 +27,9 @@
     <ClInclude Include="Excepcion_existe_admin.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="PetIdNoFoundException.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Service.cpp">
@@ -36,6 +39,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="PetIdNoFoundException.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

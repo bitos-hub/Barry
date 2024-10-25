@@ -2,6 +2,7 @@
 	
 #include "Service.h"
 #include "Excepcion_existe_admin.h"
+#include "PetIdNoFoundException.h"
 
 using namespace System::IO;
 
@@ -19,6 +20,7 @@ int ServiceBarry::Service::VerifyAdmin()
 	}
 	return 0;
 }
+
 
 void ServiceBarry::Service::AddUsuario(User^ usuario)
 {
@@ -102,12 +104,16 @@ void ServiceBarry::Service::DeletePet(int id)
 
 Pet^ ServiceBarry::Service::QueryPetById(int id)
 {
+	
 	for each (Pet ^ pet in PetsList) {
 		if (pet->Id == id) {
 			return pet;
 		}
 	}
-	return nullptr;
+	
+	throw gcnew PetIdNoFoundException("El Id ingresado de la mascota no existe.");
+		
+
 }
 
 List<Pet^>^ ServiceBarry::Service::QueryAllPets()
@@ -179,6 +185,39 @@ List<Food^>^ ServiceBarry::Service::QueryAllFoods()
 	return FoodList;
 }
 
+//UART
+String^ ServiceBarry::Service::SendDispenserInfoUART(int petId)
+{
+	String^ result;
+	String^ message;
+	try {
+		Pet^ pet = QueryPetById(petId);
+		message = "DISPENSER, PET_ASSIGNED, PET_FOODAMOUNT, SCHEDULE, " + pet->Name + " " + Convert::ToString(pet->FoodServing) + "g " + "(horario)" + "\n";
+		commandsList->Add(message);
+		Persistance::PersistTextFile(TXT_UART_FILE_NAME, commandsList);
+		result = message;
 
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
 
+	return result;
+
+}
+
+String^ ServiceBarry::Service::DispenseFoodUART(int petId)
+{
+	String^ result;
+	try {
+		Pet^ pet = QueryPetById(petId);
+		Thread::Sleep(5000);
+		result = "Se dispensó " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	return result;
+	
+}
 

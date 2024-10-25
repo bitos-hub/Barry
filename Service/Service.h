@@ -1,6 +1,7 @@
 #pragma once
 
 using namespace System;
+using namespace System::Threading;
 using namespace System::Collections::Generic;
 using namespace Barry;
 using namespace BarryPersistance;
@@ -12,11 +13,13 @@ namespace ServiceBarry {
 		static String^ BIN_FOOD_FILE_NAME = "foods.bin";
 		static String^ BIN_PET_FILE_NAME = "pets.bin";
 		static String^ BIN_USER_FILE_NAME = "users.bin";
+		static String^ TXT_UART_FILE_NAME = "uartSimulation.txt";
 	private:
 		//static List<Pet^>^ lista_mascotas = gcnew List<Pet^>();
 		static List<User^>^ lista_usuarios = gcnew List<User^>();
 		static List<Pet^>^ PetsList = gcnew List<Pet^>();
 		static List<Food^>^ FoodList = gcnew List<Food^>();
+		static List<String^>^ commandsList = gcnew List<String^>;
 	public:
 		static void cargarUsuarios();
 		static void AddUsuario(User^);
@@ -37,6 +40,12 @@ namespace ServiceBarry {
 		static List<Food^>^ QueryAllFoods();
 	public: 
 		static int VerifyAdmin();
+
+	public:
+		//Arduino
+		static String^ SendDispenserInfoUART(int petId);
+		static String^ DispenseFoodUART(int); //Para simulación
+
 
 
 	};

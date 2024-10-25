@@ -126,6 +126,7 @@
     <ClCompile Include="AgregarHorarios.cpp" />
     <ClCompile Include="AgregarUsuarios.cpp" />
     <ClCompile Include="ComboBoxItem.cpp" />
+    <ClCompile Include="DispenserConfiguration.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainScreenForm.cpp" />
     <ClCompile Include="PetForm.cpp" />
@@ -141,6 +142,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ComboBoxItem.h" />
+    <ClInclude Include="DispenserConfiguration.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="LoginForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AgregarUsuarios.resx">
       <DependentUpon>AgregarUsuarios.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DispenserConfiguration.resx">
+      <DependentUpon>DispenserConfiguration.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>

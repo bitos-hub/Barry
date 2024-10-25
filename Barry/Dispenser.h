@@ -11,6 +11,7 @@ using namespace System::Collections::Generic;
 namespace Barry {
     public ref class Dispenser {
     public:
+        int Id;
         List<int>^ FeedingSchedule;
         double FoodAmount; //Cantidad en el plato
         bool IsPlateFull; //estado
