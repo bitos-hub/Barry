@@ -550,6 +550,7 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 		}
 		Service::AddPet(pet);
 		ShowPets();
+		ClearControls();
 		MessageBox::Show("Se ha agregado la mascota " + id + " - " + name);
 	}
 	catch (Exception^ ex) {

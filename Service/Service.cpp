@@ -76,16 +76,16 @@ List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 
 void ServiceBarry::Service::AddPet(Pet^ pet)
 {
-	PetsList->Add(pet);
-	Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, PetsList);
+	Persistance::PetsList->Add(pet);
+	Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 }
 
 void ServiceBarry::Service::UpdatePet(Pet^ pet)
 {
-	for (int i = 0; i < PetsList->Count; i++) {
-		if (PetsList[i]->Id == pet->Id) {
-			PetsList[i] = pet;
-			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, PetsList);
+	for (int i = 0; i < Persistance::PetsList->Count; i++) {
+		if (Persistance::PetsList[i]->Id == pet->Id) {
+			Persistance::PetsList[i] = pet;
+			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 			return;
 		}
 	}
@@ -93,10 +93,10 @@ void ServiceBarry::Service::UpdatePet(Pet^ pet)
 
 void ServiceBarry::Service::DeletePet(int id)
 {
-	for (int i = 0; i < PetsList->Count; i++) {
-		if (PetsList[i]->Id == id) {
-			PetsList->RemoveAt(i);
-			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, PetsList);
+	for (int i = 0; i < Persistance::PetsList->Count; i++) {
+		if (Persistance::PetsList[i]->Id == id) {
+			Persistance::PetsList->RemoveAt(i);
+			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 			return;
 		}
 	}
@@ -104,29 +104,26 @@ void ServiceBarry::Service::DeletePet(int id)
 
 Pet^ ServiceBarry::Service::QueryPetById(int id)
 {
-	PetsList = QueryAllPets();
-	for each (Pet ^ pet in PetsList) {
+	Persistance::PetsList = QueryAllPets();
+	for each (Pet ^ pet in Persistance::PetsList) {
 		if (pet->Id == id) {
 			return pet;
 		}
 	}
-	
 	throw gcnew PetIdNoFoundException("El Id ingresado de la mascota no existe.");
-		
-
 }
 
 List<Pet^>^ ServiceBarry::Service::QueryAllPets()
 {
 	try {
 
-		PetsList = (List<Pet^>^)Persistance::LoadBinaryFile(Persistance::BIN_PET_FILE_NAME);
-		if (PetsList == nullptr)
-			PetsList = gcnew List<Pet^>();
+		Persistance::PetsList = (List<Pet^>^)Persistance::LoadBinaryFile(Persistance::BIN_PET_FILE_NAME);
+		if (Persistance::PetsList == nullptr)
+			Persistance::PetsList = gcnew List<Pet^>();
 	}
 	catch (FileNotFoundException^ ex) {
 	}
-	return PetsList;
+	return Persistance::PetsList;
 }
 
 //CRUD FOOD
@@ -212,7 +209,7 @@ String^ ServiceBarry::Service::SendDispenserInfoUART(int petId)
 }
 void ServiceBarry::Service::EliminarHorarioDeMascota(Pet^ mascota, int horario)
 {
-	return EliminarHorarioDeMascota(mascota,horario);
+	return Persistance::EliminarHorarioDeMascota(mascota,horario);
 }
 
 List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorMascota(Pet^ mascota)
@@ -229,7 +226,7 @@ List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorMascota(Pet^ mascota)
 
 Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
 {
-	for each (Pet ^ p in PetsList) {
+	for each (Pet ^ p in Persistance::PetsList) {
 		if (p->Name == nombreMascota) {
 			return p;
 		}

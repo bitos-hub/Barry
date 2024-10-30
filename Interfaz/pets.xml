@@ -1,21 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfPet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Pet>
-    <Id>1</Id>
+    <Id>11</Id>
     <Name>A</Name>
     <Weight>1</Weight>
-    <Specie>A</Specie>
-    <Status>A</Status>
+    <Specie>1</Specie>
+    <Status>1</Status>
     <FoodServing>1</FoodServing>
     <PetDispenser>
-      <Id>0</Id>
+      <Id>1</Id>
       <FeedingSchedule>
-        <int>1200</int>
-        <int>1300</int>
+        <int>1500</int>
       </FeedingSchedule>
       <FoodAmount>0</FoodAmount>
       <IsPlateFull>false</IsPlateFull>
       <DispenserFood>0</DispenserFood>
     </PetDispenser>
+  </Pet>
+  <Pet>
+    <Id>2</Id>
+    <Name>B</Name>
+    <Weight>2</Weight>
+    <Specie>2</Specie>
+    <Status>2</Status>
+    <FoodServing>2</FoodServing>
+    <PetDispenser>
+      <Id>15</Id>
+      <FeedingSchedule>
+        <int>1800</int>
+      </FeedingSchedule>
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+    </PetDispenser>
+  </Pet>
+  <Pet>
+    <Id>3</Id>
+    <Name>3</Name>
+    <Weight>3</Weight>
+    <Specie>3</Specie>
+    <Status>3</Status>
+    <FoodServing>3</FoodServing>
+  </Pet>
+  <Pet>
+    <Id>4</Id>
+    <Name>4</Name>
+    <Weight>4</Weight>
+    <Specie>4</Specie>
+    <Status>4</Status>
+    <FoodServing>4</FoodServing>
+    <PetDispenser>
+      <Id>15</Id>
+      <FeedingSchedule>
+        <int>1600</int>
+      </FeedingSchedule>
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+    </PetDispenser>
+  </Pet>
+  <Pet>
+    <Id>5</Id>
+    <Name>5</Name>
+    <Weight>5</Weight>
+    <Specie>5</Specie>
+    <Status>5</Status>
+    <FoodServing>5</FoodServing>
   </Pet>
 </ArrayOfPet>

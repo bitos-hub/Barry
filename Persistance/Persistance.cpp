@@ -105,7 +105,6 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
         if (file != nullptr) file->Close();
     }
 }
-
 void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario)
 {
     if (mascota == nullptr) {
@@ -115,22 +114,23 @@ void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascota, int i
     if (mascota->PetDispenser == nullptr) {
         mascota->PetDispenser = gcnew Dispenser();
     }
-    for each (int id in lista_dispensadores) {
-        if (idDispensador == id) {
-            throw gcnew System::InvalidOperationException("Ya hay una mascota asignada a este dispensador");
-        }
-        else {
-            mascota->PetDispenser->Id = idDispensador;
+
+    if (lista_dispensadores->Contains(idDispensador)) {
+        throw gcnew System::InvalidOperationException("Ya hay una mascota asignada a este dispensador");
+    }
+    lista_dispensadores->Add(idDispensador);
+    for (int i = 0; i < PetsList->Count;i++) {
+        Pet^ m = PetsList[i];
+        if (m==mascota) {
             mascota->PetDispenser->FeedingSchedule->Add(horario);
-            lista_mascotas->Add(mascota);
-            //PersistBinaryFile(BIN_HORARIOS_MASCOTAS_FILE_NAME, mascota->PetDispenser->FeedingSchedule);
-            //PersistXMLFile(XML_HORARIOS_MASCOTAS_FILE_NAME, mascota->PetDispenser->FeedingSchedule);
-            PersistBinaryFile(BIN_PET_FILE_NAME, lista_mascotas);
-            PersistXMLFile(XML_PET_FILE_NAME, lista_mascotas);
-            PersistBinaryFile(BIN_PET_FILE_NAME, lista_dispensadores);
-            PersistXMLFile(XML_PET_FILE_NAME, lista_dispensadores);
+            mascota->PetDispenser->Id=idDispensador;
+            PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
+            PersistXMLFile(XML_PET_FILE_NAME, PetsList);
         }
     }
+    
+    //PersistBinaryFile(BIN_PET_FILE_NAME, lista_dispensadores);
+    //PersistXMLFile(XML_PET_FILE_NAME, lista_dispensadores);
 }
 
 void BarryPersistance::Persistance::EliminarHorarioDeMascota(Pet^ mascota, int horario)
