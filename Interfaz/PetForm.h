@@ -66,12 +66,12 @@ namespace Interfaz {
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::DataGridView^ dgvPets;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetId;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetName;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Specie;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Weight;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FoodServing;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Status;
+
+
+
+
+
+
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 
 
@@ -87,6 +87,12 @@ namespace Interfaz {
 
 	private: System::Windows::Forms::Button^ btnPetPhoto;
 	private: System::Windows::Forms::PictureBox^ pbPetPhoto;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetId;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PetName;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Specie;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Weight;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ FoodServing;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Status;
 
 
 
@@ -153,18 +159,18 @@ namespace Interfaz {
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->dgvPets = (gcnew System::Windows::Forms::DataGridView());
-			this->PetId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->PetName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Specie = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Weight = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->FoodServing = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Status = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->btnPetPhoto = (gcnew System::Windows::Forms::Button());
 			this->pbPetPhoto = (gcnew System::Windows::Forms::PictureBox());
+			this->PetId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->PetName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Specie = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Weight = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->FoodServing = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Status = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvPets))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -384,48 +390,6 @@ namespace Interfaz {
 			this->dgvPets->TabIndex = 17;
 			this->dgvPets->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &PetForm::dgvPets_CellClick);
 			// 
-			// PetId
-			// 
-			this->PetId->HeaderText = L"Id";
-			this->PetId->MinimumWidth = 6;
-			this->PetId->Name = L"PetId";
-			this->PetId->Width = 120;
-			// 
-			// PetName
-			// 
-			this->PetName->HeaderText = L"Nombre";
-			this->PetName->MinimumWidth = 6;
-			this->PetName->Name = L"PetName";
-			this->PetName->Width = 120;
-			// 
-			// Specie
-			// 
-			this->Specie->HeaderText = L"Especie";
-			this->Specie->MinimumWidth = 6;
-			this->Specie->Name = L"Specie";
-			this->Specie->Width = 120;
-			// 
-			// Weight
-			// 
-			this->Weight->HeaderText = L"Peso";
-			this->Weight->MinimumWidth = 6;
-			this->Weight->Name = L"Weight";
-			this->Weight->Width = 120;
-			// 
-			// FoodServing
-			// 
-			this->FoodServing->HeaderText = L"Porción";
-			this->FoodServing->MinimumWidth = 6;
-			this->FoodServing->Name = L"FoodServing";
-			this->FoodServing->Width = 120;
-			// 
-			// Status
-			// 
-			this->Status->HeaderText = L"Estado";
-			this->Status->MinimumWidth = 6;
-			this->Status->Name = L"Status";
-			this->Status->Width = 120;
-			// 
 			// menuStrip1
 			// 
 			this->menuStrip1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -489,6 +453,48 @@ namespace Interfaz {
 			this->pbPetPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbPetPhoto->TabIndex = 20;
 			this->pbPetPhoto->TabStop = false;
+			// 
+			// PetId
+			// 
+			this->PetId->HeaderText = L"Id";
+			this->PetId->MinimumWidth = 6;
+			this->PetId->Name = L"PetId";
+			this->PetId->Width = 120;
+			// 
+			// PetName
+			// 
+			this->PetName->HeaderText = L"Nombre";
+			this->PetName->MinimumWidth = 6;
+			this->PetName->Name = L"PetName";
+			this->PetName->Width = 120;
+			// 
+			// Specie
+			// 
+			this->Specie->HeaderText = L"Especie";
+			this->Specie->MinimumWidth = 6;
+			this->Specie->Name = L"Specie";
+			this->Specie->Width = 120;
+			// 
+			// Weight
+			// 
+			this->Weight->HeaderText = L"Peso [kg]";
+			this->Weight->MinimumWidth = 6;
+			this->Weight->Name = L"Weight";
+			this->Weight->Width = 200;
+			// 
+			// FoodServing
+			// 
+			this->FoodServing->HeaderText = L"Porción [kg]";
+			this->FoodServing->MinimumWidth = 6;
+			this->FoodServing->Name = L"FoodServing";
+			this->FoodServing->Width = 220;
+			// 
+			// Status
+			// 
+			this->Status->HeaderText = L"Estado";
+			this->Status->MinimumWidth = 6;
+			this->Status->Name = L"Status";
+			this->Status->Width = 120;
 			// 
 			// PetForm
 			// 
