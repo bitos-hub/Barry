@@ -15,7 +15,7 @@ namespace ServiceBarry {
 		static String^ TXT_UART_FILE_NAME = "uartSimulation.txt";
 	private:
 		static List<User^>^ lista_usuarios = gcnew List<User^>();
-		static List<Pet^>^ PetsList = gcnew List<Pet^>();
+		//static List<Pet^>^ PetsList = gcnew List<Pet^>();
 		static List<Food^>^ FoodList = gcnew List<Food^>();
 		static List<String^>^ commandsList = gcnew List<String^>;
 	public:

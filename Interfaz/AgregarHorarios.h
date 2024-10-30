@@ -191,7 +191,7 @@ namespace Interfaz {
 			this->dgv_horarios->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dgv_horarios->Size = System::Drawing::Size(297, 167);
 			this->dgv_horarios->TabIndex = 26;
-			this->dgv_horarios->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AgregarHorarios::dgv_horarios_CellContentClick);
+			
 			// 
 			// Horario
 			// 
@@ -293,6 +293,12 @@ namespace Interfaz {
 	public:
 		void MostrarHorarios() {
 			List<int>^ lista_horarios = Service::ConsultarTodosHorariosPorMascota(mascotaSeleccionada);
+			if (mascotaSeleccionada->PetDispenser!=nullptr) {
+				txtIdDispensador->Text = ""+(mascotaSeleccionada->PetDispenser->Id);
+			}
+			else {
+				txtIdDispensador->Text = "";
+			}
 			if (lista_horarios != nullptr) {
 				dgv_horarios->Rows->Clear();
 				for each (int horario in lista_horarios) {
@@ -341,8 +347,6 @@ namespace Interfaz {
 				   }
 			   }
 		   }
-	private: System::Void dgv_horarios_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	}
 		   private: Pet^ mascotaSeleccionada;
 
 private: System::Void cmbMascotas_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -350,5 +354,7 @@ private: System::Void cmbMascotas_SelectedIndexChanged(System::Object^ sender, S
 	mascotaSeleccionada = Service::QueryPetById(IdMascota);
 	MostrarHorarios();
 }
+
+
 };
 }

@@ -13,9 +13,10 @@ namespace BarryPersistance {
 		//static String^ BIN_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.bin";
 		static String^ XML_PET_FILE_NAME = "pets.xml";
 		static String^ BIN_PET_FILE_NAME = "pets.bin";
+		static List<Pet^>^ PetsList = gcnew List<Pet^>();
 	private:
 		//static List<int>^ lista_horarios = gcnew List<int>();
-		static List<Pet^>^ lista_mascotas = gcnew List<Pet^>();
+		
 		static List<int>^ lista_dispensadores = gcnew List<int>();
 	public:
 		//static void PersistTextFile(String^ fileName, Object^ persistObject);
