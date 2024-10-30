@@ -76,7 +76,7 @@ namespace Interfaz {
 
 
 
-	private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMenuItem;
+
 	private: System::Windows::Forms::ToolStripMenuItem^ añadirMascotaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ semanalToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ mensualToolStripMenuItem;
@@ -199,7 +199,6 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->addToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->añadirUsuarioToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->añadirComidaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->añadirDispensadorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->añadirMascotaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->programarComidaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->generarReporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -237,11 +236,11 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtFoodAvaible = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
-			this->rbtnBowlFullYes = (gcnew System::Windows::Forms::RadioButton());
 			this->rbtnBowlFullNo = (gcnew System::Windows::Forms::RadioButton());
+			this->rbtnBowlFullYes = (gcnew System::Windows::Forms::RadioButton());
+			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
+			this->label13 = (gcnew System::Windows::Forms::Label());
+			this->label12 = (gcnew System::Windows::Forms::Label());
 			this->label14 = (gcnew System::Windows::Forms::Label());
 			this->txtAssignedPet = (gcnew System::Windows::Forms::TextBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
@@ -271,9 +270,9 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			// addToolStripMenuItem
 			// 
-			this->addToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
+			this->addToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->añadirUsuarioToolStripMenuItem,
-					this->añadirComidaToolStripMenuItem, this->añadirDispensadorToolStripMenuItem, this->añadirMascotaToolStripMenuItem
+					this->añadirComidaToolStripMenuItem, this->añadirMascotaToolStripMenuItem
 			});
 			this->addToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -287,7 +286,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->añadirUsuarioToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirUsuarioToolStripMenuItem.Image")));
 			this->añadirUsuarioToolStripMenuItem->Name = L"añadirUsuarioToolStripMenuItem";
-			this->añadirUsuarioToolStripMenuItem->Size = System::Drawing::Size(325, 42);
+			this->añadirUsuarioToolStripMenuItem->Size = System::Drawing::Size(281, 42);
 			this->añadirUsuarioToolStripMenuItem->Text = L"Añadir Usuario";
 			this->añadirUsuarioToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirUsuarioToolStripMenuItem_Click);
 			// 
@@ -295,23 +294,15 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->añadirComidaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirComidaToolStripMenuItem.Image")));
 			this->añadirComidaToolStripMenuItem->Name = L"añadirComidaToolStripMenuItem";
-			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(325, 42);
+			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(281, 42);
 			this->añadirComidaToolStripMenuItem->Text = L"Añadir Comida";
 			this->añadirComidaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirComidaToolStripMenuItem_Click);
-			// 
-			// añadirDispensadorToolStripMenuItem
-			// 
-			this->añadirDispensadorToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirDispensadorToolStripMenuItem.Image")));
-			this->añadirDispensadorToolStripMenuItem->Name = L"añadirDispensadorToolStripMenuItem";
-			this->añadirDispensadorToolStripMenuItem->Size = System::Drawing::Size(325, 42);
-			this->añadirDispensadorToolStripMenuItem->Text = L"Añadir Dispensador";
-			this->añadirDispensadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirDispensadorToolStripMenuItem_Click);
 			// 
 			// añadirMascotaToolStripMenuItem
 			// 
 			this->añadirMascotaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirMascotaToolStripMenuItem.Image")));
 			this->añadirMascotaToolStripMenuItem->Name = L"añadirMascotaToolStripMenuItem";
-			this->añadirMascotaToolStripMenuItem->Size = System::Drawing::Size(325, 42);
+			this->añadirMascotaToolStripMenuItem->Size = System::Drawing::Size(281, 42);
 			this->añadirMascotaToolStripMenuItem->Text = L"Añadir Mascota";
 			this->añadirMascotaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirMascotaToolStripMenuItem_Click);
 			// 
@@ -700,6 +691,28 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->groupBox2->TabStop = false;
 			this->groupBox2->Text = L"Plato";
 			// 
+			// rbtnBowlFullNo
+			// 
+			this->rbtnBowlFullNo->AutoSize = true;
+			this->rbtnBowlFullNo->Location = System::Drawing::Point(133, 146);
+			this->rbtnBowlFullNo->Name = L"rbtnBowlFullNo";
+			this->rbtnBowlFullNo->Size = System::Drawing::Size(58, 33);
+			this->rbtnBowlFullNo->TabIndex = 44;
+			this->rbtnBowlFullNo->TabStop = true;
+			this->rbtnBowlFullNo->Text = L"No";
+			this->rbtnBowlFullNo->UseVisualStyleBackColor = true;
+			// 
+			// rbtnBowlFullYes
+			// 
+			this->rbtnBowlFullYes->AutoSize = true;
+			this->rbtnBowlFullYes->Location = System::Drawing::Point(43, 146);
+			this->rbtnBowlFullYes->Name = L"rbtnBowlFullYes";
+			this->rbtnBowlFullYes->Size = System::Drawing::Size(51, 33);
+			this->rbtnBowlFullYes->TabIndex = 43;
+			this->rbtnBowlFullYes->TabStop = true;
+			this->rbtnBowlFullYes->Text = L"Sí";
+			this->rbtnBowlFullYes->UseVisualStyleBackColor = true;
+			// 
 			// textBox2
 			// 
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -708,18 +721,6 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(201, 22);
 			this->textBox2->TabIndex = 40;
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->BackColor = System::Drawing::Color::Gainsboro;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label12->Location = System::Drawing::Point(38, 37);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(200, 29);
-			this->label12->TabIndex = 41;
-			this->label12->Text = L"Comida Disponible (g)";
 			// 
 			// label13
 			// 
@@ -733,27 +734,17 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->label13->TabIndex = 42;
 			this->label13->Text = L"¿Está lleno\?";
 			// 
-			// rbtnBowlFullYes
+			// label12
 			// 
-			this->rbtnBowlFullYes->AutoSize = true;
-			this->rbtnBowlFullYes->Location = System::Drawing::Point(43, 146);
-			this->rbtnBowlFullYes->Name = L"rbtnBowlFullYes";
-			this->rbtnBowlFullYes->Size = System::Drawing::Size(51, 33);
-			this->rbtnBowlFullYes->TabIndex = 43;
-			this->rbtnBowlFullYes->TabStop = true;
-			this->rbtnBowlFullYes->Text = L"Sí";
-			this->rbtnBowlFullYes->UseVisualStyleBackColor = true;
-			// 
-			// rbtnBowlFullNo
-			// 
-			this->rbtnBowlFullNo->AutoSize = true;
-			this->rbtnBowlFullNo->Location = System::Drawing::Point(133, 146);
-			this->rbtnBowlFullNo->Name = L"rbtnBowlFullNo";
-			this->rbtnBowlFullNo->Size = System::Drawing::Size(58, 33);
-			this->rbtnBowlFullNo->TabIndex = 44;
-			this->rbtnBowlFullNo->TabStop = true;
-			this->rbtnBowlFullNo->Text = L"No";
-			this->rbtnBowlFullNo->UseVisualStyleBackColor = true;
+			this->label12->AutoSize = true;
+			this->label12->BackColor = System::Drawing::Color::Gainsboro;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label12->Location = System::Drawing::Point(38, 37);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(200, 29);
+			this->label12->TabIndex = 41;
+			this->label12->Text = L"Comida Disponible (g)";
 			// 
 			// label14
 			// 
