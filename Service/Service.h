@@ -5,6 +5,7 @@ using namespace System::Threading;
 using namespace System::Collections::Generic;
 using namespace Barry;
 using namespace BarryPersistance;
+using namespace System::IO::Ports;
 
 namespace ServiceBarry {
 	public ref class Service
@@ -18,6 +19,7 @@ namespace ServiceBarry {
 		//static List<Pet^>^ PetsList = gcnew List<Pet^>();
 		static List<Food^>^ FoodList = gcnew List<Food^>();
 		static List<String^>^ commandsList = gcnew List<String^>;
+		static SerialPort^ ArduinoPort;
 	public:
 		static void cargarUsuarios();
 		static void AddUsuario(User^);
@@ -44,8 +46,8 @@ namespace ServiceBarry {
 		//Arduino
 		static String^ SendDispenserInfoUART(int petId);
 		static String^ DispenseFoodUART(int); //Para simulación
-
-
+		static void OpenPort();
+		static void ClosePort();
 
 
 		static void AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario);

@@ -241,14 +241,43 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 {
 	String^ result;
 	try {
+		OpenPort();
 		Pet^ pet = QueryPetById(petId);
-		Thread::Sleep(5000);
-		result = "Se dispensó " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
+		result = "Se están dispensando " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
+		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
+		ArduinoPort->Write(Convert::ToString(FoodServingByte,16));
 	}
 	catch (Exception^ ex) {
 		throw ex;
 	}
+	finally {
+		ClosePort();
+	}
 	return result;
 	
+}
+
+void ServiceBarry::Service::OpenPort()
+{
+	try {
+		ArduinoPort = gcnew SerialPort();
+		ArduinoPort->PortName = "COM4";
+		ArduinoPort->BaudRate = 9600;
+		ArduinoPort->Open();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+}
+
+void ServiceBarry::Service::ClosePort()
+{
+	try {
+		if (ArduinoPort->IsOpen)
+			ArduinoPort->Close();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
 }
 
