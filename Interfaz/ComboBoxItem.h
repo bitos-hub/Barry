@@ -15,10 +15,8 @@ public:
 	ComboBoxItem( String^ name) {
 		this->Name = name;
 	}
-
 	String^ ToString() override {
 		return this->Name;
-		
  	}
 };
 

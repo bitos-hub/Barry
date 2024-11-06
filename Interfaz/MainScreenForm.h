@@ -5,6 +5,7 @@
 #include "LoginForm.h"
 #include "PetForm.h"
 #include "DispenserConfiguration.h"
+#include "AgregarDispensador.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -296,6 +297,14 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(227, 34);
 			this->añadirComidaToolStripMenuItem->Text = L"Añadir Comida";
 			this->añadirComidaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirComidaToolStripMenuItem_Click);
+			// 
+			// añadirDispensadorToolStripMenuItem
+			// 
+			this->añadirDispensadorToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirDispensadorToolStripMenuItem.Image")));
+			this->añadirDispensadorToolStripMenuItem->Name = L"añadirDispensadorToolStripMenuItem";
+			this->añadirDispensadorToolStripMenuItem->Size = System::Drawing::Size(223, 34);
+			this->añadirDispensadorToolStripMenuItem->Text = L"Dispensador";
+			this->añadirDispensadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirDispensadorToolStripMenuItem_Click);
 			// 
 			// añadirMascotaToolStripMenuItem
 			// 
@@ -971,6 +980,9 @@ private: System::Void programarComidaToolStripMenuItem_Click(System::Object^ sen
 }
 
 private: System::Void añadirDispensadorToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	AgregarDispensador^ agregarDispensador = gcnew AgregarDispensador();
+	agregarDispensador->ShowDialog();
+}
 }/*
 private: System::Void recargarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 

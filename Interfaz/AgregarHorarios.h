@@ -56,7 +56,11 @@ namespace Interfaz {
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::ComboBox^ cmbMascotas;
 	private: System::Windows::Forms::Label^ label3;
-	private: System::Windows::Forms::TextBox^ txtIdDispensador;
+	private: System::Windows::Forms::ComboBox^ cmbIdDispensadores;
+	private: System::Windows::Forms::Button^ btnAsignar;
+	private: System::Windows::Forms::Button^ btnEliminarAsignacion;
+
+
 
 
 
@@ -94,7 +98,9 @@ namespace Interfaz {
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->cmbMascotas = (gcnew System::Windows::Forms::ComboBox());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->txtIdDispensador = (gcnew System::Windows::Forms::TextBox());
+			this->cmbIdDispensadores = (gcnew System::Windows::Forms::ComboBox());
+			this->btnAsignar = (gcnew System::Windows::Forms::Button());
+			this->btnEliminarAsignacion = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_horarios))->BeginInit();
@@ -191,7 +197,6 @@ namespace Interfaz {
 			this->dgv_horarios->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dgv_horarios->Size = System::Drawing::Size(297, 167);
 			this->dgv_horarios->TabIndex = 26;
-			
 			// 
 			// Horario
 			// 
@@ -228,23 +233,51 @@ namespace Interfaz {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(39, 151);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(26, 21);
+			this->label3->Size = System::Drawing::Size(166, 21);
 			this->label3->TabIndex = 29;
-			this->label3->Text = L"Id";
+			this->label3->Text = L"ID del dispensador";
 			// 
-			// txtIdDispensador
+			// cmbIdDispensadores
 			// 
-			this->txtIdDispensador->Location = System::Drawing::Point(44, 176);
-			this->txtIdDispensador->Name = L"txtIdDispensador";
-			this->txtIdDispensador->Size = System::Drawing::Size(97, 20);
-			this->txtIdDispensador->TabIndex = 30;
+			this->cmbIdDispensadores->FormattingEnabled = true;
+			this->cmbIdDispensadores->Location = System::Drawing::Point(43, 175);
+			this->cmbIdDispensadores->Name = L"cmbIdDispensadores";
+			this->cmbIdDispensadores->Size = System::Drawing::Size(108, 21);
+			this->cmbIdDispensadores->TabIndex = 31;
+			this->cmbIdDispensadores->SelectedIndexChanged += gcnew System::EventHandler(this, &AgregarHorarios::cmbIdDispensadores_SelectedIndexChanged);
+			// 
+			// btnAsignar
+			// 
+			this->btnAsignar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnAsignar->Location = System::Drawing::Point(223, 167);
+			this->btnAsignar->Name = L"btnAsignar";
+			this->btnAsignar->Size = System::Drawing::Size(135, 35);
+			this->btnAsignar->TabIndex = 32;
+			this->btnAsignar->Text = L"Asignar dispensador";
+			this->btnAsignar->UseVisualStyleBackColor = false;
+			this->btnAsignar->Click += gcnew System::EventHandler(this, &AgregarHorarios::btnAsignar_Click);
+			// 
+			// btnEliminarAsignacion
+			// 
+			this->btnEliminarAsignacion->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnEliminarAsignacion->Location = System::Drawing::Point(364, 167);
+			this->btnEliminarAsignacion->Name = L"btnEliminarAsignacion";
+			this->btnEliminarAsignacion->Size = System::Drawing::Size(135, 35);
+			this->btnEliminarAsignacion->TabIndex = 33;
+			this->btnEliminarAsignacion->Text = L"Eliminar asignación";
+			this->btnEliminarAsignacion->UseVisualStyleBackColor = false;
+			this->btnEliminarAsignacion->Click += gcnew System::EventHandler(this, &AgregarHorarios::btnEliminarAsignacion_Click);
 			// 
 			// AgregarHorarios
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(535, 500);
-			this->Controls->Add(this->txtIdDispensador);
+			this->Controls->Add(this->btnEliminarAsignacion);
+			this->Controls->Add(this->btnAsignar);
+			this->Controls->Add(this->cmbIdDispensadores);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->cmbMascotas);
 			this->Controls->Add(this->label2);
@@ -268,19 +301,35 @@ namespace Interfaz {
 		}
 #pragma endregion
 	private: System::Void btn_agregar_Click(System::Object^ sender, System::EventArgs^ e) {
-		int IdMascota = ((ComboBoxItem^)(cmbMascotas->Items[cmbMascotas->SelectedIndex]))->Value;
-		mascotaSeleccionada = Service::QueryPetById(IdMascota);
-		if (mascotaSeleccionada == nullptr) {
-			MessageBox::Show("Por favor seleccione una mascota.");
-			return;
-		}
 		try {
-			int idDispensador = Convert::ToInt32(txtIdDispensador->Text);
+			if (dispensadorSeleccionado == nullptr) {
+				throw gcnew System::Exception("Debe seleccionar un dispensador.");
+			}
+			int IdDispensador = Convert::ToInt32(((ComboBoxItem^)(cmbIdDispensadores->Items[cmbIdDispensadores->SelectedIndex]))->Value);
+			dispensadorSeleccionado = Service::ConsultarDispensadorPorId(IdDispensador);
+		}
+		catch (System::Exception^ ex) {
+			MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+		
+		try {
 			int horario = Convert::ToInt32(txt_horario->Text);
-			Service::AddDispensadorPorMascota(mascotaSeleccionada,idDispensador,horario);
-			MostrarHorarios();
-			LimpiarCuadrosTexto();
-			MessageBox::Show("Dispensador agregado exitosamente.");
+			try {
+				try {
+					if (dispensadorSeleccionado != nullptr) {
+					Service::AddHorarioDispensador(dispensadorSeleccionado, horario);
+					MostrarHorarios();
+					MessageBox::Show("Horario agregado exitosamente.");
+					LimpiarCuadrosTexto();
+					}
+				}
+				catch (System::Exception^ ex) {
+					MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+			}
+			catch (System::Exception^ ex) {
+				MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
 		}
 		catch (System::InvalidOperationException^ ex) {
 			MessageBox::Show(ex->Message);
@@ -292,13 +341,10 @@ namespace Interfaz {
 	}
 	public:
 		void MostrarHorarios() {
-			List<int>^ lista_horarios = Service::ConsultarTodosHorariosPorMascota(mascotaSeleccionada);
-			if (mascotaSeleccionada->PetDispenser!=nullptr) {
-				txtIdDispensador->Text = ""+(mascotaSeleccionada->PetDispenser->Id);
-			}
-			else {
-				txtIdDispensador->Text = "";
-			}
+			List<int>^ lista_horarios = Service::ConsultarTodosHorariosPorDispensador(dispensadorSeleccionado); //revisar
+			/*if (mascotaSeleccionada->PetDispenser != nullptr) {
+				((ComboBoxItem^)(cmbMascotas->Items[cmbIdDispensadores->SelectedIndex]))->Value = mascotaSeleccionada->PetDispenser->Id;
+			}*/
 			if (lista_horarios != nullptr) {
 				dgv_horarios->Rows->Clear();
 				for each (int horario in lista_horarios) {
@@ -312,28 +358,27 @@ namespace Interfaz {
 				if (control->GetType() == TextBox::typeid) { //encuentra los controles de tipo TextBox
 					dynamic_cast<TextBox^>(control)->Text = ""; //se borra su contenido asignandole una cadena vacía
 				}
-				if (control->GetType() == ComboBox::typeid) {
-					dynamic_cast<ComboBox^>(control)->Text = "";
-				}
 			}
 		}
 	private: System::Void btn_eliminar_Click(System::Object^ sender, System::EventArgs^ e) {
 		if (dgv_horarios->SelectedRows->Count > 0) {
 			int horario = Convert::ToInt32(dgv_horarios->SelectedRows[0]->Cells[0]->Value);
 			try {
-				Service::EliminarHorarioDeMascota(mascotaSeleccionada,horario);
+				
+				Service::EliminarHorarioDispensador(dispensadorSeleccionado,horario);
 				MostrarHorarios();
 				LimpiarCuadrosTexto();
 				MessageBox::Show("Horario eliminado exitosamente.");
 			}
-			catch (System::InvalidOperationException^ ex) {
-				MessageBox::Show(ex->Message);
+			catch (System::Exception^ ex) {
+				MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
 	}
 	private: System::Void AgregarHorarios_Load(System::Object^ sender, System::EventArgs^ e) {
 		FillPets();
-		if (cmbMascotas->SelectedIndex>=0) {
+		LlenarDispensadores();
+		if (cmbIdDispensadores->SelectedIndex>=0) {
 			MostrarHorarios();
 		}
 	}
@@ -352,9 +397,56 @@ namespace Interfaz {
 private: System::Void cmbMascotas_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	int IdMascota = ((ComboBoxItem^)(cmbMascotas->Items[cmbMascotas->SelectedIndex]))->Value;
 	mascotaSeleccionada = Service::QueryPetById(IdMascota);
+}
+	   private: Dispenser^ dispensadorSeleccionado;
+
+private: System::Void cmbIdDispensadores_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	int IdDispensador = ((ComboBoxItem^)(cmbIdDispensadores->Items[cmbIdDispensadores->SelectedIndex]))->Value;
+	dispensadorSeleccionado = Service::ConsultarDispensadorPorId(IdDispensador);
 	MostrarHorarios();
 }
-
-
+	   void LlenarDispensadores() {
+		   List<Dispenser^>^ lista_dispensadores = Service::ConsultarTodosDispensadores();
+		   if (lista_dispensadores != nullptr) {
+			   cmbIdDispensadores->Items->Clear();
+			   for each (Dispenser ^ d in lista_dispensadores) {
+				   cmbIdDispensadores->Items->Add(gcnew ComboBoxItem(d->Id,
+					   Convert::ToString(d->Id)));
+			   }
+		   }
+	   }
+private: System::Void btnAsignar_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
+		if (dispensadorSeleccionado == nullptr) {
+			throw gcnew System::Exception("Debe seleccionar un dispensador.");
+		}
+		if (mascotaSeleccionada==nullptr) {
+			throw gcnew System::Exception("Debe seleccionar una mascota.");
+		}
+		Service::AddDispensadorPorMascota(mascotaSeleccionada, dispensadorSeleccionado);
+		MessageBox::Show("Se ha asignado el dispensador " + mascotaSeleccionada->PetDispenser->Id + " a " + mascotaSeleccionada->Name);
+	}
+	catch (System::Exception^ ex) {
+		MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+	}
+	
+}
+private: System::Void btnEliminarAsignacion_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
+		if (dispensadorSeleccionado == nullptr) {
+			throw gcnew System::Exception("Debe seleccionar un dispensador.");
+		}
+		if (mascotaSeleccionada == nullptr) {
+			throw gcnew System::Exception("Debe seleccionar una mascota.");
+		}
+		Service::EliminarDispensadorPorMascota(mascotaSeleccionada, dispensadorSeleccionado);
+		if (mascotaSeleccionada->PetDispenser->Id==0) {
+			MessageBox::Show("Se quitado la asignación del dispensador " + dispensadorSeleccionado->Id + " a " + mascotaSeleccionada->Name);
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+	}
+}
 };
 }
