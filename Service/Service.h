@@ -45,14 +45,17 @@ namespace ServiceBarry {
 		static String^ SendDispenserInfoUART(int petId);
 		static String^ DispenseFoodUART(int); //Para simulación
 
-
-
-
-		static void AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario);
-		static void EliminarHorarioDeMascota(Pet^ mascota, int horario);
+		static void AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado);
+		static void EliminarHorarioDispensador(Dispenser^ dispensador, int horario);
 		
 		static Pet^ ConsultarMascotaPorNombre(String^ nombreMascota);
 
-		static List<int>^ ConsultarTodosHorariosPorMascota(Pet^ mascota);
+		static List<int>^ ConsultarTodosHorariosPorDispensador(Dispenser^ dispensador);
+		static void AddDispensador(int id);
+		static void EliminarDispensador(int);
+		static List<Dispenser^>^ ConsultarTodosDispensadores();
+		static Dispenser^ ConsultarDispensadorPorId(int);
+		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
+		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
 	};
 }

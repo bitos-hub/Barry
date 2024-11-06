@@ -13,11 +13,13 @@ namespace BarryPersistance {
 		//static String^ BIN_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.bin";
 		static String^ XML_PET_FILE_NAME = "pets.xml";
 		static String^ BIN_PET_FILE_NAME = "pets.bin";
+		static String^ BIN_DISPENSADOR_FILE_NAME = "dispensadores.bin";
+		static String^ XML_DISPENSADOR_FILE_NAME = "dispensadores.xml";
 		static List<Pet^>^ PetsList = gcnew List<Pet^>();
 	private:
 		//static List<int>^ lista_horarios = gcnew List<int>();
 		
-		static List<int>^ lista_dispensadores = gcnew List<int>();
+		static List<Dispenser^>^ lista_dispensadores = gcnew List<Dispenser^>();
 	public:
 		//static void PersistTextFile(String^ fileName, Object^ persistObject);
 		//static Object^ LoadTextFile(String^ fileName);
@@ -26,13 +28,15 @@ namespace BarryPersistance {
 		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
 		static Object^ LoadBinaryFile(String^ fileName);
 
-		static void AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario);
-		static void EliminarHorarioDeMascota(Pet^ mascota, int horario);
+		static void AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado);
+		static void EliminarHorarioDispensador(Dispenser^ dispensador, int horario);
 		
-		
-		
-
 		static void PersistTextFile(String^ fileName, Object^ persistObject);
-
+		static void AddDispensador(int id);
+		static List<Dispenser^>^ ConsultarTodosDispensadores();
+		static void EliminarDispensador(int id);
+		static Dispenser^ ConsultarDispensadorPorId(int);
+		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
+		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
 	};
 }

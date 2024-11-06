@@ -182,9 +182,9 @@ List<Food^>^ ServiceBarry::Service::QueryAllFoods()
 	return FoodList;
 }
 
-void ServiceBarry::Service::AddDispensadorPorMascota(Pet^ mascota, int idDispensador,int horario)
+void ServiceBarry::Service::AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado)
 {
-	return Persistance::AddDispensadorPorMascota(mascota, idDispensador,horario);
+	return Persistance::AddDispensadorPorMascota(mascotaSeleccionada, DispensadorSeleccionado);
 }
 
 //UART
@@ -207,21 +207,48 @@ String^ ServiceBarry::Service::SendDispenserInfoUART(int petId)
 	return result;
 
 }
-void ServiceBarry::Service::EliminarHorarioDeMascota(Pet^ mascota, int horario)
+void ServiceBarry::Service::EliminarHorarioDispensador(Dispenser^ dispensador, int horario)
 {
-	return Persistance::EliminarHorarioDeMascota(mascota,horario);
+	return Persistance::EliminarHorarioDispensador(dispensador, horario);
 }
 
-List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorMascota(Pet^ mascota)
+List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorDispensador(Dispenser^ d)
 {
-	Pet^ pet = QueryPetById(mascota->Id);
-	if (pet->PetDispenser == nullptr) {
-		pet->PetDispenser = gcnew Dispenser();
+	Dispenser^ dispensador = ConsultarDispensadorPorId(d->Id);
+	if (dispensador->FeedingSchedule == nullptr) {
+		dispensador->FeedingSchedule = gcnew List<int>();
 	}
-	if (pet->PetDispenser->FeedingSchedule == nullptr) {
-		pet->PetDispenser->FeedingSchedule = gcnew List<int>();
-	}
-	return pet->PetDispenser->FeedingSchedule;
+	return dispensador->FeedingSchedule;
+}
+
+void ServiceBarry::Service::AddDispensador(int id)
+{
+	return Persistance::AddDispensador(id);
+}
+
+void ServiceBarry::Service::EliminarDispensador(int id)
+{
+	return Persistance::EliminarDispensador(id);
+}
+
+List<Dispenser^>^ ServiceBarry::Service::ConsultarTodosDispensadores()
+{
+	return Persistance::ConsultarTodosDispensadores();
+}
+
+Dispenser^ ServiceBarry::Service::ConsultarDispensadorPorId(int id)
+{
+	return Persistance::ConsultarDispensadorPorId(id);
+}
+
+void ServiceBarry::Service::AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario)
+{
+	return Persistance::AddHorarioDispensador(dispensadorSeleccionado,horario);
+}
+
+void ServiceBarry::Service::EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador)
+{
+	return Persistance::EliminarDispensadorPorMascota(mascota,dispensador);
 }
 
 Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
