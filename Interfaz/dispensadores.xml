@@ -2,11 +2,7 @@
 <ArrayOfDispenser xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dispenser>
     <Id>1</Id>
-    <FeedingSchedule>
-      <int>1500</int>
-      <int>1600</int>
-      <int>2000</int>
-    </FeedingSchedule>
+    <FeedingSchedule />
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
@@ -15,6 +11,8 @@
     <Id>3</Id>
     <FeedingSchedule>
       <int>1500</int>
+      <int>1600</int>
+      <int>1700</int>
     </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
@@ -22,13 +20,6 @@
   </Dispenser>
   <Dispenser>
     <Id>5</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
-  </Dispenser>
-  <Dispenser>
-    <Id>7</Id>
     <FeedingSchedule />
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>

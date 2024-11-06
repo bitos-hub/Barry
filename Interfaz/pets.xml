@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Pet>
+    <Id>1</Id>
+    <Name>A</Name>
+    <Weight>1</Weight>
+    <Specie>1</Specie>
+    <Status>1</Status>
+    <FoodServing>1</FoodServing>
+    <PetDispenser>
+      <Id>0</Id>
+      <FeedingSchedule />
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+    </PetDispenser>
+  </Pet>
+  <Pet>
+    <Id>2</Id>
+    <Name>B</Name>
+    <Weight>2</Weight>
+    <Specie>2</Specie>
+    <Status>2</Status>
+    <FoodServing>2</FoodServing>
+    <PetDispenser>
+      <Id>3</Id>
+      <FeedingSchedule>
+        <int>1500</int>
+        <int>1600</int>
+        <int>1700</int>
+      </FeedingSchedule>
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+    </PetDispenser>
+  </Pet>
+  <Pet>
+    <Id>3</Id>
+    <Name>C</Name>
+    <Weight>3</Weight>
+    <Specie>3</Specie>
+    <Status>3</Status>
+    <FoodServing>3</FoodServing>
+    <PetDispenser>
+      <Id>0</Id>
+      <FeedingSchedule />
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+    </PetDispenser>
+  </Pet>
+</ArrayOfPet>

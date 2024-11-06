@@ -50,8 +50,6 @@ namespace ServiceBarry {
 		static void ClosePort();
 
 
-		static void AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario);
-		static void EliminarHorarioDeMascota(Pet^ mascota, int horario);
 		
 
 		static void AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado);
