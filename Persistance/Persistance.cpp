@@ -496,6 +496,7 @@ void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, 
 
 Pet^ BarryPersistance::Persistance::ConsultarMascotaAsignadaADispensador(int dispenserId)
 {
+    //oli
     for (int i = 0; i < PetsList->Count; i++) {
         Pet^ m = PetsList[i];
         if (m->PetDispenser->Id == dispenserId) {
