@@ -57,5 +57,6 @@ namespace BarryPersistance {
 		static Dispenser^ ConsultarDispensadorPorId(int);
 		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
 		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
+		static Pet^ ConsultarMascotaAsignadaADispensador(int dispenserId);
 	};
 }

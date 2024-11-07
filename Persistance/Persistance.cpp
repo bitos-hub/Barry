@@ -411,6 +411,7 @@ void BarryPersistance::Persistance::AddDispensador(int id)
     PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
 }
 
+
 List<Dispenser^>^ BarryPersistance::Persistance::ConsultarTodosDispensadores()
 {
     try {
@@ -491,6 +492,17 @@ void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, 
     PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
     PersistXMLFile(XML_PET_FILE_NAME, PetsList);
 
+}
+
+Pet^ BarryPersistance::Persistance::ConsultarMascotaAsignadaADispensador(int dispenserId)
+{
+    for (int i = 0; i < PetsList->Count; i++) {
+        Pet^ m = PetsList[i];
+        if (m->PetDispenser->Id == dispenserId) {
+            return m;
+        }
+    }
+    return nullptr;
 }
 
 void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado)

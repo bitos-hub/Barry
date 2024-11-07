@@ -271,6 +271,11 @@ void ServiceBarry::Service::EliminarDispensadorPorMascota(Pet^ mascota, Dispense
 	return Persistance::EliminarDispensadorPorMascota(mascota,dispensador);
 }
 
+Pet^ ServiceBarry::Service::ConsultarMascotaAsignadaADispensador(int dispenserId)
+{
+	return Persistance::ConsultarMascotaAsignadaADispensador(dispenserId);
+}
+
 Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
 {
 	for each (Pet ^ p in Persistance::PetsList) {
