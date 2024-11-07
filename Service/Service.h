@@ -17,6 +17,9 @@ namespace ServiceBarry {
 		
 		//users
 		static String^ XML_USER_FILE_NAME = "users.xml";
+		//static String^ XML_ADMINS_FILE_NAME = "admins.xml";
+		//static String^ XML_INTERNAL_USERS_FILE_NAME = "internalUsers.xml";
+		//static String^ XML_PORTAL_USERS_FILE_NAME = "portalUsers.xml";
 		static String^ TXT_USER_FILE_NAME = "users.txt";
 		//pets
 		static String^ TXT_PET_FILE_NAME = "pets.txt";
@@ -29,6 +32,9 @@ namespace ServiceBarry {
 
 	private:
 		static List<User^>^ lista_usuarios = gcnew List<User^>();
+		//static List<Administrator^>^ lista_admins = gcnew List<Administrator^>();
+		//static List<PortalUser^>^ lista_portalUsers = gcnew List<PortalUser^>();
+		//static List<InternalUser^>^ lista_internalUser = gcnew List<InternalUser^>();
 		//static List<Pet^>^ PetsList = gcnew List<Pet^>();
 		static List<Food^>^ FoodList = gcnew List<Food^>();
 		static List<String^>^ commandsList = gcnew List<String^>;

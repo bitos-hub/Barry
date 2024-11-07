@@ -13,11 +13,8 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Pet^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
-        if (persistObject->GetType() == List<User^>::typeid) {
-            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<User^>::typeid);
-            xmlSerializer->Serialize(writer, persistObject);
-        }
-        /*if (persistObject->GetType() == List<Administrator^>::typeid) {
+
+        if (persistObject->GetType() == List<Administrator^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Administrator^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
@@ -28,7 +25,7 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
         if (persistObject->GetType() == List<InternalUser^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<InternalUser^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
-        }*/
+        }
 
         if (persistObject->GetType() == List<Dispenser^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Dispenser^>::typeid);
@@ -201,7 +198,7 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
     FileStream^ file;
     StreamWriter^ writer;
     try {
-        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+        file = gcnew FileStream(fileName, FileMode::CreateNew, FileAccess::Write);
         writer = gcnew StreamWriter(file);
         if (persistObject->GetType() == List<String^>::typeid) {
             List<String^>^ commands = (List<String^>^) persistObject;
