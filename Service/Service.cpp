@@ -26,6 +26,8 @@ void ServiceBarry::Service::AddUsuario(User^ usuario)
 {
 	lista_usuarios->Add(usuario);
 	Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
+	Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
+	Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 }
 
 void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
@@ -34,6 +36,8 @@ void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
 		if (lista_usuarios[i]->Id == usuario->Id) {
 			lista_usuarios[i] = usuario;
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
+			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
+			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -45,6 +49,8 @@ void ServiceBarry::Service::EliminarUsuario(int id)
 		if (lista_usuarios[i]->Id == id) {
 			lista_usuarios->RemoveAt(i);
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
+			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
+			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -78,6 +84,8 @@ void ServiceBarry::Service::AddPet(Pet^ pet)
 {
 	Persistance::PetsList->Add(pet);
 	Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
+	Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
+	Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
 }
 
 void ServiceBarry::Service::UpdatePet(Pet^ pet)
@@ -86,6 +94,8 @@ void ServiceBarry::Service::UpdatePet(Pet^ pet)
 		if (Persistance::PetsList[i]->Id == pet->Id) {
 			Persistance::PetsList[i] = pet;
 			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
+			Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
+			Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
 			return;
 		}
 	}
@@ -97,6 +107,8 @@ void ServiceBarry::Service::DeletePet(int id)
 		if (Persistance::PetsList[i]->Id == id) {
 			Persistance::PetsList->RemoveAt(i);
 			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
+			Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
+			Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
 			return;
 		}
 	}
@@ -118,6 +130,7 @@ List<Pet^>^ ServiceBarry::Service::QueryAllPets()
 	try {
 
 		Persistance::PetsList = (List<Pet^>^)Persistance::LoadBinaryFile(Persistance::BIN_PET_FILE_NAME);
+
 		if (Persistance::PetsList == nullptr)
 			Persistance::PetsList = gcnew List<Pet^>();
 	}
@@ -133,6 +146,9 @@ void ServiceBarry::Service::AddFood(Food^ food)
 	//Persistance::PersistTextFile(TXT_ROBOT_FILE_NAME, robotsList);
 	//Persistance::PersistXMLFile(XML_ROBOT_FILE_NAME, robotsList);
 	Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
+	Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
+	Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
+
 	
 }
 
@@ -142,6 +158,8 @@ void ServiceBarry::Service::UpdateFood(Food^ food)
 		if (FoodList[i]->Id == food->Id) {
 			FoodList[i] = food;
 			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
+			Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
+			Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
 			return;
 		}
 	}
@@ -153,6 +171,8 @@ void ServiceBarry::Service::DeleteFood(int id)
 		if (FoodList[i]->Id == id) {
 			FoodList->RemoveAt(i);
 			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
+			Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
+			Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
 			return;
 		}
 	}

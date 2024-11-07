@@ -33,6 +33,7 @@ namespace BarryPersistance {
 		static Object^ LoadPetsXmlFile(String^ fileName);
 		static Object^ LoadFoodXmlFile(String^ fileName);
 
+
 		//BIN-Persist
 		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
 		//BIN-Load
