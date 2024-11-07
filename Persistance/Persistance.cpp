@@ -393,11 +393,13 @@ Object^ BarryPersistance::Persistance::LoadFoodTextFile(String^ fileName)
     }
     return result;
 }
-void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascota, int idDispensador, int horario)
+
+
+void BarryPersistance::Persistance::AddDispensador(int id)
 {
     Dispenser^ dispensador = gcnew Dispenser();
     lista_dispensadores = ConsultarTodosDispensadores();
-    for (int i = 0; i < lista_dispensadores->Count;i++) {
+    for (int i = 0; i < lista_dispensadores->Count; i++) {
         Dispenser^ d = lista_dispensadores[i];
         if (d->Id == id) {
             throw gcnew System::Exception("Ya existe un dispensador con este ID.");
@@ -405,8 +407,8 @@ void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascota, int i
     }
     dispensador->Id = id;
     lista_dispensadores->Add(dispensador);
-    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME,lista_dispensadores);
-    PersistXMLFile(XML_DISPENSADOR_FILE_NAME,lista_dispensadores);
+    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
+    PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
 }
 
 List<Dispenser^>^ BarryPersistance::Persistance::ConsultarTodosDispensadores()
