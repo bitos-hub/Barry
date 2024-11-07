@@ -5,6 +5,7 @@
 #include "LoginForm.h"
 #include "PetForm.h"
 #include "DispenserConfiguration.h"
+#include "AgregarDispensador.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -128,11 +129,12 @@ namespace Interfaz {
 	private: System::Windows::Forms::GroupBox^ groupBox2;
 	private: System::Windows::Forms::TextBox^ textBox2;
 	private: System::Windows::Forms::Label^ label12;
-private: System::Windows::Forms::RadioButton^ rbtnBowlFullNo;
-private: System::Windows::Forms::Label^ label14;
-private: System::Windows::Forms::TextBox^ txtAssignedPet;
-private: System::Windows::Forms::Label^ label15;
-private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
+	private: System::Windows::Forms::RadioButton^ rbtnBowlFullNo;
+	private: System::Windows::Forms::Label^ label14;
+	private: System::Windows::Forms::TextBox^ txtAssignedPet;
+	private: System::Windows::Forms::Label^ label15;
+	private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
+private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMenuItem;
 
 
 
@@ -185,7 +187,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -244,6 +246,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtAssignedPet = (gcnew System::Windows::Forms::TextBox());
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->txtFeedingSchedule = (gcnew System::Windows::Forms::TextBox());
+			this->añadirDispensadorToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -269,9 +272,9 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			// addToolStripMenuItem
 			// 
-			this->addToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->addToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(4) {
 				this->añadirUsuarioToolStripMenuItem,
-					this->añadirComidaToolStripMenuItem, this->añadirMascotaToolStripMenuItem
+					this->añadirComidaToolStripMenuItem, this->añadirMascotaToolStripMenuItem, this->añadirDispensadorToolStripMenuItem
 			});
 			this->addToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -285,7 +288,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->añadirUsuarioToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirUsuarioToolStripMenuItem.Image")));
 			this->añadirUsuarioToolStripMenuItem->Name = L"añadirUsuarioToolStripMenuItem";
-			this->añadirUsuarioToolStripMenuItem->Size = System::Drawing::Size(227, 34);
+			this->añadirUsuarioToolStripMenuItem->Size = System::Drawing::Size(260, 34);
 			this->añadirUsuarioToolStripMenuItem->Text = L"Añadir Usuario";
 			this->añadirUsuarioToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirUsuarioToolStripMenuItem_Click);
 			// 
@@ -293,7 +296,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->añadirComidaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirComidaToolStripMenuItem.Image")));
 			this->añadirComidaToolStripMenuItem->Name = L"añadirComidaToolStripMenuItem";
-			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(227, 34);
+			this->añadirComidaToolStripMenuItem->Size = System::Drawing::Size(260, 34);
 			this->añadirComidaToolStripMenuItem->Text = L"Añadir Comida";
 			this->añadirComidaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirComidaToolStripMenuItem_Click);
 			// 
@@ -301,7 +304,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->añadirMascotaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"añadirMascotaToolStripMenuItem.Image")));
 			this->añadirMascotaToolStripMenuItem->Name = L"añadirMascotaToolStripMenuItem";
-			this->añadirMascotaToolStripMenuItem->Size = System::Drawing::Size(227, 34);
+			this->añadirMascotaToolStripMenuItem->Size = System::Drawing::Size(260, 34);
 			this->añadirMascotaToolStripMenuItem->Text = L"Añadir Mascota";
 			this->añadirMascotaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirMascotaToolStripMenuItem_Click);
 			// 
@@ -425,7 +428,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->cmbPets->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmbPets->FormattingEnabled = true;
 			this->cmbPets->Location = System::Drawing::Point(148, 160);
-			this->cmbPets->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->cmbPets->Margin = System::Windows::Forms::Padding(2);
 			this->cmbPets->Name = L"cmbPets";
 			this->cmbPets->Size = System::Drawing::Size(154, 21);
 			this->cmbPets->TabIndex = 18;
@@ -437,7 +440,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->comboBox2->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->comboBox2->FormattingEnabled = true;
 			this->comboBox2->Location = System::Drawing::Point(38, 446);
-			this->comboBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->comboBox2->Margin = System::Windows::Forms::Padding(2);
 			this->comboBox2->Name = L"comboBox2";
 			this->comboBox2->Size = System::Drawing::Size(163, 21);
 			this->comboBox2->TabIndex = 19;
@@ -448,7 +451,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->pictureBox2->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->pictureBox2->Location = System::Drawing::Point(23, 140);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(713, 238);
 			this->pictureBox2->TabIndex = 20;
@@ -459,7 +462,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->pictureBox3->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->pictureBox3->Location = System::Drawing::Point(23, 392);
-			this->pictureBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(713, 271);
 			this->pictureBox3->TabIndex = 21;
@@ -469,7 +472,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->pbPet->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->pbPet->Location = System::Drawing::Point(588, 154);
-			this->pbPet->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbPet->Margin = System::Windows::Forms::Padding(2);
 			this->pbPet->Name = L"pbPet";
 			this->pbPet->Size = System::Drawing::Size(116, 122);
 			this->pbPet->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -481,7 +484,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtPetName->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtPetName->Location = System::Drawing::Point(38, 224);
-			this->txtPetName->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPetName->Margin = System::Windows::Forms::Padding(2);
 			this->txtPetName->Name = L"txtPetName";
 			this->txtPetName->Size = System::Drawing::Size(152, 19);
 			this->txtPetName->TabIndex = 23;
@@ -517,7 +520,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtEspecie->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtEspecie->Location = System::Drawing::Point(38, 332);
-			this->txtEspecie->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtEspecie->Margin = System::Windows::Forms::Padding(2);
 			this->txtEspecie->Name = L"txtEspecie";
 			this->txtEspecie->Size = System::Drawing::Size(152, 19);
 			this->txtEspecie->TabIndex = 26;
@@ -540,7 +543,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtWeight->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtWeight->Location = System::Drawing::Point(38, 280);
-			this->txtWeight->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtWeight->Margin = System::Windows::Forms::Padding(2);
 			this->txtWeight->Name = L"txtWeight";
 			this->txtWeight->Size = System::Drawing::Size(152, 19);
 			this->txtWeight->TabIndex = 28;
@@ -563,7 +566,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtStatus->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtStatus->Location = System::Drawing::Point(211, 332);
-			this->txtStatus->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtStatus->Margin = System::Windows::Forms::Padding(2);
 			this->txtStatus->Name = L"txtStatus";
 			this->txtStatus->Size = System::Drawing::Size(152, 19);
 			this->txtStatus->TabIndex = 30;
@@ -586,7 +589,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtPortion->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtPortion->Location = System::Drawing::Point(211, 280);
-			this->txtPortion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPortion->Margin = System::Windows::Forms::Padding(2);
 			this->txtPortion->Name = L"txtPortion";
 			this->txtPortion->Size = System::Drawing::Size(152, 19);
 			this->txtPortion->TabIndex = 32;
@@ -609,7 +612,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox1->Location = System::Drawing::Point(380, 224);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(160, 19);
 			this->textBox1->TabIndex = 36;
@@ -622,7 +625,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->btnFeed->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnFeed->Location = System::Drawing::Point(595, 280);
-			this->btnFeed->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnFeed->Margin = System::Windows::Forms::Padding(2);
 			this->btnFeed->Name = L"btnFeed";
 			this->btnFeed->Size = System::Drawing::Size(100, 26);
 			this->btnFeed->TabIndex = 37;
@@ -648,7 +651,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtAssignedDispenser->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtAssignedDispenser->Location = System::Drawing::Point(211, 224);
-			this->txtAssignedDispenser->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtAssignedDispenser->Margin = System::Windows::Forms::Padding(2);
 			this->txtAssignedDispenser->Name = L"txtAssignedDispenser";
 			this->txtAssignedDispenser->Size = System::Drawing::Size(152, 19);
 			this->txtAssignedDispenser->TabIndex = 38;
@@ -671,7 +674,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtFoodAvaible->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtFoodAvaible->Location = System::Drawing::Point(23, 56);
-			this->txtFoodAvaible->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtFoodAvaible->Margin = System::Windows::Forms::Padding(2);
 			this->txtFoodAvaible->Name = L"txtFoodAvaible";
 			this->txtFoodAvaible->Size = System::Drawing::Size(152, 19);
 			this->txtFoodAvaible->TabIndex = 40;
@@ -683,9 +686,9 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->groupBox1->Location = System::Drawing::Point(336, 554);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
 			this->groupBox1->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->groupBox1->Size = System::Drawing::Size(262, 93);
 			this->groupBox1->TabIndex = 44;
@@ -702,9 +705,9 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->groupBox2->Location = System::Drawing::Point(38, 487);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(2);
 			this->groupBox2->Size = System::Drawing::Size(285, 161);
 			this->groupBox2->TabIndex = 45;
 			this->groupBox2->TabStop = false;
@@ -714,7 +717,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->rbtnBowlFullNo->AutoSize = true;
 			this->rbtnBowlFullNo->Location = System::Drawing::Point(100, 119);
-			this->rbtnBowlFullNo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->rbtnBowlFullNo->Margin = System::Windows::Forms::Padding(2);
 			this->rbtnBowlFullNo->Name = L"rbtnBowlFullNo";
 			this->rbtnBowlFullNo->Size = System::Drawing::Size(48, 28);
 			this->rbtnBowlFullNo->TabIndex = 44;
@@ -726,7 +729,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			// 
 			this->rbtnBowlFullYes->AutoSize = true;
 			this->rbtnBowlFullYes->Location = System::Drawing::Point(32, 119);
-			this->rbtnBowlFullYes->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->rbtnBowlFullYes->Margin = System::Windows::Forms::Padding(2);
 			this->rbtnBowlFullYes->Name = L"rbtnBowlFullYes";
 			this->rbtnBowlFullYes->Size = System::Drawing::Size(42, 28);
 			this->rbtnBowlFullYes->TabIndex = 43;
@@ -739,7 +742,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->textBox2->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->textBox2->Location = System::Drawing::Point(28, 56);
-			this->textBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->textBox2->Margin = System::Windows::Forms::Padding(2);
 			this->textBox2->Name = L"textBox2";
 			this->textBox2->Size = System::Drawing::Size(152, 19);
 			this->textBox2->TabIndex = 40;
@@ -788,7 +791,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtAssignedPet->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtAssignedPet->Location = System::Drawing::Point(336, 448);
-			this->txtAssignedPet->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtAssignedPet->Margin = System::Windows::Forms::Padding(2);
 			this->txtAssignedPet->Name = L"txtAssignedPet";
 			this->txtAssignedPet->Size = System::Drawing::Size(152, 19);
 			this->txtAssignedPet->TabIndex = 46;
@@ -811,10 +814,17 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->txtFeedingSchedule->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtFeedingSchedule->Location = System::Drawing::Point(336, 507);
-			this->txtFeedingSchedule->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtFeedingSchedule->Margin = System::Windows::Forms::Padding(2);
 			this->txtFeedingSchedule->Name = L"txtFeedingSchedule";
 			this->txtFeedingSchedule->Size = System::Drawing::Size(152, 19);
 			this->txtFeedingSchedule->TabIndex = 48;
+			// 
+			// añadirDispensadorToolStripMenuItem
+			// 
+			this->añadirDispensadorToolStripMenuItem->Name = L"añadirDispensadorToolStripMenuItem";
+			this->añadirDispensadorToolStripMenuItem->Size = System::Drawing::Size(260, 34);
+			this->añadirDispensadorToolStripMenuItem->Text = L"Añadir Dispensador";
+			this->añadirDispensadorToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirDispensadorToolStripMenuItem_Click_1);
 			// 
 			// MainScreenForm
 			// 
@@ -853,7 +863,7 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox3);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"MainScreenForm";
 			this->Text = L"MainScreenForm";
 			this->Load += gcnew System::EventHandler(this, &MainScreenForm::MainScreenForm_Load);
@@ -872,47 +882,47 @@ private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 
 		}
 #pragma endregion
-		public:
-			void FillPetsComboPets() {
-				List<Pet^>^ petsList = Service::QueryAllPets();
-				if (petsList != nullptr) {
-					cmbPets->Items->Clear();
-					for each (Pet ^ pet in petsList) {
-						cmbPets->Items->Add(gcnew ComboBoxItem(pet->Id,
-							pet->Name));
-					}
+	public:
+		void FillPetsComboPets() {
+			List<Pet^>^ petsList = Service::QueryAllPets();
+			if (petsList != nullptr) {
+				cmbPets->Items->Clear();
+				for each (Pet ^ pet in petsList) {
+					cmbPets->Items->Add(gcnew ComboBoxItem(pet->Id,
+						pet->Name));
 				}
 			}
-			void ClearPetControls() {
-				for each (Control ^ control in this->Controls) {
-					if (control->GetType() == TextBox::typeid) {
-						dynamic_cast<TextBox^>(control)->Text = "";
-					}
-					if (control->GetType() == PictureBox::typeid) {
-						dynamic_cast<PictureBox^>(control)->Image = nullptr;
-						dynamic_cast<PictureBox^>(control)->Invalidate();
-					}
-					if (control->GetType() == ComboBox::typeid) {
-						dynamic_cast<ComboBox^>(control)->Text = "";
-					}
+		}
+		void ClearPetControls() {
+			for each (Control ^ control in this->Controls) {
+				if (control->GetType() == TextBox::typeid) {
+					dynamic_cast<TextBox^>(control)->Text = "";
+				}
+				if (control->GetType() == PictureBox::typeid) {
+					dynamic_cast<PictureBox^>(control)->Image = nullptr;
+					dynamic_cast<PictureBox^>(control)->Invalidate();
+				}
+				if (control->GetType() == ComboBox::typeid) {
+					dynamic_cast<ComboBox^>(control)->Text = "";
 				}
 			}
+		}
 
 
 	private: System::Void hisoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void añadirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void añadirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 
-}
-private: System::Void dataGridView2_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-}
-private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	
-}
-private: System::Void cerrarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void semanalToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	}
+	private: System::Void dataGridView2_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+	}
+	private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+	}
+	private: System::Void cerrarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void semanalToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 
 
 
@@ -923,102 +933,107 @@ private: System::Void semanalToolStripMenuItem_Click(System::Object^ sender, Sys
 		btnFeed->Enabled = false;
 	}
 	public:
-	void EnableAdminOptions() {
-		addToolStripMenuItem->Visible = true;
-		programarComidaToolStripMenuItem->Visible = true;
-		generarReporteToolStripMenuItem->Visible = true;
+		void EnableAdminOptions() {
+			addToolStripMenuItem->Visible = true;
+			programarComidaToolStripMenuItem->Visible = true;
+			generarReporteToolStripMenuItem->Visible = true;
+		}
+
+		void EnableInternalUserOptions() {
+			addToolStripMenuItem->Visible = false;
+			programarComidaToolStripMenuItem->Visible = true;
+			generarReporteToolStripMenuItem->Visible = true;
+		}
+
+		void EnablePortalUserOptions() {
+			addToolStripMenuItem->Visible = false;
+			programarComidaToolStripMenuItem->Visible = false;
+			generarReporteToolStripMenuItem->Visible = true;
+		}
+
+	private: System::Void pbPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
+
 	}
 
-	void EnableInternalUserOptions() {
-		addToolStripMenuItem->Visible = false;
-		programarComidaToolStripMenuItem->Visible = true;
-		generarReporteToolStripMenuItem->Visible = true;
+	private: System::Void añadirUsuarioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClearPetControls();
+		AgregarUsuarios^ UserForm = gcnew AgregarUsuarios();
+		UserForm->ShowDialog();
 	}
 
-	void EnablePortalUserOptions() {
-		addToolStripMenuItem->Visible = false;
-		programarComidaToolStripMenuItem->Visible = false;
-		generarReporteToolStripMenuItem->Visible = true;
+	private: System::Void añadirComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClearPetControls();
+		AddFood^ FoodForm = gcnew AddFood();
+		FoodForm->ShowDialog();
+
+	}
+	private: System::Void añadirMascotaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClearPetControls();
+		PetForm^ petForm = gcnew PetForm();
+		petForm->ShowDialog();
+
+	}
+	private: System::Void programarComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		ClearPetControls();
+		AgregarHorarios^ ScheduleForm = gcnew AgregarHorarios();
+		ScheduleForm->ShowDialog();
+
 	}
 
-private: System::Void pbPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void añadirDispensadorToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}/*
+	private: System::Void recargarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 
-}
-	
-private: System::Void añadirUsuarioToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClearPetControls();
-	AgregarUsuarios^ UserForm = gcnew AgregarUsuarios();
-	UserForm->ShowDialog();
-}
-	   
-private: System::Void añadirComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClearPetControls();
-	AddFood^ FoodForm = gcnew AddFood();
-	FoodForm->ShowDialog();
-	
-}
-private: System::Void añadirMascotaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClearPetControls();
-	PetForm^ petForm = gcnew PetForm();
-	petForm->ShowDialog();
-	
-}
-private: System::Void programarComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	ClearPetControls();
-	AgregarHorarios^ ScheduleForm = gcnew AgregarHorarios();
-	ScheduleForm->ShowDialog();
-	
-}
-
-private: System::Void añadirDispensadorToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}/*
-private: System::Void recargarToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-
-}*/
-private: System::Void cerrarSesionToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-	Application::Restart();	
-}
-private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	Application::Exit();
-}
-private: System::Void configurarArduinoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	DispenserConfiguration^ form = gcnew DispenserConfiguration();
-	form->ShowDialog();
-}
-
-
-
-private: System::Void cmbPets_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-	Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
-	txtPetName->Text=pet->Name;
-	txtEspecie->Text = pet->Specie;
-	txtWeight->Text = Convert::ToString(pet->Weight);
-	txtPortion->Text = Convert::ToString(pet->FoodServing);
-	txtStatus->Text = pet->Status;
-
-	if (pet->Photo != nullptr) {
-		System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
-		pbPet->Image = Image::FromStream(ms);
+	}*/
+	private: System::Void cerrarSesionToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+		Application::Restart();
 	}
-	else {
-		pbPet->Image = nullptr;
-		pbPet->Invalidate();
+	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		Application::Exit();
 	}
-	btnFeed->Enabled = true;
-}
+	private: System::Void configurarArduinoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		DispenserConfiguration^ form = gcnew DispenserConfiguration();
+		form->ShowDialog();
+	}
 
-private: System::Void btnFeed_Click(System::Object^ sender, System::EventArgs^ e) {
-	try {
+
+
+	private: System::Void cmbPets_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
-		int id = pet->Id;
-		String^ result = Service::DispenseFoodUART(id);
-		MessageBox::Show(result);
-		btnFeed->Enabled = false;
+		txtPetName->Text = pet->Name;
+		txtEspecie->Text = pet->Specie;
+		txtWeight->Text = Convert::ToString(pet->Weight);
+		txtPortion->Text = Convert::ToString(pet->FoodServing);
+		txtStatus->Text = pet->Status;
+
+		if (pet->Photo != nullptr) {
+			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+			pbPet->Image = Image::FromStream(ms);
+		}
+		else {
+			pbPet->Image = nullptr;
+			pbPet->Invalidate();
+		}
+		btnFeed->Enabled = true;
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show("No se pudo realizar la configuración correctamente debido a:\n" + ex);
+
+	private: System::Void btnFeed_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+			int id = pet->Id;
+			String^ result = Service::DispenseFoodUART(id);
+			MessageBox::Show(result);
+			btnFeed->Enabled = false;
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("No se pudo realizar la configuración correctamente debido a:\n" + ex);
+		}
 	}
-}
+	private: System::Void añadirDispensadorToolStripMenuItem_Click_1(System::Object^ sender, System::EventArgs^ e) 
+	{
+		AgregarDispensador^ form = gcnew AgregarDispensador();
+		form->ShowDialog();
+	}
 };
 }
