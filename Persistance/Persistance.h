@@ -23,15 +23,34 @@ namespace BarryPersistance {
 	public:
 		//static void PersistTextFile(String^ fileName, Object^ persistObject);
 		//static Object^ LoadTextFile(String^ fileName);
+		
+		//XML-Persist
 		static void PersistXMLFile(String^ fileName, Object^ persistObject);
+		//XML-Load
 		static Object^ LoadXMLFile(String^ fileName);
+		static Object^ LoadUsersXmlFile(String^ fileName);
+		static Object^ LoadDispensersXmlFile(String^ fileName);
+		static Object^ LoadPetsXmlFile(String^ fileName);
+		static Object^ LoadFoodXmlFile(String^ fileName);
+
+
+		//BIN-Persist
 		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
+		//BIN-Load
 		static Object^ LoadBinaryFile(String^ fileName);
 
 		static void AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado);
 		static void EliminarHorarioDispensador(Dispenser^ dispensador, int horario);
 		
+		
+		//TXT-Persist
 		static void PersistTextFile(String^ fileName, Object^ persistObject);
+		//TXT-Load
+		static Object^ LoadUsersTextFile(String^ fileName);
+		static Object^ LoadDispensersTextFile(String^ fileName);
+		static Object^ LoadPetsTextFile(String^ fileName);
+		static Object^ LoadFoodTextFile(String^ fileName);
+
 		static void AddDispensador(int id);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();
 		static void EliminarDispensador(int id);

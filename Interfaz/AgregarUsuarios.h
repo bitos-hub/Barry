@@ -281,7 +281,7 @@ namespace Interfaz {
 				admin->Password = contrasena;
 				admin->PhoneNumber = numero_telefono;
 				admin->Role = rol;
-				Service::AddUsuario(admin);
+				Service::AddUsuario((User^)admin);
 			}
 			else {
 				if (rol == "Usuario interno") {
