@@ -27,7 +27,17 @@ void ServiceBarry::Service::AddUsuario(User^ usuario)
 	lista_usuarios->Add(usuario);
 	Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 	Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-	Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
+	//Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
+	/*
+	if (usuario->GetType() == Administrator::typeid) {
+		Persistance::PersistXMLFile(XML_ADMINS_FILE_NAME, lista_admins);
+	}
+	if (usuario->GetType() == PortalUser::typeid) {
+		Persistance::PersistXMLFile(XML_PORTAL_USERS_FILE_NAME, lista_portalUsers);
+	}
+	if (usuario->GetType() == InternalUser::typeid) {
+		Persistance::PersistXMLFile(XML_INTERNAL_USERS_FILE_NAME, lista_internalUser);
+	}*/
 }
 
 void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
@@ -37,7 +47,7 @@ void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
 			lista_usuarios[i] = usuario;
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
+			//Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -50,7 +60,7 @@ void ServiceBarry::Service::EliminarUsuario(int id)
 			lista_usuarios->RemoveAt(i);
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
+			//Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
