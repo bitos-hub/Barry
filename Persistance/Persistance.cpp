@@ -101,7 +101,6 @@ Object^ BarryPersistance::Persistance::LoadDispensersXmlFile(String^ fileName)
     }
     return result;
 }
-
 Object^ BarryPersistance::Persistance::LoadPetsXmlFile(String^ fileName)
 {
     StreamReader^ reader;
