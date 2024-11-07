@@ -17,6 +17,19 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<User^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
+        /*if (persistObject->GetType() == List<Administrator^>::typeid) {
+            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Administrator^>::typeid);
+            xmlSerializer->Serialize(writer, persistObject);
+        }
+        if (persistObject->GetType() == List<PortalUser^>::typeid) {
+            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<PortalUser^>::typeid);
+            xmlSerializer->Serialize(writer, persistObject);
+        }
+        if (persistObject->GetType() == List<InternalUser^>::typeid) {
+            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<InternalUser^>::typeid);
+            xmlSerializer->Serialize(writer, persistObject);
+        }*/
+
         if (persistObject->GetType() == List<Dispenser^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Dispenser^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
@@ -188,7 +201,7 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
     FileStream^ file;
     StreamWriter^ writer;
     try {
-        file = gcnew FileStream(fileName, FileMode::Append, FileAccess::Write);
+        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
         writer = gcnew StreamWriter(file);
         if (persistObject->GetType() == List<String^>::typeid) {
             List<String^>^ commands = (List<String^>^) persistObject;
@@ -201,8 +214,15 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
             List<User^>^ users = (List<User^>^) persistObject;
             for (int i = 0; i < users->Count; i++) {
                 User^ u = users[i];
-                writer->WriteLine("{0}|{1}|{2}|{3}|{4}|{5}|{6}",
-                    u->Id, u->Name, u->HistorialActividades, u->Password, u->PhoneNumber, u->ProfileStatus, u->Role);
+                if (u->HistorialActividades !=nullptr) {
+                    String^ historialString = String::Join(";", u->HistorialActividades->ToArray());
+                    writer->WriteLine("{0}|{1}|{2}|{3}|{4}|{5}",
+                        u->Id, u->Name, historialString, u->Password, u->PhoneNumber, u->Role);
+                }
+                else {
+                    writer->WriteLine("{0}|{1}|{2}|{3}|{4}",
+                        u->Id, u->Name, u->Password, u->PhoneNumber, u->Role);
+                }
             }
         }
         if (persistObject->GetType() == List<Dispenser^>::typeid) {
@@ -217,8 +237,13 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
             List<Pet^>^ pet = (List<Pet^>^) persistObject;
             for (int i = 0; i < pet->Count; i++) {
                 Pet^ p = pet[i];
+                String^ photoBase64 = "";
+                if (p->Photo != nullptr) {
+                    photoBase64 = Convert::ToBase64String(p->Photo);
+                }
                 writer->WriteLine("{0}|{1}|{2:F1}|{3}|{4}|{5}|{6}|{7}|{8:F1}",
-                    p->Id, p->Name, p->FoodServing, p->Owner, p->PetDispenser, p->Photo, p->Specie, p->Status, p->Weight);
+                    p->Id, p->Name, p->FoodServing, p->Owner, p->PetDispenser,
+                    photoBase64, p->Specie, p->Status, p->Weight);
             }
         }
         if (persistObject->GetType() == List<Food^>::typeid) {
@@ -251,8 +276,11 @@ Object^ BarryPersistance::Persistance::LoadUsersTextFile(String^ fileName)
             User^ user = gcnew User();
             user->Id = Convert::ToInt32(record[0]);
             user->Name = record[1];
-            //Falta verificar
-            user->HistorialActividades->Add(record[2]);
+            user->HistorialActividades = gcnew List<String^>();
+            if (record[2] != "") {
+                array<String^>^ actividades = record[2]->Split(';');
+                user->HistorialActividades->AddRange(actividades);
+            }
             user->Password = record[3];
             user->PhoneNumber = Convert::ToInt32(record[4]);
             user->ProfileStatus = Convert::ToBoolean(record[5]);
@@ -293,8 +321,8 @@ Object^ BarryPersistance::Persistance::LoadDispensersTextFile(String^ fileName)
     finally {
         if (reader != nullptr) reader->Close();
         if (file != nullptr) file->Close();
-    }
-    return result;*/
+    }*/
+    return 1;
 }
 Object^ BarryPersistance::Persistance::LoadPetsTextFile(String^ fileName)
 {
@@ -318,7 +346,10 @@ Object^ BarryPersistance::Persistance::LoadPetsTextFile(String^ fileName)
             dispenser->Id = Convert::ToInt32(record[4]);
             pet->PetDispenser = dispenser;
   
-            //pet->Photo = record[5];
+            if (record[5] != "") {
+                array<Byte>^ photoBytes = Convert::FromBase64String(record[5]);
+                pet->Photo = photoBytes;
+            }
 
             pet->Specie = record[6];
             pet->Status = record[7];
