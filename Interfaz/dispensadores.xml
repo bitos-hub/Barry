@@ -25,4 +25,11 @@
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
   </Dispenser>
+  <Dispenser>
+    <Id>50</Id>
+    <FeedingSchedule />
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+  </Dispenser>
 </ArrayOfDispenser>

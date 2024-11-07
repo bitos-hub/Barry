@@ -43,9 +43,12 @@ namespace Interfaz {
 	protected:
 
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ txtId;
+
 
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ txtId;
+
+
 
 	private:
 		/// <summary>
@@ -63,8 +66,8 @@ namespace Interfaz {
 			this->btnAgregar = (gcnew System::Windows::Forms::Button());
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->txtId = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->txtId = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// btnAgregar
@@ -96,29 +99,29 @@ namespace Interfaz {
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Agregar dispensador";
 			// 
-			// txtId
-			// 
-			this->txtId->Location = System::Drawing::Point(88, 49);
-			this->txtId->Name = L"txtId";
-			this->txtId->Size = System::Drawing::Size(134, 20);
-			this->txtId->TabIndex = 3;
-			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(81, 72);
+			this->label2->Location = System::Drawing::Point(97, 72);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(150, 13);
+			this->label2->Size = System::Drawing::Size(101, 13);
 			this->label2->TabIndex = 4;
-			this->label2->Text = L"(Ingrese el ID del dispensador)";
+			this->label2->Text = L"(ID del dispensador)";
+			// 
+			// txtId
+			// 
+			this->txtId->Location = System::Drawing::Point(82, 46);
+			this->txtId->Name = L"txtId";
+			this->txtId->Size = System::Drawing::Size(133, 20);
+			this->txtId->TabIndex = 6;
 			// 
 			// AgregarDispensador
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 161);
-			this->Controls->Add(this->label2);
 			this->Controls->Add(this->txtId);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnEliminar);
 			this->Controls->Add(this->btnAgregar);
