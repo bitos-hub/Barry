@@ -448,12 +448,41 @@ Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
 String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 {
 	String^ result;
-	try {
-		OpenPort();
+	//try {
+		//OpenPort();
+	DispensationList = Service::ConsultarDispensadas();
+
+		
+		Dispensation^ existingDispensation = nullptr;
+		for each (Dispensation ^ disp in DispensationList) {
+			if (disp->Date == DateTime::Now) {
+				existingDispensation = disp;
+				break;
+			}
+		}
+		// Si no existe, crear una nueva
+		if (existingDispensation == nullptr) {
+			existingDispensation = gcnew Dispensation(DateTime::Now, 1);
+			DispensationList->Add(existingDispensation);
+		}
+		else {
+
+			existingDispensation->TimesDispensed += 1;
+			for (int i = 0; i < DispensationList->Count; i++) {
+				if (DispensationList[i]->Date == existingDispensation->Date) {
+					DispensationList[i] = existingDispensation;
+				}
+			}
+		}
+		Persistance::PersistTextFile(TXT_DISPENSATION_FILE_NAME, DispensationList);
+
+		/*
 		Pet^ pet = QueryPetById(petId);
-		result = "Se están dispensando " + Convert::ToString(pet->FoodServing) + "g en el plato de " + pet->Name;
+		result = "Se están dispensando " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
 		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
-		ArduinoPort->Write(Convert::ToString(FoodServingByte, 16));
+		ArduinoPort->Write(Convert::ToString(FoodServingByte,16));
+		
+
 	}
 	catch (Exception^ ex) {
 		throw ex;
@@ -461,26 +490,7 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 	finally {
 		ClosePort();
 	}
-	return result;
-
-}
-
-String^ ServiceBarry::Service::DispenseWater(int petId)
-{
-	String^ result;
-	try {
-		OpenPort();
-		Pet^ pet = QueryPetById(petId);
-		result = "Se están dispensando " + Convert::ToString(pet->WaterServing) + "mL en el recipiente de " + pet->Name;
-		Byte WaterServingByte = Convert::ToByte(pet->WaterServing);
-		ArduinoPort->Write(Convert::ToString(WaterServingByte, 16));
-	}
-	catch (Exception^ ex) {
-		throw ex;
-	}
-	finally {
-		ClosePort();
-	}
+	*/
 	return result;
 }
 
