@@ -9,6 +9,8 @@
 #include "ViewUsersForm.h"
 #include "ModoDispensador.h"
 #include "WeightReportForm.h"
+#include "ReportForm.h"
+
 namespace Interfaz {
 
 	using namespace System;
@@ -405,6 +407,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuI
 			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
 			this->mensualToolStripMenuItem->Size = System::Drawing::Size(206, 42);
 			this->mensualToolStripMenuItem->Text = L"Mensual";
+			this->mensualToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::mensualToolStripMenuItem_Click);
 			// 
 			// recargarToolStripMenuItem
 			// 
@@ -1090,6 +1093,9 @@ private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuI
 	private: System::Void cerrarSesiónToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 	private: System::Void semanalToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		ReportForm^ form = gcnew ReportForm(1);
+		form->ShowDialog();
+		
 	}
 
 
