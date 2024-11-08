@@ -1,10 +1,11 @@
 #pragma once
-
+#include "ComboBoxItem.h"
 namespace Interfaz {
 
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
@@ -46,7 +47,9 @@ namespace Interfaz {
 
 
 	private: System::Windows::Forms::Label^ label2;
-	private: System::Windows::Forms::TextBox^ txtId;
+	private: System::Windows::Forms::ComboBox^ cmbIdDispensador;
+
+
 
 
 
@@ -67,7 +70,7 @@ namespace Interfaz {
 			this->btnEliminar = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->txtId = (gcnew System::Windows::Forms::TextBox());
+			this->cmbIdDispensador = (gcnew System::Windows::Forms::ComboBox());
 			this->SuspendLayout();
 			// 
 			// btnAgregar
@@ -108,35 +111,40 @@ namespace Interfaz {
 			this->label2->TabIndex = 4;
 			this->label2->Text = L"(ID del dispensador)";
 			// 
-			// txtId
+			// cmbIdDispensador
 			// 
-			this->txtId->Location = System::Drawing::Point(82, 46);
-			this->txtId->Name = L"txtId";
-			this->txtId->Size = System::Drawing::Size(133, 20);
-			this->txtId->TabIndex = 6;
+			this->cmbIdDispensador->FormattingEnabled = true;
+			this->cmbIdDispensador->Location = System::Drawing::Point(82, 44);
+			this->cmbIdDispensador->Name = L"cmbIdDispensador";
+			this->cmbIdDispensador->Size = System::Drawing::Size(133, 21);
+			this->cmbIdDispensador->TabIndex = 7;
+			this->cmbIdDispensador->SelectedIndexChanged += gcnew System::EventHandler(this, &AgregarDispensador::cmbIdDispensador_SelectedIndexChanged);
 			// 
 			// AgregarDispensador
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(284, 161);
-			this->Controls->Add(this->txtId);
+			this->Controls->Add(this->cmbIdDispensador);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnEliminar);
 			this->Controls->Add(this->btnAgregar);
 			this->Name = L"AgregarDispensador";
 			this->Text = L"AgregarDispensador";
+			this->Load += gcnew System::EventHandler(this, &AgregarDispensador::AgregarDispensador_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+		static int id = 0;
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		int id = Convert::ToInt32(txtId->Text);
+		id++;
 		try {
 			Service::AddDispensador(id);
 			LimpiarCuadrosTexto();
+			int x = LlenarDispensadores();
 			MessageBox::Show("El dispensador con ID: " + id + " fue agregado correctamente.");
 		}
 		catch (System::Exception^ ex) {
@@ -153,16 +161,42 @@ namespace Interfaz {
 				   }
 			   }
 		   }
+		   private: Dispenser^ dispensadorSeleccionado;
 private: System::Void btnEliminar_Click(System::Object^ sender, System::EventArgs^ e) {
-		int id = Convert::ToInt32(txtId->Text);
+		//int idSeleccionado = (int)cmbIdDispensador->SelectedValue;
+		int IdDispensador = ((ComboBoxItem^)(cmbIdDispensador->Items[cmbIdDispensador->SelectedIndex]))->Value;
+		dispensadorSeleccionado = Service::ConsultarDispensadorPorId(IdDispensador);
 		try {
-			Service::EliminarDispensador(id);
+			Service::EliminarDispensador(dispensadorSeleccionado->Id);
 			LimpiarCuadrosTexto();
-			MessageBox::Show("El dispensador con ID: "+id+" fue eliminado correctamente.");
+			int x = LlenarDispensadores();
+			MessageBox::Show("El dispensador con ID: "+ dispensadorSeleccionado->Id +" fue eliminado correctamente.");
 		}
 		catch (System::Exception^ ex) {
 			MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
+}
+	   int LlenarDispensadores() {
+		   List<Dispenser^>^ lista_dispensadores = Service::ConsultarTodosDispensadores();
+		   int mayor = 0;
+		   if (lista_dispensadores != nullptr) {
+			   cmbIdDispensador->Items->Clear();
+			   for each (Dispenser ^ d in lista_dispensadores) {
+				   cmbIdDispensador->Items->Add(gcnew ComboBoxItem(d->Id,
+					   Convert::ToString(d->Id)));
+				   if (d->Id > mayor) {
+					   mayor = d->Id;
+				   }
+			   }
+		   }
+		   return mayor;
+	   }
+private: System::Void cmbIdDispensador_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	int IdDispensador = ((ComboBoxItem^)(cmbIdDispensador->Items[cmbIdDispensador->SelectedIndex]))->Value;
+	dispensadorSeleccionado = Service::ConsultarDispensadorPorId(IdDispensador);
+}
+private: System::Void AgregarDispensador_Load(System::Object^ sender, System::EventArgs^ e) {
+	id = LlenarDispensadores();
 }
 };
 }
