@@ -134,7 +134,7 @@ namespace Interfaz {
 	private: System::Windows::Forms::TextBox^ txtAssignedPet;
 	private: System::Windows::Forms::Label^ label15;
 	private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
-private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMenuItem;
 
 
 
@@ -934,21 +934,21 @@ private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMe
 	}
 	public:
 		void EnableAdminOptions() {
-			addToolStripMenuItem->Visible = true;
-			programarComidaToolStripMenuItem->Visible = true;
-			generarReporteToolStripMenuItem->Visible = true;
+			addToolStripMenuItem->Enabled = true;
+			programarComidaToolStripMenuItem->Enabled = true;
+			generarReporteToolStripMenuItem->Enabled = true;
 		}
 
 		void EnableInternalUserOptions() {
-			addToolStripMenuItem->Visible = false;
-			programarComidaToolStripMenuItem->Visible = true;
-			generarReporteToolStripMenuItem->Visible = true;
+			addToolStripMenuItem->Enabled = false;
+			programarComidaToolStripMenuItem->Enabled = true;
+			generarReporteToolStripMenuItem->Enabled = true;
 		}
 
 		void EnablePortalUserOptions() {
-			addToolStripMenuItem->Visible = false;
-			programarComidaToolStripMenuItem->Visible = false;
-			generarReporteToolStripMenuItem->Visible = true;
+			addToolStripMenuItem->Enabled = false;
+			programarComidaToolStripMenuItem->Enabled = false;
+			generarReporteToolStripMenuItem->Enabled = true;
 		}
 
 	private: System::Void pbPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1030,10 +1030,10 @@ private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMe
 			MessageBox::Show("No se pudo realizar la configuración correctamente debido a:\n" + ex);
 		}
 	}
-	private: System::Void añadirDispensadorToolStripMenuItem_Click_1(System::Object^ sender, System::EventArgs^ e) 
+	private: System::Void añadirDispensadorToolStripMenuItem_Click_1(System::Object^ sender, System::EventArgs^ e)
 	{
 		AgregarDispensador^ form = gcnew AgregarDispensador();
 		form->ShowDialog();
 	}
-};
+	};
 }

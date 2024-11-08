@@ -24,7 +24,7 @@ namespace Interfaz {
 	public:
 		LoginForm(Form^ form)
 		{
-			refMainForm=form;
+			refMainForm = form;
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
@@ -64,7 +64,7 @@ namespace Interfaz {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -213,72 +213,72 @@ namespace Interfaz {
 
 		}
 #pragma endregion
-		public:
-			void Hide() {
-				for each (Control ^ control in this->Controls) {
-					if (control->GetType() == TextBox::typeid) {
-						dynamic_cast<TextBox^>(control)->Visible = false;
-					}
-					if (control->GetType() == PictureBox::typeid) {
-						dynamic_cast<PictureBox^>(control)->Visible = false;
-					}
-					if (control->GetType() == Label::typeid) {
-						dynamic_cast<Label^>(control)->Visible = false;
-					}
-					if (control->GetType() == Button::typeid) {
-						dynamic_cast<Button^>(control)->Visible = false;
-					}
-					if (control->GetType() == LinkLabel::typeid) {
-						dynamic_cast<LinkLabel^>(control)->Visible = false;
-					}
+	public:
+		void Hide() {
+			for each (Control ^ control in this->Controls) {
+				if (control->GetType() == TextBox::typeid) {
+					dynamic_cast<TextBox^>(control)->Visible = false;
+				}
+				if (control->GetType() == PictureBox::typeid) {
+					dynamic_cast<PictureBox^>(control)->Visible = false;
+				}
+				if (control->GetType() == Label::typeid) {
+					dynamic_cast<Label^>(control)->Visible = false;
+				}
+				if (control->GetType() == Button::typeid) {
+					dynamic_cast<Button^>(control)->Visible = false;
+				}
+				if (control->GetType() == LinkLabel::typeid) {
+					dynamic_cast<LinkLabel^>(control)->Visible = false;
 				}
 			}
-			void Show() {
-				for each (Control ^ control in this->Controls) {
-					if (control->GetType() == TextBox::typeid) {
-						dynamic_cast<TextBox^>(control)->Visible = true;
-					}
-					if (control->GetType() == PictureBox::typeid) {
-						dynamic_cast<PictureBox^>(control)->Visible = true;
-					}
-					if (control->GetType() == Label::typeid) {
-						dynamic_cast<Label^>(control)->Visible = true;
-					}
-					if (control->GetType() == Button::typeid) {
-						dynamic_cast<Button^>(control)->Visible = true;
-					}
-					if (control->GetType() == LinkLabel::typeid) {
-						dynamic_cast<LinkLabel^>(control)->Visible = true;
-					}
+		}
+		void Show() {
+			for each (Control ^ control in this->Controls) {
+				if (control->GetType() == TextBox::typeid) {
+					dynamic_cast<TextBox^>(control)->Visible = true;
+				}
+				if (control->GetType() == PictureBox::typeid) {
+					dynamic_cast<PictureBox^>(control)->Visible = true;
+				}
+				if (control->GetType() == Label::typeid) {
+					dynamic_cast<Label^>(control)->Visible = true;
+				}
+				if (control->GetType() == Button::typeid) {
+					dynamic_cast<Button^>(control)->Visible = true;
+				}
+				if (control->GetType() == LinkLabel::typeid) {
+					dynamic_cast<LinkLabel^>(control)->Visible = true;
 				}
 			}
+		}
 
-			User^ VerifyUser(String^ UserName, String^ Password) {
-				User^ result = nullptr;
-				List<User^>^ usersList = Service::ConsultarTodosUsuarios();
-				for (int i = 0; i < usersList->Count; i++) {
-					User^ user = usersList[i];
-					if (user->Name->Equals(UserName) && user->Password->Equals(Password))
-						result = user;
-				}
-				return result;
-				/*User^ usuario = Service::ConsultarUsuario(UserName);
-				if (usuario == nullptr) {
-					return false;
+		User^ VerifyUser(String^ UserName, String^ Password) {
+			User^ result = nullptr;
+			List<User^>^ usersList = Service::ConsultarTodosUsuarios();
+			for (int i = 0; i < usersList->Count; i++) {
+				User^ user = usersList[i];
+				if (user->Name->Equals(UserName) && user->Password->Equals(Password))
+					result = user;
+			}
+			return result;
+			/*User^ usuario = Service::ConsultarUsuario(UserName);
+			if (usuario == nullptr) {
+				return false;
+			}
+			else {
+				if (usuario->Password == Password) {
+					return true;
 				}
 				else {
-					if (usuario->Password == Password) {
-						return true;
-					}
-					else {
-						return false;
-					}
-				}*/
-			}
-			void AccessAddUserForm() {
-				AgregarUsuarios^ form = gcnew AgregarUsuarios();
-				form->ShowDialog();
-			}
+					return false;
+				}
+			}*/
+		}
+		void AccessAddUserForm() {
+			AgregarUsuarios^ form = gcnew AgregarUsuarios();
+			form->ShowDialog();
+		}
 
 
 	private: System::Void LoginForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -288,7 +288,7 @@ namespace Interfaz {
 		}
 
 	}
-private: System::Void btnAcces_Click(System::Object^ sender, System::EventArgs^ e);
-private: System::Void linkCreateAccount_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e);
-};
+	private: System::Void btnAcces_Click(System::Object^ sender, System::EventArgs^ e);
+	private: System::Void linkCreateAccount_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e);
+	};
 }

@@ -5,7 +5,6 @@ using namespace System::Collections::Generic;
 using namespace System::Xml::Serialization;
 using namespace Barry;
 
-
 namespace BarryPersistance {
 	public ref class Persistance
 	{
@@ -19,12 +18,12 @@ namespace BarryPersistance {
 		static List<Pet^>^ PetsList = gcnew List<Pet^>();
 	private:
 		//static List<int>^ lista_horarios = gcnew List<int>();
-		
+
 		static List<Dispenser^>^ lista_dispensadores = gcnew List<Dispenser^>();
 	public:
 		//static void PersistTextFile(String^ fileName, Object^ persistObject);
 		//static Object^ LoadTextFile(String^ fileName);
-		
+
 		//XML-Persist
 		static void PersistXMLFile(String^ fileName, Object^ persistObject);
 		//XML-Load
@@ -42,8 +41,8 @@ namespace BarryPersistance {
 
 		static void AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado);
 		static void EliminarHorarioDispensador(Dispenser^ dispensador, int horario);
-		
-		
+
+
 		//TXT-Persist
 		static void PersistTextFile(String^ fileName, Object^ persistObject);
 		//TXT-Load
@@ -51,7 +50,6 @@ namespace BarryPersistance {
 		static Object^ LoadDispensersTextFile(String^ fileName);
 		static Object^ LoadPetsTextFile(String^ fileName);
 		static Object^ LoadFoodTextFile(String^ fileName);
-		static Object^ LoadDispensationTextFile(String^ fileName);
 
 		static void AddDispensador(int id);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();

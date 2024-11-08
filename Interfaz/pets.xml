@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfPet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Pet>
+    <Id>1</Id>
+    <Name>2</Name>
+    <Weight>2</Weight>
+    <Specie>22</Specie>
+    <Status>2</Status>
+    <FoodServing>2</FoodServing>
+  </Pet>
+</ArrayOfPet>
