@@ -7,29 +7,4 @@
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
   </Dispenser>
-  <Dispenser>
-    <Id>3</Id>
-    <FeedingSchedule>
-      <int>1500</int>
-      <int>1600</int>
-      <int>1700</int>
-    </FeedingSchedule>
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
-  </Dispenser>
-  <Dispenser>
-    <Id>5</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
-  </Dispenser>
-  <Dispenser>
-    <Id>50</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
-  </Dispenser>
 </ArrayOfDispenser>
