@@ -35,6 +35,7 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Food^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
+
     }
     catch (Exception^ ex) {
         throw ex;
@@ -251,6 +252,15 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
                     f->Id, f->Name, f->Status, f->FoodAmount, f->FoodBrand, f->FoodPrice);
             }
         }
+        if (persistObject->GetType() == List<Dispensation^>::typeid) {
+            List<Dispensation^>^ dispensation = (List<Dispensation^>^) persistObject;
+            for (int i = 0; i < dispensation->Count; i++) {
+                Dispensation^ di = dispensation[i];
+                writer->WriteLine("{0}|{1}",
+                    di->Date, di->TimesDispensed);
+            }
+        }
+        
 
     }
     catch (Exception^ ex) { throw ex; }
@@ -381,6 +391,31 @@ Object^ BarryPersistance::Persistance::LoadFoodTextFile(String^ fileName)
             food->FoodBrand = record[4];
             food->FoodPrice = Convert::ToDouble(record[5]);
             ((List<Food^>^)result)->Add(food);
+        }
+    }
+    catch (Exception^ ex) { throw ex; }
+    finally {
+        if (reader != nullptr) reader->Close();
+        if (file != nullptr) file->Close();
+    }
+    return result;
+}
+
+Object^ BarryPersistance::Persistance::LoadDispensationTextFile(String^ fileName)
+{
+    FileStream^ file;
+    StreamReader^ reader;
+    Object^ result = gcnew List<Dispensation^>();
+    try {
+        file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+        reader = gcnew StreamReader(file);
+        while (!reader->EndOfStream) {
+            String^ line = reader->ReadLine();
+            array<String^>^ record = line->Split('|');
+            Dispensation^ dispensation = gcnew Dispensation();
+            dispensation->Date = Convert::ToDateTime(record[0]);
+            dispensation->TimesDispensed = Convert::ToInt32(record[1]);
+            ((List<Dispensation^>^)result)->Add(dispensation);
         }
     }
     catch (Exception^ ex) { throw ex; }

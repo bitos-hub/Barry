@@ -28,8 +28,8 @@ namespace ServiceBarry {
 		static String^ XML_FOOD_FILE_NAME = "foods.xml";
 		static String^ TXT_FOOD_FILE_NAME = "foods.txt";
 
-
-
+		//dispensation
+		static String^ TXT_DISPENSATION_FILE_NAME = "dispensations.txt";
 	private:
 		static List<User^>^ lista_usuarios = gcnew List<User^>();
 		//static List<Administrator^>^ lista_admins = gcnew List<Administrator^>();
@@ -37,6 +37,9 @@ namespace ServiceBarry {
 		//static List<InternalUser^>^ lista_internalUser = gcnew List<InternalUser^>();
 		//static List<Pet^>^ PetsList = gcnew List<Pet^>();
 		static List<Food^>^ FoodList = gcnew List<Food^>();
+
+		static List<Dispensation^>^ DispensationList = gcnew List<Dispensation^>();
+
 		static List<String^>^ commandsList = gcnew List<String^>;
 		static SerialPort^ ArduinoPort;
 	public:
@@ -77,6 +80,9 @@ namespace ServiceBarry {
 		static Pet^ ConsultarMascotaPorNombre(String^ nombreMascota);
 
 		static List<int>^ ConsultarTodosHorariosPorDispensador(Dispenser^ dispensador);
+
+		static List<Dispensation^>^ ConsultarDispensadas();
+
 		static void AddDispensador(int id);
 		static void EliminarDispensador(int);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();
