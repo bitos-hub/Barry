@@ -2,7 +2,9 @@
 <ArrayOfDispenser xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dispenser>
     <Id>1</Id>
-    <FeedingSchedule />
+    <FeedingSchedule>
+      <int>1250</int>
+    </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
