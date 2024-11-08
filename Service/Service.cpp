@@ -251,6 +251,19 @@ List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorDispensador(Dispenser
 	return dispensador->FeedingSchedule;
 }
 
+List<Dispensation^>^ ServiceBarry::Service::ConsultarDispensadas()
+{
+	try {
+		DispensationList = (List<Dispensation^>^)Persistance::LoadDispensationTextFile(TXT_DISPENSATION_FILE_NAME);
+		if (DispensationList == nullptr)
+			DispensationList = gcnew List<Dispensation^>();
+	}
+	catch (FileNotFoundException^ ex) {
+	}
+	return DispensationList;
+}
+
+
 void ServiceBarry::Service::AddDispensador(int id)
 {
 	return Persistance::AddDispensador(id);
@@ -299,10 +312,37 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 	String^ result;
 	try {
 		OpenPort();
+		
+		Dispensation^ existingDispensation = nullptr;
+		for each (Dispensation ^ disp in DispensationList) {
+			if (disp->Date == DateTime::Now) {
+				existingDispensation = disp;
+				break;
+			}
+		}
+		// Si no existe, crear una nueva
+		if (existingDispensation == nullptr) {
+			existingDispensation = gcnew Dispensation(DateTime::Now, 0);
+			DispensationList->Add(existingDispensation);
+		}
+		else {
+
+			existingDispensation->TimesDispensed += 1;
+			for (int i = 0; i < DispensationList->Count; i++) {
+				if (DispensationList[i]->Date == existingDispensation->Date) {
+					DispensationList[i] = existingDispensation;
+				}
+			}
+		}
+		Persistance::PersistTextFile(TXT_DISPENSATION_FILE_NAME, DispensationList);
+
+		
 		Pet^ pet = QueryPetById(petId);
 		result = "Se están dispensando " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
 		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
 		ArduinoPort->Write(Convert::ToString(FoodServingByte,16));
+		
+
 	}
 	catch (Exception^ ex) {
 		throw ex;
