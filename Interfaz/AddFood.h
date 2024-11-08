@@ -105,7 +105,7 @@ namespace Interfaz {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -529,129 +529,129 @@ namespace Interfaz {
 #pragma endregion
 	private: System::Void label4_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void AddFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-	try {
+	private: System::Void AddFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
 
-		int id = Convert::ToInt32(FoodIdtxt->Text);
-		String^ foodName = FoodNametxt->Text;
-		String^ brand = FoodBrandtxt->Text;
-		String^ status = Statustxt->Text;
-		double foodPrice = Convert::ToDouble(FoodPricetxt->Text);
-		double foodAmount = Convert::ToDouble(FoodAmountxt->Text);
+			//int id = Convert::ToInt32(FoodIdtxt->Text);
+			Food^ food = gcnew Food();
+			food->Name = FoodNametxt->Text;
+			food->FoodBrand = FoodBrandtxt->Text;
+			food->Status = Statustxt->Text;
+			food->FoodPrice = Convert::ToDouble(FoodPricetxt->Text);
+			food->FoodAmount = Convert::ToDouble(FoodAmountxt->Text);
 
-		Food^ food = gcnew Food(id, brand, foodPrice, foodName, status, foodAmount);
-		Service::AddFood(food);
+			Service::AddFood(food);
+			ShowFoods();
+			Clear();
+			MessageBox::Show("Comida agregada con éxito");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("No se ha podido agregar la mascota por el siguiente motivo:\n" +
+				ex->Message);
+		}
+
+	}
+	private: System::Void UpdateFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+
+		String^ Id = FoodIdtxt->Text->Trim();
+		if (Id->Equals("")) {
+			MessageBox::Show("Debe seleccionar una comida");
+			return;
+		}
+		try {
+			int id = Convert::ToInt32(Id);
+			String^ foodName = FoodNametxt->Text;
+			String^ brand = FoodBrandtxt->Text;
+			String^ status = Statustxt->Text;
+			double foodPrice = Convert::ToDouble(FoodPricetxt->Text);
+			double foodAmount = Convert::ToDouble(FoodAmountxt->Text);
+
+
+			Food^ food = gcnew Food(id, brand, foodPrice, foodName, status, foodAmount);
+			Service::UpdateFood(food);
+			ShowFoods();
+			Clear();
+			MessageBox::Show("Se ha modificado la comida " + foodName);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("No se ha podido modificar la comida por el siguiente motivo:\n" +
+				ex->Message);
+		}
+
+	}
+	private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void FoodAmountxt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	public:
+		void ShowFoods() {
+			List<Food^>^ foodList = Service::QueryAllFoods();
+			if (foodList != nullptr) {
+				foodGrid->Rows->Clear();
+				for (int i = 0; i < foodList->Count; i++) {
+					foodGrid->Rows->Add(gcnew array<String^> {"" + foodList[i]->Id,
+						foodList[i]->Name,
+						foodList[i]->FoodBrand,
+						"" + foodList[i]->FoodPrice,
+						"" + foodList[i]->FoodAmount,
+						foodList[i]->Status});
+				}
+			}
+		}
+		void Clear() {
+			for each (Control ^ control in this->Controls) {
+				if (control->GetType() == TextBox::typeid) {
+					dynamic_cast<TextBox^>(control)->Text = "";
+				}
+			}
+		}
+	private: System::Void DeleteFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ Id = FoodIdtxt->Text->Trim();
+		if (Id->Equals("")) {
+			MessageBox::Show("Debe seleccionar una comida");
+			return;
+		}
+		try {
+			Service::DeleteFood(Convert::ToInt32(Id));
+			ShowFoods();
+			Clear();
+			MessageBox::Show("Se ha eliminado la comida ");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("No ha sido posible eliminar la comida por el siguiente motivo:\n" +
+				ex->Message);
+		}
+	}
+	private: System::Void foodGrid_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		if (foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
+
+
+			int Id = Convert::ToInt32(foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+			Food^ food = Service::QueryFoodbyId(Id);
+			FoodIdtxt->Text = "" + Id;
+			FoodNametxt->Text = food->Name;
+			FoodBrandtxt->Text = food->FoodBrand;
+			Statustxt->Text = food->Status;
+			FoodPricetxt->Text = "" + food->FoodPrice;
+			FoodAmountxt->Text = "" + food->FoodAmount;
+		}
+		else {
+			MessageBox::Show("Debe seleccionar una casilla válida.");
+		}
+	}
+	private: System::Void añadirMascotasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void salirToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+	}
+	private: System::Void FoodIdtxt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void AddFood_Load(System::Object^ sender, System::EventArgs^ e) {
 		ShowFoods();
-		Clear();
-		MessageBox::Show("Comida agregada con éxito");
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show("No se ha podido agregar la mascota por el siguiente motivo:\n" +
-			ex->Message);
+	private: System::Void cerrarSesionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+		Application::Restart();
 	}
-	
-}
-private: System::Void UpdateFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-
-	String^ Id = FoodIdtxt->Text->Trim();
-	if (Id->Equals("")) {
-		MessageBox::Show("Debe seleccionar una comida");
-		return;
-	}
-	try {
-		int id = Convert::ToInt32(Id);
-		String^ foodName = FoodNametxt->Text;
-		String^ brand = FoodBrandtxt->Text;
-		String^ status = Statustxt->Text;
-		double foodPrice = Convert::ToDouble(FoodPricetxt->Text);
-		double foodAmount = Convert::ToDouble(FoodAmountxt->Text);
-
-
-		Food^ food = gcnew Food(id, brand, foodPrice, foodName, status, foodAmount);
-		Service::UpdateFood(food);
-		ShowFoods();
-		Clear();
-		MessageBox::Show("Se ha modificado la comida "+ "" + id + "-" + foodName);
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("No se ha podido modificar la comida por el siguiente motivo:\n" +
-			ex->Message);
-	}
-
-}
-private: System::Void pictureBox2_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void FoodAmountxt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-	   public:
-		   void ShowFoods() {
-			   List<Food^>^ foodList = Service::QueryAllFoods();
-			   if (foodList != nullptr) {
-				   foodGrid->Rows->Clear();
-				   for (int i = 0; i < foodList->Count; i++) {
-					   foodGrid->Rows->Add(gcnew array<String^> {"" + foodList[i]->Id,
-						   foodList[i]->Name,
-						   foodList[i]->FoodBrand,
-						   "" + foodList[i]->FoodPrice,
-						   "" + foodList[i]->FoodAmount,
-						   foodList[i]->Status});
-				   }
-			   }
-		   }
-		   void Clear() {
-			   for each (Control ^ control in this->Controls) {
-				   if (control->GetType() == TextBox::typeid) {
-					   dynamic_cast<TextBox^>(control)->Text = "";
-				   }
-			   }
-		   }
-private: System::Void DeleteFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ Id = FoodIdtxt->Text->Trim();
-	if (Id->Equals("")) {
-		MessageBox::Show("Debe seleccionar una comida");
-		return;
-	}
-	try {
-		Service::DeleteFood(Convert::ToInt32(Id));
-		ShowFoods();
-		Clear();
-		MessageBox::Show("Se ha eliminado la comida "+ Id);
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("No ha sido posible eliminar la comida por el siguiente motivo:\n" +
-			ex->Message);
-	}
-}
-private: System::Void foodGrid_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	if (foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
-
-
-		int Id = Convert::ToInt32(foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-		Food^ food = Service::QueryFoodbyId(Id);
-		FoodIdtxt->Text = "" + Id;
-		FoodNametxt->Text = food->Name;
-		FoodBrandtxt->Text = food->FoodBrand;
-		Statustxt->Text = food->Status;
-		FoodPricetxt->Text = "" + food->FoodPrice;
-		FoodAmountxt->Text = "" + food->FoodAmount;
-	}
-	else {
-		MessageBox::Show("Debe seleccionar una casilla válida.");
-	}
-}
-private: System::Void añadirMascotasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void salirToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
-private: System::Void FoodIdtxt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void AddFood_Load(System::Object^ sender, System::EventArgs^ e) {
-	ShowFoods();
-}
-private: System::Void cerrarSesionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-	Application::Restart();
-}
-};
+	};
 }

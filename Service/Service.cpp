@@ -1,5 +1,5 @@
 #include "pch.h"
-	
+
 #include "Service.h"
 #include "Excepcion_existe_admin.h"
 #include "PetIdNoFoundException.h"
@@ -25,19 +25,11 @@ int ServiceBarry::Service::VerifyAdmin()
 void ServiceBarry::Service::AddUsuario(User^ usuario)
 {
 	lista_usuarios->Add(usuario);
+	int id = lista_usuarios->Count;
+	lista_usuarios[id - 1]->Id = id;
 	Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 	Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-	//Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
-	/*
-	if (usuario->GetType() == Administrator::typeid) {
-		Persistance::PersistXMLFile(XML_ADMINS_FILE_NAME, lista_admins);
-	}
-	if (usuario->GetType() == PortalUser::typeid) {
-		Persistance::PersistXMLFile(XML_PORTAL_USERS_FILE_NAME, lista_portalUsers);
-	}
-	if (usuario->GetType() == InternalUser::typeid) {
-		Persistance::PersistXMLFile(XML_INTERNAL_USERS_FILE_NAME, lista_internalUser);
-	}*/
+	Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 }
 
 void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
@@ -47,7 +39,7 @@ void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
 			lista_usuarios[i] = usuario;
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-			//Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
+			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -60,7 +52,7 @@ void ServiceBarry::Service::EliminarUsuario(int id)
 			lista_usuarios->RemoveAt(i);
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-			//Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
+			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -68,7 +60,7 @@ void ServiceBarry::Service::EliminarUsuario(int id)
 
 User^ ServiceBarry::Service::ConsultarUsuario(String^ UserName)
 {
-	for each (User^ user in lista_usuarios) {
+	for each (User ^ user in lista_usuarios) {
 		if (user->Name == UserName) {
 			return user;
 		}
@@ -90,12 +82,15 @@ List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 	return lista_usuarios;
 }
 
-void ServiceBarry::Service::AddPet(Pet^ pet)
+int ServiceBarry::Service::AddPet(Pet^ pet)
 {
 	Persistance::PetsList->Add(pet);
+	int id = Persistance::PetsList->Count;
+	Persistance::PetsList[id - 1]->Id = id;
 	Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 	Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
 	Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
+	return id;
 }
 
 void ServiceBarry::Service::UpdatePet(Pet^ pet)
@@ -116,6 +111,9 @@ void ServiceBarry::Service::DeletePet(int id)
 	for (int i = 0; i < Persistance::PetsList->Count; i++) {
 		if (Persistance::PetsList[i]->Id == id) {
 			Persistance::PetsList->RemoveAt(i);
+			for (int j = i; j < Persistance::PetsList->Count; j++) {
+				Persistance::PetsList[j]->Id--;
+			}
 			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 			Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
 			Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
@@ -153,13 +151,13 @@ List<Pet^>^ ServiceBarry::Service::QueryAllPets()
 void ServiceBarry::Service::AddFood(Food^ food)
 {
 	FoodList->Add(food);
-	//Persistance::PersistTextFile(TXT_ROBOT_FILE_NAME, robotsList);
-	//Persistance::PersistXMLFile(XML_ROBOT_FILE_NAME, robotsList);
+	int id = FoodList->Count;
+	FoodList[id - 1]->Id = id;
 	Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 	Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
 	Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
 
-	
+
 }
 
 void ServiceBarry::Service::UpdateFood(Food^ food)
@@ -180,6 +178,9 @@ void ServiceBarry::Service::DeleteFood(int id)
 	for (int i = 0; i < FoodList->Count; i++) {
 		if (FoodList[i]->Id == id) {
 			FoodList->RemoveAt(i);
+			for (int j = i; j < FoodList->Count; j++) {
+				FoodList[j]->Id--;
+			}
 			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 			Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
 			Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
@@ -199,16 +200,16 @@ Food^ ServiceBarry::Service::QueryFoodbyId(int id)
 }
 List<Food^>^ ServiceBarry::Service::QueryAllFoods()
 {
-	
+
 	try {
-		
+
 		FoodList = (List<Food^>^)Persistance::LoadBinaryFile(BIN_FOOD_FILE_NAME);
 		if (FoodList == nullptr)
 			FoodList = gcnew List<Food^>();
 	}
 	catch (FileNotFoundException^ ex) {
 	}
-	
+
 	return FoodList;
 }
 
@@ -251,19 +252,6 @@ List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorDispensador(Dispenser
 	return dispensador->FeedingSchedule;
 }
 
-List<Dispensation^>^ ServiceBarry::Service::ConsultarDispensadas()
-{
-	try {
-		DispensationList = (List<Dispensation^>^)Persistance::LoadDispensationTextFile(TXT_DISPENSATION_FILE_NAME);
-		if (DispensationList == nullptr)
-			DispensationList = gcnew List<Dispensation^>();
-	}
-	catch (FileNotFoundException^ ex) {
-	}
-	return DispensationList;
-}
-
-
 void ServiceBarry::Service::AddDispensador(int id)
 {
 	return Persistance::AddDispensador(id);
@@ -286,12 +274,12 @@ Dispenser^ ServiceBarry::Service::ConsultarDispensadorPorId(int id)
 
 void ServiceBarry::Service::AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario)
 {
-	return Persistance::AddHorarioDispensador(dispensadorSeleccionado,horario);
+	return Persistance::AddHorarioDispensador(dispensadorSeleccionado, horario);
 }
 
 void ServiceBarry::Service::EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador)
 {
-	return Persistance::EliminarDispensadorPorMascota(mascota,dispensador);
+	return Persistance::EliminarDispensadorPorMascota(mascota, dispensador);
 }
 
 Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
@@ -312,37 +300,10 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 	String^ result;
 	try {
 		OpenPort();
-		
-		Dispensation^ existingDispensation = nullptr;
-		for each (Dispensation ^ disp in DispensationList) {
-			if (disp->Date == DateTime::Now) {
-				existingDispensation = disp;
-				break;
-			}
-		}
-		// Si no existe, crear una nueva
-		if (existingDispensation == nullptr) {
-			existingDispensation = gcnew Dispensation(DateTime::Now, 0);
-			DispensationList->Add(existingDispensation);
-		}
-		else {
-
-			existingDispensation->TimesDispensed += 1;
-			for (int i = 0; i < DispensationList->Count; i++) {
-				if (DispensationList[i]->Date == existingDispensation->Date) {
-					DispensationList[i] = existingDispensation;
-				}
-			}
-		}
-		Persistance::PersistTextFile(TXT_DISPENSATION_FILE_NAME, DispensationList);
-
-		
 		Pet^ pet = QueryPetById(petId);
-		result = "Se están dispensando " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
+		result = "Se están dispensando " + Convert::ToString(pet->FoodServing) + "g en el plato de " + pet->Name;
 		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
-		ArduinoPort->Write(Convert::ToString(FoodServingByte,16));
-		
-
+		ArduinoPort->Write(Convert::ToString(FoodServingByte, 16));
 	}
 	catch (Exception^ ex) {
 		throw ex;
@@ -351,7 +312,7 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 		ClosePort();
 	}
 	return result;
-	
+
 }
 
 void ServiceBarry::Service::OpenPort()
@@ -377,4 +338,3 @@ void ServiceBarry::Service::ClosePort()
 		throw ex;
 	}
 }
-

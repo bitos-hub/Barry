@@ -13,8 +13,11 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Pet^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
-
-        if (persistObject->GetType() == List<Administrator^>::typeid) {
+        if (persistObject->GetType() == List<User^>::typeid) {
+            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<User^>::typeid);
+            xmlSerializer->Serialize(writer, persistObject);
+        }
+        /*if (persistObject->GetType() == List<Administrator^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Administrator^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
@@ -25,7 +28,7 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
         if (persistObject->GetType() == List<InternalUser^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<InternalUser^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
-        }
+        }*/
 
         if (persistObject->GetType() == List<Dispenser^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Dispenser^>::typeid);
@@ -35,7 +38,6 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Food^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
-
     }
     catch (Exception^ ex) {
         throw ex;
@@ -199,7 +201,7 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
     FileStream^ file;
     StreamWriter^ writer;
     try {
-        file = gcnew FileStream(fileName, FileMode::CreateNew, FileAccess::Write);
+        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
         writer = gcnew StreamWriter(file);
         if (persistObject->GetType() == List<String^>::typeid) {
             List<String^>^ commands = (List<String^>^) persistObject;
@@ -212,7 +214,7 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
             List<User^>^ users = (List<User^>^) persistObject;
             for (int i = 0; i < users->Count; i++) {
                 User^ u = users[i];
-                if (u->HistorialActividades !=nullptr) {
+                if (u->HistorialActividades != nullptr) {
                     String^ historialString = String::Join(";", u->HistorialActividades->ToArray());
                     writer->WriteLine("{0}|{1}|{2}|{3}|{4}|{5}",
                         u->Id, u->Name, historialString, u->Password, u->PhoneNumber, u->Role);
@@ -252,15 +254,6 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
                     f->Id, f->Name, f->Status, f->FoodAmount, f->FoodBrand, f->FoodPrice);
             }
         }
-        if (persistObject->GetType() == List<Dispensation^>::typeid) {
-            List<Dispensation^>^ dispensation = (List<Dispensation^>^) persistObject;
-            for (int i = 0; i < dispensation->Count; i++) {
-                Dispensation^ di = dispensation[i];
-                writer->WriteLine("{0}|{1}",
-                    di->Date, di->TimesDispensed);
-            }
-        }
-        
 
     }
     catch (Exception^ ex) { throw ex; }
@@ -352,7 +345,7 @@ Object^ BarryPersistance::Persistance::LoadPetsTextFile(String^ fileName)
             Dispenser^ dispenser = gcnew Dispenser();
             dispenser->Id = Convert::ToInt32(record[4]);
             pet->PetDispenser = dispenser;
-  
+
             if (record[5] != "") {
                 array<Byte>^ photoBytes = Convert::FromBase64String(record[5]);
                 pet->Photo = photoBytes;
@@ -383,7 +376,7 @@ Object^ BarryPersistance::Persistance::LoadFoodTextFile(String^ fileName)
             String^ line = reader->ReadLine();
             array<String^>^ record = line->Split('|');
             Food^ food = gcnew Food();
-            
+
             food->Id = Convert::ToInt32(record[0]);
             food->Name = record[1];
             food->Status = record[2];
@@ -391,31 +384,6 @@ Object^ BarryPersistance::Persistance::LoadFoodTextFile(String^ fileName)
             food->FoodBrand = record[4];
             food->FoodPrice = Convert::ToDouble(record[5]);
             ((List<Food^>^)result)->Add(food);
-        }
-    }
-    catch (Exception^ ex) { throw ex; }
-    finally {
-        if (reader != nullptr) reader->Close();
-        if (file != nullptr) file->Close();
-    }
-    return result;
-}
-
-Object^ BarryPersistance::Persistance::LoadDispensationTextFile(String^ fileName)
-{
-    FileStream^ file;
-    StreamReader^ reader;
-    Object^ result = gcnew List<Dispensation^>();
-    try {
-        file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
-        reader = gcnew StreamReader(file);
-        while (!reader->EndOfStream) {
-            String^ line = reader->ReadLine();
-            array<String^>^ record = line->Split('|');
-            Dispensation^ dispensation = gcnew Dispensation();
-            dispensation->Date = Convert::ToDateTime(record[0]);
-            dispensation->TimesDispensed = Convert::ToInt32(record[1]);
-            ((List<Dispensation^>^)result)->Add(dispensation);
         }
     }
     catch (Exception^ ex) { throw ex; }
@@ -466,7 +434,7 @@ void BarryPersistance::Persistance::EliminarDispensador(int id)
             break;
         }
     }
-    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME,lista_dispensadores);
+    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
     if (!encontrado) {
         throw gcnew System::Exception("No existe un dispensador con ese ID");
     }
@@ -475,7 +443,7 @@ void BarryPersistance::Persistance::EliminarDispensador(int id)
 Dispenser^ BarryPersistance::Persistance::ConsultarDispensadorPorId(int id)
 {
     lista_dispensadores = ConsultarTodosDispensadores();
-    for each (Dispenser^ d in lista_dispensadores) {
+    for each (Dispenser ^ d in lista_dispensadores) {
         if (d->Id == id) {
             return d;
         }
@@ -486,9 +454,9 @@ Dispenser^ BarryPersistance::Persistance::ConsultarDispensadorPorId(int id)
 void BarryPersistance::Persistance::AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario)
 {
     lista_dispensadores = ConsultarTodosDispensadores();
-    for (int i = 0; i < lista_dispensadores->Count;i++) {
+    for (int i = 0; i < lista_dispensadores->Count; i++) {
         Dispenser^ dispensador = lista_dispensadores[i];
-        if (dispensador->Id==dispensadorSeleccionado->Id) {
+        if (dispensador->Id == dispensadorSeleccionado->Id) {
             if (dispensadorSeleccionado->FeedingSchedule->Contains(horario)) {
                 throw gcnew System::Exception("Ya se tiene este horario añadido.");
             }
@@ -498,28 +466,28 @@ void BarryPersistance::Persistance::AddHorarioDispensador(Dispenser^ dispensador
             }
         }
     }
-    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME,lista_dispensadores);
-    PersistXMLFile(XML_DISPENSADOR_FILE_NAME,lista_dispensadores);
+    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
+    PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
 }
 
 void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador)
 {
-   
-   for (int i = 0; i < PetsList->Count; i++) {
-       Pet^ m = PetsList[i];
-       if (m->PetDispenser == nullptr) {
-           m->PetDispenser = gcnew Dispenser();
-       }
-       if (m->Name==mascota->Name) {
-           if (m->PetDispenser->Id==dispensador->Id) {
-               m->PetDispenser->Id = 0;
-           }
-           else {
-               throw gcnew System::Exception("La mascota no está asignada a este dispensador.");
-           }
-       }
-        
-   }
+
+    for (int i = 0; i < PetsList->Count; i++) {
+        Pet^ m = PetsList[i];
+        if (m->PetDispenser == nullptr) {
+            m->PetDispenser = gcnew Dispenser();
+        }
+        if (m->Name == mascota->Name) {
+            if (m->PetDispenser->Id == dispensador->Id) {
+                m->PetDispenser->Id = 0;
+            }
+            else {
+                throw gcnew System::Exception("La mascota no está asignada a este dispensador.");
+            }
+        }
+
+    }
     PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
     PersistXMLFile(XML_PET_FILE_NAME, PetsList);
 
@@ -527,30 +495,30 @@ void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, 
 
 void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado)
 {
-        mascotaSeleccionada->PetDispenser = gcnew Dispenser();
-        for (int i = 0; i < PetsList->Count; i++) {
-            Pet^ m = PetsList[i];
-            if (m->PetDispenser==nullptr) {
-                m->PetDispenser = gcnew Dispenser();
-            }
-            
-            if (m->PetDispenser->Id == DispensadorSeleccionado->Id) {
-                throw gcnew System::Exception("Ya hay una mascota asignada a este dispensador.");
-            }
-            
-                if (m->Name == mascotaSeleccionada->Name) {
-                    mascotaSeleccionada->PetDispenser = DispensadorSeleccionado;
-                    m->PetDispenser = DispensadorSeleccionado;
-                }
+    mascotaSeleccionada->PetDispenser = gcnew Dispenser();
+    for (int i = 0; i < PetsList->Count; i++) {
+        Pet^ m = PetsList[i];
+        if (m->PetDispenser == nullptr) {
+            m->PetDispenser = gcnew Dispenser();
         }
-        PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
-        PersistXMLFile(XML_PET_FILE_NAME, PetsList);
+
+        if (m->PetDispenser->Id == DispensadorSeleccionado->Id) {
+            throw gcnew System::Exception("Ya hay una mascota asignada a este dispensador.");
+        }
+
+        if (m->Name == mascotaSeleccionada->Name) {
+            mascotaSeleccionada->PetDispenser = DispensadorSeleccionado;
+            m->PetDispenser = DispensadorSeleccionado;
+        }
+    }
+    PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
+    PersistXMLFile(XML_PET_FILE_NAME, PetsList);
 }
 
 void BarryPersistance::Persistance::EliminarHorarioDispensador(Dispenser^ dispensador, int horario)
 {
     lista_dispensadores = ConsultarTodosDispensadores();
-    for (int i = 0; i < lista_dispensadores->Count;i++) {
+    for (int i = 0; i < lista_dispensadores->Count; i++) {
         Dispenser^ d = lista_dispensadores[i];
         if (d->Id == dispensador->Id) {
             if (d->FeedingSchedule->Contains(horario)) {
