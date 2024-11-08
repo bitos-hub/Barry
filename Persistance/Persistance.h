@@ -5,6 +5,7 @@ using namespace System::Collections::Generic;
 using namespace System::Xml::Serialization;
 using namespace Barry;
 
+
 namespace BarryPersistance {
 	public ref class Persistance
 	{
@@ -50,6 +51,7 @@ namespace BarryPersistance {
 		static Object^ LoadDispensersTextFile(String^ fileName);
 		static Object^ LoadPetsTextFile(String^ fileName);
 		static Object^ LoadFoodTextFile(String^ fileName);
+		static Object^ LoadDispensationTextFile(String^ fileName);
 
 		static void AddDispensador(int id);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();
