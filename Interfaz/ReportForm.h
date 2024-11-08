@@ -5,9 +5,12 @@ namespace Interfaz {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
+	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace Barry;
+	using namespace ServiceBarry;
 
 	/// <summary>
 	/// Resumen de ReportForm
@@ -71,13 +74,13 @@ namespace Interfaz {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ReportForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea4 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series4 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->dispensedTimeschart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -101,20 +104,21 @@ namespace Interfaz {
 			// 
 			// dispensedTimeschart
 			// 
-			chartArea3->Name = L"ChartArea1";
-			this->dispensedTimeschart->ChartAreas->Add(chartArea3);
-			legend3->Name = L"Legend1";
-			this->dispensedTimeschart->Legends->Add(legend3);
-			this->dispensedTimeschart->Location = System::Drawing::Point(351, 186);
+			chartArea1->Name = L"ChartArea1";
+			this->dispensedTimeschart->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->dispensedTimeschart->Legends->Add(legend1);
+			this->dispensedTimeschart->Location = System::Drawing::Point(351, 196);
 			this->dispensedTimeschart->Name = L"dispensedTimeschart";
 			this->dispensedTimeschart->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
-			series3->ChartArea = L"ChartArea1";
-			series3->Legend = L"Legend1";
-			series3->Name = L"Series1";
-			this->dispensedTimeschart->Series->Add(series3);
-			this->dispensedTimeschart->Size = System::Drawing::Size(319, 276);
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"Veces Dispensado";
+			this->dispensedTimeschart->Series->Add(series1);
+			this->dispensedTimeschart->Size = System::Drawing::Size(654, 455);
 			this->dispensedTimeschart->TabIndex = 0;
 			this->dispensedTimeschart->Text = L"chart1";
+			this->dispensedTimeschart->UseWaitCursor = true;
 			// 
 			// label1
 			// 
@@ -142,7 +146,7 @@ namespace Interfaz {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1052, 13);
+			this->pictureBox1->Location = System::Drawing::Point(1302, 9);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(113, 129);
@@ -156,7 +160,7 @@ namespace Interfaz {
 			this->label2->BackColor = System::Drawing::Color::Gainsboro;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(695, 154);
+			this->label2->Location = System::Drawing::Point(1097, 152);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(292, 29);
 			this->label2->TabIndex = 17;
@@ -193,18 +197,18 @@ namespace Interfaz {
 			// 
 			// WeightsCharts
 			// 
-			chartArea4->Name = L"ChartArea1";
-			this->WeightsCharts->ChartAreas->Add(chartArea4);
-			legend4->Name = L"Legend1";
-			this->WeightsCharts->Legends->Add(legend4);
-			this->WeightsCharts->Location = System::Drawing::Point(700, 186);
+			chartArea2->Name = L"ChartArea1";
+			this->WeightsCharts->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->WeightsCharts->Legends->Add(legend2);
+			this->WeightsCharts->Location = System::Drawing::Point(1102, 196);
 			this->WeightsCharts->Name = L"WeightsCharts";
 			this->WeightsCharts->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
-			series4->ChartArea = L"ChartArea1";
-			series4->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series4->Legend = L"Legend1";
-			series4->Name = L"Series1";
-			this->WeightsCharts->Series->Add(series4);
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Series1";
+			this->WeightsCharts->Series->Add(series2);
 			this->WeightsCharts->Size = System::Drawing::Size(305, 276);
 			this->WeightsCharts->TabIndex = 21;
 			this->WeightsCharts->Text = L"chart2";
@@ -243,7 +247,7 @@ namespace Interfaz {
 			this->pictureBox4->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox4->Location = System::Drawing::Point(319, 132);
 			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(716, 363);
+			this->pictureBox4->Size = System::Drawing::Size(716, 607);
 			this->pictureBox4->TabIndex = 27;
 			this->pictureBox4->TabStop = false;
 			// 
@@ -251,7 +255,7 @@ namespace Interfaz {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1169, 571);
+			this->ClientSize = System::Drawing::Size(1428, 769);
 			this->Controls->Add(this->txtGeneratedTime);
 			this->Controls->Add(this->label6);
 			this->Controls->Add(this->WeightsCharts);
@@ -283,16 +287,14 @@ namespace Interfaz {
 		txtGeneratedTime->Text = Convert::ToString(DateTime::Now);
 		if (ReportType == 1) {//reporte semanal
 
+			List<Dispensation^>^ dispensationList = Service::ConsultarDispensadas();
 
-			
-			/*List<double>^ dispensedTimesList = Service::QueryAllOrders();
-			for (int i = 0; i < dispensedTimesList->Count; i++) {
-				dispensedTimeschart->Series["Veces Dispensado"]->Points->Add(dispensedTimesList[i]->TimesDispenssed);
-				dispensedTimeschart->Series["Veces Dispensado"]->Points[i]->AxisLabel = "" + dispensedTimesList[i]->Date + "\n" +
-					ordersList[i]->GeneratedBy->Name;
-				dispensedTimeschart->Series["Veces Dispensado"]->Points[i]->Label = "" + dispensedTimesList[i]->TimesDispenssed;
+			for (int i = 0; i < dispensationList->Count; i++) {
+				dispensedTimeschart->Series["Veces Dispensado"]->Points->Add(dispensationList[i]->TimesDispensed);
+				dispensedTimeschart->Series["Veces Dispensado"]->Points[i]->AxisLabel = "" + dispensationList[i]->Date;
+				dispensedTimeschart->Series["Veces Dispensado"]->Points[i]->Label = "" + dispensationList[i]->TimesDispensed;
 			}
-			*/
+			
 		}
 		else {
 			//reporte mensual
