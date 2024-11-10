@@ -369,6 +369,9 @@ private: System::Void ModoDispensador_Load(System::Object^ sender, System::Event
 }
 	   public:
 	   void AddComida(Food^ comida) {
+		   if (comida==nullptr) {
+			   comida = gcnew Food();
+		   }
 		   txtComida->Text = comida->Name;
 		   Service::AsignarComidaDispensador(dispensadorSeleccionado,comida);
 	   }

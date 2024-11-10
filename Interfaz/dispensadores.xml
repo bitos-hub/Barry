@@ -2,18 +2,14 @@
 <ArrayOfDispenser xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dispenser>
     <Id>1</Id>
-    <FeedingSchedule>
-      <int>1700</int>
-      <int>1600</int>
-      <int>1500</int>
-    </FeedingSchedule>
+    <FeedingSchedule />
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
     <DispensadorAsignado>
       <Marca>Samsung</Marca>
       <Modelo>SM210</Modelo>
-      <Color>Amarillo</Color>
+      <Color>Verde</Color>
       <Largo>18</Largo>
       <Ancho>16</Ancho>
       <Alto>25</Alto>
@@ -22,13 +18,32 @@
       <FuenteAlimentacion>Baterías</FuenteAlimentacion>
     </DispensadorAsignado>
     <ComidaAsignada>
-      <Id>2</Id>
-      <FoodBrand>Canbo</FoodBrand>
-      <FoodPrice>15</FoodPrice>
-      <Name>Paté</Name>
-      <Status />
-      <FoodAmount>4</FoodAmount>
+      <Id>0</Id>
+      <FoodPrice>0</FoodPrice>
+      <FoodAmount>0</FoodAmount>
     </ComidaAsignada>
-    <ModoOperacion>Horarios</ModoOperacion>
+  </Dispenser>
+  <Dispenser>
+    <Id>1</Id>
+    <FeedingSchedule />
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+    <DispensadorAsignado>
+      <Marca>Nexxt</Marca>
+      <Modelo>NXXT03</Modelo>
+      <Color>Negro</Color>
+      <Largo>18</Largo>
+      <Ancho>18</Ancho>
+      <Alto>25</Alto>
+      <Capacidad>7kg</Capacidad>
+      <Material>Polipropileno</Material>
+      <FuenteAlimentacion>Panel Solar</FuenteAlimentacion>
+    </DispensadorAsignado>
+    <ComidaAsignada>
+      <Id>0</Id>
+      <FoodPrice>0</FoodPrice>
+      <FoodAmount>0</FoodAmount>
+    </ComidaAsignada>
   </Dispenser>
 </ArrayOfDispenser>
