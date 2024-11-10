@@ -1,6 +1,5 @@
 #pragma once
 #include "AddFood.h"
-#include "AgregarHorarios.h"
 #include "AgregarUsuarios.h"
 #include "LoginForm.h"
 #include "PetForm.h"
@@ -8,6 +7,7 @@
 #include "AgregarDispensador.h"
 #include "UpdateWeightForm.h"
 #include "ViewUsersForm.h"
+#include "ModoDispensador.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -50,8 +50,10 @@ namespace Interfaz {
 
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ addToolStripMenuItem;
-
 	private: System::Windows::Forms::ToolStripMenuItem^ programarComidaToolStripMenuItem;
+
+
+
 
 
 	private: System::Windows::Forms::ToolStripMenuItem^ generarReporteToolStripMenuItem;
@@ -1136,9 +1138,10 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 
 	}
 	private: System::Void programarComidaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-		//ClearPetControls();
-		AgregarHorarios^ ScheduleForm = gcnew AgregarHorarios();
-		ScheduleForm->ShowDialog();
+		ClearPetControls();
+		//AgregarHorarios^ agreg = gcnew AgregarHorarios();
+		ModoDispensador^ modo = gcnew ModoDispensador(this);
+		modo->ShowDialog();
 
 	}
 

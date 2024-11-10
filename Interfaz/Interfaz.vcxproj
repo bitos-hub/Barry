@@ -128,15 +128,19 @@
     <ClCompile Include="AgregarDispensador.cpp" />
     <ClCompile Include="AgregarHorarios.cpp" />
     <ClCompile Include="AgregarUsuarios.cpp" />
+    <ClCompile Include="BuscarComida.cpp" />
+    <ClCompile Include="BuscarModeloDispensador.cpp" />
     <ClCompile Include="ComboBoxItem.cpp" />
     <ClCompile Include="DispenserConfiguration.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainScreenForm.cpp" />
     <ClCompile Include="ModifyUsers.cpp" />
+    <ClCompile Include="ModoDispensador.cpp" />
     <ClCompile Include="PetForm.cpp" />
     <ClCompile Include="ReportForm.cpp" />
     <ClCompile Include="UpdateWeightForm.cpp" />
     <ClCompile Include="ViewUsersForm.cpp" />
+    <ClCompile Include="VentanaConfirmacion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddFood.h">
@@ -149,6 +153,12 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="AgregarUsuarios.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="BuscarComida.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="BuscarModeloDispensador.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ComboBoxItem.h" />
@@ -164,6 +174,9 @@
     <ClInclude Include="ModifyUsers.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="ModoDispensador.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="PetForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -174,6 +187,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UpdateWeightForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="VentanaConfirmacion.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -190,6 +206,12 @@
     <EmbeddedResource Include="AgregarUsuarios.resx">
       <DependentUpon>AgregarUsuarios.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BuscarComida.resx">
+      <DependentUpon>BuscarComida.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BuscarModeloDispensador.resx">
+      <DependentUpon>BuscarModeloDispensador.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DispenserConfiguration.resx">
       <DependentUpon>DispenserConfiguration.h</DependentUpon>
     </EmbeddedResource>
@@ -202,6 +224,9 @@
     <EmbeddedResource Include="ModifyUsers.resx">
       <DependentUpon>ModifyUsers.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ModoDispensador.resx">
+      <DependentUpon>ModoDispensador.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.h</DependentUpon>
     </EmbeddedResource>
@@ -210,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewUsersForm.resx">
       <DependentUpon>ViewUsersForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VentanaConfirmacion.resx">
+      <DependentUpon>VentanaConfirmacion.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -5,6 +5,7 @@
 #pragma once
 #include "Food.h"
 #include "Report.h"
+#include "DispensadorDisponible.h"
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -18,6 +19,9 @@ namespace Barry {
         bool IsPlateFull; //estado
         double DispenserFood;//cant comida
         Report^ AssignedTo;
+        DispensadorDisponible^ DispensadorAsignado;
+        Food^ ComidaAsignada;
+        String^ ModoOperacion;
 
         bool DispenseFood(Food^);
         bool DispenseWater();
