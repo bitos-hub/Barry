@@ -72,12 +72,31 @@ namespace ServiceBarry {
 		static Pet^ ConsultarMascotaPorNombre(String^ nombreMascota);
 
 		static List<int>^ ConsultarTodosHorariosPorDispensador(Dispenser^ dispensador);
-		static void AddDispensador(int id);
+		static void AddDispensador(int id, DispensadorDisponible^ disp); //quedarse con este
 		static void EliminarDispensador(int);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();
 		static Dispenser^ ConsultarDispensadorPorId(int);
 		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
 		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
+
+		/*Fran*/
+
+		static void AddDipensadorDisponible(DispensadorDisponible^ dispensador);
+		static List<String^>^ ConsultarMarcas();
+		static List<String^>^ ConsultarDispensadorMarca(String^ marca);
+		static List<String^>^ ConsultarModelos(String^ marca);
+		static List<String^>^ ConsultarDispensadorModelo(String^ modelo, String^ marca);
+		static List<String^>^ ConsultarColores(String^ marca);
+		static List<String^>^ ConsultarDispensadorColor(String^ color, String^ marca);
+		static DispensadorDisponible^ EncontrarDispensador(String^ marca, String^ modelo);
+		static List<Food^>^ ConsultarInventarioComida(String^ comida);
+		static Food^ QueryFoodbyName(String^ nombreComida);
+		static void AsignarComidaDispensador(Dispenser^ dispensador,Food^ comida);
+		static void AsignarModoDipensador(Dispenser^ dispensador,String^ modo);
+
+		/*Hasta aquí*/
+
+
 		static Pet^ ConsultarMascotaAsignadaADispensador(int dispenserId);
 	};
 }

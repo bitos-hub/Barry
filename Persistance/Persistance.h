@@ -15,11 +15,16 @@ namespace BarryPersistance {
 		static String^ BIN_PET_FILE_NAME = "pets.bin";
 		static String^ BIN_DISPENSADOR_FILE_NAME = "dispensadores.bin";
 		static String^ XML_DISPENSADOR_FILE_NAME = "dispensadores.xml";
+		static String^ TXT_DISPENSADOR_FILE_NAME = "dispensadores.txt";
+		static String^ BIN_DISPENSADOR_DISPONIBLE_FILE_NAME = "dispensadores_disponibles.bin";
+		static String^ TXT_DISPENSADOR_DISPONIBLE_FILE_NAME = "dispensadores_disponibles.txt";
+		static String^ XML_DISPENSADOR_DISPONIBLE_FILE_NAME = "dispensadores_disponibles.xml";
 		static List<Pet^>^ PetsList = gcnew List<Pet^>();
-	private:
-		//static List<int>^ lista_horarios = gcnew List<int>();
-
 		static List<Dispenser^>^ lista_dispensadores = gcnew List<Dispenser^>();
+	private:
+		static List<DispensadorDisponible^>^ lista_dispensadores_disponibles = gcnew List<DispensadorDisponible^>();
+
+		
 	public:
 		//static void PersistTextFile(String^ fileName, Object^ persistObject);
 		//static Object^ LoadTextFile(String^ fileName);
@@ -51,12 +56,30 @@ namespace BarryPersistance {
 		static Object^ LoadPetsTextFile(String^ fileName);
 		static Object^ LoadFoodTextFile(String^ fileName);
 
-		static void AddDispensador(int id);
+		static void AddDispensador(int id, DispensadorDisponible^ disp); //se queda este
 		static List<Dispenser^>^ ConsultarTodosDispensadores();
 		static void EliminarDispensador(int id);
 		static Dispenser^ ConsultarDispensadorPorId(int);
 		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
 		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
+
+
+		/*Fran*/
+
+		static void AddDipensadorDisponible(DispensadorDisponible^ dispensador);
+		static List<String^>^ ConsultarMarcas();
+		static List<DispensadorDisponible^>^ ConsultarDispensadoresDisponibles();
+		static List<String^>^ ConsultarDispensadorMarca(String^ marca);
+		static List<String^>^ ConsultarModelos(String^ marca);
+		static List<String^>^ ConsultarDispensadorModelo(String^ modelo, String^ marca);
+		static List<String^>^ ConsultarColores(String^ marca);
+		static List<String^>^ ConsultarDispensadorColor(String^ color, String^ marca);
+		static DispensadorDisponible^ EncontrarDispensador(String^ marca, String^ modelo);
+		static void AsignarModoDipensador(Dispenser^ dispensador, String^ modo);
+
+		/*Hasta aquí*/
+
+
 		static Pet^ ConsultarMascotaAsignadaADispensador(int dispenserId);
 	};
 }

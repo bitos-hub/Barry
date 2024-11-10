@@ -3,17 +3,32 @@
   <Dispenser>
     <Id>1</Id>
     <FeedingSchedule>
+      <int>1700</int>
       <int>1600</int>
+      <int>1500</int>
     </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
-  </Dispenser>
-  <Dispenser>
-    <Id>2</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
+    <DispensadorAsignado>
+      <Marca>Samsung</Marca>
+      <Modelo>SM210</Modelo>
+      <Color>Amarillo</Color>
+      <Largo>18</Largo>
+      <Ancho>16</Ancho>
+      <Alto>25</Alto>
+      <Capacidad>5kg</Capacidad>
+      <Material>Poliestireno</Material>
+      <FuenteAlimentacion>Baterías</FuenteAlimentacion>
+    </DispensadorAsignado>
+    <ComidaAsignada>
+      <Id>2</Id>
+      <FoodBrand>Canbo</FoodBrand>
+      <FoodPrice>15</FoodPrice>
+      <Name>Paté</Name>
+      <Status />
+      <FoodAmount>4</FoodAmount>
+    </ComidaAsignada>
+    <ModoOperacion>Horarios</ModoOperacion>
   </Dispenser>
 </ArrayOfDispenser>

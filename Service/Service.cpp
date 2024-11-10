@@ -292,16 +292,22 @@ void ServiceBarry::Service::EliminarHorarioDispensador(Dispenser^ dispensador, i
 
 List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorDispensador(Dispenser^ d)
 {
+	if (d ==nullptr) {
+		d = gcnew Dispenser();
+	}
 	Dispenser^ dispensador = ConsultarDispensadorPorId(d->Id);
+	if (dispensador == nullptr) {
+		dispensador = gcnew Dispenser();
+	}
 	if (dispensador->FeedingSchedule == nullptr) {
 		dispensador->FeedingSchedule = gcnew List<int>();
 	}
 	return dispensador->FeedingSchedule;
 }
 
-void ServiceBarry::Service::AddDispensador(int id)
+void ServiceBarry::Service::AddDispensador(int id,DispensadorDisponible^ disp)
 {
-	return Persistance::AddDispensador(id);
+	return Persistance::AddDispensador(id,disp);
 }
 
 void ServiceBarry::Service::EliminarDispensador(int id)
@@ -327,6 +333,86 @@ void ServiceBarry::Service::AddHorarioDispensador(Dispenser^ dispensadorSeleccio
 void ServiceBarry::Service::EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador)
 {
 	return Persistance::EliminarDispensadorPorMascota(mascota, dispensador);
+}
+
+void ServiceBarry::Service::AddDipensadorDisponible(DispensadorDisponible^ dispensador)
+{
+	return Persistance::AddDipensadorDisponible(dispensador);
+}
+
+List<String^>^ ServiceBarry::Service::ConsultarMarcas()
+{
+	return Persistance::ConsultarMarcas();
+}
+
+List<String^>^ ServiceBarry::Service::ConsultarDispensadorMarca(String^ marca)
+{
+	return Persistance::ConsultarDispensadorMarca(marca);
+}
+
+List<String^>^ ServiceBarry::Service::ConsultarModelos(String^ marca)
+{
+	return Persistance::ConsultarModelos(marca);
+}
+
+List<String^>^ ServiceBarry::Service::ConsultarDispensadorModelo(String^ modelo, String^ marca)
+{
+	return Persistance::ConsultarDispensadorModelo(modelo,marca);
+}
+
+List<String^>^ ServiceBarry::Service::ConsultarColores(String^ marca)
+{
+	return Persistance::ConsultarColores(marca);
+}
+
+List<String^>^ ServiceBarry::Service::ConsultarDispensadorColor(String^ color, String^ marca)
+{
+	return Persistance::ConsultarDispensadorColor(color, marca);
+}
+
+DispensadorDisponible^ ServiceBarry::Service::EncontrarDispensador(String^ marca, String^ modelo)
+{
+	return Persistance::EncontrarDispensador(marca, modelo);
+}
+
+List<Food^>^ ServiceBarry::Service::ConsultarInventarioComida(String^ comida)
+{
+	FoodList = QueryAllFoods();
+	List<Food^>^ resultado = gcnew List<Food^>();;
+	for each (Food ^ f in FoodList) {
+		if (f->Name->IndexOf(comida, StringComparison::OrdinalIgnoreCase) >= 0) {
+			resultado->Add(f);
+		}
+	}
+	return resultado;
+}
+
+Food^ ServiceBarry::Service::QueryFoodbyName(String^ nombreComida)
+{
+	FoodList = QueryAllFoods();
+	for each (Food ^ f in FoodList) {
+		if (f->Name == nombreComida) {
+			return f;
+		}
+	}
+	return nullptr;
+}
+
+void ServiceBarry::Service::AsignarComidaDispensador(Dispenser^ dispensador, Food^ comida)
+{
+	Persistance::lista_dispensadores = ConsultarTodosDispensadores();
+	for each (Dispenser^ d in Persistance::lista_dispensadores) {
+		if (d->Id = dispensador->Id) {
+			d->ComidaAsignada = comida;
+		}
+	}
+	Persistance::PersistBinaryFile(Persistance::BIN_DISPENSADOR_FILE_NAME,Persistance::lista_dispensadores);
+	Persistance::PersistXMLFile(Persistance::XML_DISPENSADOR_FILE_NAME, Persistance::lista_dispensadores);
+}
+
+void ServiceBarry::Service::AsignarModoDipensador(Dispenser^ dispensador, String^ modo)
+{
+	return Persistance::AsignarModoDipensador(dispensador,modo);
 }
 
 Pet^ ServiceBarry::Service::ConsultarMascotaAsignadaADispensador(int dispenserId)

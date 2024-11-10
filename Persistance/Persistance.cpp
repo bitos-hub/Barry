@@ -21,6 +21,10 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Food^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
+        if (persistObject->GetType() == List<DispensadorDisponible^>::typeid) {
+            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<DispensadorDisponible^>::typeid);
+            xmlSerializer->Serialize(writer, persistObject);
+        }
     }
     catch (Exception^ ex) {
         throw ex;
@@ -171,6 +175,20 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
                 writer->WriteLine(r);
             }
         }
+        if (persistObject->GetType() == List<DispensadorDisponible^>::typeid) {
+            List<DispensadorDisponible^>^ dispDispbl = (List<DispensadorDisponible^>^) persistObject;
+            for (int i = 0; i < dispDispbl->Count; i++) {
+                DispensadorDisponible^ d = dispDispbl[i];
+                writer->WriteLine(d);
+            }
+        }
+        if (persistObject->GetType() == List<Dispenser^>::typeid) {
+            List<Dispenser^>^ dispDispbl = (List<Dispenser^>^) persistObject;
+            for (int i = 0; i < dispDispbl->Count; i++) {
+                Dispenser^ d = dispDispbl[i];
+                writer->WriteLine(d);
+            }
+        }
         if (persistObject->GetType() == List<User^>::typeid) {
             List<User^>^ users = (List<User^>^) persistObject;
             for (int i = 0; i < users->Count; i++) {
@@ -186,14 +204,14 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
                 }
             }
         }
-        if (persistObject->GetType() == List<Dispenser^>::typeid) {
+        /*if (persistObject->GetType() == List<Dispenser^>::typeid) {
             List<Dispenser^>^ dispenser = (List<Dispenser^>^) persistObject;
             for (int i = 0; i < dispenser->Count; i++) {
                 Dispenser^ d = dispenser[i];
-                writer->WriteLine("{0}|{1}|{2:F1}|{3}|{4:F1}|{5}",
-                    d->Id, d->AssignedTo, d->DispenserFood, d->FeedingSchedule, d->FoodAmount, d->IsPlateFull);
+                writer->WriteLine("{0}|{1}|{2:F1}|{3}|{4:F1}|{5}|{6}|{7}|{8}|{9}",
+                    d->Id, d->AssignedTo, d->DispenserFood, d->FeedingSchedule, d->FoodAmount, d->IsPlateFull,d->DispensadorAsignado,d->ComidaAsignada,d->ModoOperacion);
             }
-        }
+        }*/
         if (persistObject->GetType() == List<Pet^>::typeid) {
             List<Pet^>^ pet = (List<Pet^>^) persistObject;
             for (int i = 0; i < pet->Count; i++) {
@@ -358,7 +376,7 @@ Object^ BarryPersistance::Persistance::LoadFoodTextFile(String^ fileName)
 }
 
 
-void BarryPersistance::Persistance::AddDispensador(int id)
+void BarryPersistance::Persistance::AddDispensador(int id, DispensadorDisponible^ disp)
 {
     Dispenser^ dispensador = gcnew Dispenser();
     lista_dispensadores = ConsultarTodosDispensadores();
@@ -369,6 +387,7 @@ void BarryPersistance::Persistance::AddDispensador(int id)
         }
     }
     dispensador->Id = id;
+    dispensador->DispensadorAsignado = disp;
     lista_dispensadores->Add(dispensador);
     PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
     PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
@@ -432,6 +451,7 @@ void BarryPersistance::Persistance::AddHorarioDispensador(Dispenser^ dispensador
     }
     PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
     PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
+
 }
 
 void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador)
@@ -455,6 +475,132 @@ void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, 
     PersistBinaryFile(BIN_PET_FILE_NAME, PetsList);
     PersistXMLFile(XML_PET_FILE_NAME, PetsList);
 
+}
+
+void BarryPersistance::Persistance::AddDipensadorDisponible(DispensadorDisponible^ dispensador)
+{
+    lista_dispensadores_disponibles->Add(dispensador);
+    PersistBinaryFile(BIN_DISPENSADOR_DISPONIBLE_FILE_NAME, lista_dispensadores_disponibles);
+    PersistTextFile(TXT_DISPENSADOR_DISPONIBLE_FILE_NAME, lista_dispensadores_disponibles);
+    PersistXMLFile(XML_DISPENSADOR_DISPONIBLE_FILE_NAME, lista_dispensadores_disponibles);
+}
+
+List<String^>^ BarryPersistance::Persistance::ConsultarMarcas()
+{
+    lista_dispensadores_disponibles = ConsultarDispensadoresDisponibles();
+    List<String^>^ lista_marcas = gcnew List<String^>();
+    String^ marca_d="";
+    for (int i = 0; i < lista_dispensadores_disponibles->Count;i++) {
+        DispensadorDisponible^ d = lista_dispensadores_disponibles[i];
+        if (marca_d != d->Marca) {
+            lista_marcas->Add(d->Marca);
+        }
+        marca_d = d->Marca;
+    }
+    return lista_marcas;
+}
+
+List<DispensadorDisponible^>^ BarryPersistance::Persistance::ConsultarDispensadoresDisponibles()
+{
+    try {
+        lista_dispensadores_disponibles = (List<DispensadorDisponible^>^)LoadBinaryFile(BIN_DISPENSADOR_DISPONIBLE_FILE_NAME);
+        if (lista_dispensadores_disponibles == nullptr)
+            lista_dispensadores_disponibles = gcnew List<DispensadorDisponible^>();
+    }
+    catch (Exception^ ex) {
+    }
+    return lista_dispensadores_disponibles;
+}
+
+List<String^>^ BarryPersistance::Persistance::ConsultarDispensadorMarca(String^ marca)
+{
+    List<String^>^ lista_marcas = ConsultarMarcas();
+    List<String^>^ resultado = gcnew List<String^>();;
+    for each (String ^ m in lista_marcas) {
+        if (m->IndexOf(marca, StringComparison::OrdinalIgnoreCase) >= 0) {
+            resultado->Add(m);
+        }
+    }
+    return resultado;
+}
+
+List<String^>^ BarryPersistance::Persistance::ConsultarModelos(String^ marca)
+{
+    lista_dispensadores_disponibles = ConsultarDispensadoresDisponibles();
+    List<String^>^ lista_modelos = gcnew List<String^>();
+    for (int i = 0; i < lista_dispensadores_disponibles->Count; i++) {
+        DispensadorDisponible^ d = lista_dispensadores_disponibles[i];
+        if (d->Marca == marca) {
+            if (!lista_modelos->Contains(d->Modelo)) {
+                lista_modelos->Add(d->Modelo);
+            }
+        }
+    }
+    return lista_modelos;
+}
+
+List<String^>^ BarryPersistance::Persistance::ConsultarDispensadorModelo(String^ modelo,String^ marca)
+{
+    List<String^>^ lista_modelos = ConsultarModelos(marca);
+    List<String^>^ resultado = gcnew List<String^>();;
+    for each (String ^ m in lista_modelos) {
+        if (m->IndexOf(modelo, StringComparison::OrdinalIgnoreCase) >= 0) {
+            resultado->Add(m);
+        }
+    }
+    return resultado;
+}
+
+List<String^>^ BarryPersistance::Persistance::ConsultarColores(String^ marca)
+{
+    lista_dispensadores_disponibles = ConsultarDispensadoresDisponibles();
+    List<String^>^ lista_colores = gcnew List<String^>();
+    for (int i = 0; i < lista_dispensadores_disponibles->Count; i++) {
+        DispensadorDisponible^ d = lista_dispensadores_disponibles[i];
+        if (d->Marca == marca) {
+            if (!lista_colores->Contains(d->Color)) {
+                lista_colores->Add(d->Color);
+            }
+        }
+    }
+    return lista_colores;
+}
+
+List<String^>^ BarryPersistance::Persistance::ConsultarDispensadorColor(String^ color, String^ marca)
+{
+    List<String^>^ lista_colores = ConsultarColores(marca);
+    List<String^>^ resultado = gcnew List<String^>();;
+    for each (String ^ m in lista_colores) {
+        if (m->IndexOf(color, StringComparison::OrdinalIgnoreCase) >= 0) {
+            resultado->Add(m);
+        }
+    }
+    return resultado;
+}
+
+DispensadorDisponible^ BarryPersistance::Persistance::EncontrarDispensador(String^ marca, String^ modelo)
+{
+    DispensadorDisponible^ dispEncontrado = gcnew DispensadorDisponible();
+    lista_dispensadores_disponibles = ConsultarDispensadoresDisponibles();
+    for each (DispensadorDisponible^ d in lista_dispensadores_disponibles) {
+        if (d->Marca==marca && d->Modelo==modelo) {
+            dispEncontrado = d;
+            break;
+        }
+    }
+    return dispEncontrado;
+}
+
+void BarryPersistance::Persistance::AsignarModoDipensador(Dispenser^ dispensador, String^ modo)
+{
+    lista_dispensadores = ConsultarTodosDispensadores();
+    for each (Dispenser^ d in lista_dispensadores) {
+        if (d->Id ==dispensador->Id) {
+            d->ModoOperacion = modo;
+        }
+    }
+    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
+    PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
 }
 
 Pet^ BarryPersistance::Persistance::ConsultarMascotaAsignadaADispensador(int dispenserId)

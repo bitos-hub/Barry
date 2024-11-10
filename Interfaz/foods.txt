@@ -1,0 +1,2 @@
+1|Pienso|1|1,0|Ricocan|1,0
+2|Paté||4,0|Canbo|15,0

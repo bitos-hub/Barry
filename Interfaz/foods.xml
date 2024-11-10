@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfFood xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Food>
+    <Id>1</Id>
+    <FoodBrand>Ricocan</FoodBrand>
+    <FoodPrice>1</FoodPrice>
+    <Name>Pienso</Name>
+    <Status>1</Status>
+    <FoodAmount>1</FoodAmount>
+  </Food>
+  <Food>
+    <Id>2</Id>
+    <FoodBrand>Canbo</FoodBrand>
+    <FoodPrice>15</FoodPrice>
+    <Name>Paté</Name>
+    <Status />
+    <FoodAmount>4</FoodAmount>
+  </Food>
+</ArrayOfFood>
