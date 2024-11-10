@@ -317,7 +317,6 @@ List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorDispensador(Dispenser
 	return dispensador->FeedingSchedule;
 }
 
-void ServiceBarry::Service::AddDispensador(int id,DispensadorDisponible^ disp)
 List<Dispensation^>^ ServiceBarry::Service::ConsultarDispensadasPorDispensador(Dispenser^ d)
 {
 	Dispenser^ dispensador = ConsultarDispensadorPorId(d->Id);
@@ -332,10 +331,11 @@ List<Dispensation^>^ ServiceBarry::Service::ConsultarDispensadasPorDispensador(D
 }
 
 
-void ServiceBarry::Service::AddDispensador(int id)
+
+
+void ServiceBarry::Service::AddDispensador(int id, DispensadorDisponible^ disp)
 {
-	return Persistance::AddDispensador(id);
-	return Persistance::AddDispensador(id,disp);
+	return Persistance::AddDispensador(id, disp);
 }
 
 void ServiceBarry::Service::EliminarDispensador(int id)
@@ -471,7 +471,7 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 		Pet^ pet = QueryPetById(petId);
 		Dispenser^ d = pet->PetDispenser;
 
-		DispensationList = Service::ConsultarDispensadasPorDispensador(d);
+		List<Dispensation^>^DispensationList = Service::ConsultarDispensadasPorDispensador(d);
 
 		Dispensation^ existingDispensation = nullptr;
 		for each (Dispensation ^ disp in DispensationList) {
@@ -505,8 +505,6 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 		Service::UpdatePet(pet);
 
 
-
-
 		result = "Se están dispensando " + Convert::ToString(pet->FoodServing) + "g en el plato de " + pet->Name;
 		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
 		ArduinoPort->Write(Convert::ToString(FoodServingByte, 16));
@@ -523,6 +521,26 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 	}
 	
 	return result ;
+
+}
+
+String^ ServiceBarry::Service::DispenseWater(int petId)
+{
+	String^ result;
+	try {
+		OpenPort();
+		Pet^ pet = QueryPetById(petId);
+		result = "Se están dispensando " + Convert::ToString(pet->WaterServing) + "mL en el recipiente de " + pet->Name;
+		Byte WaterServingByte = Convert::ToByte(pet->WaterServing);
+		ArduinoPort->Write(Convert::ToString(WaterServingByte, 16));
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		ClosePort();
+	}
+	return result;
 
 }
 

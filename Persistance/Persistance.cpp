@@ -671,8 +671,11 @@ Pet^ BarryPersistance::Persistance::ConsultarMascotaAsignadaADispensador(int dis
     //oli
     for (int i = 0; i < PetsList->Count; i++) {
         Pet^ m = PetsList[i];
-        if (m->PetDispenser->Id == dispenserId) {
-            return m;
+        if (m->PetDispenser != nullptr) {
+
+            if (m->PetDispenser->Id == dispenserId) {
+                return m;
+            }
         }
     }
     return nullptr;

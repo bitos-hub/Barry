@@ -1,2 +1,1 @@
-1|barry|200.0|System.Collections.Generic.List`1[System.Double]|200.0|System.Collections.Generic.List`1[System.Double]||||a|a|2.0|System.Double[]
-2|ola|150.0|System.Collections.Generic.List`1[System.Double]|300.0|System.Collections.Generic.List`1[System.Double]||||a|a|5.0|System.Double[]
+1|Pepito|1.0|System.Collections.Generic.List`1[System.Double]|1.0|System.Collections.Generic.List`1[System.Double]||Barry.Dispenser||Grillo|aplastado|0.2|System.Double[]

@@ -407,7 +407,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuI
 			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
 			this->mensualToolStripMenuItem->Size = System::Drawing::Size(206, 42);
 			this->mensualToolStripMenuItem->Text = L"Mensual";
-			this->mensualToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::mensualToolStripMenuItem_Click);
+			//this->mensualToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::mensualToolStripMenuItem_Click);
 			// 
 			// recargarToolStripMenuItem
 			// 

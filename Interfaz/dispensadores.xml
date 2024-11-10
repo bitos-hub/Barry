@@ -3,7 +3,7 @@
   <Dispenser>
     <Id>1</Id>
     <FeedingSchedule>
-      <int>1250</int>
+      <int>1200</int>
     </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
@@ -20,40 +20,14 @@
       <FuenteAlimentacion>Baterías</FuenteAlimentacion>
     </DispensadorAsignado>
     <ComidaAsignada>
-      <Id>0</Id>
-      <FoodPrice>0</FoodPrice>
-      <FoodAmount>0</FoodAmount>
+      <Id>2</Id>
+      <FoodBrand>Canbo</FoodBrand>
+      <FoodPrice>15</FoodPrice>
+      <Name>Paté</Name>
+      <Status />
+      <FoodAmount>4</FoodAmount>
     </ComidaAsignada>
-  </Dispenser>
-  <Dispenser>
-    <Id>1</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
-    <DispensadorAsignado>
-      <Marca>Nexxt</Marca>
-      <Modelo>NXXT03</Modelo>
-      <Color>Negro</Color>
-      <Largo>18</Largo>
-      <Ancho>18</Ancho>
-      <Alto>25</Alto>
-      <Capacidad>7kg</Capacidad>
-      <Material>Polipropileno</Material>
-      <FuenteAlimentacion>Panel Solar</FuenteAlimentacion>
-    </DispensadorAsignado>
-    <ComidaAsignada>
-      <Id>0</Id>
-      <FoodPrice>0</FoodPrice>
-      <FoodAmount>0</FoodAmount>
-    </ComidaAsignada>
-  </Dispenser>
-  <Dispenser>
-    <Id>2</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
+    <ModoOperacion>Horarios</ModoOperacion>
     <dispensationRecord />
   </Dispenser>
 </ArrayOfDispenser>

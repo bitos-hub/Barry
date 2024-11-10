@@ -75,7 +75,6 @@ namespace ServiceBarry {
 
 		static List<Dispensation^>^ ConsultarDispensadasPorDispensador(Dispenser^ d);
 
-		static void AddDispensador(int id);
 		static void AddDispensador(int id, DispensadorDisponible^ disp); //quedarse con este
 		static void EliminarDispensador(int);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();

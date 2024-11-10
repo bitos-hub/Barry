@@ -2,76 +2,55 @@
 <ArrayOfPet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Pet>
     <Id>1</Id>
-    <Name>barry</Name>
-    <Weight>2</Weight>
+    <Name>Pepito</Name>
+    <Weight>0.2</Weight>
     <WeightEvolution>
+      <double>0.3</double>
+      <double>0.5</double>
       <double>1</double>
-      <double>2</double>
-      <double>3</double>
-      <double>2</double>
+      <double>0.2</double>
     </WeightEvolution>
     <WeightChanges>
-      <dateTime>2024-11-10T14:34:58.0147638-05:00</dateTime>
-      <dateTime>2024-11-10T14:36:24.5736653-05:00</dateTime>
-      <dateTime>2024-11-10T14:40:45.2357824-05:00</dateTime>
-      <dateTime>2024-11-10T15:05:35.2224765-05:00</dateTime>
+      <dateTime>2024-11-10T17:52:26.4911391-05:00</dateTime>
+      <dateTime>2024-11-10T17:56:04.1731734-05:00</dateTime>
+      <dateTime>2024-11-10T17:56:19.7846153-05:00</dateTime>
+      <dateTime>2024-11-10T17:56:40.8627289-05:00</dateTime>
     </WeightChanges>
-    <Specie>a</Specie>
-    <Status>a</Status>
-    <FoodServing>200</FoodServing>
+    <Specie>Grillo</Specie>
+    <Status>aplastado</Status>
+    <OpcionesComida />
+    <FoodServing>1</FoodServing>
     <FoodChanges>
-      <dateTime>2024-11-10T14:34:58.0157608-05:00</dateTime>
-      <dateTime>2024-11-10T14:36:24.5736653-05:00</dateTime>
+      <dateTime>2024-11-10T17:52:26.492151-05:00</dateTime>
     </FoodChanges>
     <FoodEvolution>
-      <double>100</double>
-      <double>200</double>
+      <double>1</double>
     </FoodEvolution>
-    <WaterServing>200</WaterServing>
+    <WaterServing>1</WaterServing>
     <WaterEvolution>
-      <double>100</double>
-      <double>200</double>
+      <double>1</double>
     </WaterEvolution>
     <WaterChanges>
-      <dateTime>2024-11-10T14:34:58.0157608-05:00</dateTime>
-      <dateTime>2024-11-10T14:36:24.5736653-05:00</dateTime>
+      <dateTime>2024-11-10T17:52:26.492151-05:00</dateTime>
     </WaterChanges>
-  </Pet>
-  <Pet>
-    <Id>2</Id>
-    <Name>ola</Name>
-    <Weight>5</Weight>
-    <WeightEvolution>
-      <double>3</double>
-      <double>6</double>
-      <double>5</double>
-    </WeightEvolution>
-    <WeightChanges>
-      <dateTime>2024-11-10T15:29:05.8855987-05:00</dateTime>
-      <dateTime>2024-11-10T15:29:40.3050292-05:00</dateTime>
-      <dateTime>2024-11-10T15:41:34.3765112-05:00</dateTime>
-    </WeightChanges>
-    <Specie>a</Specie>
-    <Status>a</Status>
-    <FoodServing>150</FoodServing>
-    <FoodChanges>
-      <dateTime>2024-11-10T15:29:05.8855987-05:00</dateTime>
-      <dateTime>2024-11-10T15:29:32.5389321-05:00</dateTime>
-      <dateTime>2024-11-10T15:41:34.3765112-05:00</dateTime>
-    </FoodChanges>
-    <FoodEvolution>
-      <double>200</double>
-      <double>100</double>
-      <double>150</double>
-    </FoodEvolution>
-    <WaterServing>300</WaterServing>
-    <WaterEvolution>
-      <double>100</double>
-      <double>300</double>
-    </WaterEvolution>
-    <WaterChanges>
-      <dateTime>2024-11-10T15:29:05.8855987-05:00</dateTime>
-      <dateTime>2024-11-10T15:41:34.3765112-05:00</dateTime>
-    </WaterChanges>
+    <PetDispenser>
+      <Id>1</Id>
+      <FeedingSchedule />
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+      <DispensadorAsignado>
+        <Marca>Samsung</Marca>
+        <Modelo>SM210</Modelo>
+        <Color>Verde</Color>
+        <Largo>18</Largo>
+        <Ancho>16</Ancho>
+        <Alto>25</Alto>
+        <Capacidad>5kg</Capacidad>
+        <Material>Poliestireno</Material>
+        <FuenteAlimentacion>Baterías</FuenteAlimentacion>
+      </DispensadorAsignado>
+      <dispensationRecord />
+    </PetDispenser>
   </Pet>
 </ArrayOfPet>
