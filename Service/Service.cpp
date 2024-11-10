@@ -88,6 +88,17 @@ List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 	return lista_usuarios;
 }
 
+List<User^>^ ServiceBarry::Service::QueryUserByName(String^ Username)
+{
+	List<User^>^ usersList = ConsultarTodosUsuarios();
+	List<User^>^ listToReturn = gcnew List<User^>();
+	for (int i = 0; i < usersList->Count; i++) {
+		if (usersList[i]->Name->Contains(Username))
+			listToReturn->Add(usersList[i]);
+	}
+	return listToReturn;
+}
+
 int ServiceBarry::Service::AddPet(Pet^ pet)
 {
 	Persistance::PetsList->Add(pet);

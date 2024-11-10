@@ -7,6 +7,7 @@
 #include "DispenserConfiguration.h"
 #include "AgregarDispensador.h"
 #include "UpdateWeightForm.h"
+#include "ViewUsersForm.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -142,6 +143,10 @@ private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMe
 private: System::Windows::Forms::ComboBox^ cmbSchedules;
 
 	private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
+private: System::Windows::Forms::ToolStripMenuItem^ usuariosToolStripMenuItem;
+
+
+
 	
 	
 	
@@ -279,6 +284,7 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			this->btnHydrate = (gcnew System::Windows::Forms::Button());
 			this->btnUpdateWeight = (gcnew System::Windows::Forms::Button());
 			this->cmbDispenser = (gcnew System::Windows::Forms::ComboBox());
+			this->usuariosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -291,8 +297,10 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			// menuStrip1
 			// 
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
-			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(5) {
+			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(6) {
 				this->addToolStripMenuItem,
+					this->usuariosToolStripMenuItem, this->programarComidaToolStripMenuItem, this->generarReporteToolStripMenuItem, this->recargaToolStripMenuItem,
+					this->cerrarSesiónToolStripMenuItem
 					this->programarComidaToolStripMenuItem, this->generarReporteToolStripMenuItem, this->recargarToolStripMenuItem, this->cerrarSesiónToolStripMenuItem
 			});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
@@ -939,6 +947,7 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->btnUpdateWeight->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->btnUpdateWeight->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular,
+			this->usuariosToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btnUpdateWeight->Location = System::Drawing::Point(595, 345);
 			this->btnUpdateWeight->Margin = System::Windows::Forms::Padding(2);
@@ -957,6 +966,10 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			this->cmbDispenser->Size = System::Drawing::Size(163, 21);
 			this->cmbDispenser->TabIndex = 56;
 			this->cmbDispenser->SelectedIndexChanged += gcnew System::EventHandler(this, &MainScreenForm::cmbDispenser_SelectedIndexChanged);
+			this->usuariosToolStripMenuItem->Name = L"usuariosToolStripMenuItem";
+			this->usuariosToolStripMenuItem->Size = System::Drawing::Size(128, 42);
+			this->usuariosToolStripMenuItem->Text = L"Usuarios";
+			this->usuariosToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::usuariosToolStripMenuItem_Click);
 			// 
 			// MainScreenForm
 			// 
@@ -1256,6 +1269,10 @@ private: System::Void cmbDispenser_SelectedIndexChanged(System::Object^ sender, 
 	catch (Exception^ e) {
 
 	}
+}
+private: System::Void usuariosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	ViewUsersForm^ form = gcnew ViewUsersForm();
+	form->ShowDialog();
 }
 };
 		   //combo box Dispensadores
