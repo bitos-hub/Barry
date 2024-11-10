@@ -38,6 +38,8 @@ namespace ServiceBarry {
 		static void EliminarUsuario(int id);
 		static User^ ConsultarUsuario(String^ UserName);
 		static List<User^>^ ConsultarTodosUsuarios();
+		static List<User^>^ QueryUserByName(String^ Username);
+
 		static int AddPet(Pet^);
 		static void UpdatePet(Pet^);
 		static void DeletePet(int id);
