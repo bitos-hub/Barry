@@ -1,115 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfPet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Pet>
-    <Id>2</Id>
-    <Name>2</Name>
-    <Weight>3</Weight>
+    <Id>1</Id>
+    <Name>barry</Name>
+    <Weight>2</Weight>
     <WeightEvolution>
+      <double>1</double>
       <double>2</double>
       <double>3</double>
-      <double>4</double>
-      <double>3</double>
+      <double>2</double>
     </WeightEvolution>
-    <Specie>2</Specie>
-    <Status>2</Status>
-    <OpcionesComida />
+    <WeightChanges>
+      <dateTime>2024-11-10T14:34:58.0147638-05:00</dateTime>
+      <dateTime>2024-11-10T14:36:24.5736653-05:00</dateTime>
+      <dateTime>2024-11-10T14:40:45.2357824-05:00</dateTime>
+      <dateTime>2024-11-10T15:05:35.2224765-05:00</dateTime>
+    </WeightChanges>
+    <Specie>a</Specie>
+    <Status>a</Status>
     <FoodServing>200</FoodServing>
+    <FoodChanges>
+      <dateTime>2024-11-10T14:34:58.0157608-05:00</dateTime>
+      <dateTime>2024-11-10T14:36:24.5736653-05:00</dateTime>
+    </FoodChanges>
     <FoodEvolution>
+      <double>100</double>
       <double>200</double>
     </FoodEvolution>
     <WaterServing>200</WaterServing>
     <WaterEvolution>
+      <double>100</double>
       <double>200</double>
     </WaterEvolution>
-    <PetDispenser>
-      <Id>1</Id>
-      <FeedingSchedule />
-      <FoodAmount>0</FoodAmount>
-      <IsPlateFull>false</IsPlateFull>
-      <DispenserFood>0</DispenserFood>
-    </PetDispenser>
+    <WaterChanges>
+      <dateTime>2024-11-10T14:34:58.0157608-05:00</dateTime>
+      <dateTime>2024-11-10T14:36:24.5736653-05:00</dateTime>
+    </WaterChanges>
   </Pet>
   <Pet>
-    <Id>3</Id>
-    <Name>3</Name>
-    <Weight>3</Weight>
+    <Id>2</Id>
+    <Name>ola</Name>
+    <Weight>5</Weight>
     <WeightEvolution>
       <double>3</double>
+      <double>6</double>
+      <double>5</double>
     </WeightEvolution>
-    <Specie>3</Specie>
-    <Status>3</Status>
-    <OpcionesComida />
-    <FoodServing>3</FoodServing>
-    <FoodEvolution>
-      <double>3</double>
-    </FoodEvolution>
-    <WaterServing>3</WaterServing>
-    <WaterEvolution>
-      <double>3</double>
-    </WaterEvolution>
-    <PetDispenser>
-      <Id>0</Id>
-      <FeedingSchedule />
-      <FoodAmount>0</FoodAmount>
-      <IsPlateFull>false</IsPlateFull>
-      <DispenserFood>0</DispenserFood>
-    </PetDispenser>
-  </Pet>
-  <Pet>
-    <Id>4</Id>
-    <Name>barry</Name>
-    <Weight>2</Weight>
-    <WeightEvolution>
-      <double>2</double>
-    </WeightEvolution>
+    <WeightChanges>
+      <dateTime>2024-11-10T15:29:05.8855987-05:00</dateTime>
+      <dateTime>2024-11-10T15:29:40.3050292-05:00</dateTime>
+      <dateTime>2024-11-10T15:41:34.3765112-05:00</dateTime>
+    </WeightChanges>
     <Specie>a</Specie>
     <Status>a</Status>
-    <OpcionesComida />
-    <FoodServing>100</FoodServing>
+    <FoodServing>150</FoodServing>
+    <FoodChanges>
+      <dateTime>2024-11-10T15:29:05.8855987-05:00</dateTime>
+      <dateTime>2024-11-10T15:29:32.5389321-05:00</dateTime>
+      <dateTime>2024-11-10T15:41:34.3765112-05:00</dateTime>
+    </FoodChanges>
     <FoodEvolution>
+      <double>200</double>
       <double>100</double>
+      <double>150</double>
     </FoodEvolution>
-    <WaterServing>100</WaterServing>
+    <WaterServing>300</WaterServing>
     <WaterEvolution>
       <double>100</double>
+      <double>300</double>
     </WaterEvolution>
-  </Pet>
-  <Pet>
-    <Id>5</Id>
-    <Name>a</Name>
-    <Weight>3</Weight>
-    <WeightEvolution>
-      <double>3</double>
-    </WeightEvolution>
-    <Specie>a</Specie>
-    <Status>a</Status>
-    <OpcionesComida />
-    <FoodServing>100</FoodServing>
-    <FoodEvolution>
-      <double>100</double>
-    </FoodEvolution>
-    <WaterServing>100</WaterServing>
-    <WaterEvolution>
-      <double>100</double>
-    </WaterEvolution>
-  </Pet>
-  <Pet>
-    <Id>6</Id>
-    <Name>ramon</Name>
-    <Weight>2</Weight>
-    <WeightEvolution>
-      <double>2</double>
-    </WeightEvolution>
-    <Specie>22</Specie>
-    <Status>2</Status>
-    <OpcionesComida />
-    <FoodServing>2</FoodServing>
-    <FoodEvolution>
-      <double>2</double>
-    </FoodEvolution>
-    <WaterServing>2</WaterServing>
-    <WaterEvolution>
-      <double>2</double>
-    </WaterEvolution>
+    <WaterChanges>
+      <dateTime>2024-11-10T15:29:05.8855987-05:00</dateTime>
+      <dateTime>2024-11-10T15:41:34.3765112-05:00</dateTime>
+    </WaterChanges>
   </Pet>
 </ArrayOfPet>
