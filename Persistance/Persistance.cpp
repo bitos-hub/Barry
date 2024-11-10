@@ -13,23 +13,6 @@ void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ per
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Pet^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
         }
-        if (persistObject->GetType() == List<User^>::typeid) {
-            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<User^>::typeid);
-            xmlSerializer->Serialize(writer, persistObject);
-        }
-        /*if (persistObject->GetType() == List<Administrator^>::typeid) {
-            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Administrator^>::typeid);
-            xmlSerializer->Serialize(writer, persistObject);
-        }
-        if (persistObject->GetType() == List<PortalUser^>::typeid) {
-            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<PortalUser^>::typeid);
-            xmlSerializer->Serialize(writer, persistObject);
-        }
-        if (persistObject->GetType() == List<InternalUser^>::typeid) {
-            XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<InternalUser^>::typeid);
-            xmlSerializer->Serialize(writer, persistObject);
-        }*/
-
         if (persistObject->GetType() == List<Dispenser^>::typeid) {
             XmlSerializer^ xmlSerializer = gcnew XmlSerializer(List<Dispenser^>::typeid);
             xmlSerializer->Serialize(writer, persistObject);
@@ -68,28 +51,6 @@ Object^ BarryPersistance::Persistance::LoadXMLFile(String^ fileName)
         if (reader != nullptr) reader->Close();
     }
 
-    return result;
-}
-
-Object^ BarryPersistance::Persistance::LoadUsersXmlFile(String^ fileName)
-{
-    StreamReader^ reader;
-    Object^ result = gcnew List<User^>();
-    XmlSerializer^ xmlSerializer;
-
-    try {
-        if (File::Exists(fileName)) {
-            reader = gcnew StreamReader(fileName);
-            xmlSerializer = gcnew XmlSerializer(List<User^>::typeid);
-            result = (List<User^>^) xmlSerializer->Deserialize(reader);
-        }
-    }
-    catch (Exception^ ex) {
-        throw ex;
-    }
-    finally {
-        if (reader != nullptr) reader->Close();
-    }
     return result;
 }
 
@@ -237,13 +198,15 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
             List<Pet^>^ pet = (List<Pet^>^) persistObject;
             for (int i = 0; i < pet->Count; i++) {
                 Pet^ p = pet[i];
+                String^ weightEvolution = String::Join(";", p->WeightEvolution->ToArray());
                 String^ photoBase64 = "";
                 if (p->Photo != nullptr) {
                     photoBase64 = Convert::ToBase64String(p->Photo);
                 }
-                writer->WriteLine("{0}|{1}|{2:F1}|{3}|{4}|{5}|{6}|{7}|{8:F1}",
-                    p->Id, p->Name, p->FoodServing, p->Owner, p->PetDispenser,
-                    photoBase64, p->Specie, p->Status, p->Weight);
+                writer->WriteLine("{0}|{1}|{2:F1}|{3}|{4:F1}|{5}|{6}|{7}|{8}|{9}|{10}|{11:F1}|{12}",
+                    p->Id, p->Name, p->FoodServing,p->FoodEvolution,p->WaterServing,
+                    p->WaterEvolution,p->Owner, p->PetDispenser,
+                    photoBase64, p->Specie, p->Status, p->Weight,weightEvolution);
             }
         }
         if (persistObject->GetType() == List<Food^>::typeid) {

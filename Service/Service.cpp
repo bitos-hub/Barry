@@ -27,9 +27,17 @@ void ServiceBarry::Service::AddUsuario(User^ usuario)
 	lista_usuarios->Add(usuario);
 	int id = lista_usuarios->Count;
 	lista_usuarios[id - 1]->Id = id;
+	int id_mayor = 0;
+	for (int i = 0; i < lista_usuarios->Count - 1; i++) {
+		if (id_mayor < lista_usuarios[i]->Id) {
+			id_mayor = lista_usuarios[i]->Id;
+		}
+	}
+	if (lista_usuarios->Count > 1) {
+		lista_usuarios[id - 1]->Id = id_mayor + 1;
+	}
 	Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 	Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-	Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 }
 
 void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
@@ -39,7 +47,6 @@ void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
 			lista_usuarios[i] = usuario;
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -52,7 +59,6 @@ void ServiceBarry::Service::EliminarUsuario(int id)
 			lista_usuarios->RemoveAt(i);
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
-			Persistance::PersistXMLFile(XML_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
 	}
@@ -87,6 +93,15 @@ int ServiceBarry::Service::AddPet(Pet^ pet)
 	Persistance::PetsList->Add(pet);
 	int id = Persistance::PetsList->Count;
 	Persistance::PetsList[id - 1]->Id = id;
+	int id_mayor = 0;
+	for (int i = 0; i < Persistance::PetsList->Count - 1; i++) {
+		if (id_mayor < Persistance::PetsList[i]->Id) {
+			id_mayor = Persistance::PetsList[i]->Id;
+		}
+	}
+	if (Persistance::PetsList->Count > 1) {
+		Persistance::PetsList[id - 1]->Id = id_mayor + 1;
+	}
 	Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 	Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
 	Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
@@ -95,8 +110,26 @@ int ServiceBarry::Service::AddPet(Pet^ pet)
 
 void ServiceBarry::Service::UpdatePet(Pet^ pet)
 {
+	List<double>^ weightEvolution= gcnew List<double>();
+	List<double>^ waterEvolution = gcnew List<double>();
+	List<double>^ foodEvolution = gcnew List<double>();
 	for (int i = 0; i < Persistance::PetsList->Count; i++) {
 		if (Persistance::PetsList[i]->Id == pet->Id) {
+			weightEvolution = Persistance::PetsList[i]->WeightEvolution;
+			waterEvolution = Persistance::PetsList[i]->WaterEvolution;
+			foodEvolution = Persistance::PetsList[i]->FoodEvolution;
+			if (weightEvolution[weightEvolution->Count - 1] != pet->Weight) {
+				weightEvolution->Add(pet->Weight);
+			}
+			pet->WeightEvolution = weightEvolution;
+			if (waterEvolution[waterEvolution->Count - 1] != pet->WaterServing) {
+				waterEvolution->Add(pet->WaterServing);
+			}
+			pet->WaterEvolution = waterEvolution;
+			if (foodEvolution[foodEvolution->Count - 1] != pet->FoodServing) {
+				foodEvolution->Add(pet->FoodServing);
+			}
+			pet->FoodEvolution = foodEvolution;
 			Persistance::PetsList[i] = pet;
 			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 			Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
@@ -111,9 +144,6 @@ void ServiceBarry::Service::DeletePet(int id)
 	for (int i = 0; i < Persistance::PetsList->Count; i++) {
 		if (Persistance::PetsList[i]->Id == id) {
 			Persistance::PetsList->RemoveAt(i);
-			for (int j = i; j < Persistance::PetsList->Count; j++) {
-				Persistance::PetsList[j]->Id--;
-			}
 			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 			Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);
 			Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
@@ -153,6 +183,15 @@ void ServiceBarry::Service::AddFood(Food^ food)
 	FoodList->Add(food);
 	int id = FoodList->Count;
 	FoodList[id - 1]->Id = id;
+	int id_mayor = 0;
+	for (int i = 0; i < FoodList->Count-1; i++) {
+		if (id_mayor < FoodList[i]->Id) {
+			id_mayor = FoodList[i]->Id;
+		}
+	}
+	if (FoodList->Count > 1) {
+		FoodList[id - 1]->Id = id_mayor + 1;
+	}
 	Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 	Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
 	Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
@@ -178,9 +217,6 @@ void ServiceBarry::Service::DeleteFood(int id)
 	for (int i = 0; i < FoodList->Count; i++) {
 		if (FoodList[i]->Id == id) {
 			FoodList->RemoveAt(i);
-			for (int j = i; j < FoodList->Count; j++) {
-				FoodList[j]->Id--;
-			}
 			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 			Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
 			Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
@@ -318,6 +354,25 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 	}
 	return result;
 
+}
+
+String^ ServiceBarry::Service::DispenseWater(int petId)
+{
+	String^ result;
+	try {
+		OpenPort();
+		Pet^ pet = QueryPetById(petId);
+		result = "Se están dispensando " + Convert::ToString(pet->WaterServing) + "mL en el recipiente de " + pet->Name;
+		Byte WaterServingByte = Convert::ToByte(pet->WaterServing);
+		ArduinoPort->Write(Convert::ToString(WaterServingByte, 16));
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		ClosePort();
+	}
+	return result;
 }
 
 void ServiceBarry::Service::OpenPort()
