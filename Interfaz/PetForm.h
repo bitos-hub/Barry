@@ -130,7 +130,7 @@ namespace Interfaz {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -540,30 +540,31 @@ namespace Interfaz {
 #pragma endregion
 	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
-	try {
-		int id = Convert::ToInt32(txtPetId->Text);
-		String^ name = txtPetName->Text;
-		double weight = Convert::ToDouble(txtWeight->Text);
-		String^ specie = txtSpecie->Text;
-		String^ status = txtStatus->Text;
-		double foodServing = Convert::ToDouble(txtFood->Text);
-		Pet^ pet = gcnew Pet(id,name, weight, specie, status, foodServing);
-		if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
-			pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-			pet->Photo = ms->ToArray();
+	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			Pet^ pet = gcnew Pet();
+			pet->Name = txtPetName->Text;
+			pet->Weight = Convert::ToDouble(txtWeight->Text);
+			pet->Specie = txtSpecie->Text;
+			pet->Status = txtStatus->Text;
+			pet->FoodServing = Convert::ToDouble(txtFood->Text);
+			int id = Service::AddPet(pet);
+
+			if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
+				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+				pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+				pet->Photo = ms->ToArray();
+			}
+
+			ShowPets();
+			ClearControls();
+			MessageBox::Show("Se ha agregado la mascota " + id + " - " + pet->Name);
 		}
-		Service::AddPet(pet);
-		ShowPets();
-		ClearControls();
-		MessageBox::Show("Se ha agregado la mascota " + id + " - " + name);
+		catch (Exception^ ex) {
+			MessageBox::Show("No se ha podido agregar la mascota por el siguiente motivo:\n" +
+				ex->Message);
+		}
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show("No se ha podido agregar la mascota por el siguiente motivo:\n" +
-			ex->Message);
-	}
-}
 	public:
 		void ShowPets() {
 			List<Pet^>^ petsList = Service::QueryAllPets();
@@ -575,7 +576,7 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 						petsList[i]->Specie,
 						"" + petsList[i]->Weight,
 						"" + petsList[i]->FoodServing,
-						petsList[i]->Status,});
+						petsList[i]->Status, });
 				}
 			}
 		}
@@ -591,94 +592,94 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 			}
 		}
 
-private: System::Void dgvPets_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	if (dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
+	private: System::Void dgvPets_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		if (dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
 
 
-		int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-		Pet^ pet = Service::QueryPetById(Id);
-		txtPetId->Text = "" + pet->Id;
-		txtPetName->Text = pet->Name;
-		txtWeight->Text = "" + pet->Weight;
-		txtSpecie->Text = pet->Specie;
-		txtStatus->Text = pet->Status;
-		txtFood->Text = "" + pet->FoodServing;
-		if (pet->Photo != nullptr) {
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
-			pbPetPhoto->Image = Image::FromStream(ms);
+			int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+			Pet^ pet = Service::QueryPetById(Id);
+			txtPetId->Text = "" + pet->Id;
+			txtPetName->Text = pet->Name;
+			txtWeight->Text = "" + pet->Weight;
+			txtSpecie->Text = pet->Specie;
+			txtStatus->Text = pet->Status;
+			txtFood->Text = "" + pet->FoodServing;
+			if (pet->Photo != nullptr) {
+				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+				pbPetPhoto->Image = Image::FromStream(ms);
+			}
+			else {
+				pbPetPhoto->Image = nullptr;
+				pbPetPhoto->Invalidate();
+			}
 		}
 		else {
+			MessageBox::Show("Debe seleccionar una casilla válida");
+		}
+	}
+	private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ petId = txtPetId->Text->Trim();
+		if (petId->Equals("")) {
+			MessageBox::Show("Debe seleccionar una mascota");
+			return;
+		}
+		try {
+			int id = Convert::ToInt32(txtPetId->Text);
+			String^ name = txtPetName->Text;
+			double weight = Convert::ToDouble(txtWeight->Text);
+			String^ specie = txtSpecie->Text;
+			String^ status = txtStatus->Text;
+			double foodServing = Convert::ToDouble(txtFood->Text);
+			Pet^ pet = gcnew Pet(id, name, weight, specie, status, foodServing);
+			if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
+				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
+				pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
+				pet->Photo = ms->ToArray();
+			}
+			Service::UpdatePet(pet);
+			ShowPets();
+			MessageBox::Show("Se ha modificado la mascota " + petId + "-" + name);
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("No se ha podido modificar la mascota por el siguiente motivo:\n" +
+				ex->Message);
+		}
+	}
+	private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+		String^ petId = txtPetId->Text->Trim();
+		if (petId->Equals("")) {
+			MessageBox::Show("Debe seleccionar una mascota");
+			return;
+		}
+		try {
+			Service::DeletePet(Convert::ToInt32(petId));
 			pbPetPhoto->Image = nullptr;
 			pbPetPhoto->Invalidate();
+			ShowPets();
+			ClearControls();
+			MessageBox::Show("Se ha eliminado la mascota con Id = " + petId + " de manera exitosa.");
+		}
+		catch (Exception^ ex) {
+			MessageBox::Show("No ha sido posible eliminar la mascota por el siguiente motivo:\n" +
+				ex->Message);
 		}
 	}
-	else {
-		MessageBox::Show("Debe seleccionar una casilla válida");
+	private: System::Void salirToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
 	}
-}
-private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ petId = txtPetId->Text->Trim();
-	if (petId->Equals("")) {
-		MessageBox::Show("Debe seleccionar una mascota");
-		return;
+	private: System::Void PetForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		ShowPets();
 	}
-	try {
-		int id = Convert::ToInt32(txtPetId->Text);
-		String^ name = txtPetName->Text;
-		double weight = Convert::ToDouble(txtWeight->Text);
-		String^ specie = txtSpecie->Text;
-		String^ status = txtStatus->Text;
-		double foodServing = Convert::ToDouble(txtFood->Text);
-		Pet^ pet = gcnew Pet(id, name, weight, specie, status, foodServing);
-		if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
-			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
-			pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
-			pet->Photo = ms->ToArray();
+	private: System::Void btnPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
+		OpenFileDialog^ ofd = gcnew OpenFileDialog();
+		ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
+		if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
+			pbPetPhoto->Image = gcnew Bitmap(ofd->FileName);
 		}
-		Service::UpdatePet(pet);
-		ShowPets();
-		MessageBox::Show("Se ha modificado la mascota " + petId + "-" + name);
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show("No se ha podido modificar la mascota por el siguiente motivo:\n" +
-			ex->Message);
+	private: System::Void cerrarSesionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
+		Application::Restart();
 	}
-}
-private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ petId = txtPetId->Text->Trim();
-	if (petId->Equals("")) {
-		MessageBox::Show("Debe seleccionar una mascota");
-		return;
-	}
-	try {
-		Service::DeletePet(Convert::ToInt32(petId));
-		pbPetPhoto->Image = nullptr;
-		pbPetPhoto->Invalidate();
-		ShowPets();
-		ClearControls();
-		MessageBox::Show("Se ha eliminado la mascota con Id = " + petId + " de manera exitosa.");
-	}
-	catch (Exception^ ex) {
-		MessageBox::Show("No ha sido posible eliminar la mascota por el siguiente motivo:\n" +
-			ex->Message);
-	}
-}
-private: System::Void salirToolStripMenuItem1_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
-private: System::Void PetForm_Load(System::Object^ sender, System::EventArgs^ e) {
-	ShowPets();
-}
-private: System::Void btnPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
-	OpenFileDialog^ ofd = gcnew OpenFileDialog();
-	ofd->Filter = "Image Files (*.jpg;*.jpeg;)|*.jpg;*.jpeg;";
-	if (ofd->ShowDialog() == System::Windows::Forms::DialogResult::OK) {
-		pbPetPhoto->Image = gcnew Bitmap(ofd->FileName);
-	}
-}
-private: System::Void cerrarSesionToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-	Application::Restart();
-}
-};
+	};
 }

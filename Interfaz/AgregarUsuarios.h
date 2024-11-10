@@ -72,7 +72,7 @@ namespace Interfaz {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -284,7 +284,7 @@ namespace Interfaz {
 				Service::AddUsuario((User^)admin);
 			}
 			else {
-				if (rol == "Usuario interno") {
+				if (rol == "Usuario Interno") {
 					InternalUser^ iuser = gcnew InternalUser();
 					iuser->Name = nombre_usuario;
 					iuser->Password = contrasena;
@@ -312,45 +312,46 @@ namespace Interfaz {
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("" + ex);
-;		}
+			;
+		}
 
 	}
-private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void txtNombreUsuario_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void txtContrasena_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void txtNombreUsuario_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void pictureBox1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void txtContrasena_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 
-}
+	}
 
-private: System::Void dspRol_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void AgregarUsuarios_Load(System::Object^ sender, System::EventArgs^ e) {
-	FillUsersTypeCmbBox();
-}
-	   void FillUsersTypeCmbBox() {
-		   txtRol->Items->Clear();
-		   array<String^>^ UserRoles = { "Administrador", "Usuario Interno", "Usuario Portal" };
-		   int i = 0;
-		   if (Service::VerifyAdmin()) {
-			   i++;
-			   while (i < UserRoles->Length) {
-				   txtRol->Items->Add(gcnew ComboBoxItem(UserRoles[i]));
+	private: System::Void dspRol_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void AgregarUsuarios_Load(System::Object^ sender, System::EventArgs^ e) {
+		FillUsersTypeCmbBox();
+	}
+		   void FillUsersTypeCmbBox() {
+			   txtRol->Items->Clear();
+			   array<String^>^ UserRoles = { "Administrador", "Usuario Interno", "Usuario Portal" };
+			   int i = 0;
+			   if (Service::VerifyAdmin()) {
 				   i++;
+				   while (i < UserRoles->Length) {
+					   txtRol->Items->Add(gcnew ComboBoxItem(UserRoles[i]));
+					   i++;
+				   }
 			   }
-		   }
-		   else {
-			   txtRol->Items->Add(gcnew ComboBoxItem(UserRoles[i]));
-		   }
+			   else {
+				   txtRol->Items->Add(gcnew ComboBoxItem(UserRoles[i]));
+			   }
 
-	   }
-};
+		   }
+	};
 }

@@ -2,35 +2,10 @@
 <ArrayOfPet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Pet>
     <Id>1</Id>
-    <Name>1</Name>
-    <Weight>1</Weight>
-    <Specie>1</Specie>
-    <Status>1</Status>
-    <FoodServing>1</FoodServing>
-    <PetDispenser>
-      <Id>1</Id>
-      <FeedingSchedule>
-        <int>1200</int>
-        <int>1400</int>
-      </FeedingSchedule>
-      <FoodAmount>0</FoodAmount>
-      <IsPlateFull>false</IsPlateFull>
-      <DispenserFood>0</DispenserFood>
-    </PetDispenser>
-  </Pet>
-  <Pet>
-    <Id>2</Id>
     <Name>2</Name>
     <Weight>2</Weight>
-    <Specie>2</Specie>
+    <Specie>22</Specie>
     <Status>2</Status>
     <FoodServing>2</FoodServing>
-    <PetDispenser>
-      <Id>2</Id>
-      <FeedingSchedule />
-      <FoodAmount>0</FoodAmount>
-      <IsPlateFull>false</IsPlateFull>
-      <DispenserFood>0</DispenserFood>
-    </PetDispenser>
   </Pet>
 </ArrayOfPet>
