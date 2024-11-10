@@ -135,6 +135,7 @@
     <ClCompile Include="PetForm.cpp" />
     <ClCompile Include="ReportForm.cpp" />
     <ClCompile Include="UpdateWeightForm.cpp" />
+    <ClCompile Include="WeightReportForm.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AddFood.h">
@@ -168,6 +169,9 @@
     <ClInclude Include="UpdateWeightForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="WeightReportForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="AddFood.resx">
@@ -196,6 +200,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateWeightForm.resx">
       <DependentUpon>UpdateWeightForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeightReportForm.resx">
+      <DependentUpon>WeightReportForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

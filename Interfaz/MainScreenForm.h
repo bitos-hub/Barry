@@ -7,6 +7,7 @@
 #include "DispenserConfiguration.h"
 #include "AgregarDispensador.h"
 #include "UpdateWeightForm.h"
+#include "WeightReportForm.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -155,6 +156,7 @@ private: System::Windows::Forms::Button^ btnHydrate;
 private: System::Windows::Forms::Button^ btnUpdateWeight;
 private: System::Windows::Forms::ToolStripMenuItem^ recargarToolStripMenuItem;
 private: System::Windows::Forms::ComboBox^ cmbDispenser;
+private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuItem;
 
 
 
@@ -279,6 +281,7 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			this->btnHydrate = (gcnew System::Windows::Forms::Button());
 			this->btnUpdateWeight = (gcnew System::Windows::Forms::Button());
 			this->cmbDispenser = (gcnew System::Windows::Forms::ComboBox());
+			this->pesosYRacionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -359,9 +362,9 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			// 
 			// generarReporteToolStripMenuItem
 			// 
-			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->semanalToolStripMenuItem,
-					this->mensualToolStripMenuItem
+					this->mensualToolStripMenuItem, this->pesosYRacionesToolStripMenuItem
 			});
 			this->generarReporteToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -374,7 +377,7 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			// 
 			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
 			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
-			this->semanalToolStripMenuItem->Size = System::Drawing::Size(184, 34);
+			this->semanalToolStripMenuItem->Size = System::Drawing::Size(234, 34);
 			this->semanalToolStripMenuItem->Text = L"Semanal";
 			this->semanalToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::semanalToolStripMenuItem_Click);
 			// 
@@ -382,7 +385,7 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			// 
 			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
 			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
-			this->mensualToolStripMenuItem->Size = System::Drawing::Size(184, 34);
+			this->mensualToolStripMenuItem->Size = System::Drawing::Size(234, 34);
 			this->mensualToolStripMenuItem->Text = L"Mensual";
 			// 
 			// recargarToolStripMenuItem
@@ -958,6 +961,13 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			this->cmbDispenser->TabIndex = 56;
 			this->cmbDispenser->SelectedIndexChanged += gcnew System::EventHandler(this, &MainScreenForm::cmbDispenser_SelectedIndexChanged);
 			// 
+			// pesosYRacionesToolStripMenuItem
+			// 
+			this->pesosYRacionesToolStripMenuItem->Name = L"pesosYRacionesToolStripMenuItem";
+			this->pesosYRacionesToolStripMenuItem->Size = System::Drawing::Size(234, 34);
+			this->pesosYRacionesToolStripMenuItem->Text = L"Pesos y raciones";
+			this->pesosYRacionesToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::pesosYRacionesToolStripMenuItem_Click);
+			// 
 			// MainScreenForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -1256,6 +1266,10 @@ private: System::Void cmbDispenser_SelectedIndexChanged(System::Object^ sender, 
 	catch (Exception^ e) {
 
 	}
+}
+private: System::Void pesosYRacionesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	WeightReportForm^ form = gcnew WeightReportForm();
+	form->ShowDialog();
 }
 };
 		   //combo box Dispensadores
