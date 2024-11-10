@@ -542,12 +542,15 @@ namespace Interfaz {
 			pet->Name = txtPetName->Text;
 			pet->Weight = Convert::ToDouble(txtWeight->Text);
 			pet->WeightEvolution->Add(pet->Weight);
+			pet->WeightChanges->Add(DateTime::Now);
 			pet->WaterServing = Convert::ToDouble(txtPetWater->Text);
 			pet->WaterEvolution->Add(pet->WaterServing);
+			pet->WaterChanges->Add(DateTime::Now);
 			pet->Specie = txtSpecie->Text;
 			pet->Status = txtStatus->Text;
 			pet->FoodServing = Convert::ToDouble(txtFood->Text);
 			pet->FoodEvolution->Add(pet->FoodServing);
+			pet->FoodChanges->Add(DateTime::Now);
 			int id = Service::AddPet(pet);
 
 			if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {

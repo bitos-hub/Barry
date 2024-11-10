@@ -122,25 +122,37 @@ int ServiceBarry::Service::AddPet(Pet^ pet)
 void ServiceBarry::Service::UpdatePet(Pet^ pet)
 {
 	List<double>^ weightEvolution= gcnew List<double>();
+	List<DateTime>^ weightChanges = gcnew List<DateTime>();
 	List<double>^ waterEvolution = gcnew List<double>();
+	List<DateTime>^ waterChanges = gcnew List<DateTime>();
 	List<double>^ foodEvolution = gcnew List<double>();
+	List<DateTime>^ foodChanges = gcnew List<DateTime>();
 	for (int i = 0; i < Persistance::PetsList->Count; i++) {
 		if (Persistance::PetsList[i]->Id == pet->Id) {
 			weightEvolution = Persistance::PetsList[i]->WeightEvolution;
+			weightChanges = Persistance::PetsList[i]->WeightChanges;
 			waterEvolution = Persistance::PetsList[i]->WaterEvolution;
+			waterChanges = Persistance::PetsList[i]->WaterChanges;
 			foodEvolution = Persistance::PetsList[i]->FoodEvolution;
+			foodChanges = Persistance::PetsList[i]->FoodChanges;
 			if (weightEvolution[weightEvolution->Count - 1] != pet->Weight) {
 				weightEvolution->Add(pet->Weight);
+				weightChanges->Add(DateTime::Now);
 			}
 			pet->WeightEvolution = weightEvolution;
+			pet->WeightChanges = weightChanges;
 			if (waterEvolution[waterEvolution->Count - 1] != pet->WaterServing) {
 				waterEvolution->Add(pet->WaterServing);
+				waterChanges->Add(DateTime::Now);
 			}
 			pet->WaterEvolution = waterEvolution;
+			pet->WaterChanges = waterChanges;
 			if (foodEvolution[foodEvolution->Count - 1] != pet->FoodServing) {
 				foodEvolution->Add(pet->FoodServing);
+				foodChanges->Add(DateTime::Now);
 			}
 			pet->FoodEvolution = foodEvolution;
+			pet->FoodChanges = foodChanges;
 			Persistance::PetsList[i] = pet;
 			Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
 			Persistance::PersistTextFile(TXT_PET_FILE_NAME, Persistance::PetsList);

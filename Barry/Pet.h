@@ -17,21 +17,27 @@ namespace Barry {
         String^ Name;
         double Weight;
         List<double>^ WeightEvolution;
+        List<DateTime>^ WeightChanges;
         String^ Specie;
         String^ Status;
         List<Food^>^ OpcionesComida;
         double FoodServing;
+        List<DateTime>^ FoodChanges;
         List<double>^ FoodEvolution;
         double WaterServing;
         List<double>^ WaterEvolution;
+        List<DateTime>^ WaterChanges;
         User^ Owner;
         array<Byte>^ Photo;
         Dispenser^ PetDispenser; //se agregó este atributo para tener un dispensador por mascota
     public:
         Pet() {
             WeightEvolution = gcnew List<double>();
+            WeightChanges = gcnew List<DateTime>();
             FoodEvolution = gcnew List<double>();
+            FoodChanges = gcnew List<DateTime>();
             WaterEvolution = gcnew List<double>();
+            WaterChanges = gcnew List<DateTime>();
             OpcionesComida = gcnew List<Food^>();
         }
         Pet(int id, String^ name, double weight, String^ specie, String^ status, double foodServing, double waterServing)
