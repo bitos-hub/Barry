@@ -45,7 +45,7 @@ namespace Interfaz {
 
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ users;
 	private: System::Windows::Forms::TextBox^ txtUsername;
-	private: System::Windows::Forms::Button^ btnSearch;
+
 
 
 	private: System::Windows::Forms::Label^ label1;
@@ -70,6 +70,13 @@ namespace Interfaz {
 
 	private: System::Windows::Forms::TextBox^ txtPhoneNumber;
 
+	private: System::Windows::Forms::TextBox^ txtUserNameChosen;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Button^ btnSearch;
+
+
+
+
 
 	private:
 		/// <summary>
@@ -84,11 +91,12 @@ namespace Interfaz {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->dgvUserS = (gcnew System::Windows::Forms::DataGridView());
 			this->users = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->txtUsername = (gcnew System::Windows::Forms::TextBox());
-			this->btnSearch = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->txtPassword = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -99,6 +107,9 @@ namespace Interfaz {
 			this->btnUpdate = (gcnew System::Windows::Forms::Button());
 			this->btnDelete = (gcnew System::Windows::Forms::Button());
 			this->txtPhoneNumber = (gcnew System::Windows::Forms::TextBox());
+			this->txtUserNameChosen = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->btnSearch = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUserS))->BeginInit();
 			this->SuspendLayout();
@@ -117,8 +128,26 @@ namespace Interfaz {
 			// 
 			// dgvUserS
 			// 
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
+			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvUserS->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this->dgvUserS->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvUserS->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->users });
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::TopCenter;
+			dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Book", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvUserS->DefaultCellStyle = dataGridViewCellStyle6;
 			this->dgvUserS->Location = System::Drawing::Point(38, 146);
 			this->dgvUserS->Name = L"dgvUserS";
 			this->dgvUserS->RowHeadersWidth = 51;
@@ -136,33 +165,26 @@ namespace Interfaz {
 			// 
 			// txtUsername
 			// 
-			this->txtUsername->Location = System::Drawing::Point(38, 59);
+			this->txtUsername->Location = System::Drawing::Point(38, 64);
 			this->txtUsername->Name = L"txtUsername";
 			this->txtUsername->Size = System::Drawing::Size(221, 22);
 			this->txtUsername->TabIndex = 23;
 			// 
-			// btnSearch
-			// 
-			this->btnSearch->Location = System::Drawing::Point(72, 98);
-			this->btnSearch->Name = L"btnSearch";
-			this->btnSearch->Size = System::Drawing::Size(178, 32);
-			this->btnSearch->TabIndex = 24;
-			this->btnSearch->Text = L"Buscar";
-			this->btnSearch->UseVisualStyleBackColor = true;
-			this->btnSearch->Click += gcnew System::EventHandler(this, &ViewUsersForm::btnSearch_Click);
-			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Gainsboro;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(35, 40);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(128, 16);
+			this->label1->Size = System::Drawing::Size(136, 21);
 			this->label1->TabIndex = 25;
 			this->label1->Text = L"Nombre de Usuario:";
 			// 
 			// txtPassword
 			// 
-			this->txtPassword->Location = System::Drawing::Point(348, 108);
+			this->txtPassword->Location = System::Drawing::Point(351, 171);
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->Size = System::Drawing::Size(214, 22);
 			this->txtPassword->TabIndex = 27;
@@ -170,16 +192,18 @@ namespace Interfaz {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(352, 88);
+			this->label2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(348, 151);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(76, 16);
+			this->label2->Size = System::Drawing::Size(84, 21);
 			this->label2->TabIndex = 28;
 			this->label2->Text = L"Contraseña";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(352, 40);
+			this->label3->Location = System::Drawing::Point(355, 88);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(0, 16);
 			this->label3->TabIndex = 29;
@@ -187,60 +211,109 @@ namespace Interfaz {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(352, 40);
+			this->label4->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(347, 98);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(28, 16);
+			this->label4->Size = System::Drawing::Size(31, 21);
 			this->label4->TabIndex = 30;
 			this->label4->Text = L"Rol";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(352, 139);
+			this->label5->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(355, 202);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(125, 16);
+			this->label5->Size = System::Drawing::Size(136, 21);
 			this->label5->TabIndex = 32;
 			this->label5->Text = L"Numero de teléfono";
 			// 
 			// cmbRol
 			// 
 			this->cmbRol->FormattingEnabled = true;
-			this->cmbRol->Location = System::Drawing::Point(348, 59);
+			this->cmbRol->Location = System::Drawing::Point(351, 118);
 			this->cmbRol->Name = L"cmbRol";
 			this->cmbRol->Size = System::Drawing::Size(214, 24);
 			this->cmbRol->TabIndex = 33;
 			// 
 			// btnUpdate
 			// 
-			this->btnUpdate->Location = System::Drawing::Point(344, 210);
+			this->btnUpdate->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnUpdate->Location = System::Drawing::Point(347, 267);
 			this->btnUpdate->Name = L"btnUpdate";
 			this->btnUpdate->Size = System::Drawing::Size(133, 30);
 			this->btnUpdate->TabIndex = 37;
 			this->btnUpdate->Text = L"Modificar datos";
-			this->btnUpdate->UseVisualStyleBackColor = true;
+			this->btnUpdate->UseVisualStyleBackColor = false;
 			this->btnUpdate->Click += gcnew System::EventHandler(this, &ViewUsersForm::btnUpdate_Click);
 			// 
 			// btnDelete
 			// 
-			this->btnDelete->Location = System::Drawing::Point(344, 246);
+			this->btnDelete->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnDelete->Location = System::Drawing::Point(347, 303);
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(133, 30);
 			this->btnDelete->TabIndex = 38;
 			this->btnDelete->Text = L"Eliminar";
-			this->btnDelete->UseVisualStyleBackColor = true;
+			this->btnDelete->UseVisualStyleBackColor = false;
+			this->btnDelete->Click += gcnew System::EventHandler(this, &ViewUsersForm::btnDelete_Click);
 			// 
 			// txtPhoneNumber
 			// 
-			this->txtPhoneNumber->Location = System::Drawing::Point(348, 159);
+			this->txtPhoneNumber->Location = System::Drawing::Point(351, 222);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
 			this->txtPhoneNumber->Size = System::Drawing::Size(214, 22);
 			this->txtPhoneNumber->TabIndex = 31;
+			// 
+			// txtUserNameChosen
+			// 
+			this->txtUserNameChosen->Location = System::Drawing::Point(351, 64);
+			this->txtUserNameChosen->Name = L"txtUserNameChosen";
+			this->txtUserNameChosen->Size = System::Drawing::Size(214, 22);
+			this->txtUserNameChosen->TabIndex = 39;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->BackColor = System::Drawing::SystemColors::Control;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(347, 40);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(136, 21);
+			this->label6->TabIndex = 40;
+			this->label6->Text = L"Nombre de Usuario:";
+			// 
+			// btnSearch
+			// 
+			this->btnSearch->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnSearch->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnSearch->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnSearch->Location = System::Drawing::Point(83, 98);
+			this->btnSearch->Name = L"btnSearch";
+			this->btnSearch->Size = System::Drawing::Size(159, 30);
+			this->btnSearch->TabIndex = 24;
+			this->btnSearch->Text = L"Buscar";
+			this->btnSearch->UseVisualStyleBackColor = false;
+			this->btnSearch->Click += gcnew System::EventHandler(this, &ViewUsersForm::btnSearch_Click);
 			// 
 			// ViewUsersForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(639, 570);
+			this->ClientSize = System::Drawing::Size(615, 553);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->txtUserNameChosen);
 			this->Controls->Add(this->btnDelete);
 			this->Controls->Add(this->btnUpdate);
 			this->Controls->Add(this->cmbRol);
@@ -287,10 +360,22 @@ public:
 	}
 
 	void FillUsersData(User^ user) {
+		txtUserNameChosen->Text = user->Name;
 		cmbRol->Text = user->Role;
 		txtPassword->Text = user->Password;
 		txtPhoneNumber->Text = Convert::ToString(user->PhoneNumber);
 
+	}
+	void ClearControls() {
+		for each (Control ^ control in this->Controls) {
+			if (control->GetType() == TextBox::typeid) {
+				dynamic_cast<TextBox^>(control)->Text = "";
+			}
+		
+			if (control->GetType() == ComboBox::typeid) {
+				dynamic_cast<ComboBox^>(control)->Text = "";
+			}
+		}
 	}
 
 private: System::Void ViewUsersForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -336,5 +421,19 @@ private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^
 	}
 	
 }
+private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
+		Service::EliminarUsuario(user->Id);
+		MessageBox::Show("Usuario " + user->Name + " eliminado");
+		ClearControls();
+		dgvUserS->Rows->Clear();
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("No se pudo eliminar al usuario debido a " + ex);
+
+	}
+
+}
+
 };
 }

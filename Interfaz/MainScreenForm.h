@@ -1110,18 +1110,21 @@ private: System::Windows::Forms::ComboBox^ cmbDispenser;
 			addToolStripMenuItem->Enabled = true;
 			programarComidaToolStripMenuItem->Enabled = true;
 			generarReporteToolStripMenuItem->Enabled = true;
+			usuariosToolStripMenuItem->Enabled = true;
 		}
 
 		void EnableInternalUserOptions() {
 			addToolStripMenuItem->Enabled = false;
 			programarComidaToolStripMenuItem->Enabled = true;
 			generarReporteToolStripMenuItem->Enabled = true;
+			usuariosToolStripMenuItem->Enabled = false;
 		}
 
 		void EnablePortalUserOptions() {
 			addToolStripMenuItem->Enabled = false;
 			programarComidaToolStripMenuItem->Enabled = false;
 			generarReporteToolStripMenuItem->Enabled = true;
+			usuariosToolStripMenuItem->Enabled = false;
 		}
 
 	private: System::Void pbPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
