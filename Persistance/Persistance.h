@@ -50,17 +50,20 @@ namespace BarryPersistance {
 
 		//TXT-Persist
 		static void PersistTextFile(String^ fileName, Object^ persistObject);
+		//static void PersistDispensationTextFile(String^ fileName, Object^ persistObject);
 		//TXT-Load
 		static Object^ LoadUsersTextFile(String^ fileName);
 		static Object^ LoadDispensersTextFile(String^ fileName);
 		static Object^ LoadPetsTextFile(String^ fileName);
 		static Object^ LoadFoodTextFile(String^ fileName);
+		//static Object^ LoadDispensationTextFile(String^ fileName);
 
 		static void AddDispensador(int id, DispensadorDisponible^ disp); //se queda este
 		static List<Dispenser^>^ ConsultarTodosDispensadores();
 		static void EliminarDispensador(int id);
 		static Dispenser^ ConsultarDispensadorPorId(int);
 		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
+		static void ActualizarDispensador(Dispenser^ d);
 		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
 
 

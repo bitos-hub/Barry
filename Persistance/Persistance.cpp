@@ -234,7 +234,7 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
                 writer->WriteLine("{0}|{1}|{2}|{3:F1}|{4}|{5:F1}",
                     f->Id, f->Name, f->Status, f->FoodAmount, f->FoodBrand, f->FoodPrice);
             }
-        }
+        }      
 
     }
     catch (Exception^ ex) { throw ex; }
@@ -243,6 +243,30 @@ void BarryPersistance::Persistance::PersistTextFile(String^ fileName, Object^ pe
         if (file != nullptr) file->Close();
     }
 }
+/*void BarryPersistance::Persistance::PersistDispensationTextFile(String^ fileName, Object^ persistObject)
+{
+    FileStream^ file;
+    StreamWriter^ writer;
+    try {
+        file = gcnew FileStream(fileName, FileMode::Create, FileAccess::Write);
+        writer = gcnew StreamWriter(file);
+        
+        if (persistObject->GetType() == List<Dispensation^>::typeid) {
+            List<Dispensation^>^ dispensation = (List<Dispensation^>^) persistObject;
+            for (int i = 0; i < dispensation->Count; i++) {
+                Dispensation^ di = dispensation[i];
+                writer->WriteLine("{0}|{1}",
+                    di->Date, di->TimesDispensed);
+            }
+        }
+
+    }
+    catch (Exception^ ex) { throw ex; }
+    finally {
+        if (writer != nullptr) writer->Close();
+        if (file != nullptr) file->Close();
+    }
+}*/
 Object^ BarryPersistance::Persistance::LoadUsersTextFile(String^ fileName)
 {
     FileStream^ file;
@@ -374,7 +398,32 @@ Object^ BarryPersistance::Persistance::LoadFoodTextFile(String^ fileName)
     }
     return result;
 }
-
+/*
+Object^ BarryPersistance::Persistance::LoadDispensationTextFile(String^ fileName)
+{
+    FileStream^ file;
+    StreamReader^ reader;
+    Object^ result = gcnew List<Dispensation^>();
+    try {
+        file = gcnew FileStream(fileName, FileMode::Open, FileAccess::Read);
+        reader = gcnew StreamReader(file);
+        while (!reader->EndOfStream) {
+            String^ line = reader->ReadLine();
+            array<String^>^ record = line->Split('|');
+            Dispensation^ dispensation = gcnew Dispensation();
+            dispensation->Date = Convert::ToString(record[0]);
+            dispensation->TimesDispensed = Convert::ToInt32(record[1]);
+            ((List<Dispensation^>^)result)->Add(dispensation);
+        }
+    }
+    catch (Exception^ ex) { throw ex; }
+    finally {
+        if (reader != nullptr) reader->Close();
+        if (file != nullptr) file->Close();
+    }
+    return result;
+}
+*/
 
 void BarryPersistance::Persistance::AddDispensador(int id, DispensadorDisponible^ disp)
 {
@@ -452,6 +501,20 @@ void BarryPersistance::Persistance::AddHorarioDispensador(Dispenser^ dispensador
     PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
     PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
 
+}
+
+void BarryPersistance::Persistance::ActualizarDispensador(Dispenser^ d)
+{
+    lista_dispensadores = ConsultarTodosDispensadores();
+    for (int i = 0; i < lista_dispensadores->Count; i++) {
+        Dispenser^ dispensador = lista_dispensadores[i];
+        if (dispensador->Id == d->Id) {
+            lista_dispensadores[i] = d;
+            break;
+        }
+    }
+    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
+    PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
 }
 
 void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador)

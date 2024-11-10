@@ -7,19 +7,23 @@ namespace Barry {
     [Serializable] public ref class Dispensation
     {
     public:
-        property DateTime Date;
-        property int TimesDispensed;
+        property String^ Date;
+        property int TimesDispensedFood;
+        property int TimesDispensedWater;
 
         Dispensation() {
-            Date = DateTime::Now;
-            TimesDispensed = 0;
+            Date = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd");
         }
 
-        Dispensation(DateTime date, int timesDispensed) {
-            Date = date;
-            TimesDispensed = timesDispensed;
+    public:
+        void WaterDispensationInitialize() {
+            TimesDispensedWater = 1;
+        }
+        void FoodDispensationInitialize() {
+            TimesDispensedFood = 1;
         }
     };
+
 }
 
 

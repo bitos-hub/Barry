@@ -6,6 +6,7 @@
 #include "Food.h"
 #include "Report.h"
 #include "DispensadorDisponible.h"
+#include "Dispensation.h"
 
 using namespace System;
 using namespace System::Collections::Generic;
@@ -22,6 +23,8 @@ namespace Barry {
         DispensadorDisponible^ DispensadorAsignado;
         Food^ ComidaAsignada;
         String^ ModoOperacion;
+        List<Dispensation^>^ dispensationRecord =  gcnew List<Dispensation^>();
+
 
         bool DispenseFood(Food^);
         bool DispenseWater();

@@ -48,4 +48,12 @@
       <FoodAmount>0</FoodAmount>
     </ComidaAsignada>
   </Dispenser>
+  <Dispenser>
+    <Id>2</Id>
+    <FeedingSchedule />
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+    <dispensationRecord />
+  </Dispenser>
 </ArrayOfDispenser>
