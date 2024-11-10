@@ -141,7 +141,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMe
 private: System::Windows::Forms::ComboBox^ cmbSchedules;
 private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 	private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
-	private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMenuItem;
+	
 
 
 
