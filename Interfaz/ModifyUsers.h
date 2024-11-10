@@ -19,7 +19,9 @@ namespace Interfaz {
 	{
 		public: 
 			 static User^ refUser;
-			 static Form^ refForm;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	public:
+		static Form^ refForm;
 	public:
 		ModifyUsers(User^ user, Form^ form)
 		{
@@ -81,13 +83,16 @@ namespace Interfaz {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->btnUpdate = (gcnew System::Windows::Forms::Button());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// txtNewPassword
 			// 
-			this->txtNewPassword->Location = System::Drawing::Point(37, 194);
+			this->txtNewPassword->Location = System::Drawing::Point(37, 255);
+			this->txtNewPassword->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->txtNewPassword->Name = L"txtNewPassword";
-			this->txtNewPassword->Size = System::Drawing::Size(224, 22);
+			this->txtNewPassword->Size = System::Drawing::Size(224, 27);
 			this->txtNewPassword->TabIndex = 0;
 			// 
 			// contextMenuStrip1
@@ -98,86 +103,118 @@ namespace Interfaz {
 			// 
 			// txtNewName
 			// 
-			this->txtNewName->Location = System::Drawing::Point(37, 89);
+			this->txtNewName->Location = System::Drawing::Point(37, 117);
+			this->txtNewName->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->txtNewName->Name = L"txtNewName";
-			this->txtNewName->Size = System::Drawing::Size(224, 22);
+			this->txtNewName->Size = System::Drawing::Size(224, 27);
 			this->txtNewName->TabIndex = 2;
 			// 
 			// cmbNewRol
 			// 
 			this->cmbNewRol->FormattingEnabled = true;
-			this->cmbNewRol->Location = System::Drawing::Point(37, 133);
+			this->cmbNewRol->Location = System::Drawing::Point(37, 175);
+			this->cmbNewRol->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->cmbNewRol->Name = L"cmbNewRol";
-			this->cmbNewRol->Size = System::Drawing::Size(224, 24);
+			this->cmbNewRol->Size = System::Drawing::Size(224, 29);
 			this->cmbNewRol->TabIndex = 3;
 			// 
 			// txtNewPhoneNumber
 			// 
-			this->txtNewPhoneNumber->Location = System::Drawing::Point(37, 247);
+			this->txtNewPhoneNumber->Location = System::Drawing::Point(37, 324);
+			this->txtNewPhoneNumber->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->txtNewPhoneNumber->Name = L"txtNewPhoneNumber";
-			this->txtNewPhoneNumber->Size = System::Drawing::Size(224, 22);
+			this->txtNewPhoneNumber->Size = System::Drawing::Size(224, 27);
 			this->txtNewPhoneNumber->TabIndex = 4;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(34, 70);
+			this->label1->BackColor = System::Drawing::Color::Gainsboro;
+			this->label1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label1->Location = System::Drawing::Point(34, 92);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(56, 16);
+			this->label1->Size = System::Drawing::Size(61, 21);
 			this->label1->TabIndex = 5;
 			this->label1->Text = L"Nombre";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(34, 114);
+			this->label2->BackColor = System::Drawing::Color::Gainsboro;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(34, 150);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(28, 16);
+			this->label2->Size = System::Drawing::Size(31, 21);
 			this->label2->TabIndex = 6;
 			this->label2->Text = L"Rol";
 			// 
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(34, 228);
+			this->label3->BackColor = System::Drawing::Color::Gainsboro;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(34, 299);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(125, 16);
+			this->label3->Size = System::Drawing::Size(136, 21);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Número de teléfono";
 			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(34, 175);
+			this->label4->BackColor = System::Drawing::Color::Gainsboro;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(34, 230);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(119, 16);
+			this->label4->Size = System::Drawing::Size(127, 21);
 			this->label4->TabIndex = 8;
 			this->label4->Text = L"Contraseña Nueva";
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(12, 36);
+			this->label5->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(12, 47);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(157, 16);
+			this->label5->Size = System::Drawing::Size(167, 21);
 			this->label5->TabIndex = 9;
-			this->label5->Text = L"Ingrese los datos nuevos";
+			this->label5->Text = L"Ingrese los nuevos datos";
 			// 
 			// btnUpdate
 			// 
-			this->btnUpdate->Location = System::Drawing::Point(55, 293);
+			this->btnUpdate->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnUpdate->Location = System::Drawing::Point(58, 371);
+			this->btnUpdate->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->btnUpdate->Name = L"btnUpdate";
-			this->btnUpdate->Size = System::Drawing::Size(180, 35);
+			this->btnUpdate->Size = System::Drawing::Size(180, 46);
 			this->btnUpdate->TabIndex = 10;
 			this->btnUpdate->Text = L"Actualizar";
-			this->btnUpdate->UseVisualStyleBackColor = true;
+			this->btnUpdate->UseVisualStyleBackColor = false;
 			this->btnUpdate->Click += gcnew System::EventHandler(this, &ModifyUsers::btnUpdate_Click);
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackColor = System::Drawing::Color::Gainsboro;
+			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pictureBox2->Cursor = System::Windows::Forms::Cursors::Arrow;
+			this->pictureBox2->Location = System::Drawing::Point(13, 70);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(285, 388);
+			this->pictureBox2->TabIndex = 22;
+			this->pictureBox2->TabStop = false;
 			// 
 			// ModifyUsers
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 21);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(341, 390);
+			this->ClientSize = System::Drawing::Size(341, 512);
 			this->Controls->Add(this->btnUpdate);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
@@ -188,10 +225,15 @@ namespace Interfaz {
 			this->Controls->Add(this->cmbNewRol);
 			this->Controls->Add(this->txtNewName);
 			this->Controls->Add(this->txtNewPassword);
+			this->Controls->Add(this->pictureBox2);
+			this->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->Name = L"ModifyUsers";
-			this->Text = L"ModifyUsers";
+			this->Text = L"Modificar Usuario";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &ModifyUsers::ModifyUsers_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &ModifyUsers::ModifyUsers_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
