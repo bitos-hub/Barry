@@ -132,6 +132,7 @@
     <ClCompile Include="DispenserConfiguration.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainScreenForm.cpp" />
+    <ClCompile Include="ModifyUsers.cpp" />
     <ClCompile Include="PetForm.cpp" />
     <ClCompile Include="ReportForm.cpp" />
     <ClCompile Include="UpdateWeightForm.cpp" />
@@ -158,6 +159,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainScreenForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ModifyUsers.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="PetForm.h">
@@ -194,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainScreenForm.resx">
       <DependentUpon>MainScreenForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModifyUsers.resx">
+      <DependentUpon>ModifyUsers.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportForm.resx">
       <DependentUpon>ReportForm.h</DependentUpon>

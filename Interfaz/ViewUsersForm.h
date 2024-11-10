@@ -1,5 +1,6 @@
 #pragma once
 #include "ComboBoxItem.h"
+#include "ModifyUsers.h"
 
 namespace Interfaz {
 
@@ -56,13 +57,13 @@ namespace Interfaz {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::ComboBox^ cmbRol;
-	private: System::Windows::Forms::RadioButton^ rbtnYesEdit;
-	private: System::Windows::Forms::RadioButton^ rdbNoEdit;
 
 
 
 
-	private: System::Windows::Forms::GroupBox^ groupBox1;
+
+
+
 	private: System::Windows::Forms::Button^ btnUpdate;
 	private: System::Windows::Forms::Button^ btnDelete;
 
@@ -95,15 +96,11 @@ namespace Interfaz {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->cmbRol = (gcnew System::Windows::Forms::ComboBox());
-			this->rbtnYesEdit = (gcnew System::Windows::Forms::RadioButton());
-			this->rdbNoEdit = (gcnew System::Windows::Forms::RadioButton());
-			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->btnUpdate = (gcnew System::Windows::Forms::Button());
 			this->btnDelete = (gcnew System::Windows::Forms::Button());
 			this->txtPhoneNumber = (gcnew System::Windows::Forms::TextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUserS))->BeginInit();
-			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// pictureBox2
@@ -165,7 +162,7 @@ namespace Interfaz {
 			// 
 			// txtPassword
 			// 
-			this->txtPassword->Location = System::Drawing::Point(352, 180);
+			this->txtPassword->Location = System::Drawing::Point(348, 108);
 			this->txtPassword->Name = L"txtPassword";
 			this->txtPassword->Size = System::Drawing::Size(214, 22);
 			this->txtPassword->TabIndex = 27;
@@ -173,7 +170,7 @@ namespace Interfaz {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(356, 160);
+			this->label2->Location = System::Drawing::Point(352, 88);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(76, 16);
 			this->label2->TabIndex = 28;
@@ -182,7 +179,7 @@ namespace Interfaz {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(356, 112);
+			this->label3->Location = System::Drawing::Point(352, 40);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(0, 16);
 			this->label3->TabIndex = 29;
@@ -190,7 +187,7 @@ namespace Interfaz {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(356, 112);
+			this->label4->Location = System::Drawing::Point(352, 40);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(28, 16);
 			this->label4->TabIndex = 30;
@@ -199,7 +196,7 @@ namespace Interfaz {
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(356, 211);
+			this->label5->Location = System::Drawing::Point(352, 139);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(125, 16);
 			this->label5->TabIndex = 32;
@@ -208,58 +205,24 @@ namespace Interfaz {
 			// cmbRol
 			// 
 			this->cmbRol->FormattingEnabled = true;
-			this->cmbRol->Location = System::Drawing::Point(352, 131);
+			this->cmbRol->Location = System::Drawing::Point(348, 59);
 			this->cmbRol->Name = L"cmbRol";
 			this->cmbRol->Size = System::Drawing::Size(214, 24);
 			this->cmbRol->TabIndex = 33;
 			// 
-			// rbtnYesEdit
-			// 
-			this->rbtnYesEdit->AutoSize = true;
-			this->rbtnYesEdit->Location = System::Drawing::Point(16, 31);
-			this->rbtnYesEdit->Name = L"rbtnYesEdit";
-			this->rbtnYesEdit->Size = System::Drawing::Size(40, 20);
-			this->rbtnYesEdit->TabIndex = 34;
-			this->rbtnYesEdit->TabStop = true;
-			this->rbtnYesEdit->Text = L"Sí";
-			this->rbtnYesEdit->UseVisualStyleBackColor = true;
-			this->rbtnYesEdit->CheckedChanged += gcnew System::EventHandler(this, &ViewUsersForm::rbtnYesEdit_CheckedChanged);
-			// 
-			// rdbNoEdit
-			// 
-			this->rdbNoEdit->AutoSize = true;
-			this->rdbNoEdit->Location = System::Drawing::Point(102, 31);
-			this->rdbNoEdit->Name = L"rdbNoEdit";
-			this->rdbNoEdit->Size = System::Drawing::Size(46, 20);
-			this->rdbNoEdit->TabIndex = 35;
-			this->rdbNoEdit->TabStop = true;
-			this->rdbNoEdit->Text = L"No";
-			this->rdbNoEdit->UseVisualStyleBackColor = true;
-			this->rdbNoEdit->CheckedChanged += gcnew System::EventHandler(this, &ViewUsersForm::rdbNoEdit_CheckedChanged);
-			// 
-			// groupBox1
-			// 
-			this->groupBox1->Controls->Add(this->rbtnYesEdit);
-			this->groupBox1->Controls->Add(this->rdbNoEdit);
-			this->groupBox1->Location = System::Drawing::Point(352, 30);
-			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Size = System::Drawing::Size(243, 61);
-			this->groupBox1->TabIndex = 36;
-			this->groupBox1->TabStop = false;
-			this->groupBox1->Text = L"¿Desea modificar al usuario\?";
-			// 
 			// btnUpdate
 			// 
-			this->btnUpdate->Location = System::Drawing::Point(348, 283);
+			this->btnUpdate->Location = System::Drawing::Point(344, 210);
 			this->btnUpdate->Name = L"btnUpdate";
 			this->btnUpdate->Size = System::Drawing::Size(133, 30);
 			this->btnUpdate->TabIndex = 37;
-			this->btnUpdate->Text = L"Actualizar";
+			this->btnUpdate->Text = L"Modificar datos";
 			this->btnUpdate->UseVisualStyleBackColor = true;
+			this->btnUpdate->Click += gcnew System::EventHandler(this, &ViewUsersForm::btnUpdate_Click);
 			// 
 			// btnDelete
 			// 
-			this->btnDelete->Location = System::Drawing::Point(348, 333);
+			this->btnDelete->Location = System::Drawing::Point(344, 246);
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(133, 30);
 			this->btnDelete->TabIndex = 38;
@@ -268,7 +231,7 @@ namespace Interfaz {
 			// 
 			// txtPhoneNumber
 			// 
-			this->txtPhoneNumber->Location = System::Drawing::Point(352, 231);
+			this->txtPhoneNumber->Location = System::Drawing::Point(348, 159);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
 			this->txtPhoneNumber->Size = System::Drawing::Size(214, 22);
 			this->txtPhoneNumber->TabIndex = 31;
@@ -280,7 +243,6 @@ namespace Interfaz {
 			this->ClientSize = System::Drawing::Size(639, 570);
 			this->Controls->Add(this->btnDelete);
 			this->Controls->Add(this->btnUpdate);
-			this->Controls->Add(this->groupBox1);
 			this->Controls->Add(this->cmbRol);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->txtPhoneNumber);
@@ -299,14 +261,13 @@ namespace Interfaz {
 			this->Load += gcnew System::EventHandler(this, &ViewUsersForm::ViewUsersForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvUserS))->EndInit();
-			this->groupBox1->ResumeLayout(false);
-			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-
+private:
+	User^ user;
 public:
 	void FillUsersGrid() {
 		List<User^>^ usersList = Service::ConsultarTodosUsuarios();
@@ -325,16 +286,11 @@ public:
 		dgvUserS->Rows->Add(gcnew array<String^> {user->Name});
 	}
 
-	void FillRolesComboBox() {
-		cmbRol->Items->Clear();
-		array<String^>^ UserRoles = {"Usuario Interno", "Usuario Portal" };
-		int i = 0;
-		
-		while (i < UserRoles->Length) {
-			cmbRol->Items->Add(gcnew ComboBoxItem(UserRoles[i]));
-			i++;
-		}
-		
+	void FillUsersData(User^ user) {
+		cmbRol->Text = user->Role;
+		txtPassword->Text = user->Password;
+		txtPhoneNumber->Text = Convert::ToString(user->PhoneNumber);
+
 	}
 
 private: System::Void ViewUsersForm_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -361,25 +317,24 @@ private: System::Void btnSearch_Click(System::Object^ sender, System::EventArgs^
 	}
 }
 private: System::Void dgvUserS_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	User^ user = Service::ConsultarUsuario(dgvUserS->Rows[dgvUserS->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-	cmbRol->Text = user->Role ;
-	txtPassword->Text = user->Password ;
-	txtPhoneNumber->Text = Convert::ToString(user->PhoneNumber);
+	user = Service::ConsultarUsuario(dgvUserS->Rows[dgvUserS->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
+	FillUsersData(user);
+	btnUpdate->Enabled = true;
+	btnDelete->Enabled = true;
 }
-	private: System::Void rbtnYesEdit_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-		if (rbtnYesEdit->Checked == true) {
-			btnUpdate->Enabled = true;
-			btnDelete->Enabled = true;
-			FillRolesComboBox();
-		}
-}
-private: System::Void rdbNoEdit_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
-	if (rdbNoEdit->Checked == true) {
-		btnUpdate->Enabled = false;
-		btnDelete->Enabled = false;
-		cmbRol->Items->Clear();
+	
+
+private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (user != nullptr) {
+		ModifyUsers^ form = gcnew ModifyUsers(user, this);
+		form->ShowDialog();	
+		dgvUserS->Rows->Clear();
 
 	}
+	else {
+		MessageBox::Show("Debe seleccionar un usuario.");
+	}
+	
 }
 };
 }
