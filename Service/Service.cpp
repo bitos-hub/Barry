@@ -466,59 +466,64 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 	String^ result;
 	String^ dateNow = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd");
 
-	//try {
-		//OpenPort();
-	Pet^ pet = QueryPetById(petId);
-	Dispenser^ d = pet->PetDispenser;
+	try {
+		OpenPort();
+		Pet^ pet = QueryPetById(petId);
+		Dispenser^ d = pet->PetDispenser;
 
-	DispensationList = Service::ConsultarDispensadasPorDispensador(d);
+		DispensationList = Service::ConsultarDispensadasPorDispensador(d);
 
-	Dispensation^ existingDispensation = nullptr;
-	for each (Dispensation ^ disp in DispensationList) {
+		Dispensation^ existingDispensation = nullptr;
+		for each (Dispensation ^ disp in DispensationList) {
 
-		if ((disp->Date)->Contains(dateNow)) {
-			existingDispensation = disp;
-			break;
-		}
-	}
-
-
-	// Si no existe, crear una nueva
-	if (existingDispensation == nullptr) {
-		existingDispensation = gcnew Dispensation();
-		existingDispensation->FoodDispensationInitialize();
-		(d->dispensationRecord)->Add(existingDispensation);
-	}
-	else {
-		existingDispensation->TimesDispensedFood += 1;
-		for (int i = 0; i < DispensationList->Count; i++) {
-			if (DispensationList[i]->Date == existingDispensation->Date) {
-				(d->dispensationRecord)[i] = existingDispensation;
+			if ((disp->Date)->Contains(dateNow)) {
+				existingDispensation = disp;
 				break;
 			}
 		}
-	}
-	pet->PetDispenser = d;
-	Persistance::ActualizarDispensador(d);
-	Service::UpdatePet(pet);
 
 
-		/*
+		// Si no existe, crear una nueva
+		if (existingDispensation == nullptr) {
+			existingDispensation = gcnew Dispensation();
+			existingDispensation->FoodDispensationInitialize();
+			DispensationList->Add(existingDispensation);
+			d->dispensationRecord = DispensationList;
+		}
+		else {
+			existingDispensation->TimesDispensedFood += 1;
+			for (int i = 0; i < DispensationList->Count; i++) {
+				if (DispensationList[i]->Date == existingDispensation->Date) {
+					DispensationList[i] = existingDispensation;
+					d->dispensationRecord = DispensationList;
+					break;
+				}
+			}
+		}
+		pet->PetDispenser = d;
+		Persistance::ActualizarDispensador(d);
+		Service::UpdatePet(pet);
 
-		result = "Se están dispensando " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
+
+
+
+		result = "Se están dispensando " + Convert::ToString(pet->FoodServing) + "g en el plato de " + pet->Name;
 		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
-		ArduinoPort->Write(Convert::ToString(FoodServingByte,16));
+		ArduinoPort->Write(Convert::ToString(FoodServingByte, 16));
 
 
 	}
+
 	catch (Exception^ ex) {
 		throw ex;
 	}
+
 	finally {
 		ClosePort();
 	}
-	*/
-	return result;
+	
+	return result ;
+
 }
 
 
