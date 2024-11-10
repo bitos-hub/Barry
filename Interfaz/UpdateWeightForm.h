@@ -180,6 +180,7 @@ private: System::Void txtPetName_TextChanged(System::Object^ sender, System::Eve
 }
 private: System::Void UpdateWeightForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	txtPetName->Text = refPet->Name;
+	txtPetName->Enabled = false;
 }
 };
 }

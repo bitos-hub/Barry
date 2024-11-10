@@ -1,0 +1,2 @@
+2|2|200.0|System.Collections.Generic.List`1[System.Double]|200.0|System.Collections.Generic.List`1[System.Double]||||2|2|3.0|System.Double[]
+3|3|3.0|System.Collections.Generic.List`1[System.Double]|3.0|System.Collections.Generic.List`1[System.Double]||||3|3|3.0|System.Double[]

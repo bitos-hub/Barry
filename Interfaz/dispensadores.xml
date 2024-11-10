@@ -3,9 +3,15 @@
   <Dispenser>
     <Id>1</Id>
     <FeedingSchedule>
-      <int>1200</int>
-      <int>1400</int>
+      <int>1600</int>
     </FeedingSchedule>
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+  </Dispenser>
+  <Dispenser>
+    <Id>2</Id>
+    <FeedingSchedule />
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
