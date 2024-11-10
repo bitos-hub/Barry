@@ -72,6 +72,10 @@ namespace ServiceBarry {
 		static Pet^ ConsultarMascotaPorNombre(String^ nombreMascota);
 
 		static List<int>^ ConsultarTodosHorariosPorDispensador(Dispenser^ dispensador);
+
+		static List<Dispensation^>^ ConsultarDispensadasPorDispensador(Dispenser^ d);
+
+		static void AddDispensador(int id);
 		static void AddDispensador(int id, DispensadorDisponible^ disp); //quedarse con este
 		static void EliminarDispensador(int);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();

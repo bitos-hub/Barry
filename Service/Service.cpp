@@ -318,7 +318,23 @@ List<int>^ ServiceBarry::Service::ConsultarTodosHorariosPorDispensador(Dispenser
 }
 
 void ServiceBarry::Service::AddDispensador(int id,DispensadorDisponible^ disp)
+List<Dispensation^>^ ServiceBarry::Service::ConsultarDispensadasPorDispensador(Dispenser^ d)
 {
+	Dispenser^ dispensador = ConsultarDispensadorPorId(d->Id);
+	try {
+		if (dispensador->dispensationRecord == nullptr) {
+			dispensador->dispensationRecord = gcnew List<Dispensation^>();
+		}
+	}
+	catch (FileNotFoundException^ ex) {
+	}
+	return dispensador->dispensationRecord;
+}
+
+
+void ServiceBarry::Service::AddDispensador(int id)
+{
+	return Persistance::AddDispensador(id);
 	return Persistance::AddDispensador(id,disp);
 }
 
@@ -448,40 +464,51 @@ Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
 String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 {
 	String^ result;
+	String^ dateNow = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd");
+
 	//try {
 		//OpenPort();
-	DispensationList = Service::ConsultarDispensadas();
+	Pet^ pet = QueryPetById(petId);
+	Dispenser^ d = pet->PetDispenser;
 
-		
-		Dispensation^ existingDispensation = nullptr;
-		for each (Dispensation ^ disp in DispensationList) {
-			if (disp->Date == DateTime::Now) {
-				existingDispensation = disp;
+	DispensationList = Service::ConsultarDispensadasPorDispensador(d);
+
+	Dispensation^ existingDispensation = nullptr;
+	for each (Dispensation ^ disp in DispensationList) {
+
+		if ((disp->Date)->Contains(dateNow)) {
+			existingDispensation = disp;
+			break;
+		}
+	}
+
+
+	// Si no existe, crear una nueva
+	if (existingDispensation == nullptr) {
+		existingDispensation = gcnew Dispensation();
+		existingDispensation->FoodDispensationInitialize();
+		(d->dispensationRecord)->Add(existingDispensation);
+	}
+	else {
+		existingDispensation->TimesDispensedFood += 1;
+		for (int i = 0; i < DispensationList->Count; i++) {
+			if (DispensationList[i]->Date == existingDispensation->Date) {
+				(d->dispensationRecord)[i] = existingDispensation;
 				break;
 			}
 		}
-		// Si no existe, crear una nueva
-		if (existingDispensation == nullptr) {
-			existingDispensation = gcnew Dispensation(DateTime::Now, 1);
-			DispensationList->Add(existingDispensation);
-		}
-		else {
+	}
+	pet->PetDispenser = d;
+	Persistance::ActualizarDispensador(d);
+	Service::UpdatePet(pet);
 
-			existingDispensation->TimesDispensed += 1;
-			for (int i = 0; i < DispensationList->Count; i++) {
-				if (DispensationList[i]->Date == existingDispensation->Date) {
-					DispensationList[i] = existingDispensation;
-				}
-			}
-		}
-		Persistance::PersistTextFile(TXT_DISPENSATION_FILE_NAME, DispensationList);
 
 		/*
-		Pet^ pet = QueryPetById(petId);
+
 		result = "Se están dispensando " + Convert::ToString(pet->FoodServing)+  "g en el plato de "  + pet->Name;
 		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
 		ArduinoPort->Write(Convert::ToString(FoodServingByte,16));
-		
+
 
 	}
 	catch (Exception^ ex) {
@@ -493,6 +520,7 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 	*/
 	return result;
 }
+
 
 void ServiceBarry::Service::OpenPort()
 {

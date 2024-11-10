@@ -285,7 +285,7 @@ namespace Interfaz {
 #pragma endregion
 	private: System::Void ReportForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		txtGeneratedTime->Text = Convert::ToString(DateTime::Now);
-		if (ReportType == 1) {//reporte semanal
+		/*if (ReportType == 1) {//reporte semanal
 
 			List<Dispensation^>^ dispensationList = Service::ConsultarDispensadas();
 
@@ -298,7 +298,7 @@ namespace Interfaz {
 		}
 		else {
 			//reporte mensual
-		}
+		}*/
 	}
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 }
