@@ -25,4 +25,15 @@ System::Void Interfaz::LoginForm::linkCreateAccount_LinkClicked(System::Object^ 
 {
 	AccessAddUserForm();
 }
+System::Void Interfaz::LoginForm::LoginForm_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e)
+{
+	String^ UserName = txtUser->Text;
+	String^ Password = txtPassword->Text;
+	User^ usuario = VerifyUser(UserName, Password);
+	if (usuario == nullptr) {
+		Application::Exit();
+	
+	}
+}
+
 
