@@ -16,11 +16,9 @@ namespace ServiceBarry {
 		static String^ TXT_UART_FILE_NAME = "uartSimulation.txt";
 
 		//users
-		static String^ XML_USER_FILE_NAME = "users.xml";
 		static String^ TXT_USER_FILE_NAME = "users.txt";
 		//pets
 		static String^ TXT_PET_FILE_NAME = "pets.txt";
-		//static String^ XML_PET_FILE_NAME = "pets.txt";
 		//food
 		static String^ XML_FOOD_FILE_NAME = "foods.xml";
 		static String^ TXT_FOOD_FILE_NAME = "foods.txt";
@@ -59,6 +57,7 @@ namespace ServiceBarry {
 		//Arduino
 		static String^ SendDispenserInfoUART(int petId);
 		static String^ DispenseFoodUART(int); //Para simulación
+		static String^ DispenseWater(int);
 		static void OpenPort();
 		static void ClosePort();
 

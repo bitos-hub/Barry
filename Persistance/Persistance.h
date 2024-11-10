@@ -28,7 +28,7 @@ namespace BarryPersistance {
 		static void PersistXMLFile(String^ fileName, Object^ persistObject);
 		//XML-Load
 		static Object^ LoadXMLFile(String^ fileName);
-		static Object^ LoadUsersXmlFile(String^ fileName);
+		
 		static Object^ LoadDispensersXmlFile(String^ fileName);
 		static Object^ LoadPetsXmlFile(String^ fileName);
 		static Object^ LoadFoodXmlFile(String^ fileName);

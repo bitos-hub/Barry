@@ -6,6 +6,7 @@
 #include "PetForm.h"
 #include "DispenserConfiguration.h"
 #include "AgregarDispensador.h"
+#include "UpdateWeightForm.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -142,6 +143,20 @@ private: System::Windows::Forms::ComboBox^ cmbSchedules;
 private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 	private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
 	
+	private: System::Windows::Forms::TextBox^ txtFeedingSchedule;
+	private: System::Windows::Forms::ToolStripMenuItem^ añadirDispensadorToolStripMenuItem;
+private: System::Windows::Forms::TextBox^ txtLastWater;
+
+private: System::Windows::Forms::Label^ label16;
+private: System::Windows::Forms::TextBox^ txtWater;
+
+private: System::Windows::Forms::Label^ label17;
+private: System::Windows::Forms::Button^ btnHydrate;
+private: System::Windows::Forms::Button^ btnUpdateWeight;
+
+
+
+
 
 
 
@@ -255,6 +270,13 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			this->label15 = (gcnew System::Windows::Forms::Label());
 			this->cmbSchedules = (gcnew System::Windows::Forms::ComboBox());
 			this->recargaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->txtFeedingSchedule = (gcnew System::Windows::Forms::TextBox());
+			this->txtLastWater = (gcnew System::Windows::Forms::TextBox());
+			this->label16 = (gcnew System::Windows::Forms::Label());
+			this->txtWater = (gcnew System::Windows::Forms::TextBox());
+			this->label17 = (gcnew System::Windows::Forms::Label());
+			this->btnHydrate = (gcnew System::Windows::Forms::Button());
+			this->btnUpdateWeight = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -565,21 +587,24 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			this->label7->BackColor = System::Drawing::Color::Gainsboro;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(288, 377);
+			this->label7->Location = System::Drawing::Point(387, 306);
+			this->label7->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(72, 29);
 			this->label7->TabIndex = 31;
 			this->label7->Text = L"Estado";
+			this->label7->Click += gcnew System::EventHandler(this, &MainScreenForm::label7_Click);
 			// 
 			// txtStatus
 			// 
 			this->txtStatus->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->txtStatus->Location = System::Drawing::Point(281, 409);
-			this->txtStatus->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtStatus->Location = System::Drawing::Point(382, 332);
+			this->txtStatus->Margin = System::Windows::Forms::Padding(2);
 			this->txtStatus->Name = L"txtStatus";
 			this->txtStatus->Size = System::Drawing::Size(201, 22);
 			this->txtStatus->TabIndex = 30;
+			this->txtStatus->TextChanged += gcnew System::EventHandler(this, &MainScreenForm::txtStatus_TextChanged);
 			// 
 			// label8
 			// 
@@ -609,7 +634,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			this->label9->BackColor = System::Drawing::Color::Gainsboro;
 			this->label9->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label9->Location = System::Drawing::Point(535, 244);
+			this->label9->Location = System::Drawing::Point(388, 198);
+			this->label9->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label9->Name = L"label9";
 			this->label9->Size = System::Drawing::Size(205, 29);
 			this->label9->TabIndex = 35;
@@ -619,11 +645,12 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			// 
 			this->textBox1->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->textBox1->Location = System::Drawing::Point(540, 276);
-			this->textBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->textBox1->Location = System::Drawing::Point(382, 224);
+			this->textBox1->Margin = System::Windows::Forms::Padding(2);
 			this->textBox1->Name = L"textBox1";
 			this->textBox1->Size = System::Drawing::Size(212, 22);
 			this->textBox1->TabIndex = 36;
+			this->textBox1->TextChanged += gcnew System::EventHandler(this, &MainScreenForm::textBox1_TextChanged);
 			// 
 			// btnFeed
 			// 
@@ -819,8 +846,85 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			this->cmbSchedules->Size = System::Drawing::Size(204, 24);
 			this->cmbSchedules->TabIndex = 50;
 			// 
-			// recargaToolStripMenuItem
+			// txtLastWater
 			// 
+			this->txtLastWater->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtLastWater->Location = System::Drawing::Point(382, 280);
+			this->txtLastWater->Margin = System::Windows::Forms::Padding(2);
+			this->txtLastWater->Name = L"txtLastWater";
+			this->txtLastWater->Size = System::Drawing::Size(160, 19);
+			this->txtLastWater->TabIndex = 51;
+			// 
+			// label16
+			// 
+			this->label16->AutoSize = true;
+			this->label16->BackColor = System::Drawing::Color::Gainsboro;
+			this->label16->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label16->Location = System::Drawing::Point(388, 254);
+			this->label16->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label16->Name = L"label16";
+			this->label16->Size = System::Drawing::Size(157, 24);
+			this->label16->TabIndex = 50;
+			this->label16->Text = L"Ultima vez hidratado:";
+			// 
+			// txtWater
+			// 
+			this->txtWater->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->txtWater->Location = System::Drawing::Point(211, 332);
+			this->txtWater->Margin = System::Windows::Forms::Padding(2);
+			this->txtWater->Name = L"txtWater";
+			this->txtWater->Size = System::Drawing::Size(160, 19);
+			this->txtWater->TabIndex = 53;
+			this->txtWater->TextChanged += gcnew System::EventHandler(this, &MainScreenForm::textBox4_TextChanged);
+			// 
+			// label17
+			// 
+			this->label17->AutoSize = true;
+			this->label17->BackColor = System::Drawing::Color::Gainsboro;
+			this->label17->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label17->Location = System::Drawing::Point(217, 306);
+			this->label17->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label17->Name = L"label17";
+			this->label17->Size = System::Drawing::Size(80, 24);
+			this->label17->TabIndex = 52;
+			this->label17->Text = L"Agua (mL)";
+			this->label17->Click += gcnew System::EventHandler(this, &MainScreenForm::label17_Click);
+			// 
+			// btnHydrate
+			// 
+			this->btnHydrate->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnHydrate->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnHydrate->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnHydrate->Location = System::Drawing::Point(595, 313);
+			this->btnHydrate->Margin = System::Windows::Forms::Padding(2);
+			this->btnHydrate->Name = L"btnHydrate";
+			this->btnHydrate->Size = System::Drawing::Size(100, 26);
+			this->btnHydrate->TabIndex = 54;
+			this->btnHydrate->Text = L"Hidratar";
+			this->btnHydrate->UseVisualStyleBackColor = false;
+			this->btnHydrate->Click += gcnew System::EventHandler(this, &MainScreenForm::btnHydrate_Click);
+			// 
+			// btnUpdateWeight
+			// 
+			this->btnUpdateWeight->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnUpdateWeight->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->btnUpdateWeight->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btnUpdateWeight->Location = System::Drawing::Point(595, 345);
+			this->btnUpdateWeight->Margin = System::Windows::Forms::Padding(2);
+			this->btnUpdateWeight->Name = L"btnUpdateWeight";
+			this->btnUpdateWeight->Size = System::Drawing::Size(100, 26);
+			this->btnUpdateWeight->TabIndex = 55;
+			this->btnUpdateWeight->Text = L"Cambiar peso";
+			this->btnUpdateWeight->UseVisualStyleBackColor = false;
+			this->btnUpdateWeight->Click += gcnew System::EventHandler(this, &MainScreenForm::btnUpdateWeight_Click);
 			this->recargaToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->recargaToolStripMenuItem->Name = L"recargaToolStripMenuItem";
@@ -832,6 +936,13 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(938, 609);
+			this->Controls->Add(this->btnUpdateWeight);
+			this->Controls->Add(this->btnHydrate);
+			this->Controls->Add(this->txtWater);
+			this->Controls->Add(this->label17);
+			this->Controls->Add(this->txtLastWater);
+			this->Controls->Add(this->label16);
 			this->ClientSize = System::Drawing::Size(1251, 844);
 			this->Controls->Add(this->cmbSchedules);
 			this->Controls->Add(this->label15);
@@ -953,6 +1064,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 		FillPetsComboPets();
 		FillDispenserComboBox();
 		btnFeed->Enabled = false;
+		btnHydrate->Enabled = false;
+		btnUpdateWeight->Enabled = false;
 	}
 	public:
 		void EnableAdminOptions() {
@@ -1027,6 +1140,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 		txtEspecie->Text = pet->Specie;
 		txtWeight->Text = Convert::ToString(pet->Weight);
 		txtPortion->Text = Convert::ToString(pet->FoodServing);
+		txtWater->Text = Convert::ToString(pet->WaterServing);
 		txtStatus->Text = pet->Status;
 		if (pet->PetDispenser->Id == 0) {
 			txtAssignedDispenser->Text = "No hay dispensador asignado.";
@@ -1044,6 +1158,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			pbPet->Invalidate();
 		}
 		btnFeed->Enabled = true;
+		btnHydrate->Enabled = true;
+		btnUpdateWeight->Enabled = true;
 	}
 
 	private: System::Void btnFeed_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1052,10 +1168,9 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 			int id = pet->Id;
 			String^ result = Service::DispenseFoodUART(id);
 			MessageBox::Show(result);
-			btnFeed->Enabled = false;
 		}
 		catch (Exception^ ex) {
-			MessageBox::Show("No se pudo realizar la configuración correctamente debido a:\n" + ex);
+			MessageBox::Show("No se pudo alimentar correctamente debido a:\n" + ex);
 		}
 	}
 	private: System::Void añadirDispensadorToolStripMenuItem_Click_1(System::Object^ sender, System::EventArgs^ e)
@@ -1064,6 +1179,33 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargaToolStripMenuItem;
 		ClearPetControls();
 		form->ShowDialog();
 	}
+	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void txtStatus_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label7_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void textBox4_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label17_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btnHydrate_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
+		Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+		int id = pet->Id;
+		String^ result = Service::DispenseWater(id);
+		MessageBox::Show(result);
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("No se pudo hidratar correctamente debido a:\n" + ex);
+	}
+}
+private: System::Void btnUpdateWeight_Click(System::Object^ sender, System::EventArgs^ e) {
+	Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+	UpdateWeightForm^ weightForm = gcnew UpdateWeightForm(pet);
+	weightForm->ShowDialog();
+}
+};
 		   //combo box Dispensadores
 private: System::Void comboBox2_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
