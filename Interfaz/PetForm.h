@@ -558,7 +558,7 @@ namespace Interfaz {
 
 			ShowPets();
 			ClearControls();
-			MessageBox::Show("Se ha agregado la mascota " + id + " - " + pet->Name);
+			MessageBox::Show("Se ha agregado la mascota " + pet->Id + " - " + pet->Name);
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("No se ha podido agregar la mascota por el siguiente motivo:\n" +

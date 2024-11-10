@@ -55,4 +55,61 @@
       <DispenserFood>0</DispenserFood>
     </PetDispenser>
   </Pet>
+  <Pet>
+    <Id>4</Id>
+    <Name>barry</Name>
+    <Weight>2</Weight>
+    <WeightEvolution>
+      <double>2</double>
+    </WeightEvolution>
+    <Specie>a</Specie>
+    <Status>a</Status>
+    <OpcionesComida />
+    <FoodServing>100</FoodServing>
+    <FoodEvolution>
+      <double>100</double>
+    </FoodEvolution>
+    <WaterServing>100</WaterServing>
+    <WaterEvolution>
+      <double>100</double>
+    </WaterEvolution>
+  </Pet>
+  <Pet>
+    <Id>5</Id>
+    <Name>a</Name>
+    <Weight>3</Weight>
+    <WeightEvolution>
+      <double>3</double>
+    </WeightEvolution>
+    <Specie>a</Specie>
+    <Status>a</Status>
+    <OpcionesComida />
+    <FoodServing>100</FoodServing>
+    <FoodEvolution>
+      <double>100</double>
+    </FoodEvolution>
+    <WaterServing>100</WaterServing>
+    <WaterEvolution>
+      <double>100</double>
+    </WaterEvolution>
+  </Pet>
+  <Pet>
+    <Id>6</Id>
+    <Name>ramon</Name>
+    <Weight>2</Weight>
+    <WeightEvolution>
+      <double>2</double>
+    </WeightEvolution>
+    <Specie>22</Specie>
+    <Status>2</Status>
+    <OpcionesComida />
+    <FoodServing>2</FoodServing>
+    <FoodEvolution>
+      <double>2</double>
+    </FoodEvolution>
+    <WaterServing>2</WaterServing>
+    <WaterEvolution>
+      <double>2</double>
+    </WaterEvolution>
+  </Pet>
 </ArrayOfPet>

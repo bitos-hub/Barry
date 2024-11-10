@@ -139,6 +139,7 @@
     <ClCompile Include="PetForm.cpp" />
     <ClCompile Include="ReportForm.cpp" />
     <ClCompile Include="UpdateWeightForm.cpp" />
+    <ClCompile Include="WeightReportForm.cpp" />
     <ClCompile Include="ViewUsersForm.cpp" />
     <ClCompile Include="VentanaConfirmacion.cpp" />
   </ItemGroup>
@@ -187,6 +188,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="UpdateWeightForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="WeightReportForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="VentanaConfirmacion.h">
@@ -238,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VentanaConfirmacion.resx">
       <DependentUpon>VentanaConfirmacion.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeightReportForm.resx">
+      <DependentUpon>WeightReportForm.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
