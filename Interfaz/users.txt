@@ -1,2 +1,2 @@
 1|1|1|1|Administrador
-2|2|2|2|Usuario Interno
+2|Ramon|elim|962854150|Usuario Portal

@@ -206,6 +206,7 @@ namespace Interfaz {
 			// 
 			this->txtCapacidad->Location = System::Drawing::Point(198, 319);
 			this->txtCapacidad->Name = L"txtCapacidad";
+			this->txtCapacidad->ReadOnly = true;
 			this->txtCapacidad->Size = System::Drawing::Size(133, 20);
 			this->txtCapacidad->TabIndex = 22;
 			// 
@@ -240,6 +241,7 @@ namespace Interfaz {
 			// 
 			this->txtMaterial->Location = System::Drawing::Point(198, 350);
 			this->txtMaterial->Name = L"txtMaterial";
+			this->txtMaterial->ReadOnly = true;
 			this->txtMaterial->Size = System::Drawing::Size(133, 20);
 			this->txtMaterial->TabIndex = 27;
 			// 
@@ -256,6 +258,7 @@ namespace Interfaz {
 			// 
 			this->txtLargo->Location = System::Drawing::Point(76, 280);
 			this->txtLargo->Name = L"txtLargo";
+			this->txtLargo->ReadOnly = true;
 			this->txtLargo->Size = System::Drawing::Size(66, 20);
 			this->txtLargo->TabIndex = 33;
 			// 
@@ -272,6 +275,7 @@ namespace Interfaz {
 			// 
 			this->txtAncho->Location = System::Drawing::Point(215, 280);
 			this->txtAncho->Name = L"txtAncho";
+			this->txtAncho->ReadOnly = true;
 			this->txtAncho->Size = System::Drawing::Size(66, 20);
 			this->txtAncho->TabIndex = 35;
 			// 
@@ -288,6 +292,7 @@ namespace Interfaz {
 			// 
 			this->txtAlto->Location = System::Drawing::Point(352, 280);
 			this->txtAlto->Name = L"txtAlto";
+			this->txtAlto->ReadOnly = true;
 			this->txtAlto->Size = System::Drawing::Size(66, 20);
 			this->txtAlto->TabIndex = 37;
 			// 
@@ -304,6 +309,7 @@ namespace Interfaz {
 			// 
 			this->txtFuente->Location = System::Drawing::Point(198, 384);
 			this->txtFuente->Name = L"txtFuente";
+			this->txtFuente->ReadOnly = true;
 			this->txtFuente->Size = System::Drawing::Size(133, 20);
 			this->txtFuente->TabIndex = 43;
 			// 
@@ -331,6 +337,7 @@ namespace Interfaz {
 			// 
 			this->txtColor->Location = System::Drawing::Point(142, 171);
 			this->txtColor->Name = L"txtColor";
+			this->txtColor->ReadOnly = true;
 			this->txtColor->Size = System::Drawing::Size(133, 20);
 			this->txtColor->TabIndex = 57;
 			// 
@@ -338,6 +345,7 @@ namespace Interfaz {
 			// 
 			this->txtModelo->Location = System::Drawing::Point(142, 137);
 			this->txtModelo->Name = L"txtModelo";
+			this->txtModelo->ReadOnly = true;
 			this->txtModelo->Size = System::Drawing::Size(133, 20);
 			this->txtModelo->TabIndex = 56;
 			// 
@@ -354,6 +362,7 @@ namespace Interfaz {
 			// 
 			this->txtMarca->Location = System::Drawing::Point(142, 106);
 			this->txtMarca->Name = L"txtMarca";
+			this->txtMarca->ReadOnly = true;
 			this->txtMarca->Size = System::Drawing::Size(133, 20);
 			this->txtMarca->TabIndex = 54;
 			// 
