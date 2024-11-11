@@ -11,6 +11,7 @@
 #include "WeightReportForm.h"
 #include "ReportForm.h"
 #include "Caracteristicas.h"
+#include "ExpensesReportForm.h"
 
 namespace Interfaz {
 
@@ -169,6 +170,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ recargarToolStripMenuItem;
 private: System::Windows::Forms::ComboBox^ cmbDispenser;
 private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuItem;
 private: System::Windows::Forms::Button^ btnVerCaracteristicas;
+private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 
 
 
@@ -295,6 +297,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->btnUpdateWeight = (gcnew System::Windows::Forms::Button());
 			this->cmbDispenser = (gcnew System::Windows::Forms::ComboBox());
 			this->btnVerCaracteristicas = (gcnew System::Windows::Forms::Button());
+			this->economíaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -385,9 +388,9 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			// 
 			// generarReporteToolStripMenuItem
 			// 
-			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->semanalToolStripMenuItem,
-					this->pesosYRacionesToolStripMenuItem
+					this->mensualToolStripMenuItem, this->pesosYRacionesToolStripMenuItem, this->economíaToolStripMenuItem
 			});
 			this->generarReporteToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -404,10 +407,17 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->semanalToolStripMenuItem->Text = L"Dispensación";
 			this->semanalToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::semanalToolStripMenuItem_Click);
 			// 
+			// mensualToolStripMenuItem
+			// 
+			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
+			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
+			this->mensualToolStripMenuItem->Size = System::Drawing::Size(234, 34);
+			this->mensualToolStripMenuItem->Text = L"Mensual";
+			// 
 			// pesosYRacionesToolStripMenuItem
 			// 
 			this->pesosYRacionesToolStripMenuItem->Name = L"pesosYRacionesToolStripMenuItem";
-			this->pesosYRacionesToolStripMenuItem->Size = System::Drawing::Size(230, 34);
+			this->pesosYRacionesToolStripMenuItem->Size = System::Drawing::Size(234, 34);
 			this->pesosYRacionesToolStripMenuItem->Text = L"Pesos y raciones";
 			this->pesosYRacionesToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::pesosYRacionesToolStripMenuItem_Click);
 			// 
@@ -504,7 +514,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->cmbPets->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->cmbPets->FormattingEnabled = true;
 			this->cmbPets->Location = System::Drawing::Point(148, 160);
-			this->cmbPets->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->cmbPets->Margin = System::Windows::Forms::Padding(2);
 			this->cmbPets->Name = L"cmbPets";
 			this->cmbPets->Size = System::Drawing::Size(154, 21);
 			this->cmbPets->TabIndex = 18;
@@ -516,7 +526,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->pictureBox2->Cursor = System::Windows::Forms::Cursors::Arrow;
 			this->pictureBox2->Location = System::Drawing::Point(23, 140);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(713, 238);
 			this->pictureBox2->TabIndex = 20;
@@ -527,7 +537,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->pictureBox3->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox3->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->pictureBox3->Location = System::Drawing::Point(23, 392);
-			this->pictureBox3->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(713, 271);
 			this->pictureBox3->TabIndex = 21;
@@ -537,7 +547,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			// 
 			this->pbPet->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->pbPet->Location = System::Drawing::Point(588, 154);
-			this->pbPet->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->pbPet->Margin = System::Windows::Forms::Padding(2);
 			this->pbPet->Name = L"pbPet";
 			this->pbPet->Size = System::Drawing::Size(116, 122);
 			this->pbPet->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -549,7 +559,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtPetName->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtPetName->Location = System::Drawing::Point(38, 224);
-			this->txtPetName->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPetName->Margin = System::Windows::Forms::Padding(2);
 			this->txtPetName->Name = L"txtPetName";
 			this->txtPetName->Size = System::Drawing::Size(152, 19);
 			this->txtPetName->TabIndex = 23;
@@ -585,7 +595,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtEspecie->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtEspecie->Location = System::Drawing::Point(38, 332);
-			this->txtEspecie->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtEspecie->Margin = System::Windows::Forms::Padding(2);
 			this->txtEspecie->Name = L"txtEspecie";
 			this->txtEspecie->Size = System::Drawing::Size(152, 19);
 			this->txtEspecie->TabIndex = 26;
@@ -608,7 +618,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtWeight->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtWeight->Location = System::Drawing::Point(38, 280);
-			this->txtWeight->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtWeight->Margin = System::Windows::Forms::Padding(2);
 			this->txtWeight->Name = L"txtWeight";
 			this->txtWeight->Size = System::Drawing::Size(152, 19);
 			this->txtWeight->TabIndex = 28;
@@ -632,7 +642,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtStatus->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtStatus->Location = System::Drawing::Point(400, 332);
-			this->txtStatus->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtStatus->Margin = System::Windows::Forms::Padding(2);
 			this->txtStatus->Name = L"txtStatus";
 			this->txtStatus->Size = System::Drawing::Size(160, 19);
 			this->txtStatus->TabIndex = 30;
@@ -656,7 +666,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtPortion->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtPortion->Location = System::Drawing::Point(211, 280);
-			this->txtPortion->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtPortion->Margin = System::Windows::Forms::Padding(2);
 			this->txtPortion->Name = L"txtPortion";
 			this->txtPortion->Size = System::Drawing::Size(152, 19);
 			this->txtPortion->TabIndex = 32;
@@ -693,7 +703,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->btnFeed->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnFeed->Location = System::Drawing::Point(595, 280);
-			this->btnFeed->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnFeed->Margin = System::Windows::Forms::Padding(2);
 			this->btnFeed->Name = L"btnFeed";
 			this->btnFeed->Size = System::Drawing::Size(100, 26);
 			this->btnFeed->TabIndex = 37;
@@ -719,7 +729,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtAssignedDispenser->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtAssignedDispenser->Location = System::Drawing::Point(211, 224);
-			this->txtAssignedDispenser->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtAssignedDispenser->Margin = System::Windows::Forms::Padding(2);
 			this->txtAssignedDispenser->Name = L"txtAssignedDispenser";
 			this->txtAssignedDispenser->Size = System::Drawing::Size(176, 19);
 			this->txtAssignedDispenser->TabIndex = 38;
@@ -742,7 +752,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtFoodAvaibleContainer->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtFoodAvaibleContainer->Location = System::Drawing::Point(23, 56);
-			this->txtFoodAvaibleContainer->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtFoodAvaibleContainer->Margin = System::Windows::Forms::Padding(2);
 			this->txtFoodAvaibleContainer->Name = L"txtFoodAvaibleContainer";
 			this->txtFoodAvaibleContainer->Size = System::Drawing::Size(152, 19);
 			this->txtFoodAvaibleContainer->TabIndex = 40;
@@ -754,9 +764,9 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->groupBox1->Location = System::Drawing::Point(336, 554);
-			this->groupBox1->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox1->Name = L"groupBox1";
-			this->groupBox1->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox1->Padding = System::Windows::Forms::Padding(2);
 			this->groupBox1->RightToLeft = System::Windows::Forms::RightToLeft::No;
 			this->groupBox1->Size = System::Drawing::Size(262, 93);
 			this->groupBox1->TabIndex = 44;
@@ -773,9 +783,9 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->groupBox2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->groupBox2->Location = System::Drawing::Point(38, 487);
-			this->groupBox2->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Margin = System::Windows::Forms::Padding(2);
 			this->groupBox2->Name = L"groupBox2";
-			this->groupBox2->Padding = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->groupBox2->Padding = System::Windows::Forms::Padding(2);
 			this->groupBox2->Size = System::Drawing::Size(285, 161);
 			this->groupBox2->TabIndex = 45;
 			this->groupBox2->TabStop = false;
@@ -785,7 +795,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			// 
 			this->rbtnBowlFullNo->AutoSize = true;
 			this->rbtnBowlFullNo->Location = System::Drawing::Point(100, 119);
-			this->rbtnBowlFullNo->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->rbtnBowlFullNo->Margin = System::Windows::Forms::Padding(2);
 			this->rbtnBowlFullNo->Name = L"rbtnBowlFullNo";
 			this->rbtnBowlFullNo->Size = System::Drawing::Size(48, 28);
 			this->rbtnBowlFullNo->TabIndex = 44;
@@ -797,7 +807,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			// 
 			this->rbtnBowlFullYes->AutoSize = true;
 			this->rbtnBowlFullYes->Location = System::Drawing::Point(32, 119);
-			this->rbtnBowlFullYes->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->rbtnBowlFullYes->Margin = System::Windows::Forms::Padding(2);
 			this->rbtnBowlFullYes->Name = L"rbtnBowlFullYes";
 			this->rbtnBowlFullYes->Size = System::Drawing::Size(42, 28);
 			this->rbtnBowlFullYes->TabIndex = 43;
@@ -810,7 +820,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtAvaibleFoodPlate->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtAvaibleFoodPlate->Location = System::Drawing::Point(28, 56);
-			this->txtAvaibleFoodPlate->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtAvaibleFoodPlate->Margin = System::Windows::Forms::Padding(2);
 			this->txtAvaibleFoodPlate->Name = L"txtAvaibleFoodPlate";
 			this->txtAvaibleFoodPlate->Size = System::Drawing::Size(152, 19);
 			this->txtAvaibleFoodPlate->TabIndex = 40;
@@ -859,7 +869,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtAssignedPet->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtAssignedPet->Location = System::Drawing::Point(336, 448);
-			this->txtAssignedPet->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtAssignedPet->Margin = System::Windows::Forms::Padding(2);
 			this->txtAssignedPet->Name = L"txtAssignedPet";
 			this->txtAssignedPet->Size = System::Drawing::Size(152, 19);
 			this->txtAssignedPet->TabIndex = 46;
@@ -881,7 +891,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			// 
 			this->cmbSchedules->FormattingEnabled = true;
 			this->cmbSchedules->Location = System::Drawing::Point(334, 507);
-			this->cmbSchedules->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->cmbSchedules->Margin = System::Windows::Forms::Padding(2);
 			this->cmbSchedules->Name = L"cmbSchedules";
 			this->cmbSchedules->Size = System::Drawing::Size(154, 21);
 			this->cmbSchedules->TabIndex = 50;
@@ -898,7 +908,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtLastWater->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtLastWater->Location = System::Drawing::Point(400, 280);
-			this->txtLastWater->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtLastWater->Margin = System::Windows::Forms::Padding(2);
 			this->txtLastWater->Name = L"txtLastWater";
 			this->txtLastWater->Size = System::Drawing::Size(160, 19);
 			this->txtLastWater->TabIndex = 51;
@@ -923,7 +933,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->txtWater->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtWater->Location = System::Drawing::Point(211, 332);
-			this->txtWater->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtWater->Margin = System::Windows::Forms::Padding(2);
 			this->txtWater->Name = L"txtWater";
 			this->txtWater->Size = System::Drawing::Size(121, 19);
 			this->txtWater->TabIndex = 53;
@@ -951,7 +961,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->btnHydrate->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnHydrate->Location = System::Drawing::Point(595, 313);
-			this->btnHydrate->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnHydrate->Margin = System::Windows::Forms::Padding(2);
 			this->btnHydrate->Name = L"btnHydrate";
 			this->btnHydrate->Size = System::Drawing::Size(100, 26);
 			this->btnHydrate->TabIndex = 54;
@@ -967,7 +977,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->btnUpdateWeight->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->btnUpdateWeight->Location = System::Drawing::Point(595, 345);
-			this->btnUpdateWeight->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnUpdateWeight->Margin = System::Windows::Forms::Padding(2);
 			this->btnUpdateWeight->Name = L"btnUpdateWeight";
 			this->btnUpdateWeight->Size = System::Drawing::Size(100, 26);
 			this->btnUpdateWeight->TabIndex = 55;
@@ -996,6 +1006,13 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->btnVerCaracteristicas->Text = L"Ver características";
 			this->btnVerCaracteristicas->UseVisualStyleBackColor = false;
 			this->btnVerCaracteristicas->Click += gcnew System::EventHandler(this, &MainScreenForm::btnVerCaracteristicas_Click);
+			// 
+			// economíaToolStripMenuItem
+			// 
+			this->economíaToolStripMenuItem->Name = L"economíaToolStripMenuItem";
+			this->economíaToolStripMenuItem->Size = System::Drawing::Size(234, 34);
+			this->economíaToolStripMenuItem->Text = L"Economía";
+			this->economíaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::economíaToolStripMenuItem_Click);
 			// 
 			// MainScreenForm
 			// 
@@ -1041,7 +1058,7 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox3);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"MainScreenForm";
 			this->Text = L"MainScreenForm";
 			this->Load += gcnew System::EventHandler(this, &MainScreenForm::MainScreenForm_Load);
@@ -1252,6 +1269,12 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			else {
 				MessageBox::Show("No se pudo alimentar correctamente debido que tiene un dispensador asignado.");
 			}
+			String^ result = Service::DispenseFoodUART(id);
+			//Food^ foodDispensed = Service::ConsultarComidaDispensador(pet);
+			//Food^ foodDispensed = Service::QueryFoodbyId(pet->PetDispenser->ComidaAsignada->Id);
+			//foodDispensed->FoodAmount = foodDispensed->FoodAmount - pet->FoodServing / 1000;
+			//Service::UpdateFood(foodDispensed);
+			MessageBox::Show(result);
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("No se pudo alimentar correctamente debido a:\n" + ex);
@@ -1335,6 +1358,10 @@ private: System::Void pesosYRacionesToolStripMenuItem_Click(System::Object^ send
 	form->ShowDialog();
 }
 private: System::Void btnVerCaracteristicas_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void economíaToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	ExpensesReportForm^ form = gcnew ExpensesReportForm();
+	form->ShowDialog();
+}
 };
 		   //combo box Dispensadores
 

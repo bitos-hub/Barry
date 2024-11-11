@@ -133,6 +133,7 @@
     <ClCompile Include="Caracteristicas.cpp" />
     <ClCompile Include="ComboBoxItem.cpp" />
     <ClCompile Include="DispenserConfiguration.cpp" />
+    <ClCompile Include="ExpensesReportForm.cpp" />
     <ClCompile Include="LoginForm.cpp" />
     <ClCompile Include="MainScreenForm.cpp" />
     <ClCompile Include="ModifyUsers.cpp" />
@@ -168,6 +169,9 @@
     </ClInclude>
     <ClInclude Include="ComboBoxItem.h" />
     <ClInclude Include="DispenserConfiguration.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ExpensesReportForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="LoginForm.h">
@@ -225,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DispenserConfiguration.resx">
       <DependentUpon>DispenserConfiguration.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ExpensesReportForm.resx">
+      <DependentUpon>ExpensesReportForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.h</DependentUpon>
