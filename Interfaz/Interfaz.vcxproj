@@ -130,6 +130,7 @@
     <ClCompile Include="AgregarUsuarios.cpp" />
     <ClCompile Include="BuscarComida.cpp" />
     <ClCompile Include="BuscarModeloDispensador.cpp" />
+    <ClCompile Include="Caracteristicas.cpp" />
     <ClCompile Include="ComboBoxItem.cpp" />
     <ClCompile Include="DispenserConfiguration.cpp" />
     <ClCompile Include="LoginForm.cpp" />
@@ -160,6 +161,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="BuscarModeloDispensador.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Caracteristicas.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ComboBoxItem.h" />
@@ -215,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="BuscarModeloDispensador.resx">
       <DependentUpon>BuscarModeloDispensador.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Caracteristicas.resx">
+      <DependentUpon>Caracteristicas.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DispenserConfiguration.resx">
       <DependentUpon>DispenserConfiguration.h</DependentUpon>

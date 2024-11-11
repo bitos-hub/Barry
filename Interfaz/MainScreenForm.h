@@ -10,6 +10,7 @@
 #include "ModoDispensador.h"
 #include "WeightReportForm.h"
 #include "ReportForm.h"
+#include "Caracteristicas.h"
 
 namespace Interfaz {
 
@@ -166,6 +167,7 @@ private: System::Windows::Forms::Button^ btnUpdateWeight;
 private: System::Windows::Forms::ToolStripMenuItem^ recargarToolStripMenuItem;
 private: System::Windows::Forms::ComboBox^ cmbDispenser;
 private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuItem;
+private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 
 
 
@@ -292,6 +294,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuI
 			this->btnHydrate = (gcnew System::Windows::Forms::Button());
 			this->btnUpdateWeight = (gcnew System::Windows::Forms::Button());
 			this->cmbDispenser = (gcnew System::Windows::Forms::ComboBox());
+			this->btnVerCaracteristicas = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -376,8 +379,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuI
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->programarComidaToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"programarComidaToolStripMenuItem.Image")));
 			this->programarComidaToolStripMenuItem->Name = L"programarComidaToolStripMenuItem";
-			this->programarComidaToolStripMenuItem->Size = System::Drawing::Size(211, 34);
-			this->programarComidaToolStripMenuItem->Text = L"Programar Comida";
+			this->programarComidaToolStripMenuItem->Size = System::Drawing::Size(281, 34);
+			this->programarComidaToolStripMenuItem->Text = L"Configuración Dispensador";
 			this->programarComidaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::programarComidaToolStripMenuItem_Click);
 			// 
 			// generarReporteToolStripMenuItem
@@ -988,10 +991,24 @@ private: System::Windows::Forms::ToolStripMenuItem^ pesosYRacionesToolStripMenuI
 			this->cmbDispenser->TabIndex = 56;
 			this->cmbDispenser->SelectedIndexChanged += gcnew System::EventHandler(this, &MainScreenForm::cmbDispenser_SelectedIndexChanged);
 			// 
+			// btnVerCaracteristicas
+			// 
+			this->btnVerCaracteristicas->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
+			this->btnVerCaracteristicas->Location = System::Drawing::Point(609, 407);
+			this->btnVerCaracteristicas->Name = L"btnVerCaracteristicas";
+			this->btnVerCaracteristicas->Size = System::Drawing::Size(95, 41);
+			this->btnVerCaracteristicas->TabIndex = 57;
+			this->btnVerCaracteristicas->Text = L"Ver características";
+			this->btnVerCaracteristicas->UseVisualStyleBackColor = false;
+			this->btnVerCaracteristicas->Click += gcnew System::EventHandler(this, &MainScreenForm::btnVerCaracteristicas_Click);
+			// 
 			// MainScreenForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->ClientSize = System::Drawing::Size(938, 609);
+			this->Controls->Add(this->btnVerCaracteristicas);
 			this->ClientSize = System::Drawing::Size(938, 609);
 			this->Controls->Add(this->cmbDispenser);
 			this->Controls->Add(this->btnUpdateWeight);
@@ -1276,19 +1293,19 @@ private: System::Void recargarToolStripMenuItem_Click(System::Object^ sender, Sy
 	FillDispenserComboBox();
 	//ClearPetControls();
 }
-
+	   Dispenser^ dispenserSelect;
 private: System::Void cmbDispenser_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	try {
 
-		Dispenser^ dispenser = Service::ConsultarDispensadorPorId(((ComboBoxItem^)(cmbDispenser->Items[cmbDispenser->SelectedIndex]))->Value);
-		Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(dispenser->Id);
+		dispenserSelect = Service::ConsultarDispensadorPorId(((ComboBoxItem^)(cmbDispenser->Items[cmbDispenser->SelectedIndex]))->Value);
+		Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(dispenserSelect->Id);
 		if (pet != nullptr) {
 			txtAssignedPet->Text = pet->Name;
 		}
 		else {
 			txtAssignedPet->Text = "No hay mascota asignada.";
 		}
-		FillSchedulesComboBox(dispenser);
+		FillSchedulesComboBox(dispenserSelect);
 	}
 	catch (Exception^ e) {
 
@@ -1302,6 +1319,7 @@ private: System::Void pesosYRacionesToolStripMenuItem_Click(System::Object^ send
 	WeightReportForm^ form = gcnew WeightReportForm();
 	form->ShowDialog();
 }
+private: System::Void btnVerCaracteristicas_Click(System::Object^ sender, System::EventArgs^ e);
 };
 		   //combo box Dispensadores
 

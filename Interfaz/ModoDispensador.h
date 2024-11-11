@@ -62,6 +62,19 @@ namespace Interfaz {
 
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::ComboBox^ cmbModos;
+	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	private: System::Windows::Forms::TextBox^ txtAgua;
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::TextBox^ txtPorcion;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::Button^ btnEditar;
+	private: System::Windows::Forms::Button^ btnAceptar;
+
+
+
+
+
+
 
 
 
@@ -98,8 +111,16 @@ namespace Interfaz {
 			this->btnHorario = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->cmbModos = (gcnew System::Windows::Forms::ComboBox());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->txtAgua = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->txtPorcion = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->btnEditar = (gcnew System::Windows::Forms::Button());
+			this->btnAceptar = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btnEliminarAsignacion
@@ -200,7 +221,7 @@ namespace Interfaz {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(51, 229);
+			this->label1->Location = System::Drawing::Point(52, 238);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(42, 13);
 			this->label1->TabIndex = 43;
@@ -208,7 +229,7 @@ namespace Interfaz {
 			// 
 			// btnBuscar
 			// 
-			this->btnBuscar->Location = System::Drawing::Point(132, 224);
+			this->btnBuscar->Location = System::Drawing::Point(133, 233);
 			this->btnBuscar->Name = L"btnBuscar";
 			this->btnBuscar->Size = System::Drawing::Size(94, 23);
 			this->btnBuscar->TabIndex = 45;
@@ -218,14 +239,14 @@ namespace Interfaz {
 			// 
 			// txtComida
 			// 
-			this->txtComida->Location = System::Drawing::Point(52, 259);
+			this->txtComida->Location = System::Drawing::Point(53, 268);
 			this->txtComida->Name = L"txtComida";
 			this->txtComida->Size = System::Drawing::Size(174, 20);
 			this->txtComida->TabIndex = 46;
 			// 
 			// btnHorario
 			// 
-			this->btnHorario->Location = System::Drawing::Point(387, 294);
+			this->btnHorario->Location = System::Drawing::Point(387, 327);
 			this->btnHorario->Name = L"btnHorario";
 			this->btnHorario->Size = System::Drawing::Size(121, 31);
 			this->btnHorario->TabIndex = 47;
@@ -237,7 +258,7 @@ namespace Interfaz {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(51, 303);
+			this->label4->Location = System::Drawing::Point(51, 336);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(111, 13);
 			this->label4->TabIndex = 49;
@@ -247,17 +268,89 @@ namespace Interfaz {
 			// 
 			this->cmbModos->FormattingEnabled = true;
 			this->cmbModos->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Horarios", L"Detector de movimiento" });
-			this->cmbModos->Location = System::Drawing::Point(186, 300);
+			this->cmbModos->Location = System::Drawing::Point(186, 333);
 			this->cmbModos->Name = L"cmbModos";
 			this->cmbModos->Size = System::Drawing::Size(148, 21);
 			this->cmbModos->TabIndex = 53;
 			this->cmbModos->SelectedIndexChanged += gcnew System::EventHandler(this, &ModoDispensador::cmbModos_SelectedIndexChanged);
 			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->pictureBox3->Location = System::Drawing::Point(285, 220);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(203, 91);
+			this->pictureBox3->TabIndex = 58;
+			this->pictureBox3->TabStop = false;
+			// 
+			// txtAgua
+			// 
+			this->txtAgua->Location = System::Drawing::Point(359, 254);
+			this->txtAgua->Name = L"txtAgua";
+			this->txtAgua->Size = System::Drawing::Size(113, 20);
+			this->txtAgua->TabIndex = 62;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Location = System::Drawing::Point(295, 257);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(55, 13);
+			this->label6->TabIndex = 61;
+			this->label6->Text = L"Agua (mL)";
+			this->label6->Click += gcnew System::EventHandler(this, &ModoDispensador::label6_Click);
+			// 
+			// txtPorcion
+			// 
+			this->txtPorcion->Location = System::Drawing::Point(359, 228);
+			this->txtPorcion->Name = L"txtPorcion";
+			this->txtPorcion->Size = System::Drawing::Size(113, 20);
+			this->txtPorcion->TabIndex = 60;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Location = System::Drawing::Point(295, 231);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(58, 13);
+			this->label5->TabIndex = 59;
+			this->label5->Text = L"Porción (g)";
+			// 
+			// btnEditar
+			// 
+			this->btnEditar->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->btnEditar->Location = System::Drawing::Point(303, 280);
+			this->btnEditar->Name = L"btnEditar";
+			this->btnEditar->Size = System::Drawing::Size(78, 23);
+			this->btnEditar->TabIndex = 63;
+			this->btnEditar->Text = L"Editar";
+			this->btnEditar->UseVisualStyleBackColor = false;
+			this->btnEditar->Click += gcnew System::EventHandler(this, &ModoDispensador::btnEditar_Click);
+			// 
+			// btnAceptar
+			// 
+			this->btnAceptar->BackColor = System::Drawing::Color::WhiteSmoke;
+			this->btnAceptar->Location = System::Drawing::Point(394, 280);
+			this->btnAceptar->Name = L"btnAceptar";
+			this->btnAceptar->Size = System::Drawing::Size(78, 23);
+			this->btnAceptar->TabIndex = 64;
+			this->btnAceptar->Text = L"Aceptar";
+			this->btnAceptar->UseVisualStyleBackColor = false;
+			this->btnAceptar->Click += gcnew System::EventHandler(this, &ModoDispensador::btnAceptar_Click);
+			// 
 			// ModoDispensador
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(534, 354);
+			this->ClientSize = System::Drawing::Size(534, 380);
+			this->Controls->Add(this->btnAceptar);
+			this->Controls->Add(this->btnEditar);
+			this->Controls->Add(this->txtAgua);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->txtPorcion);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->cmbModos);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->btnHorario);
@@ -278,6 +371,7 @@ namespace Interfaz {
 			this->Load += gcnew System::EventHandler(this, &ModoDispensador::ModoDispensador_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -304,6 +398,12 @@ namespace Interfaz {
 private: System::Void cmbMascotas_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	int IdMascota = ((ComboBoxItem^)(cmbMascotas->Items[cmbMascotas->SelectedIndex]))->Value;
 	mascotaSeleccionada = Service::QueryPetById(IdMascota);
+	if (mascotaSeleccionada != nullptr) {
+		txtPorcion->Text = Convert::ToString(mascotaSeleccionada->FoodServing);
+		txtPorcion->ReadOnly = true;
+		txtAgua->Text = Convert::ToString(mascotaSeleccionada->WaterServing);
+		txtAgua->ReadOnly = true;
+	}
 }
 private: System::Void cmbIdDispensadores_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	int IdDispensador = ((ComboBoxItem^)(cmbIdDispensadores->Items[cmbIdDispensadores->SelectedIndex]))->Value;
@@ -364,6 +464,7 @@ private: System::Void btnBuscar_Click(System::Object^ sender, System::EventArgs^
 }
 private: System::Void btnHorario_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ModoDispensador_Load(System::Object^ sender, System::EventArgs^ e) {
+	
 	LlenarDispensadores();
 	FillPets();
 }
@@ -383,6 +484,45 @@ private: System::Void cmbModos_SelectedIndexChanged(System::Object^ sender, Syst
 		btnHorario->Visible = true;
 	}
 	else btnHorario->Visible = false;
+}
+private: System::Void btnEditar_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::DialogResult resultado = MessageBox::Show("¿Deseas editar las porciones?",
+		"Confirmación",
+		MessageBoxButtons::YesNo,
+		MessageBoxIcon::Question);
+	if (resultado == System::Windows::Forms::DialogResult::Yes) {
+		txtPorcion->ReadOnly = false;
+		txtAgua->ReadOnly = false;
+		
+		
+	}
+}
+private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void btnAceptar_Click(System::Object^ sender, System::EventArgs^ e) {
+	if (txtPorcion->ReadOnly == false && txtAgua->ReadOnly == false) {
+		if (txtPorcion->Text == "" || txtAgua->Text == "") {
+			MessageBox::Show("Debe ingresar una cantidad válida.");
+		}
+		else {
+			double porcion, agua;
+			bool esPorcionValida = Double::TryParse(txtPorcion->Text, porcion);
+			bool esAguaValida = Double::TryParse(txtAgua->Text, agua);
+			if (!esPorcionValida || !esAguaValida) {
+				MessageBox::Show("Ingrese solo números en los campos de porción y agua.");
+			}
+			else {
+				try {
+					Service::ModificarPorcionAgua(mascotaSeleccionada, porcion, agua);
+					txtPorcion->ReadOnly = true;
+					txtAgua->ReadOnly = true;
+				}
+				catch (System::Exception^ ex) {
+					MessageBox::Show(ex->Message);
+				}
+			}
+		}
+	}
 }
 };
 }

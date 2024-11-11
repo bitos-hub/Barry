@@ -1,0 +1,2 @@
+#include "Caracteristicas.h"
+

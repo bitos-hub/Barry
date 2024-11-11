@@ -443,6 +443,21 @@ void ServiceBarry::Service::AsignarModoDipensador(Dispenser^ dispensador, String
 	return Persistance::AsignarModoDipensador(dispensador,modo);
 }
 
+void ServiceBarry::Service::ModificarPorcionAgua(Pet^ masctotaSeleccionada,double porcion, double agua)
+{
+	Persistance::PetsList = QueryAllPets();
+	if (masctotaSeleccionada != nullptr) {
+		for each (Pet ^ m in Persistance::PetsList) {
+			if (m->Id = masctotaSeleccionada->Id) {
+				m->FoodServing = porcion;
+				m->WaterServing = agua;
+			}
+		}
+		Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME,Persistance::PetsList);
+		Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
+	}
+}
+
 Pet^ ServiceBarry::Service::ConsultarMascotaAsignadaADispensador(int dispenserId)
 {
 	return Persistance::ConsultarMascotaAsignadaADispensador(dispenserId);

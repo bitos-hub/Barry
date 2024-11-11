@@ -99,6 +99,12 @@ namespace ServiceBarry {
 
 		/*Hasta aquí*/
 
+		/*Seguda parte xd*/
+
+		static void ModificarPorcionAgua(Pet^ masctotaSeleccionada,double porcion,double agua);
+
+		/**/
+
 
 		static Pet^ ConsultarMascotaAsignadaADispensador(int dispenserId);
 	};

@@ -21,14 +21,14 @@
     <Specie>Grillo</Specie>
     <Status>aplastado</Status>
     <OpcionesComida />
-    <FoodServing>1</FoodServing>
+    <FoodServing>100</FoodServing>
     <FoodChanges>
       <dateTime>2024-11-10T17:52:26.492151-05:00</dateTime>
     </FoodChanges>
     <FoodEvolution>
       <double>1</double>
     </FoodEvolution>
-    <WaterServing>1</WaterServing>
+    <WaterServing>50</WaterServing>
     <WaterEvolution>
       <double>1</double>
     </WaterEvolution>
