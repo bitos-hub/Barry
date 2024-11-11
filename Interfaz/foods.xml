@@ -3,17 +3,145 @@
   <Food>
     <Id>1</Id>
     <FoodBrand>Ricocan</FoodBrand>
-    <FoodPrice>1</FoodPrice>
-    <Name>Pienso</Name>
-    <Status>1</Status>
+    <FoodPrice>7</FoodPrice>
+    <Name>Croqueta balanceada para perros</Name>
+    <Status>-</Status>
+    <FoodAmount>5</FoodAmount>
+  </Food>
+  <Food>
+    <Id>3</Id>
+    <FoodBrand>Ricocan</FoodBrand>
+    <FoodPrice>10</FoodPrice>
+    <Name>Croqueta balanceada para gatos</Name>
+    <Status>-</Status>
+    <FoodAmount>3</FoodAmount>
+  </Food>
+  <Food>
+    <Id>4</Id>
+    <FoodBrand>Pedigree</FoodBrand>
+    <FoodPrice>20</FoodPrice>
+    <Name>Croqueta balanceada para perros</Name>
+    <Status>-</Status>
+    <FoodAmount>4</FoodAmount>
+  </Food>
+  <Food>
+    <Id>5</Id>
+    <FoodBrand>Royal Canin</FoodBrand>
+    <FoodPrice>35</FoodPrice>
+    <Name>Croqueta balanceada para perros</Name>
+    <Status>-</Status>
+    <FoodAmount>5</FoodAmount>
+  </Food>
+  <Food>
+    <Id>6</Id>
+    <FoodBrand>Purina Pro Plan</FoodBrand>
+    <FoodPrice>45</FoodPrice>
+    <Name>Croqueta saludable para perros</Name>
+    <Status>-</Status>
+    <FoodAmount>7</FoodAmount>
+  </Food>
+  <Food>
+    <Id>7</Id>
+    <FoodBrand>Hill's Science Diet</FoodBrand>
+    <FoodPrice>50</FoodPrice>
+    <Name>Croqueta dietética para perros</Name>
+    <Status>-</Status>
+    <FoodAmount>3</FoodAmount>
+  </Food>
+  <Food>
+    <Id>8</Id>
+    <FoodBrand>Pedigree</FoodBrand>
+    <FoodPrice>9</FoodPrice>
+    <Name>Paté en Lata con Pollo</Name>
+    <Status>-</Status>
+    <FoodAmount>1.5</FoodAmount>
+  </Food>
+  <Food>
+    <Id>9</Id>
+    <FoodBrand>Hill’s Science Diet</FoodBrand>
+    <FoodPrice>10</FoodPrice>
+    <Name>Paté Adulto con Pavo y Cebada</Name>
+    <Status>-</Status>
+    <FoodAmount>2</FoodAmount>
+  </Food>
+  <Food>
+    <Id>10</Id>
+    <FoodBrand>Royal Canin</FoodBrand>
+    <FoodPrice>35</FoodPrice>
+    <Name>Feline Health Nutrition Indoor Adult</Name>
+    <Status>-</Status>
+    <FoodAmount>2.5</FoodAmount>
+  </Food>
+  <Food>
+    <Id>11</Id>
+    <FoodBrand>Purina Pro Plan</FoodBrand>
+    <FoodPrice>28</FoodPrice>
+    <Name>LiveClear para Gatos Adultos</Name>
+    <Status>-</Status>
+    <FoodAmount>2</FoodAmount>
+  </Food>
+  <Food>
+    <Id>12</Id>
+    <FoodBrand>Hill’s Science Diet</FoodBrand>
+    <FoodPrice>25</FoodPrice>
+    <Name>Diet Kitten Chicken Recipe</Name>
+    <Status>-</Status>
+    <FoodAmount>2</FoodAmount>
+  </Food>
+  <Food>
+    <Id>13</Id>
+    <FoodBrand>Fancy Feast</FoodBrand>
+    <FoodPrice>10</FoodPrice>
+    <Name>Paté con Salmón y Atún</Name>
+    <Status>-</Status>
+    <FoodAmount>3</FoodAmount>
+  </Food>
+  <Food>
+    <Id>14</Id>
+    <FoodBrand>Blue Buffalo</FoodBrand>
+    <FoodPrice>20</FoodPrice>
+    <Name>Wilderness Grain-Free para Gatos</Name>
+    <Status>-</Status>
     <FoodAmount>1</FoodAmount>
   </Food>
   <Food>
-    <Id>2</Id>
-    <FoodBrand>Canbo</FoodBrand>
+    <Id>15</Id>
+    <FoodBrand>Oxbow</FoodBrand>
+    <FoodPrice>12</FoodPrice>
+    <Name>Essentials Adult Rabbit Food</Name>
+    <Status>-</Status>
+    <FoodAmount>2.25</FoodAmount>
+  </Food>
+  <Food>
+    <Id>16</Id>
+    <FoodBrand>Kaytee</FoodBrand>
     <FoodPrice>15</FoodPrice>
-    <Name>Paté</Name>
+    <Name>Fiesta Rabbit Food</Name>
+    <Status>-</Status>
+    <FoodAmount>25</FoodAmount>
+  </Food>
+  <Food>
+    <Id>17</Id>
+    <FoodBrand>Small Pet Select</FoodBrand>
+    <FoodPrice>20</FoodPrice>
+    <Name>Rabbit Food Pellets</Name>
     <Status />
-    <FoodAmount>4</FoodAmount>
+    <FoodAmount>2.25</FoodAmount>
+  </Food>
+  <Food>
+    <Id>18</Id>
+    <FoodBrand>Living World</FoodBrand>
+    <FoodPrice>16</FoodPrice>
+    <Name>Alfalfa Pellets</Name>
+    <Status>-</Status>
+    <FoodAmount>26</FoodAmount>
+  </Food>
+  <Food>
+    <Id>19</Id>
+    <FoodBrand>Vitakraft</FoodBrand>
+    <FoodPrice>20</FoodPrice>
+    <Name>Menu Vital para Conejos</Name>
+    <Status>-</Status>
+    <FoodAmount>2</FoodAmount>
   </Food>
 </ArrayOfFood>

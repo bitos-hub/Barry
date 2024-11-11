@@ -1,1 +1,3 @@
 1|jbaldeon|password|999999999|Administrador
+2|ramon|password|999999999|Usuario Interno
+3|franchesco|password|999999999|Usuario Portal

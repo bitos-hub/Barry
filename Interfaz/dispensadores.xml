@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDispenser xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Dispenser>
+    <Id>1</Id>
+    <FeedingSchedule />
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+    <DispensadorAsignado>
+      <Marca>Samsung</Marca>
+      <Modelo>SM210</Modelo>
+      <Color>Rosado</Color>
+      <Largo>18</Largo>
+      <Ancho>16</Ancho>
+      <Alto>25</Alto>
+      <Capacidad>5kg</Capacidad>
+      <Material>Poliestireno</Material>
+      <FuenteAlimentacion>Baterías</FuenteAlimentacion>
+    </DispensadorAsignado>
+    <ComidaAsignada>
+      <Id>1</Id>
+      <FoodBrand>Ricocan</FoodBrand>
+      <FoodPrice>7</FoodPrice>
+      <Name>Croqueta balanceada para perros</Name>
+      <Status>-</Status>
+      <FoodAmount>5</FoodAmount>
+    </ComidaAsignada>
+    <ModoOperacion>Horarios</ModoOperacion>
+    <dispensationRecord />
+  </Dispenser>
+</ArrayOfDispenser>

@@ -558,14 +558,14 @@ namespace Interfaz {
 			pet->FoodServing = Convert::ToDouble(txtFood->Text);
 			pet->FoodEvolution->Add(pet->FoodServing);
 			pet->FoodChanges->Add(DateTime::Now);
-			int id = Service::AddPet(pet);
+			
 
 			if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
 				System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream();
 				pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 				pet->Photo = ms->ToArray();
 			}
-
+			int id = Service::AddPet(pet);
 			ShowPets();
 			ClearControls();
 			MessageBox::Show("Se ha agregado la mascota " + pet->Id + " - " + pet->Name);
@@ -596,10 +596,10 @@ namespace Interfaz {
 				if (control->GetType() == TextBox::typeid) {
 					dynamic_cast<TextBox^>(control)->Text = "";
 				}
-				if (control->GetType() == PictureBox::typeid) {
+				/*if (control->GetType() == PictureBox::typeid) {
 					dynamic_cast<PictureBox^>(control)->Image = nullptr;
 					dynamic_cast<PictureBox^>(control)->Invalidate();
-				}
+				}*/
 			}
 		}
 
