@@ -134,6 +134,13 @@ namespace Interfaz {
 
 
 
+
+
+
+
+
+
+
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -475,7 +482,7 @@ namespace Interfaz {
 			// 
 			// FoodServing
 			// 
-			this->FoodServing->HeaderText = L"Porción [kg]";
+			this->FoodServing->HeaderText = L"Porción [g]";
 			this->FoodServing->MinimumWidth = 6;
 			this->FoodServing->Name = L"FoodServing";
 			this->FoodServing->Width = 170;
