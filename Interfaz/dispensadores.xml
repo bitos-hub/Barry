@@ -9,7 +9,7 @@
     <DispensadorAsignado>
       <Marca>Samsung</Marca>
       <Modelo>SM210</Modelo>
-      <Color>Rosado</Color>
+      <Color>Verde</Color>
       <Largo>18</Largo>
       <Ancho>16</Ancho>
       <Alto>25</Alto>
@@ -18,12 +18,40 @@
       <FuenteAlimentacion>Baterías</FuenteAlimentacion>
     </DispensadorAsignado>
     <ComidaAsignada>
-      <Id>1</Id>
-      <FoodBrand>Ricocan</FoodBrand>
-      <FoodPrice>7</FoodPrice>
-      <Name>Croqueta balanceada para perros</Name>
-      <Status>-</Status>
-      <FoodAmount>5</FoodAmount>
+      <Id>2</Id>
+      <FoodBrand>Canbo</FoodBrand>
+      <FoodPrice>15</FoodPrice>
+      <Name>Paté</Name>
+      <Status />
+      <FoodAmount>4</FoodAmount>
+    </ComidaAsignada>
+    <ModoOperacion>Horarios</ModoOperacion>
+    <dispensationRecord />
+  </Dispenser>
+  <Dispenser>
+    <Id>1</Id>
+    <FeedingSchedule />
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+    <DispensadorAsignado>
+      <Marca>Nexxt</Marca>
+      <Modelo>NXXT03</Modelo>
+      <Color>Negro</Color>
+      <Largo>18</Largo>
+      <Ancho>18</Ancho>
+      <Alto>25</Alto>
+      <Capacidad>7kg</Capacidad>
+      <Material>Polipropileno</Material>
+      <FuenteAlimentacion>Panel Solar</FuenteAlimentacion>
+    </DispensadorAsignado>
+    <ComidaAsignada>
+      <Id>2</Id>
+      <FoodBrand>Canbo</FoodBrand>
+      <FoodPrice>15</FoodPrice>
+      <Name>Paté</Name>
+      <Status />
+      <FoodAmount>4</FoodAmount>
     </ComidaAsignada>
     <ModoOperacion>Horarios</ModoOperacion>
     <dispensationRecord />
