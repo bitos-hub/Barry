@@ -102,6 +102,7 @@ namespace ServiceBarry {
 		/*Seguda parte xd*/
 
 		static void ModificarPorcionAgua(Pet^ masctotaSeleccionada,double porcion,double agua);
+		static Food^ ConsultarComidaDispensador(Pet^ mascota);
 
 		/**/
 

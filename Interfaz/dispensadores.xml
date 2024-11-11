@@ -2,39 +2,83 @@
 <ArrayOfDispenser xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dispenser>
     <Id>1</Id>
-    <FeedingSchedule />
+    <FeedingSchedule>
+      <int>1600</int>
+      <int>1515</int>
+      <int>1900</int>
+      <int>2000</int>
+    </FeedingSchedule>
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+    <DispensadorAsignado>
+      <Marca>Xiaomi</Marca>
+      <Modelo>X101</Modelo>
+      <Color>Rojo</Color>
+      <Largo>11</Largo>
+      <Ancho>10</Ancho>
+      <Alto>20</Alto>
+      <Capacidad>5L</Capacidad>
+      <Material>ABS</Material>
+      <FuenteAlimentacion>Eléctrica</FuenteAlimentacion>
+    </DispensadorAsignado>
+    <ComidaAsignada>
+      <Id>1</Id>
+      <FoodBrand>Ricocan</FoodBrand>
+      <FoodPrice>1</FoodPrice>
+      <Name>Pienso</Name>
+      <Status>1</Status>
+      <FoodAmount>1</FoodAmount>
+    </ComidaAsignada>
+    <ModoOperacion>Detector de movimiento</ModoOperacion>
+    <dispensationRecord />
+  </Dispenser>
+  <Dispenser>
+    <Id>2</Id>
+    <FeedingSchedule>
+      <int>1600</int>
+      <int>1700</int>
+      <int>1800</int>
+    </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
     <DispensadorAsignado>
       <Marca>Samsung</Marca>
-      <Modelo>SM210</Modelo>
-      <Color>Verde</Color>
-      <Largo>18</Largo>
-      <Ancho>16</Ancho>
-      <Alto>25</Alto>
-      <Capacidad>5kg</Capacidad>
-      <Material>Poliestireno</Material>
-      <FuenteAlimentacion>Baterías</FuenteAlimentacion>
+      <Modelo>SM320</Modelo>
+      <Color>Azul</Color>
+      <Largo>20</Largo>
+      <Ancho>17.5</Ancho>
+      <Alto>26</Alto>
+      <Capacidad>7kg</Capacidad>
+      <Material>ABS</Material>
+      <FuenteAlimentacion>Eléctrica</FuenteAlimentacion>
     </DispensadorAsignado>
-    <dispensationRecord>
-      <Dispensation>
-        <TimesDispensedWater>0</TimesDispensedWater>
-        <TimesDispensedFood>9</TimesDispensedFood>
-        <Date>2024/11/10</Date>
-      </Dispensation>
-    </dispensationRecord>
+    <ComidaAsignada>
+      <Id>1</Id>
+      <FoodBrand>Ricocan</FoodBrand>
+      <FoodPrice>7</FoodPrice>
+      <Name>Croqueta balanceada para perros</Name>
+      <Status>-</Status>
+      <FoodAmount>5</FoodAmount>
+    </ComidaAsignada>
+    <ModoOperacion>Horarios</ModoOperacion>
+    <dispensationRecord />
   </Dispenser>
   <Dispenser>
-    <Id>2</Id>
-    <FeedingSchedule />
+    <Id>3</Id>
+    <FeedingSchedule>
+      <int>1600</int>
+      <int>1700</int>
+      <int>1500</int>
+    </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
     <DispensadorAsignado>
       <Marca>Nexxt</Marca>
       <Modelo>NXXT03</Modelo>
-      <Color>Azul</Color>
+      <Color>Negro</Color>
       <Largo>18</Largo>
       <Ancho>18</Ancho>
       <Alto>25</Alto>
@@ -42,31 +86,15 @@
       <Material>Polipropileno</Material>
       <FuenteAlimentacion>Panel Solar</FuenteAlimentacion>
     </DispensadorAsignado>
-    <dispensationRecord>
-      <Dispensation>
-        <TimesDispensedWater>0</TimesDispensedWater>
-        <TimesDispensedFood>4</TimesDispensedFood>
-        <Date>2024/11/10</Date>
-      </Dispensation>
-    </dispensationRecord>
-  </Dispenser>
-  <Dispenser>
-    <Id>3</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
-    <DispensadorAsignado>
-      <Marca>Samsung</Marca>
-      <Modelo>SM210</Modelo>
-      <Color>Azul</Color>
-      <Largo>18</Largo>
-      <Ancho>16</Ancho>
-      <Alto>25</Alto>
-      <Capacidad>5kg</Capacidad>
-      <Material>Poliestireno</Material>
-      <FuenteAlimentacion>Baterías</FuenteAlimentacion>
-    </DispensadorAsignado>
+    <ComidaAsignada>
+      <Id>1</Id>
+      <FoodBrand>Ricocan</FoodBrand>
+      <FoodPrice>7</FoodPrice>
+      <Name>Croqueta balanceada para perros</Name>
+      <Status>-</Status>
+      <FoodAmount>5</FoodAmount>
+    </ComidaAsignada>
+    <ModoOperacion>Horarios</ModoOperacion>
     <dispensationRecord />
   </Dispenser>
 </ArrayOfDispenser>

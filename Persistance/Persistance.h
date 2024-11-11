@@ -83,5 +83,7 @@ namespace BarryPersistance {
 		/*Hasta aquí*/
 
 		static Pet^ ConsultarMascotaAsignadaADispensador(int dispenserId);
+
+
 	};
 }

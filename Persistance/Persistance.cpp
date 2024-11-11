@@ -654,17 +654,28 @@ DispensadorDisponible^ BarryPersistance::Persistance::EncontrarDispensador(Strin
     return dispEncontrado;
 }
 
+//Se modificó aqui ///////////////
+/*
 void BarryPersistance::Persistance::AsignarModoDipensador(Dispenser^ dispensador, String^ modo)
 {
-    lista_dispensadores = ConsultarTodosDispensadores();
-    for each (Dispenser^ d in lista_dispensadores) {
+    Persistance::lista_dispensadores = ConsultarTodosDispensadores();
+    Persistance::PetsList = QueryAllPets();
+    for each (Dispenser^ d in Persistance::lista_dispensadores) {
         if (d->Id ==dispensador->Id) {
             d->ModoOperacion = modo;
+            for (int i = 0; i < Persistance::PetsList->Count; i++) {
+                Pet^ p = Persistance::PetsList[i];
+                if (p->PetDispenser->Id == d->Id) {
+                    p->PetDispenser = d;
+                }
+            }
         }
     }
-    PersistBinaryFile(BIN_DISPENSADOR_FILE_NAME, lista_dispensadores);
-    PersistXMLFile(XML_DISPENSADOR_FILE_NAME, lista_dispensadores);
-}
+    Persistance::PersistBinaryFile(Persistance::BIN_DISPENSADOR_FILE_NAME, Persistance::lista_dispensadores);
+    Persistance::PersistXMLFile(Persistance::XML_DISPENSADOR_FILE_NAME, Persistance::lista_dispensadores);
+    Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME, Persistance::PetsList);
+    Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
+}*/
 
 Pet^ BarryPersistance::Persistance::ConsultarMascotaAsignadaADispensador(int dispenserId)
 {
