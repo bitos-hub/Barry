@@ -88,7 +88,7 @@ namespace Interfaz {
 
 	private: System::Windows::Forms::ToolStripMenuItem^ añadirMascotaToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ semanalToolStripMenuItem;
-	private: System::Windows::Forms::ToolStripMenuItem^ mensualToolStripMenuItem;
+
 
 
 
@@ -245,7 +245,6 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			this->programarComidaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->generarReporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->semanalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->mensualToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pesosYRacionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->recargarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -386,9 +385,9 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			// 
 			// generarReporteToolStripMenuItem
 			// 
-			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
+			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
 				this->semanalToolStripMenuItem,
-					this->mensualToolStripMenuItem, this->pesosYRacionesToolStripMenuItem
+					this->pesosYRacionesToolStripMenuItem
 			});
 			this->generarReporteToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -401,16 +400,9 @@ private: System::Windows::Forms::Button^ btnVerCaracteristicas;
 			// 
 			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
 			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
-			this->semanalToolStripMenuItem->Size = System::Drawing::Size(230, 34);
-			this->semanalToolStripMenuItem->Text = L"Semanal";
+			this->semanalToolStripMenuItem->Size = System::Drawing::Size(291, 42);
+			this->semanalToolStripMenuItem->Text = L"Dispensación";
 			this->semanalToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::semanalToolStripMenuItem_Click);
-			// 
-			// mensualToolStripMenuItem
-			// 
-			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
-			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
-			this->mensualToolStripMenuItem->Size = System::Drawing::Size(230, 34);
-			this->mensualToolStripMenuItem->Text = L"Mensual";
 			// 
 			// pesosYRacionesToolStripMenuItem
 			// 
