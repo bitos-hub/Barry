@@ -542,9 +542,45 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 String^ ServiceBarry::Service::DispenseWater(int petId)
 {
 	String^ result;
+	String^ dateNow = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd");
+	Pet^ pet = QueryPetById(petId);
 	try {
 		OpenPort();
-		Pet^ pet = QueryPetById(petId);
+		Dispenser^ d = pet->PetDispenser;
+
+		List<Dispensation^>^ DispensationList = Service::ConsultarDispensadasPorDispensador(d);
+
+		Dispensation^ existingDispensation = nullptr;
+		for each (Dispensation ^ disp in DispensationList) {
+
+			if ((disp->Date)->Contains(dateNow)) {
+				existingDispensation = disp;
+				break;
+			}
+		}
+
+
+		// Si no existe, crear una nueva
+		if (existingDispensation == nullptr) {
+			existingDispensation = gcnew Dispensation();
+			existingDispensation->WaterDispensationInitialize();
+			DispensationList->Add(existingDispensation);
+			d->dispensationRecord = DispensationList;
+		}
+		else {
+			existingDispensation->TimesDispensedWater += 1;
+			for (int i = 0; i < DispensationList->Count; i++) {
+				if (DispensationList[i]->Date == existingDispensation->Date) {
+					DispensationList[i] = existingDispensation;
+					d->dispensationRecord = DispensationList;
+					break;
+				}
+			}
+		}
+		pet->PetDispenser = d;
+		Persistance::ActualizarDispensador(d);
+		Service::UpdatePet(pet);
+
 		result = "Se están dispensando " + Convert::ToString(pet->WaterServing) + "mL en el recipiente de " + pet->Name;
 		Byte WaterServingByte = Convert::ToByte(pet->WaterServing);
 		ArduinoPort->Write(Convert::ToString(WaterServingByte, 16));
