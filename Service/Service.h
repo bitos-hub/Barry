@@ -107,5 +107,6 @@ namespace ServiceBarry {
 
 
 		static Pet^ ConsultarMascotaAsignadaADispensador(int dispenserId);
+		static Food^ ConsultarComidaDispensador(Pet^ mascota);
 	};
 }

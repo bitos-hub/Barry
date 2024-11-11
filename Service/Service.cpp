@@ -463,6 +463,34 @@ Pet^ ServiceBarry::Service::ConsultarMascotaAsignadaADispensador(int dispenserId
 	return Persistance::ConsultarMascotaAsignadaADispensador(dispenserId);
 }
 
+Food^ ServiceBarry::Service::ConsultarComidaDispensador(Pet^ mascota)
+{
+	/*Dispenser^ dispenser;
+	Persistance::PetsList = QueryAllPets();
+	for each (Pet ^ m in Persistance::PetsList) {
+		if (m->Name == mascota->Name) {
+			dispenser = m->PetDispenser;
+		}
+	}
+	Persistance::lista_dispensadores = Persistance::ConsultarTodosDispensadores();
+	for each (Dispenser ^ d in Persistance::lista_dispensadores) {
+		if (d->Id == dispenser->Id) {
+			return d->ComidaAsignada;
+		}
+	}*/
+	Persistance::lista_dispensadores = ConsultarTodosDispensadores();
+	Persistance::PetsList = QueryAllPets();
+	for each (Pet ^ m in Persistance::PetsList) {
+		if (m->Name == mascota->Name) {
+			for each (Dispenser ^ d in Persistance::lista_dispensadores) {
+				if (m->PetDispenser == d) {
+					return d->ComidaAsignada;
+				}
+			}
+		}
+	}
+}
+
 Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
 {
 	for each (Pet ^ p in Persistance::PetsList) {
