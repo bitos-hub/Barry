@@ -426,7 +426,7 @@ private: System::Void bntGenerarReporte_Click(System::Object^ sender, System::Ev
 		DateTime endDate = dtpEndDate->Value;
 		int i = 0;
 		int j = 0;
-		for (DateTime date = startDate; date <= endDate; date = date.AddDays(1)) {
+		for (DateTime date = startDate; date <= endDate.AddDays(1); date = date.AddDays(1)) {
 
 			int timesDispensed = 0;
 			int timesDispensedWather = 0;
