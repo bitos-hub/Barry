@@ -1,0 +1,2 @@
+1|Barry|100,0|System.Collections.Generic.List`1[System.Double]|100,0|System.Collections.Generic.List`1[System.Double]||Barry.Dispenser||Conejo|Gordito|5,0|System.Double[]
+2|Antonio|150,0|System.Collections.Generic.List`1[System.Double]|80,0|System.Collections.Generic.List`1[System.Double]||||Gato|Godito|6,0|System.Double[]
