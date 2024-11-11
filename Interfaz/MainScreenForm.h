@@ -248,6 +248,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->generarReporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->semanalToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pesosYRacionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->economíaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->recargarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesiónToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cerrarSesionToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -297,7 +298,6 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->btnUpdateWeight = (gcnew System::Windows::Forms::Button());
 			this->cmbDispenser = (gcnew System::Windows::Forms::ComboBox());
 			this->btnVerCaracteristicas = (gcnew System::Windows::Forms::Button());
-			this->economíaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
@@ -390,7 +390,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			// 
 			this->generarReporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {
 				this->semanalToolStripMenuItem,
-					this->mensualToolStripMenuItem, this->pesosYRacionesToolStripMenuItem, this->economíaToolStripMenuItem
+					this->pesosYRacionesToolStripMenuItem, this->economíaToolStripMenuItem
 			});
 			this->generarReporteToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 18, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
@@ -403,23 +403,23 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			// 
 			this->semanalToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"semanalToolStripMenuItem.Image")));
 			this->semanalToolStripMenuItem->Name = L"semanalToolStripMenuItem";
-			this->semanalToolStripMenuItem->Size = System::Drawing::Size(291, 42);
+			this->semanalToolStripMenuItem->Size = System::Drawing::Size(230, 34);
 			this->semanalToolStripMenuItem->Text = L"Dispensación";
 			this->semanalToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::semanalToolStripMenuItem_Click);
-			// 
-			// mensualToolStripMenuItem
-			// 
-			this->mensualToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"mensualToolStripMenuItem.Image")));
-			this->mensualToolStripMenuItem->Name = L"mensualToolStripMenuItem";
-			this->mensualToolStripMenuItem->Size = System::Drawing::Size(234, 34);
-			this->mensualToolStripMenuItem->Text = L"Mensual";
 			// 
 			// pesosYRacionesToolStripMenuItem
 			// 
 			this->pesosYRacionesToolStripMenuItem->Name = L"pesosYRacionesToolStripMenuItem";
-			this->pesosYRacionesToolStripMenuItem->Size = System::Drawing::Size(234, 34);
+			this->pesosYRacionesToolStripMenuItem->Size = System::Drawing::Size(230, 34);
 			this->pesosYRacionesToolStripMenuItem->Text = L"Pesos y raciones";
 			this->pesosYRacionesToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::pesosYRacionesToolStripMenuItem_Click);
+			// 
+			// economíaToolStripMenuItem
+			// 
+			this->economíaToolStripMenuItem->Name = L"economíaToolStripMenuItem";
+			this->economíaToolStripMenuItem->Size = System::Drawing::Size(230, 34);
+			this->economíaToolStripMenuItem->Text = L"Economía";
+			this->economíaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::economíaToolStripMenuItem_Click);
 			// 
 			// recargarToolStripMenuItem
 			// 
@@ -561,6 +561,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtPetName->Location = System::Drawing::Point(38, 224);
 			this->txtPetName->Margin = System::Windows::Forms::Padding(2);
 			this->txtPetName->Name = L"txtPetName";
+			this->txtPetName->ReadOnly = true;
 			this->txtPetName->Size = System::Drawing::Size(152, 19);
 			this->txtPetName->TabIndex = 23;
 			// 
@@ -597,6 +598,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtEspecie->Location = System::Drawing::Point(38, 332);
 			this->txtEspecie->Margin = System::Windows::Forms::Padding(2);
 			this->txtEspecie->Name = L"txtEspecie";
+			this->txtEspecie->ReadOnly = true;
 			this->txtEspecie->Size = System::Drawing::Size(152, 19);
 			this->txtEspecie->TabIndex = 26;
 			// 
@@ -620,6 +622,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtWeight->Location = System::Drawing::Point(38, 280);
 			this->txtWeight->Margin = System::Windows::Forms::Padding(2);
 			this->txtWeight->Name = L"txtWeight";
+			this->txtWeight->ReadOnly = true;
 			this->txtWeight->Size = System::Drawing::Size(152, 19);
 			this->txtWeight->TabIndex = 28;
 			// 
@@ -644,6 +647,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtStatus->Location = System::Drawing::Point(400, 332);
 			this->txtStatus->Margin = System::Windows::Forms::Padding(2);
 			this->txtStatus->Name = L"txtStatus";
+			this->txtStatus->ReadOnly = true;
 			this->txtStatus->Size = System::Drawing::Size(160, 19);
 			this->txtStatus->TabIndex = 30;
 			this->txtStatus->TextChanged += gcnew System::EventHandler(this, &MainScreenForm::txtStatus_TextChanged);
@@ -668,6 +672,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtPortion->Location = System::Drawing::Point(211, 280);
 			this->txtPortion->Margin = System::Windows::Forms::Padding(2);
 			this->txtPortion->Name = L"txtPortion";
+			this->txtPortion->ReadOnly = true;
 			this->txtPortion->Size = System::Drawing::Size(152, 19);
 			this->txtPortion->TabIndex = 32;
 			// 
@@ -689,8 +694,9 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtLastTimeFed->Font = (gcnew System::Drawing::Font(L"MS PGothic", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->txtLastTimeFed->Location = System::Drawing::Point(400, 224);
-			this->txtLastTimeFed->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtLastTimeFed->Margin = System::Windows::Forms::Padding(2);
 			this->txtLastTimeFed->Name = L"txtLastTimeFed";
+			this->txtLastTimeFed->ReadOnly = true;
 			this->txtLastTimeFed->Size = System::Drawing::Size(160, 19);
 			this->txtLastTimeFed->TabIndex = 36;
 			this->txtLastTimeFed->TextChanged += gcnew System::EventHandler(this, &MainScreenForm::textBox1_TextChanged);
@@ -731,6 +737,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtAssignedDispenser->Location = System::Drawing::Point(211, 224);
 			this->txtAssignedDispenser->Margin = System::Windows::Forms::Padding(2);
 			this->txtAssignedDispenser->Name = L"txtAssignedDispenser";
+			this->txtAssignedDispenser->ReadOnly = true;
 			this->txtAssignedDispenser->Size = System::Drawing::Size(176, 19);
 			this->txtAssignedDispenser->TabIndex = 38;
 			// 
@@ -754,6 +761,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtFoodAvaibleContainer->Location = System::Drawing::Point(23, 56);
 			this->txtFoodAvaibleContainer->Margin = System::Windows::Forms::Padding(2);
 			this->txtFoodAvaibleContainer->Name = L"txtFoodAvaibleContainer";
+			this->txtFoodAvaibleContainer->ReadOnly = true;
 			this->txtFoodAvaibleContainer->Size = System::Drawing::Size(152, 19);
 			this->txtFoodAvaibleContainer->TabIndex = 40;
 			// 
@@ -822,6 +830,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtAvaibleFoodPlate->Location = System::Drawing::Point(28, 56);
 			this->txtAvaibleFoodPlate->Margin = System::Windows::Forms::Padding(2);
 			this->txtAvaibleFoodPlate->Name = L"txtAvaibleFoodPlate";
+			this->txtAvaibleFoodPlate->ReadOnly = true;
 			this->txtAvaibleFoodPlate->Size = System::Drawing::Size(152, 19);
 			this->txtAvaibleFoodPlate->TabIndex = 40;
 			// 
@@ -871,6 +880,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtAssignedPet->Location = System::Drawing::Point(336, 448);
 			this->txtAssignedPet->Margin = System::Windows::Forms::Padding(2);
 			this->txtAssignedPet->Name = L"txtAssignedPet";
+			this->txtAssignedPet->ReadOnly = true;
 			this->txtAssignedPet->Size = System::Drawing::Size(152, 19);
 			this->txtAssignedPet->TabIndex = 46;
 			// 
@@ -910,6 +920,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtLastWater->Location = System::Drawing::Point(400, 280);
 			this->txtLastWater->Margin = System::Windows::Forms::Padding(2);
 			this->txtLastWater->Name = L"txtLastWater";
+			this->txtLastWater->ReadOnly = true;
 			this->txtLastWater->Size = System::Drawing::Size(160, 19);
 			this->txtLastWater->TabIndex = 51;
 			this->txtLastWater->TextChanged += gcnew System::EventHandler(this, &MainScreenForm::txtLastWater_TextChanged);
@@ -935,6 +946,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->txtWater->Location = System::Drawing::Point(211, 332);
 			this->txtWater->Margin = System::Windows::Forms::Padding(2);
 			this->txtWater->Name = L"txtWater";
+			this->txtWater->ReadOnly = true;
 			this->txtWater->Size = System::Drawing::Size(121, 19);
 			this->txtWater->TabIndex = 53;
 			this->txtWater->TextChanged += gcnew System::EventHandler(this, &MainScreenForm::textBox4_TextChanged);
@@ -999,20 +1011,13 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->btnVerCaracteristicas->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
 			this->btnVerCaracteristicas->Location = System::Drawing::Point(606, 407);
-			this->btnVerCaracteristicas->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnVerCaracteristicas->Margin = System::Windows::Forms::Padding(2);
 			this->btnVerCaracteristicas->Name = L"btnVerCaracteristicas";
 			this->btnVerCaracteristicas->Size = System::Drawing::Size(87, 37);
 			this->btnVerCaracteristicas->TabIndex = 57;
 			this->btnVerCaracteristicas->Text = L"Ver características";
 			this->btnVerCaracteristicas->UseVisualStyleBackColor = false;
 			this->btnVerCaracteristicas->Click += gcnew System::EventHandler(this, &MainScreenForm::btnVerCaracteristicas_Click);
-			// 
-			// economíaToolStripMenuItem
-			// 
-			this->economíaToolStripMenuItem->Name = L"economíaToolStripMenuItem";
-			this->economíaToolStripMenuItem->Size = System::Drawing::Size(234, 34);
-			this->economíaToolStripMenuItem->Text = L"Economía";
-			this->economíaToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::economíaToolStripMenuItem_Click);
 			// 
 			// MainScreenForm
 			// 
@@ -1269,12 +1274,11 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			else {
 				MessageBox::Show("No se pudo alimentar correctamente debido que tiene un dispensador asignado.");
 			}
-			String^ result = Service::DispenseFoodUART(id);
+			
 			//Food^ foodDispensed = Service::ConsultarComidaDispensador(pet);
 			//Food^ foodDispensed = Service::QueryFoodbyId(pet->PetDispenser->ComidaAsignada->Id);
 			//foodDispensed->FoodAmount = foodDispensed->FoodAmount - pet->FoodServing / 1000;
 			//Service::UpdateFood(foodDispensed);
-			MessageBox::Show(result);
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("No se pudo alimentar correctamente debido a:\n" + ex);
