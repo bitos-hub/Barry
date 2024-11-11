@@ -2,7 +2,10 @@
 <ArrayOfDispenser xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dispenser>
     <Id>1</Id>
-    <FeedingSchedule />
+    <FeedingSchedule>
+      <int>1200</int>
+      <int>1500</int>
+    </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
@@ -17,42 +20,22 @@
       <Material>Poliestireno</Material>
       <FuenteAlimentacion>Baterías</FuenteAlimentacion>
     </DispensadorAsignado>
-    <dispensationRecord>
-      <Dispensation>
-        <TimesDispensedWater>0</TimesDispensedWater>
-        <TimesDispensedFood>9</TimesDispensedFood>
-        <Date>2024/11/10</Date>
-      </Dispensation>
-    </dispensationRecord>
-  </Dispenser>
-  <Dispenser>
-    <Id>2</Id>
-    <FeedingSchedule />
-    <FoodAmount>0</FoodAmount>
-    <IsPlateFull>false</IsPlateFull>
-    <DispenserFood>0</DispenserFood>
-    <DispensadorAsignado>
-      <Marca>Nexxt</Marca>
-      <Modelo>NXXT03</Modelo>
-      <Color>Azul</Color>
-      <Largo>18</Largo>
-      <Ancho>18</Ancho>
-      <Alto>25</Alto>
-      <Capacidad>7kg</Capacidad>
-      <Material>Polipropileno</Material>
-      <FuenteAlimentacion>Panel Solar</FuenteAlimentacion>
-    </DispensadorAsignado>
-    <dispensationRecord>
-      <Dispensation>
-        <TimesDispensedWater>0</TimesDispensedWater>
-        <TimesDispensedFood>4</TimesDispensedFood>
-        <Date>2024/11/10</Date>
-      </Dispensation>
-    </dispensationRecord>
+    <ComidaAsignada>
+      <Id>2</Id>
+      <FoodBrand>Canbo</FoodBrand>
+      <FoodPrice>15</FoodPrice>
+      <Name>Paté</Name>
+      <Status />
+      <FoodAmount>4</FoodAmount>
+    </ComidaAsignada>
+    <ModoOperacion>Horarios</ModoOperacion>
+    <dispensationRecord />
   </Dispenser>
   <Dispenser>
     <Id>3</Id>
-    <FeedingSchedule />
+    <FeedingSchedule>
+      <int>1600</int>
+    </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>

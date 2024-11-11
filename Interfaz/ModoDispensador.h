@@ -479,11 +479,16 @@ private: System::Void ModoDispensador_Load(System::Object^ sender, System::Event
 
 private: System::Void cmbModos_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	String^ modoSeleccionado = (String^)cmbModos->SelectedItem;
-	Service::AsignarModoDipensador(dispensadorSeleccionado, modoSeleccionado);
-	if (modoSeleccionado == "Horarios") {
-		btnHorario->Visible = true;
+	if (dispensadorSeleccionado!=nullptr) {
+		Service::AsignarModoDipensador(dispensadorSeleccionado, modoSeleccionado);
+		if (modoSeleccionado == "Horarios") {
+			btnHorario->Visible = true;
+		}
+		else btnHorario->Visible = false;
 	}
-	else btnHorario->Visible = false;
+	else {
+		MessageBox::Show("Debe seleccionar un dispensador");
+	}
 }
 private: System::Void btnEditar_Click(System::Object^ sender, System::EventArgs^ e) {
 	System::Windows::Forms::DialogResult resultado = MessageBox::Show("¿Deseas editar las porciones?",
