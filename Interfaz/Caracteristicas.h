@@ -370,7 +370,7 @@ private: System::Void Caracteristicas_Load(System::Object^ sender, System::Event
 	txtAncho->Text = Convert::ToString(dispensadorSeleccionado->DispensadorAsignado->Ancho);
 	txtLargo->Text = Convert::ToString(dispensadorSeleccionado->DispensadorAsignado->Largo);
 	txtCapacidad->Text = dispensadorSeleccionado->DispensadorAsignado->Capacidad;
-	txtFuente->Text = dispensadorSeleccionado->DispensadorAsignado->Capacidad;
+	txtFuente->Text = dispensadorSeleccionado->DispensadorAsignado->FuenteAlimentacion;
 	txtMaterial->Text = dispensadorSeleccionado->DispensadorAsignado->Material;
 	txtID->Text = Convert::ToString(dispensadorSeleccionado->Id);
 
