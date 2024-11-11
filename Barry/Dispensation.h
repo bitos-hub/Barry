@@ -13,6 +13,8 @@ namespace Barry {
 
         Dispensation() {
             Date = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd");
+            TimesDispensedFood = 0;
+            TimesDispensedWater = 0;
         }
 
     public:

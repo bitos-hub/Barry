@@ -30,6 +30,9 @@ namespace Barry {
         User^ Owner;
         array<Byte>^ Photo;
         Dispenser^ PetDispenser; //se agregó este atributo para tener un dispensador por mascota
+        String^ LastTimeFeD;
+        String^ LastTimeHidrated;
+
     public:
         Pet() {
             WeightEvolution = gcnew List<double>();
