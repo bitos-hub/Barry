@@ -3,13 +3,15 @@
   <Pet>
     <Id>1</Id>
     <Name>Pepito</Name>
-    <Weight>5</Weight>
+    <Weight>4</Weight>
     <WeightEvolution>
       <double>0.3</double>
       <double>0.5</double>
       <double>1</double>
       <double>0.2</double>
       <double>5</double>
+      <double>1</double>
+      <double>4</double>
     </WeightEvolution>
     <WeightChanges>
       <dateTime>2024-11-10T17:52:26.4911391-05:00</dateTime>
@@ -17,6 +19,8 @@
       <dateTime>2024-11-10T17:56:19.7846153-05:00</dateTime>
       <dateTime>2024-11-10T17:56:40.8627289-05:00</dateTime>
       <dateTime>2024-11-10T18:05:04.7222354-05:00</dateTime>
+      <dateTime>2024-11-10T18:58:51.4100144-05:00</dateTime>
+      <dateTime>2024-11-10T19:00:03.7800379-05:00</dateTime>
     </WeightChanges>
     <Specie>Grillo</Specie>
     <Status>aplastado</Status>
@@ -54,26 +58,32 @@
       </DispensadorAsignado>
       <dispensationRecord>
         <Dispensation>
-          <TimesDispensedWater>0</TimesDispensedWater>
+          <TimesDispensedWater>2</TimesDispensedWater>
           <TimesDispensedFood>9</TimesDispensedFood>
           <Date>2024/11/10</Date>
         </Dispensation>
       </dispensationRecord>
     </PetDispenser>
+    <LastTimeFeD>2024/11/10 19:31:24</LastTimeFeD>
   </Pet>
   <Pet>
     <Id>2</Id>
     <Name>ramon</Name>
-    <Weight>1</Weight>
+    <Weight>4</Weight>
     <WeightEvolution>
       <double>1</double>
+      <double>4</double>
+      <double>5</double>
+      <double>4</double>
     </WeightEvolution>
     <WeightChanges>
       <dateTime>2024-11-10T18:14:41.3684006-05:00</dateTime>
+      <dateTime>2024-11-10T18:50:55.3532616-05:00</dateTime>
+      <dateTime>2024-11-10T19:00:52.8196412-05:00</dateTime>
+      <dateTime>2024-11-10T19:01:40.5303521-05:00</dateTime>
     </WeightChanges>
     <Specie>perro</Specie>
     <Status>a</Status>
-    <OpcionesComida />
     <FoodServing>100</FoodServing>
     <FoodChanges>
       <dateTime>2024-11-10T18:14:41.3684006-05:00</dateTime>
@@ -88,30 +98,5 @@
     <WaterChanges>
       <dateTime>2024-11-10T18:14:41.3684006-05:00</dateTime>
     </WaterChanges>
-    <PetDispenser>
-      <Id>2</Id>
-      <FeedingSchedule />
-      <FoodAmount>0</FoodAmount>
-      <IsPlateFull>false</IsPlateFull>
-      <DispenserFood>0</DispenserFood>
-      <DispensadorAsignado>
-        <Marca>Nexxt</Marca>
-        <Modelo>NXXT03</Modelo>
-        <Color>Azul</Color>
-        <Largo>18</Largo>
-        <Ancho>18</Ancho>
-        <Alto>25</Alto>
-        <Capacidad>7kg</Capacidad>
-        <Material>Polipropileno</Material>
-        <FuenteAlimentacion>Panel Solar</FuenteAlimentacion>
-      </DispensadorAsignado>
-      <dispensationRecord>
-        <Dispensation>
-          <TimesDispensedWater>0</TimesDispensedWater>
-          <TimesDispensedFood>4</TimesDispensedFood>
-          <Date>2024/11/10</Date>
-        </Dispensation>
-      </dispensationRecord>
-    </PetDispenser>
   </Pet>
 </ArrayOfPet>
