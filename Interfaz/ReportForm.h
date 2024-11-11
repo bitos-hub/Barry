@@ -1,5 +1,5 @@
 #pragma once
-
+#include "ComboBoxItem.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -40,17 +40,20 @@ namespace Interfaz {
 				delete components;
 			}
 		}
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^ dispensedTimeschart;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ dispensedFoodTimeschart;
+	protected:
+
 	protected:
 
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
-	private: System::Windows::Forms::Label^ label2;
+
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::PictureBox^ pictureBox2;
-	private: System::Windows::Forms::DataVisualization::Charting::Chart^ WeightsCharts;
+	private: System::Windows::Forms::ComboBox^ cmbPets;
+
+
+
 
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
 	private: System::Windows::Forms::TextBox^ txtGeneratedTime;
@@ -59,6 +62,23 @@ namespace Interfaz {
 
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ dispensedWhaterTimeschart;
+
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::Label^ label5;
+
+
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label8;
+	private: System::Windows::Forms::DateTimePicker^ dtpStartDate;
+	private: System::Windows::Forms::DateTimePicker^ dtpEndDate;
+	private: System::Windows::Forms::Button^ bntGenerarReporte;
+
+
+
+
+
 	protected:
 
 	private:
@@ -81,44 +101,50 @@ namespace Interfaz {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			this->dispensedTimeschart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->dispensedFoodTimeschart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
-			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
-			this->WeightsCharts = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->cmbPets = (gcnew System::Windows::Forms::ComboBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
 			this->txtGeneratedTime = (gcnew System::Windows::Forms::TextBox());
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dispensedTimeschart))->BeginInit();
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->dispensedWhaterTimeschart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->dtpStartDate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->dtpEndDate = (gcnew System::Windows::Forms::DateTimePicker());
+			this->bntGenerarReporte = (gcnew System::Windows::Forms::Button());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dispensedFoodTimeschart))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->WeightsCharts))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dispensedWhaterTimeschart))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// dispensedTimeschart
+			// dispensedFoodTimeschart
 			// 
 			chartArea1->Name = L"ChartArea1";
-			this->dispensedTimeschart->ChartAreas->Add(chartArea1);
+			this->dispensedFoodTimeschart->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
-			this->dispensedTimeschart->Legends->Add(legend1);
-			this->dispensedTimeschart->Location = System::Drawing::Point(351, 196);
-			this->dispensedTimeschart->Name = L"dispensedTimeschart";
-			this->dispensedTimeschart->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
+			this->dispensedFoodTimeschart->Legends->Add(legend1);
+			this->dispensedFoodTimeschart->Location = System::Drawing::Point(383, 196);
+			this->dispensedFoodTimeschart->Name = L"dispensedFoodTimeschart";
+			this->dispensedFoodTimeschart->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Veces Dispensado";
-			this->dispensedTimeschart->Series->Add(series1);
-			this->dispensedTimeschart->Size = System::Drawing::Size(654, 455);
-			this->dispensedTimeschart->TabIndex = 0;
-			this->dispensedTimeschart->Text = L"chart1";
-			this->dispensedTimeschart->UseWaitCursor = true;
+			this->dispensedFoodTimeschart->Series->Add(series1);
+			this->dispensedFoodTimeschart->Size = System::Drawing::Size(603, 455);
+			this->dispensedFoodTimeschart->TabIndex = 0;
+			this->dispensedFoodTimeschart->Text = L"chart1";
+			this->dispensedFoodTimeschart->UseWaitCursor = true;
 			// 
 			// label1
 			// 
@@ -126,11 +152,11 @@ namespace Interfaz {
 			this->label1->BackColor = System::Drawing::Color::Gainsboro;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(346, 154);
+			this->label1->Location = System::Drawing::Point(363, 132);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(283, 29);
+			this->label1->Size = System::Drawing::Size(220, 29);
 			this->label1->TabIndex = 1;
-			this->label1->Text = L"Veces dispensadas por mascota";
+			this->label1->Text = L"Dispensación de comida";
 			// 
 			// label3
 			// 
@@ -146,7 +172,7 @@ namespace Interfaz {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1302, 9);
+			this->pictureBox1->Location = System::Drawing::Point(1798, 13);
 			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(113, 129);
@@ -154,77 +180,39 @@ namespace Interfaz {
 			this->pictureBox1->TabIndex = 15;
 			this->pictureBox1->TabStop = false;
 			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->BackColor = System::Drawing::Color::Gainsboro;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(1097, 152);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(292, 29);
-			this->label2->TabIndex = 17;
-			this->label2->Text = L"Evolución del peso de la mascota";
-			// 
 			// label4
 			// 
 			this->label4->AutoSize = true;
 			this->label4->BackColor = System::Drawing::Color::Gainsboro;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(27, 272);
+			this->label4->Location = System::Drawing::Point(28, 181);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(119, 21);
 			this->label4->TabIndex = 18;
 			this->label4->Text = L"Elige la mascota:";
 			// 
-			// comboBox1
+			// cmbPets
 			// 
-			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Location = System::Drawing::Point(31, 296);
-			this->comboBox1->Name = L"comboBox1";
-			this->comboBox1->Size = System::Drawing::Size(129, 24);
-			this->comboBox1->TabIndex = 19;
-			// 
-			// pictureBox2
-			// 
-			this->pictureBox2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBox2->Location = System::Drawing::Point(31, 326);
-			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(129, 118);
-			this->pictureBox2->TabIndex = 20;
-			this->pictureBox2->TabStop = false;
-			// 
-			// WeightsCharts
-			// 
-			chartArea2->Name = L"ChartArea1";
-			this->WeightsCharts->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->WeightsCharts->Legends->Add(legend2);
-			this->WeightsCharts->Location = System::Drawing::Point(1102, 196);
-			this->WeightsCharts->Name = L"WeightsCharts";
-			this->WeightsCharts->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
-			series2->ChartArea = L"ChartArea1";
-			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series2->Legend = L"Legend1";
-			series2->Name = L"Series1";
-			this->WeightsCharts->Series->Add(series2);
-			this->WeightsCharts->Size = System::Drawing::Size(305, 276);
-			this->WeightsCharts->TabIndex = 21;
-			this->WeightsCharts->Text = L"chart2";
+			this->cmbPets->FormattingEnabled = true;
+			this->cmbPets->Location = System::Drawing::Point(32, 205);
+			this->cmbPets->Name = L"cmbPets";
+			this->cmbPets->Size = System::Drawing::Size(129, 24);
+			this->cmbPets->TabIndex = 19;
+			this->cmbPets->SelectedIndexChanged += gcnew System::EventHandler(this, &ReportForm::cmbPets_SelectedIndexChanged);
 			// 
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox3->Location = System::Drawing::Point(12, 132);
+			this->pictureBox3->Location = System::Drawing::Point(17, 122);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(276, 363);
+			this->pictureBox3->Size = System::Drawing::Size(328, 617);
 			this->pictureBox3->TabIndex = 22;
 			this->pictureBox3->TabStop = false;
 			// 
 			// txtGeneratedTime
 			// 
-			this->txtGeneratedTime->Location = System::Drawing::Point(31, 186);
+			this->txtGeneratedTime->Location = System::Drawing::Point(31, 156);
 			this->txtGeneratedTime->Name = L"txtGeneratedTime";
 			this->txtGeneratedTime->Size = System::Drawing::Size(178, 22);
 			this->txtGeneratedTime->TabIndex = 26;
@@ -236,7 +224,7 @@ namespace Interfaz {
 			this->label6->BackColor = System::Drawing::Color::Gainsboro;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(28, 160);
+			this->label6->Location = System::Drawing::Point(28, 132);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(100, 21);
 			this->label6->TabIndex = 25;
@@ -245,62 +233,225 @@ namespace Interfaz {
 			// pictureBox4
 			// 
 			this->pictureBox4->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox4->Location = System::Drawing::Point(319, 132);
+			this->pictureBox4->Location = System::Drawing::Point(351, 122);
 			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(716, 607);
+			this->pictureBox4->Size = System::Drawing::Size(716, 617);
 			this->pictureBox4->TabIndex = 27;
 			this->pictureBox4->TabStop = false;
+			this->pictureBox4->Click += gcnew System::EventHandler(this, &ReportForm::pictureBox4_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->BackColor = System::Drawing::Color::Gainsboro;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(1102, 132);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(200, 29);
+			this->label2->TabIndex = 29;
+			this->label2->Text = L"Dispensación de agua";
+			// 
+			// dispensedWhaterTimeschart
+			// 
+			chartArea2->Name = L"ChartArea1";
+			this->dispensedWhaterTimeschart->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->dispensedWhaterTimeschart->Legends->Add(legend2);
+			this->dispensedWhaterTimeschart->Location = System::Drawing::Point(1107, 196);
+			this->dispensedWhaterTimeschart->Name = L"dispensedWhaterTimeschart";
+			this->dispensedWhaterTimeschart->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Pastel;
+			series2->ChartArea = L"ChartArea1";
+			series2->Legend = L"Legend1";
+			series2->Name = L"Veces Dispensado agua";
+			this->dispensedWhaterTimeschart->Series->Add(series2);
+			this->dispensedWhaterTimeschart->Size = System::Drawing::Size(603, 455);
+			this->dispensedWhaterTimeschart->TabIndex = 28;
+			this->dispensedWhaterTimeschart->Text = L"chart1";
+			this->dispensedWhaterTimeschart->UseWaitCursor = true;
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->BackColor = System::Drawing::Color::Gainsboro;
+			this->pictureBox5->Location = System::Drawing::Point(1075, 122);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(716, 617);
+			this->pictureBox5->TabIndex = 30;
+			this->pictureBox5->TabStop = false;
+			this->pictureBox5->Click += gcnew System::EventHandler(this, &ReportForm::pictureBox5_Click);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->BackColor = System::Drawing::Color::Gainsboro;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(27, 232);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(216, 21);
+			this->label5->TabIndex = 31;
+			this->label5->Text = L"Seleccione las fechas a mostrar:";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::Color::Gainsboro;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(28, 254);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(49, 21);
+			this->label7->TabIndex = 34;
+			this->label7->Text = L"Inicio:";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->BackColor = System::Drawing::Color::Gainsboro;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(28, 301);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(33, 21);
+			this->label8->TabIndex = 35;
+			this->label8->Text = L"Fin:";
+			// 
+			// dtpStartDate
+			// 
+			this->dtpStartDate->Location = System::Drawing::Point(31, 277);
+			this->dtpStartDate->Margin = System::Windows::Forms::Padding(2);
+			this->dtpStartDate->Name = L"dtpStartDate";
+			this->dtpStartDate->Size = System::Drawing::Size(167, 22);
+			this->dtpStartDate->TabIndex = 36;
+			// 
+			// dtpEndDate
+			// 
+			this->dtpEndDate->Location = System::Drawing::Point(32, 324);
+			this->dtpEndDate->Margin = System::Windows::Forms::Padding(2);
+			this->dtpEndDate->Name = L"dtpEndDate";
+			this->dtpEndDate->Size = System::Drawing::Size(167, 22);
+			this->dtpEndDate->TabIndex = 37;
+			// 
+			// bntGenerarReporte
+			// 
+			this->bntGenerarReporte->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
+				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->bntGenerarReporte->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
+			this->bntGenerarReporte->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular,
+				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->bntGenerarReporte->Location = System::Drawing::Point(32, 383);
+			this->bntGenerarReporte->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->bntGenerarReporte->Name = L"bntGenerarReporte";
+			this->bntGenerarReporte->Size = System::Drawing::Size(177, 32);
+			this->bntGenerarReporte->TabIndex = 57;
+			this->bntGenerarReporte->Text = L"Generar reporte";
+			this->bntGenerarReporte->UseVisualStyleBackColor = false;
+			this->bntGenerarReporte->Click += gcnew System::EventHandler(this, &ReportForm::bntGenerarReporte_Click);
 			// 
 			// ReportForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1428, 769);
+			this->ClientSize = System::Drawing::Size(1924, 769);
+			this->Controls->Add(this->bntGenerarReporte);
+			this->Controls->Add(this->dtpEndDate);
+			this->Controls->Add(this->dtpStartDate);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->dispensedWhaterTimeschart);
+			this->Controls->Add(this->pictureBox5);
 			this->Controls->Add(this->txtGeneratedTime);
 			this->Controls->Add(this->label6);
-			this->Controls->Add(this->WeightsCharts);
-			this->Controls->Add(this->pictureBox2);
-			this->Controls->Add(this->comboBox1);
+			this->Controls->Add(this->cmbPets);
 			this->Controls->Add(this->label4);
-			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dispensedTimeschart);
+			this->Controls->Add(this->dispensedFoodTimeschart);
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->pictureBox4);
 			this->Name = L"ReportForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::WindowsDefaultBounds;
 			this->Text = L"ReportForm";
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &ReportForm::ReportForm_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dispensedTimeschart))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dispensedFoodTimeschart))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->WeightsCharts))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dispensedWhaterTimeschart))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
+		public:
+			void FillPetsComboPets() {
+				List<Pet^>^ petsList = Service::QueryAllPets();
+				if (petsList != nullptr) {
+					cmbPets->Items->Clear();
+					for each (Pet ^ pet in petsList) {
+						cmbPets->Items->Add(gcnew ComboBoxItem(pet->Id,
+							pet->Name));
+					}
+				}
+			}
 	private: System::Void ReportForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		txtGeneratedTime->Text = Convert::ToString(DateTime::Now);
-		/*if (ReportType == 1) {//reporte semanal
-
-			List<Dispensation^>^ dispensationList = Service::ConsultarDispensadas();
-
-			for (int i = 0; i < dispensationList->Count; i++) {
-				dispensedTimeschart->Series["Veces Dispensado"]->Points->Add(dispensationList[i]->TimesDispensed);
-				dispensedTimeschart->Series["Veces Dispensado"]->Points[i]->AxisLabel = "" + dispensationList[i]->Date;
-				dispensedTimeschart->Series["Veces Dispensado"]->Points[i]->Label = "" + dispensationList[i]->TimesDispensed;
-			}
-			
-		}
-		else {
-			//reporte mensual
-		}*/
+		bntGenerarReporte->Enabled = false;
+		FillPetsComboPets();
+		
 	}
 private: System::Void textBox2_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void pictureBox5_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+
+private: System::Void cmbPets_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	bntGenerarReporte->Enabled = true;
+}
+private: System::Void pictureBox4_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void bntGenerarReporte_Click(System::Object^ sender, System::EventArgs^ e) {
+	dispensedFoodTimeschart->Series["Veces Dispensado"]->Points->Clear();
+	dispensedWhaterTimeschart->Series["Veces Dispensado agua"]->Points->Clear();
+	Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+
+	List<Dispensation^>^ dispensationList = Service::ConsultarDispensadasPorDispensador(pet->PetDispenser);
+	if ((dtpEndDate->Value > dtpStartDate->Value)) {
+		DateTime startDate = dtpStartDate->Value;
+		DateTime endDate = dtpEndDate->Value;
+		int i = 0;
+		int j = 0;
+		for (DateTime date = startDate; date <= endDate; date = date.AddDays(1)) {
+
+			int timesDispensed = 0;
+			int timesDispensedWather = 0;
+			if (i < dispensationList->Count) {
+				if (dispensationList[i]->Date == date.ToString("yyyy/MM/dd")) {
+					timesDispensed = dispensationList[i]->TimesDispensedFood;
+					timesDispensedWather = dispensationList[i]->TimesDispensedWater;
+					i++;
+				}
+			}
+			dispensedFoodTimeschart->Series["Veces Dispensado"]->Points->Add(timesDispensed);
+			dispensedFoodTimeschart->Series["Veces Dispensado"]->Points[j]->AxisLabel = "" + date.ToString("yyyy/MM/dd");
+			dispensedFoodTimeschart->Series["Veces Dispensado"]->Points[j]->Label = "" + timesDispensed;
+
+			dispensedWhaterTimeschart->Series["Veces Dispensado agua"]->Points->Add(timesDispensedWather);
+			dispensedWhaterTimeschart->Series["Veces Dispensado agua"]->Points[j]->AxisLabel = "" + date.ToString("yyyy/MM/dd");
+			dispensedWhaterTimeschart->Series["Veces Dispensado agua"]->Points[j]->Label = "" + timesDispensedWather;
+
+			j++;
+		}
+	}
+	else {
+		MessageBox::Show("Debe seleccionar un rango de fechas valido");
+	}
+	
 }
 };
 }
