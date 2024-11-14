@@ -2,7 +2,33 @@
 <ArrayOfDispenser xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Dispenser>
     <Id>1</Id>
-    <FeedingSchedule />
+    <FeedingSchedule>
+      <int>1200</int>
+      <int>1800</int>
+    </FeedingSchedule>
+    <FoodAmount>0</FoodAmount>
+    <IsPlateFull>false</IsPlateFull>
+    <DispenserFood>0</DispenserFood>
+    <DispensadorAsignado>
+      <Marca>Xiaomi</Marca>
+      <Modelo>X105</Modelo>
+      <Color>Rosado</Color>
+      <Largo>19</Largo>
+      <Ancho>17</Ancho>
+      <Alto>26</Alto>
+      <Capacidad>9L</Capacidad>
+      <Material>Polietileno de Alta Densidad</Material>
+      <FuenteAlimentacion>Eléctrica</FuenteAlimentacion>
+    </DispensadorAsignado>
+    <ModoOperacion>Horarios</ModoOperacion>
+    <dispensationRecord />
+  </Dispenser>
+  <Dispenser>
+    <Id>2</Id>
+    <FeedingSchedule>
+      <int>1200</int>
+      <int>1400</int>
+    </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
@@ -17,42 +43,35 @@
       <Material>Poliestireno</Material>
       <FuenteAlimentacion>Baterías</FuenteAlimentacion>
     </DispensadorAsignado>
-    <ComidaAsignada>
-      <Id>2</Id>
-      <FoodBrand>Canbo</FoodBrand>
-      <FoodPrice>15</FoodPrice>
-      <Name>Paté</Name>
-      <Status />
-      <FoodAmount>4</FoodAmount>
-    </ComidaAsignada>
     <ModoOperacion>Horarios</ModoOperacion>
-    <dispensationRecord />
+    <dispensationRecord>
+      <Dispensation>
+        <TimesDispensedWater>0</TimesDispensedWater>
+        <TimesDispensedFood>4</TimesDispensedFood>
+        <Date>2024/11/11</Date>
+      </Dispensation>
+    </dispensationRecord>
   </Dispenser>
   <Dispenser>
-    <Id>1</Id>
-    <FeedingSchedule />
+    <Id>3</Id>
+    <FeedingSchedule>
+      <int>1300</int>
+      <int>1200</int>
+    </FeedingSchedule>
     <FoodAmount>0</FoodAmount>
     <IsPlateFull>false</IsPlateFull>
     <DispenserFood>0</DispenserFood>
     <DispensadorAsignado>
-      <Marca>Nexxt</Marca>
-      <Modelo>NXXT03</Modelo>
-      <Color>Negro</Color>
-      <Largo>18</Largo>
-      <Ancho>18</Ancho>
-      <Alto>25</Alto>
+      <Marca>Samsung</Marca>
+      <Modelo>SM320</Modelo>
+      <Color>Rosado</Color>
+      <Largo>20</Largo>
+      <Ancho>17.5</Ancho>
+      <Alto>26</Alto>
       <Capacidad>7kg</Capacidad>
-      <Material>Polipropileno</Material>
-      <FuenteAlimentacion>Panel Solar</FuenteAlimentacion>
+      <Material>ABS</Material>
+      <FuenteAlimentacion>Eléctrica</FuenteAlimentacion>
     </DispensadorAsignado>
-    <ComidaAsignada>
-      <Id>2</Id>
-      <FoodBrand>Canbo</FoodBrand>
-      <FoodPrice>15</FoodPrice>
-      <Name>Paté</Name>
-      <Status />
-      <FoodAmount>4</FoodAmount>
-    </ComidaAsignada>
     <ModoOperacion>Horarios</ModoOperacion>
     <dispensationRecord />
   </Dispenser>
