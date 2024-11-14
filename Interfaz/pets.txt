@@ -1,2 +1,4 @@
-1|Barry|100,0|System.Collections.Generic.List`1[System.Double]|100,0|System.Collections.Generic.List`1[System.Double]||Barry.Dispenser||Conejo|Gordito|5,0|System.Double[]
-2|Antonio|150,0|System.Collections.Generic.List`1[System.Double]|80,0|System.Collections.Generic.List`1[System.Double]||||Gato|Godito|6,0|System.Double[]
+1|1|1.0|System.Collections.Generic.List`1[System.Double]|1.0|System.Collections.Generic.List`1[System.Double]||Barry.Dispenser||1|1|1.0|System.Double[]
+2|2|2.0|System.Collections.Generic.List`1[System.Double]|2.0|System.Collections.Generic.List`1[System.Double]||Barry.Dispenser||2|2|2.0|System.Double[]
+3|3|3.0|System.Collections.Generic.List`1[System.Double]|4.0|System.Collections.Generic.List`1[System.Double]||Barry.Dispenser||3|3|3.0|System.Double[]
+4|4|4.0|System.Collections.Generic.List`1[System.Double]|4.0|System.Collections.Generic.List`1[System.Double]||Barry.Dispenser||4|4|4.0|System.Double[]

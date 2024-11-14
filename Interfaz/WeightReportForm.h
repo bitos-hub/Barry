@@ -124,6 +124,7 @@ namespace Interfaz {
 			this->pbPet->Margin = System::Windows::Forms::Padding(2);
 			this->pbPet->Name = L"pbPet";
 			this->pbPet->Size = System::Drawing::Size(190, 172);
+			this->pbPet->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbPet->TabIndex = 25;
 			this->pbPet->TabStop = false;
 			this->pbPet->Click += gcnew System::EventHandler(this, &WeightReportForm::pictureBox2_Click);
