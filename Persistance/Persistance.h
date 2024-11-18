@@ -4,10 +4,14 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace System::Xml::Serialization;
 using namespace Barry;
+using namespace System::Data::SqlClient;
 
 namespace BarryPersistance {
 	public ref class Persistance
 	{
+	private:
+		static SqlConnection^ GetConnection();
+
 	public:
 		//static String^ XML_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.xml";
 		//static String^ BIN_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.bin";
@@ -83,5 +87,22 @@ namespace BarryPersistance {
 		/*Hasta aquí*/
 
 		static Pet^ ConsultarMascotaAsignadaADispensador(int dispenserId);
+
+		//SQL uwu
+
+		//PET
+		static int SQLAddPet(Pet^ pet);
+		static int SQLAddWeight(Pet^ pet);
+		static int SQLAddFoodServing(Pet^ pet);
+		static int SQLAddWaterServing(Pet^ pet);
+		static List<Pet^>^ SQLQueryAllPets();
+		static Pet^ SQLQueryWeightEvolutionByPetId(int petId);
+		static Pet^ SQLQueryFoodServingEvolutionByPetId(int petId);
+		static Pet^ SQLQueryWaterServingEvolutionByPetId(int petId);
+		static int SQLUpdatePet(Pet^ pet);
+		static int SQLDeletePet(int petId);
+		static Pet^ SQLQueryPetById(int petId);
+
+
 	};
 }
