@@ -491,6 +491,61 @@ Food^ ServiceBarry::Service::ConsultarComidaDispensador(Pet^ mascota)
 	}
 }
 
+int ServiceBarry::Service::SQLAddPet(Pet^ pet)
+{
+	return Persistance::SQLAddPet(pet);
+}
+
+int ServiceBarry::Service::SQLAddWeight(Pet^ pet)
+{
+	return Persistance::SQLAddWeight(pet);
+}
+
+int ServiceBarry::Service::SQLAddFoodServing(Pet^ pet)
+{
+	return Persistance::SQLAddFoodServing(pet);
+}
+
+int ServiceBarry::Service::SQLAddWaterServing(Pet^ pet)
+{
+	return Persistance::SQLAddWaterServing(pet);
+}
+
+List<Pet^>^ ServiceBarry::Service::SQLQueryAllPets()
+{
+	return Persistance::SQLQueryAllPets();
+}
+
+Pet^ ServiceBarry::Service::SQLQueryWeightEvolutionByPetId(int petId)
+{
+	return Persistance::SQLQueryWeightEvolutionByPetId(petId);
+}
+
+Pet^ ServiceBarry::Service::SQLQueryFoodServingEvolutionByPetId(int petId)
+{
+	return Persistance::SQLQueryFoodServingEvolutionByPetId(petId);
+}
+
+Pet^ ServiceBarry::Service::SQLQueryWaterServingEvolutionByPetId(int petId)
+{
+	return Persistance::SQLQueryWaterServingEvolutionByPetId(petId);
+}
+
+int ServiceBarry::Service::SQLUpdatePet(Pet^ pet)
+{
+	return Persistance::SQLUpdatePet(pet);
+}
+
+int ServiceBarry::Service::SQLDeletePet(int petId)
+{
+	return Persistance::SQLDeletePet(petId);
+}
+
+Pet^ ServiceBarry::Service::SQLQueryPetById(int petId)
+{
+	return Persistance::SQLQueryPetById(petId);
+}
+
 Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)
 {
 	for each (Pet ^ p in Persistance::PetsList) {
