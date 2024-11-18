@@ -1238,7 +1238,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		txtLastWater->Text = pet->LastTimeHidrated;
 		txtLastTimeFed->Text = pet->LastTimeFeD;
 		txtStatus->Text = pet->Status;
-		if (pet->PetDispenser==nullptr) {
+		if (pet->PetDispenser==nullptr || pet->PetDispenser->Id == 0) {
 			txtAssignedDispenser->Text = "No hay dispensador asignado.";
 		}
 		else {

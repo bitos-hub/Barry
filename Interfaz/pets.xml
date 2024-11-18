@@ -2,34 +2,84 @@
 <ArrayOfPet xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Pet>
     <Id>1</Id>
-    <Name>Barry</Name>
-    <Weight>5</Weight>
+    <Name>1</Name>
+    <Weight>1</Weight>
     <WeightEvolution>
-      <double>5</double>
+      <double>1</double>
     </WeightEvolution>
     <WeightChanges>
-      <dateTime>2024-11-10T22:41:37.9006481-05:00</dateTime>
+      <dateTime>2024-11-10T23:04:10.5120556-05:00</dateTime>
     </WeightChanges>
-    <Specie>Conejo</Specie>
-    <Status>Gordito</Status>
+    <Specie>1</Specie>
+    <Status>1</Status>
     <OpcionesComida />
-    <FoodServing>100</FoodServing>
+    <FoodServing>1</FoodServing>
     <FoodChanges>
-      <dateTime>2024-11-10T22:41:37.9006481-05:00</dateTime>
+      <dateTime>2024-11-10T23:04:10.5130548-05:00</dateTime>
     </FoodChanges>
     <FoodEvolution>
-      <double>100</double>
+      <double>1</double>
     </FoodEvolution>
-    <WaterServing>100</WaterServing>
+    <WaterServing>1</WaterServing>
     <WaterEvolution>
-      <double>100</double>
+      <double>1</double>
     </WaterEvolution>
     <WaterChanges>
-      <dateTime>2024-11-10T22:41:37.9006481-05:00</dateTime>
+      <dateTime>2024-11-10T23:04:10.5130548-05:00</dateTime>
     </WaterChanges>
     <PetDispenser>
       <Id>1</Id>
       <FeedingSchedule />
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+      <DispensadorAsignado>
+        <Marca>Xiaomi</Marca>
+        <Modelo>X105</Modelo>
+        <Color>Rosado</Color>
+        <Largo>19</Largo>
+        <Ancho>17</Ancho>
+        <Alto>26</Alto>
+        <Capacidad>9L</Capacidad>
+        <Material>Polietileno de Alta Densidad</Material>
+        <FuenteAlimentacion>Eléctrica</FuenteAlimentacion>
+      </DispensadorAsignado>
+      <dispensationRecord />
+    </PetDispenser>
+  </Pet>
+  <Pet>
+    <Id>2</Id>
+    <Name>2</Name>
+    <Weight>2</Weight>
+    <WeightEvolution>
+      <double>2</double>
+    </WeightEvolution>
+    <WeightChanges>
+      <dateTime>2024-11-10T23:04:17.6901784-05:00</dateTime>
+    </WeightChanges>
+    <Specie>2</Specie>
+    <Status>2</Status>
+    <OpcionesComida />
+    <FoodServing>2</FoodServing>
+    <FoodChanges>
+      <dateTime>2024-11-10T23:04:17.6901784-05:00</dateTime>
+    </FoodChanges>
+    <FoodEvolution>
+      <double>2</double>
+    </FoodEvolution>
+    <WaterServing>2</WaterServing>
+    <WaterEvolution>
+      <double>2</double>
+    </WaterEvolution>
+    <WaterChanges>
+      <dateTime>2024-11-10T23:04:17.6901784-05:00</dateTime>
+    </WaterChanges>
+    <PetDispenser>
+      <Id>2</Id>
+      <FeedingSchedule>
+        <int>1200</int>
+        <int>1400</int>
+      </FeedingSchedule>
       <FoodAmount>0</FoodAmount>
       <IsPlateFull>false</IsPlateFull>
       <DispenserFood>0</DispenserFood>
@@ -44,42 +94,116 @@
         <Material>Poliestireno</Material>
         <FuenteAlimentacion>Baterías</FuenteAlimentacion>
       </DispensadorAsignado>
+      <ModoOperacion>Horarios</ModoOperacion>
+      <dispensationRecord>
+        <Dispensation>
+          <TimesDispensedWater>0</TimesDispensedWater>
+          <TimesDispensedFood>4</TimesDispensedFood>
+          <Date>2024/11/11</Date>
+        </Dispensation>
+      </dispensationRecord>
+    </PetDispenser>
+    <LastTimeFeD>2024/11/11 08:15:02</LastTimeFeD>
+  </Pet>
+  <Pet>
+    <Id>3</Id>
+    <Name>3</Name>
+    <Weight>3</Weight>
+    <WeightEvolution>
+      <double>3</double>
+    </WeightEvolution>
+    <WeightChanges>
+      <dateTime>2024-11-10T23:07:40.6335765-05:00</dateTime>
+    </WeightChanges>
+    <Specie>3</Specie>
+    <Status>3</Status>
+    <OpcionesComida />
+    <FoodServing>3</FoodServing>
+    <FoodChanges>
+      <dateTime>2024-11-10T23:07:40.6345761-05:00</dateTime>
+    </FoodChanges>
+    <FoodEvolution>
+      <double>3</double>
+    </FoodEvolution>
+    <WaterServing>4</WaterServing>
+    <WaterEvolution>
+      <double>4</double>
+    </WaterEvolution>
+    <WaterChanges>
+      <dateTime>2024-11-10T23:07:40.6345761-05:00</dateTime>
+    </WaterChanges>
+    <PetDispenser>
+      <Id>0</Id>
+      <FeedingSchedule>
+        <int>1300</int>
+        <int>1200</int>
+      </FeedingSchedule>
+      <FoodAmount>0</FoodAmount>
+      <IsPlateFull>false</IsPlateFull>
+      <DispenserFood>0</DispenserFood>
+      <DispensadorAsignado>
+        <Marca>Samsung</Marca>
+        <Modelo>SM320</Modelo>
+        <Color>Rosado</Color>
+        <Largo>20</Largo>
+        <Ancho>17.5</Ancho>
+        <Alto>26</Alto>
+        <Capacidad>7kg</Capacidad>
+        <Material>ABS</Material>
+        <FuenteAlimentacion>Eléctrica</FuenteAlimentacion>
+      </DispensadorAsignado>
+      <ModoOperacion>Horarios</ModoOperacion>
       <dispensationRecord />
     </PetDispenser>
   </Pet>
   <Pet>
-    <Id>2</Id>
-    <Name>Antonio</Name>
-    <Weight>6</Weight>
+    <Id>4</Id>
+    <Name>4</Name>
+    <Weight>4</Weight>
     <WeightEvolution>
-      <double>6</double>
+      <double>4</double>
     </WeightEvolution>
     <WeightChanges>
-      <dateTime>2024-11-10T22:44:13.1748779-05:00</dateTime>
+      <dateTime>2024-11-10T23:11:14.9265097-05:00</dateTime>
     </WeightChanges>
-    <Specie>Gato</Specie>
-    <Status>Godito</Status>
+    <Specie>4</Specie>
+    <Status>4</Status>
     <OpcionesComida />
-    <FoodServing>150</FoodServing>
+    <FoodServing>4</FoodServing>
     <FoodChanges>
-      <dateTime>2024-11-10T22:44:13.1748779-05:00</dateTime>
+      <dateTime>2024-11-10T23:11:14.9265097-05:00</dateTime>
     </FoodChanges>
     <FoodEvolution>
-      <double>150</double>
+      <double>4</double>
     </FoodEvolution>
-    <WaterServing>80</WaterServing>
+    <WaterServing>4</WaterServing>
     <WaterEvolution>
-      <double>80</double>
+      <double>4</double>
     </WaterEvolution>
     <WaterChanges>
-      <dateTime>2024-11-10T22:44:13.1748779-05:00</dateTime>
+      <dateTime>2024-11-10T23:11:14.9265097-05:00</dateTime>
     </WaterChanges>
     <PetDispenser>
-      <Id>0</Id>
-      <FeedingSchedule />
+      <Id>3</Id>
+      <FeedingSchedule>
+        <int>1300</int>
+        <int>1200</int>
+      </FeedingSchedule>
       <FoodAmount>0</FoodAmount>
       <IsPlateFull>false</IsPlateFull>
       <DispenserFood>0</DispenserFood>
+      <DispensadorAsignado>
+        <Marca>Samsung</Marca>
+        <Modelo>SM320</Modelo>
+        <Color>Rosado</Color>
+        <Largo>20</Largo>
+        <Ancho>17.5</Ancho>
+        <Alto>26</Alto>
+        <Capacidad>7kg</Capacidad>
+        <Material>ABS</Material>
+        <FuenteAlimentacion>Eléctrica</FuenteAlimentacion>
+      </DispensadorAsignado>
+      <ModoOperacion>Horarios</ModoOperacion>
       <dispensationRecord />
     </PetDispenser>
   </Pet>
