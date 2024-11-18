@@ -1164,6 +1164,217 @@ Pet^ BarryPersistance::Persistance::SQLQueryPetById(int petId)
     return pet;
 }
 
+int BarryPersistance::Persistance::SQLAddFood(Food^ food)
+{
+    int foodId = 0;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia de BD
+        String^ sqlStr = "dbo.usp_AddFood";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@FOOD_BRAND", System::Data::SqlDbType::VarChar, 100);
+        cmd->Parameters->Add("@FOOD_PRICE", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@FOOD_PRICE"]->Precision = 10;
+        cmd->Parameters["@FOOD_PRICE"]->Scale = 2;
+        cmd->Parameters->Add("@NAME", System::Data::SqlDbType::VarChar, 100);
+        cmd->Parameters->Add("@STATUS", System::Data::SqlDbType::VarChar, 1);
+        cmd->Parameters->Add("@FOOD_AMOUNT", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@FOOD_AMOUNT"]->Precision = 10;
+        cmd->Parameters["@FOOD_AMOUNT"]->Scale = 2;
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@ID", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+        cmd->Parameters["@FOOD_BRAND"]->Value = food->FoodBrand;
+        cmd->Parameters["@FOOD_PRICE"]->Value = food->FoodPrice;
+        cmd->Parameters["@NAME"]->Value = food->Name;
+        cmd->Parameters["@STATUS"]->Value = food->Status;
+        cmd->Parameters["@FOOD_AMOUNT"]->Value = food->FoodAmount;
+       
+
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        foodId = Convert::ToInt32(cmd->Parameters["@ID"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
+    return foodId;
+}
+
+int BarryPersistance::Persistance::SQLdDeleteFood(int foodId)
+{
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia
+        String^ sqlStr = "dbo.usp_DeleteFood";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@ID", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@ID"]->Value = foodId;
+
+        //Paso 3: Se ejecuta las sentncia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        //robotId = Convert::ToInt32(cmd->Parameters["@ID"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (conn != nullptr) conn->Close();
+    }
+    return 1;
+}
+
+int BarryPersistance::Persistance::SQLUpdateFood(Food^ food)
+{
+    int foodId = 0;
+    SqlConnection^ conn = nullptr;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia
+        String^ sqlStr = "dbo.usp_UpdateFood";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@ID", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@FOOD_BRAND", System::Data::SqlDbType::VarChar, 100);
+        cmd->Parameters->Add("@FOOD_PRICE", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@FOOD_PRICE"]->Precision = 10;
+        cmd->Parameters["@FOOD_PRICE"]->Scale = 2;
+        cmd->Parameters->Add("@NAME", System::Data::SqlDbType::VarChar, 100);
+        cmd->Parameters->Add("@STATUS", System::Data::SqlDbType::VarChar, 1);
+        cmd->Parameters->Add("@FOOD_AMOUNT", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@FOOD_AMOUNT"]->Precision = 10;
+        cmd->Parameters["@FOOD_AMOUNT"]->Scale = 2;
+        cmd->Prepare();
+        cmd->Parameters["@ID"]->Value = food->Id;
+        cmd->Parameters["@FOOD_BRAND"]->Value = food->FoodBrand;
+        cmd->Parameters["@FOOD_PRICE"]->Value = food->FoodPrice;
+        cmd->Parameters["@NAME"]->Value = food->Name;
+        cmd->Parameters["@STATUS"]->Value = food->Status;
+        cmd->Parameters["@FOOD_AMOUNT"]->Value = food->FoodAmount;
+
+        //Paso 3: Se ejecuta las sentncia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        //robotId = Convert::ToInt32(cmd->Parameters["@ID"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (conn != nullptr) conn->Close();
+    }
+    return 1;
+}
+
+List<Food^>^ BarryPersistance::Persistance::SQLQueryAllFoods()
+{
+    List<Food^>^ foodList = gcnew List<Food^>();
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        //String^ sqlStr = "SELECT * FROM ROBOT_WAITER";
+        String^ sqlStr = "dbo.usp_QueryAllFoods";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        while (reader->Read()) {
+            Food^ food = gcnew Food();
+            food->Id = Convert::ToInt32(reader["ID"]->ToString());
+            food->FoodBrand= (reader["FOOD_BRAND"]->ToString());
+            food->FoodPrice = Convert::ToDouble(reader["FOOD_PRICE"]->ToString());
+            food->Name= (reader["NAME"]->ToString());
+            food->Status = (reader["STATUS"]->ToString());
+            food->FoodAmount= Convert::ToDouble(reader["FOOD_AMOUNT"]->ToString());
+            
+            foodList->Add(food);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return foodList;
+}
+
+Food^ BarryPersistance::Persistance::SQLQueryFoodById(int foodId)
+{
+    Food^ food;
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        //String^ sqlStr = "SELECT * FROM ROBOT_WAITER WHERE ID=" + robotId;
+        String^ sqlStr = "dbo.usp_QueryFoodById";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@id", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@id"]->Value = foodId;
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        if (reader->Read()) {
+            food = gcnew Food();
+            food->Id = Convert::ToInt32(reader["ID"]->ToString());
+            food->FoodBrand = (reader["FOOD_BRAND"]->ToString());
+            food->FoodPrice = Convert::ToDouble(reader["FOOD_PRICE"]->ToString());
+            food->Name = (reader["NAME"]->ToString());
+            food->Status = (reader["STATUS"]->ToString());
+            food->FoodAmount = Convert::ToDouble(reader["FOOD_AMOUNT"]->ToString());
+           
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return food;
+}
+
 void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado)
 {
     mascotaSeleccionada->PetDispenser = gcnew Dispenser();

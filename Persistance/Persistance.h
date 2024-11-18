@@ -13,8 +13,8 @@ namespace BarryPersistance {
 		static SqlConnection^ GetConnection();
 
 	public:
-		//static String^ XML_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.xml";
-		//static String^ BIN_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.bin";
+		static String^ XML_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.xml";
+		static String^ BIN_HORARIOS_MASCOTAS_FILE_NAME = "horariosMascotas.bin";
 		static String^ XML_PET_FILE_NAME = "pets.xml";
 		static String^ BIN_PET_FILE_NAME = "pets.bin";
 		static String^ BIN_DISPENSADOR_FILE_NAME = "dispensadores.bin";
@@ -28,7 +28,7 @@ namespace BarryPersistance {
 	private:
 		static List<DispensadorDisponible^>^ lista_dispensadores_disponibles = gcnew List<DispensadorDisponible^>();
 
-		
+
 	public:
 		//static void PersistTextFile(String^ fileName, Object^ persistObject);
 		//static Object^ LoadTextFile(String^ fileName);
@@ -37,7 +37,7 @@ namespace BarryPersistance {
 		static void PersistXMLFile(String^ fileName, Object^ persistObject);
 		//XML-Load
 		static Object^ LoadXMLFile(String^ fileName);
-		
+
 		static Object^ LoadDispensersXmlFile(String^ fileName);
 		static Object^ LoadPetsXmlFile(String^ fileName);
 		static Object^ LoadFoodXmlFile(String^ fileName);
@@ -103,6 +103,13 @@ namespace BarryPersistance {
 		static int SQLUpdatePet(Pet^ pet);
 		static int SQLDeletePet(int petId);
 		static Pet^ SQLQueryPetById(int petId);
+
+		//FOOD
+		static int SQLAddFood(Food^ food);
+		static int SQLdDeleteFood(int foodId);
+		static List<Food^>^ SQLQueryAllFoods();
+		static int SQLUpdateFood(Food^ food);
+		static Food^ SQLQueryFoodById(int foodId);
 
 		//Users
 

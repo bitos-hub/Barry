@@ -207,7 +207,7 @@ List<Pet^>^ ServiceBarry::Service::QueryAllPets()
 //CRUD FOOD
 void ServiceBarry::Service::AddFood(Food^ food)
 {
-	FoodList->Add(food);
+	/*FoodList->Add(food);
 	int id = FoodList->Count;
 	FoodList[id - 1]->Id = id;
 	int id_mayor = 0;
@@ -222,13 +222,14 @@ void ServiceBarry::Service::AddFood(Food^ food)
 	Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
 	Persistance::PersistTextFile(TXT_FOOD_FILE_NAME, FoodList);
 	Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
-
+	*/
+	Persistance::SQLAddFood(food);
 
 }
 
 void ServiceBarry::Service::UpdateFood(Food^ food)
 {
-	for (int i = 0; i < FoodList->Count; i++) {
+	/*for (int i = 0; i < FoodList->Count; i++) {
 		if (FoodList[i]->Id == food->Id) {
 			FoodList[i] = food;
 			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
@@ -237,11 +238,13 @@ void ServiceBarry::Service::UpdateFood(Food^ food)
 			return;
 		}
 	}
+	*/
+	Persistance::SQLUpdateFood(food);
 }
 
 void ServiceBarry::Service::DeleteFood(int id)
 {
-	for (int i = 0; i < FoodList->Count; i++) {
+	/*for (int i = 0; i < FoodList->Count; i++) {
 		if (FoodList[i]->Id == id) {
 			FoodList->RemoveAt(i);
 			Persistance::PersistBinaryFile(BIN_FOOD_FILE_NAME, FoodList);
@@ -249,31 +252,32 @@ void ServiceBarry::Service::DeleteFood(int id)
 			Persistance::PersistXMLFile(XML_FOOD_FILE_NAME, FoodList);
 			return;
 		}
-	}
+	}*/
+	Persistance::SQLdDeleteFood(id);
 }
 
 Food^ ServiceBarry::Service::QueryFoodbyId(int id)
 {
-	for each (Food ^ food in FoodList) {
+	/*for each (Food ^ food in FoodList) {
 		if (food->Id == id) {
 			return food;
 		}
-	}
-	return nullptr;
+	}*/
+	return Persistance::SQLQueryFoodById(id);
 }
 List<Food^>^ ServiceBarry::Service::QueryAllFoods()
 {
 
-	try {
+	/*try {
 
 		FoodList = (List<Food^>^)Persistance::LoadBinaryFile(BIN_FOOD_FILE_NAME);
 		if (FoodList == nullptr)
 			FoodList = gcnew List<Food^>();
 	}
 	catch (FileNotFoundException^ ex) {
-	}
+	}*/
 
-	return FoodList;
+	return Persistance::SQLQueryAllFoods();
 }
 
 List<Food^>^ ServiceBarry::Service::SearchFoodByBrand(String^ foodBrand)
