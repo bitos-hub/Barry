@@ -4,6 +4,17 @@
 using namespace System::Runtime::Serialization::Formatters::Binary;
 using namespace System::IO;
 
+SqlConnection^ BarryPersistance::Persistance::GetConnection()
+{
+    SqlConnection^ conn = gcnew SqlConnection();
+    String^ password = "BarryBites123";
+    String^ serverName = "barrybites.ci18bdbqfkoj.us-east-1.rds.amazonaws.com";
+    conn->ConnectionString = "Server=" + serverName + ";Database = BarryBites;User ID = admin; Password = " +
+        password + ";";
+    conn->Open();
+    return conn;
+}
+
 void BarryPersistance::Persistance::PersistXMLFile(String^ fileName, Object^ persistObject)
 {
     StreamWriter^ writer;
@@ -679,6 +690,477 @@ Pet^ BarryPersistance::Persistance::ConsultarMascotaAsignadaADispensador(int dis
         }
     }
     return nullptr;
+}
+
+int BarryPersistance::Persistance::SQLAddPet(Pet^ pet)
+{
+    int petId = 0;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia de BD
+        String^ sqlStr = "dbo.usp_AddPet";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Name", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Weight", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@Specie", System::Data::SqlDbType::VarChar, 30);
+        cmd->Parameters->Add("@Status", System::Data::SqlDbType::VarChar, 20);
+        cmd->Parameters->Add("@FoodServing", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@WaterServing", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@Photo", System::Data::SqlDbType::Image);
+        cmd->Parameters->Add("@LastTimeFeD", System::Data::SqlDbType::Char, 8);
+        cmd->Parameters->Add("@LastTimeHidrated", System::Data::SqlDbType::Char, 8);
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@Id", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+        cmd->Parameters["@Name"]->Value = pet->Name;
+        cmd->Parameters["@Weight"]->Value = pet->Weight;
+        cmd->Parameters["@Specie"]->Value = pet->Specie;
+        cmd->Parameters["@Status"]->Value = pet->Status;
+        cmd->Parameters["@FoodServing"]->Value = pet->FoodServing;
+        cmd->Parameters["@WaterServing"]->Value = pet->WaterServing;
+        if (pet->Photo == nullptr)
+            cmd->Parameters["@Photo"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@Photo"]->Value = pet->Photo;
+        if (pet->LastTimeFeD == nullptr)
+            cmd->Parameters["@LastTimeFeD"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@LastTimeFeD"]->Value = pet->LastTimeFeD;
+        if (pet->LastTimeHidrated == nullptr)
+            cmd->Parameters["@LastTimeHidrated"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@LastTimeHidrated"]->Value = pet->LastTimeHidrated;
+
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        petId = Convert::ToInt32(cmd->Parameters["@Id"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
+    return petId;
+}
+
+int BarryPersistance::Persistance::SQLAddWeight(Pet^ pet)
+{
+    int weightId = 0;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia de BD
+        String^ sqlStr = "dbo.usp_AddWeight";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@PetId", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@WeightValue", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@DateRecorded", System::Data::SqlDbType::DateTime);
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@WeightId", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+        cmd->Parameters["@PetId"]->Value = pet->Id;
+        cmd->Parameters["@WeightValue"]->Value = pet->Weight;
+        cmd->Parameters["@DateRecorded"]->Value = DateTime::Now;
+
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        weightId = Convert::ToInt32(cmd->Parameters["@WeightId"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
+    return weightId;
+}
+
+int BarryPersistance::Persistance::SQLAddFoodServing(Pet^ pet)
+{
+    int foodServingId = 0;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia de BD
+        String^ sqlStr = "dbo.usp_AddFoodServing";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@PetId", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@FoodServingValue", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@DateRecorded", System::Data::SqlDbType::DateTime);
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@FoodServingId", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+        cmd->Parameters["@PetId"]->Value = pet->Id;
+        cmd->Parameters["@FoodServingValue"]->Value = pet->FoodServing;
+        cmd->Parameters["@DateRecorded"]->Value = DateTime::Now;
+
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        foodServingId = Convert::ToInt32(cmd->Parameters["@FoodServingId"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
+    return foodServingId;
+}
+
+int BarryPersistance::Persistance::SQLAddWaterServing(Pet^ pet)
+{
+    int waterServingId = 0;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia de BD
+        String^ sqlStr = "dbo.usp_AddWaterServing";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@PetId", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@WaterServingValue", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@DateRecorded", System::Data::SqlDbType::DateTime);
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@WaterServingId", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+        cmd->Parameters["@PetId"]->Value = pet->Id;
+        cmd->Parameters["@WaterServingValue"]->Value = pet->WaterServing;
+        cmd->Parameters["@DateRecorded"]->Value = DateTime::Now;
+
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        waterServingId = Convert::ToInt32(cmd->Parameters["@WaterServingId"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
+    return waterServingId;
+}
+
+List<Pet^>^ BarryPersistance::Persistance::SQLQueryAllPets()
+{
+    List<Pet^>^ SQLpetsList = gcnew List<Pet^>();
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "dbo.usp_QueryAllPets";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        while (reader->Read()) {
+            Pet^ pet = gcnew Pet();
+            pet->Id = Convert::ToInt32(reader["Id"]->ToString());
+            pet->Name = reader["Name"]->ToString();
+            pet->Weight = Convert::ToDouble(reader["Weight"]->ToString());
+            pet->Specie = reader["Specie"]->ToString();
+            pet->Status = reader["Status"]->ToString();
+            pet->FoodServing = Convert::ToDouble(reader["FoodServing"]->ToString());
+            pet->WaterServing = Convert::ToDouble(reader["WaterServing"]->ToString());
+            if (!DBNull::Value->Equals(reader["LastTimeFeD"]))
+                pet->LastTimeFeD = Convert::ToString(reader["LastTimeFeD"]);
+            if (!DBNull::Value->Equals(reader["LastTimeHidrated"]))
+                pet->LastTimeHidrated = Convert::ToString(reader["LastTimeHidrated"]);
+            if (!DBNull::Value->Equals(reader["Photo"]))
+                pet->Photo = (array<Byte>^)reader["Photo"];
+            SQLpetsList->Add(pet);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return SQLpetsList;
+}
+
+Pet^ BarryPersistance::Persistance::SQLQueryWeightEvolutionByPetId(int petId)
+{
+    Pet^ pet = SQLQueryPetById(petId);
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "dbo.usp_QueryWeightEvolutionByPetId";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@PetId", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@PetId"]->Value = petId;
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        if (reader->Read()) {
+            pet->WeightEvolution->Add(Convert::ToDouble(reader["WeightValue"]->ToString()));
+            pet->WeightChanges->Add(Convert::ToDateTime(reader["DateRecorded"]->ToString()));
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return pet;
+}
+
+Pet^ BarryPersistance::Persistance::SQLQueryFoodServingEvolutionByPetId(int petId)
+{
+    Pet^ pet = SQLQueryPetById(petId);
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "dbo.usp_QueryFoodServingEvolutionByPetId";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@PetId", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@PetId"]->Value = petId;
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        if (reader->Read()) {
+            pet->FoodEvolution->Add(Convert::ToDouble(reader["FoodServingValue"]->ToString()));
+            pet->FoodChanges->Add(Convert::ToDateTime(reader["DateRecorded"]->ToString()));
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return pet;
+}
+
+Pet^ BarryPersistance::Persistance::SQLQueryWaterServingEvolutionByPetId(int petId)
+{
+    Pet^ pet = SQLQueryPetById(petId);
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "dbo.usp_QueryWaterServingEvolutionByPetId";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@PetId", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@PetId"]->Value = petId;
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        if (reader->Read()) {
+            pet->FoodEvolution->Add(Convert::ToDouble(reader["WaterServingValue"]->ToString()));
+            pet->FoodChanges->Add(Convert::ToDateTime(reader["DateRecorded"]->ToString()));
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return pet;
+}
+
+int BarryPersistance::Persistance::SQLUpdatePet(Pet^ pet)
+{
+    int petId = 0;
+    SqlConnection^ conn = nullptr;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia
+        String^ sqlStr = "dbo.usp_UpdatePet";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Name", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Weight", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@Specie", System::Data::SqlDbType::VarChar, 30);
+        cmd->Parameters->Add("@Status", System::Data::SqlDbType::VarChar, 20);
+        cmd->Parameters->Add("@FoodServing", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@WaterServing", System::Data::SqlDbType::Float);
+        cmd->Parameters->Add("@Photo", System::Data::SqlDbType::Image);
+        cmd->Parameters->Add("@LastTimeFeD", System::Data::SqlDbType::Char, 8);
+        cmd->Parameters->Add("@LastTimeHidrated", System::Data::SqlDbType::Char, 8);
+        cmd->Prepare();
+        cmd->Parameters["@Id"]->Value = pet->Id;
+        cmd->Parameters["@Name"]->Value = pet->Name;
+        cmd->Parameters["@Weight"]->Value = pet->Weight;
+        cmd->Parameters["@Specie"]->Value = pet->Specie;
+        cmd->Parameters["@Status"]->Value = pet->Status;
+        cmd->Parameters["@FoodServing"]->Value = pet->FoodServing;
+        cmd->Parameters["@WaterServing"]->Value = pet->WaterServing;
+        if (pet->Photo == nullptr)
+            cmd->Parameters["@Photo"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@Photo"]->Value = pet->Photo;
+        if (pet->LastTimeFeD == nullptr)
+            cmd->Parameters["@LastTimeFeD"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@LastTimeFeD"]->Value = pet->LastTimeFeD;
+        if (pet->LastTimeHidrated == nullptr)
+            cmd->Parameters["@LastTimeHidrated"]->Value = DBNull::Value;
+        else
+            cmd->Parameters["@LastTimeHidrated"]->Value = pet->LastTimeHidrated;
+
+        //Paso 3: Se ejecuta las sentncia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (conn != nullptr) conn->Close();
+    }
+    return 1;
+}
+
+int BarryPersistance::Persistance::SQLDeletePet(int petId)
+{
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia
+        String^ sqlStr = "dbo.usp_DeletePet";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Id", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@Id"]->Value = petId;
+
+        //Paso 3: Se ejecuta las sentncia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (conn != nullptr) conn->Close();
+    }
+    return 1;
+}
+
+Pet^ BarryPersistance::Persistance::SQLQueryPetById(int petId)
+{
+    Pet^ pet;
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "dbo.usp_QueryPetById";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Id", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@Id"]->Value = petId;
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        if (reader->Read()) {
+            pet = gcnew Pet();
+            pet->Id = Convert::ToInt32(reader["Id"]->ToString());
+            pet->Name = reader["Name"]->ToString();
+            pet->Weight = Convert::ToDouble(reader["Weight"]->ToString());
+            pet->Specie = reader["Specie"]->ToString();
+            pet->Status = reader["Status"]->ToString();
+            pet->FoodServing = Convert::ToDouble(reader["FoodServing"]->ToString());
+            pet->WaterServing = Convert::ToDouble(reader["WaterServing"]->ToString());
+            if (!DBNull::Value->Equals(reader["LastTimeFeD"]))
+                pet->LastTimeFeD = Convert::ToString(reader["LastTimeFeD"]);
+            if (!DBNull::Value->Equals(reader["LastTimeHidrated"]))
+                pet->LastTimeHidrated = Convert::ToString(reader["LastTimeHidrated"]);
+            if (!DBNull::Value->Equals(reader["Photo"]))
+                pet->Photo = (array<Byte>^)reader["Photo"];
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return pet;
 }
 
 void BarryPersistance::Persistance::AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado)
