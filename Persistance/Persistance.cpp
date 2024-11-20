@@ -9,7 +9,7 @@ SqlConnection^ BarryPersistance::Persistance::GetConnection()
     SqlConnection^ conn = gcnew SqlConnection();
     String^ password = "BarryBites123";
     String^ serverName = "barrybites.ci18bdbqfkoj.us-east-1.rds.amazonaws.com";
-    conn->ConnectionString = "Server=" + serverName + ";Database = BarryBites;User ID = admin; Password = " +
+    conn->ConnectionString = "Server=" + serverName + ";Database = barrybites;User ID = admin; Password = " +
         password + ";";
     conn->Open();
     return conn;
@@ -1040,6 +1040,7 @@ int BarryPersistance::Persistance::SQLUpdatePet(Pet^ pet)
         String^ sqlStr = "dbo.usp_UpdatePet";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Id", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@Name", System::Data::SqlDbType::VarChar, 50);
         cmd->Parameters->Add("@Weight", System::Data::SqlDbType::Float);
         cmd->Parameters->Add("@Specie", System::Data::SqlDbType::VarChar, 30);
