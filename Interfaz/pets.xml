@@ -207,4 +207,32 @@
       <dispensationRecord />
     </PetDispenser>
   </Pet>
+  <Pet>
+    <Id>5</Id>
+    <Name>5</Name>
+    <Weight>5</Weight>
+    <WeightEvolution>
+      <double>5</double>
+    </WeightEvolution>
+    <WeightChanges>
+      <dateTime>2024-11-19T23:02:47.0157651-05:00</dateTime>
+    </WeightChanges>
+    <Specie>5</Specie>
+    <Status>5</Status>
+    <OpcionesComida />
+    <FoodServing>5</FoodServing>
+    <FoodChanges>
+      <dateTime>2024-11-19T23:02:47.0162851-05:00</dateTime>
+    </FoodChanges>
+    <FoodEvolution>
+      <double>5</double>
+    </FoodEvolution>
+    <WaterServing>5</WaterServing>
+    <WaterEvolution>
+      <double>5</double>
+    </WaterEvolution>
+    <WaterChanges>
+      <dateTime>2024-11-19T23:02:47.0162851-05:00</dateTime>
+    </WaterChanges>
+  </Pet>
 </ArrayOfPet>
