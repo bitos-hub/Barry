@@ -95,6 +95,7 @@ namespace BarryPersistance {
 		static int SQLAddWeight(Pet^ pet);
 		static int SQLAddFoodServing(Pet^ pet);
 		static int SQLAddWaterServing(Pet^ pet);
+
 		static List<Pet^>^ SQLQueryAllPets();
 		static Pet^ SQLQueryWeightEvolutionByPetId(int petId);
 		static Pet^ SQLQueryFoodServingEvolutionByPetId(int petId);
@@ -103,6 +104,12 @@ namespace BarryPersistance {
 		static int SQLDeletePet(int petId);
 		static Pet^ SQLQueryPetById(int petId);
 
+		//Users
+
+		static int AddUsuario(User^ user);
+		static int ActualizarUsuario(User^ user);
+		static int EliminarUsuario(int id);
+		static List<User^>^ ConsultarTodosUsuarios();
 
 	};
 }
