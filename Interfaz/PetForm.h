@@ -548,16 +548,16 @@ namespace Interfaz {
 			Pet^ pet = gcnew Pet();
 			pet->Name = txtPetName->Text;
 			pet->Weight = Convert::ToDouble(txtWeight->Text);
-			pet->WeightEvolution->Add(pet->Weight);
-			pet->WeightChanges->Add(DateTime::Now);
+			//pet->WeightEvolution->Add(pet->Weight);
+			//pet->WeightChanges->Add(DateTime::Now);
 			pet->WaterServing = Convert::ToDouble(txtPetWater->Text);
-			pet->WaterEvolution->Add(pet->WaterServing);
-			pet->WaterChanges->Add(DateTime::Now);
+			//pet->WaterEvolution->Add(pet->WaterServing);
+			//pet->WaterChanges->Add(DateTime::Now);
 			pet->Specie = txtSpecie->Text;
 			pet->Status = txtStatus->Text;
 			pet->FoodServing = Convert::ToDouble(txtFood->Text);
-			pet->FoodEvolution->Add(pet->FoodServing);
-			pet->FoodChanges->Add(DateTime::Now);
+			//pet->FoodEvolution->Add(pet->FoodServing);
+			//pet->FoodChanges->Add(DateTime::Now);
 			
 
 			if (pbPetPhoto != nullptr && pbPetPhoto->Image != nullptr) {
@@ -565,10 +565,14 @@ namespace Interfaz {
 				pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 				pet->Photo = ms->ToArray();
 			}
-			int id = Service::AddPet(pet);
+			int id = Service::SQLAddPet(pet);
+			pet->Id = id;
+			int weight_u = Service::SQLAddWeight(pet);
+			int food_u = Service::SQLAddFoodServing(pet);
+			int water_u = Service::SQLAddWaterServing(pet);
 			ShowPets();
 			ClearControls();
-			MessageBox::Show("Se ha agregado la mascota " + pet->Id + " - " + pet->Name);
+			MessageBox::Show("Se ha agregado la mascota " + Convert::ToString(id) + " - " + pet->Name);
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("No se ha podido agregar la mascota por el siguiente motivo:\n" +
@@ -577,7 +581,7 @@ namespace Interfaz {
 	}
 	public:
 		void ShowPets() {
-			List<Pet^>^ petsList = Service::QueryAllPets();
+			List<Pet^>^ petsList = Service::SQLQueryAllPets();
 			if (petsList != nullptr) {
 				dgvPets->Rows->Clear();
 				for (int i = 0; i < petsList->Count; i++) {
@@ -608,7 +612,7 @@ namespace Interfaz {
 
 
 			int Id = Convert::ToInt32(dgvPets->Rows[dgvPets->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString());
-			Pet^ pet = Service::QueryPetById(Id);
+			Pet^ pet = Service::SQLQueryPetById(Id);
 			txtPetName->Text = pet->Name;
 			txtWeight->Text = "" + pet->Weight;
 			txtSpecie->Text = pet->Specie;
@@ -648,7 +652,14 @@ namespace Interfaz {
 				pbPetPhoto->Image->Save(ms, System::Drawing::Imaging::ImageFormat::Jpeg);
 				pet->Photo = ms->ToArray();
 			}
-			Service::UpdatePet(pet);
+			Pet^ copy_pet = Service::SQLQueryPetById(id);
+			int update=Service::SQLUpdatePet(pet);
+			if (copy_pet->Weight != pet->Weight)
+				int update_weight = Service::SQLAddWeight(pet);
+			if (copy_pet->FoodServing != pet->FoodServing)
+				int update_food = Service::SQLAddFoodServing(pet);
+			if (copy_pet->WaterServing != pet->WaterServing)
+				int update_water = Service::SQLAddWaterServing(pet);
 			ShowPets();
 			MessageBox::Show("Se ha modificado la mascota " + petId + "-" + name);
 		}
@@ -664,7 +675,7 @@ namespace Interfaz {
 			return;
 		}
 		try {
-			Service::DeletePet(Convert::ToInt32(petId));
+			int delete_confirmation=Service::SQLDeletePet(Convert::ToInt32(petId));
 			pbPetPhoto->Image = nullptr;
 			pbPetPhoto->Invalidate();
 			ShowPets();
