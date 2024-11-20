@@ -52,6 +52,7 @@ namespace ServiceBarry {
 		static void DeleteFood(int id);
 		static Food^ QueryFoodbyId(int id);
 		static List<Food^>^ QueryAllFoods();
+		static List<Food^>^ SearchFoodByBrand(String^);
 	public:
 		static int VerifyAdmin();
 

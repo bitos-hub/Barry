@@ -1,18 +1,18 @@
-1|Croqueta balanceada para perros|-|5,0|Ricocan|7,0
-3|Croqueta balanceada para gatos|-|3,0|Ricocan|10,0
-4|Croqueta balanceada para perros|-|4,0|Pedigree|20,0
-5|Croqueta balanceada para perros|-|5,0|Royal Canin|35,0
-6|Croqueta saludable para perros|-|7,0|Purina Pro Plan|45,0
-7|Croqueta dietética para perros|-|3,0|Hill's Science Diet|50,0
-8|Paté en Lata con Pollo|-|1,5|Pedigree|9,0
-9|Paté Adulto con Pavo y Cebada|-|2,0|Hill’s Science Diet|10,0
-10|Feline Health Nutrition Indoor Adult|-|2,5|Royal Canin|35,0
-11|LiveClear para Gatos Adultos|-|2,0|Purina Pro Plan|28,0
-12|Diet Kitten Chicken Recipe|-|2,0|Hill’s Science Diet|25,0
-13|Paté con Salmón y Atún|-|3,0|Fancy Feast|10,0
-14|Wilderness Grain-Free para Gatos|-|1,0|Blue Buffalo|20,0
-15|Essentials Adult Rabbit Food|-|2,3|Oxbow|12,0
-16|Fiesta Rabbit Food|-|25,0|Kaytee|15,0
-17|Rabbit Food Pellets||2,3|Small Pet Select|20,0
-18|Alfalfa Pellets|-|26,0|Living World|16,0
-19|Menu Vital para Conejos|-|2,0|Vitakraft|20,0
+1|Menu Vital Para Conejos|A|2.0|Vitakraft|30.0
+3|Croqueta balanceada para gatos|-|3.0|Ricocan|10.0
+4|Croqueta balanceada para perros|-|4.0|Pedigree|20.0
+5|Croqueta balanceada para perros|-|5.0|Royal Canin|35.0
+6|Croqueta saludable para perros|-|7.0|Purina Pro Plan|45.0
+7|Croqueta dietética para perros|-|3.0|Hill's Science Diet|50.0
+8|Paté en Lata con Pollo|-|1.5|Pedigree|9.0
+9|Paté Adulto con Pavo y Cebada|-|2.0|Hill’s Science Diet|10.0
+10|Feline Health Nutrition Indoor Adult|-|2.5|Royal Canin|35.0
+11|LiveClear para Gatos Adultos|-|2.0|Purina Pro Plan|28.0
+12|Diet Kitten Chicken Recipe|-|2.0|Hill’s Science Diet|25.0
+13|Paté con Salmón y Atún|-|3.0|Fancy Feast|10.0
+14|Wilderness Grain-Free para Gatos|-|1.0|Blue Buffalo|20.0
+15|Essentials Adult Rabbit Food|-|2.3|Oxbow|12.0
+16|Fiesta Rabbit Food|-|25.0|Kaytee|15.0
+17|Rabbit Food Pellets||2.3|Small Pet Select|20.0
+18|Alfalfa Pellets|-|26.0|Living World|16.0
+19|Menu Para Conejos|A|3.0|Vitacraft|20.0
