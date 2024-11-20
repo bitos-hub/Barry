@@ -11,8 +11,8 @@ namespace Barry {
         String^ Password;
         String^ Role;
         int PhoneNumber;
-        bool ProfileStatus;
         List<String^>^ HistorialActividades;
+        bool ProfileStatus;
     public:
         User() {}
         User(int id, String^ name, String^ password, String^ role, int phoneNumber){

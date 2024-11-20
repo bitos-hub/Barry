@@ -32,11 +32,14 @@ namespace ServiceBarry {
 		static List<String^>^ commandsList = gcnew List<String^>;
 		static SerialPort^ ArduinoPort;
 	public:
+
 		static void cargarUsuarios();
-		static void AddUsuario(User^);
-		static void ActualizarUsuario(User^);
-		static void EliminarUsuario(int id);
+
+		static int AddUsuario(User^);
+		static int ActualizarUsuario(User^);
+		static int EliminarUsuario(int id);
 		static User^ ConsultarUsuario(String^ UserName);
+
 		static List<User^>^ ConsultarTodosUsuarios();
 		static List<User^>^ QueryUserByName(String^ Username);
 
@@ -123,5 +126,8 @@ namespace ServiceBarry {
 		static int SQLUpdatePet(Pet^ pet);
 		static int SQLDeletePet(int petId);
 		static Pet^ SQLQueryPetById(int petId);
+
+		//USER
+
 	};
 }

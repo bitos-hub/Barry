@@ -1203,3 +1203,159 @@ void BarryPersistance::Persistance::EliminarHorarioDispensador(Dispenser^ dispen
         }
     }
 }
+
+int BarryPersistance::Persistance::AddUsuario(User^ user)
+{
+    int userId = 0;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+
+        String^ sqlStr = "dbo.usp_AddUser";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        /*
+         @Name VARCHAR(50),
+    @Password VARCHAR(100),
+    @Role VARCHAR(30),
+    @PhoneNumber INT,
+    @Id INT OUT
+        */
+        cmd->Parameters->Add("@Name", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Password", System::Data::SqlDbType::VarChar, 100);
+        cmd->Parameters->Add("@Role", System::Data::SqlDbType::VarChar, 30);
+        cmd->Parameters->Add("@PhoneNumber", System::Data::SqlDbType::Int);
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@Id", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+        cmd->Parameters["@Name"]->Value = user->Name;
+        cmd->Parameters["@Password"]->Value = user->Password;
+        cmd->Parameters["@Role"]->Value = user->Role;
+        cmd->Parameters["@PhoneNumber"]->Value = user->PhoneNumber;
+
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        userId = Convert::ToInt32(cmd->Parameters["@Id"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
+    return userId;
+}
+
+int BarryPersistance::Persistance::ActualizarUsuario(User^ user)
+{
+    int userId = 0;
+    SqlConnection^ conn = nullptr;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia
+        String^ sqlStr = "dbo.usp_UpdateUser";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Id", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@Name", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Password", System::Data::SqlDbType::VarChar, 100);
+        cmd->Parameters->Add("@Role", System::Data::SqlDbType::VarChar, 30);
+        cmd->Parameters->Add("@PhoneNumber", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@Name"]->Value = user->Name;
+        cmd->Parameters["@Password"]->Value = user->Password;
+        cmd->Parameters["@Role"]->Value = user->Role;
+        cmd->Parameters["@PhoneNumber"]->Value = user->PhoneNumber;
+
+        //Paso 3: Se ejecuta las sentncia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        //robotId = Convert::ToInt32(cmd->Parameters["@ID"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (conn != nullptr) conn->Close();
+    }
+    return 1;
+}
+
+int BarryPersistance::Persistance::EliminarUsuario(int id)
+{
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Se prepara la sentencia
+        String^ sqlStr = "dbo.usp_DeleteUser";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Id", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        cmd->Parameters["@Id"]->Value = id;
+
+        //Paso 3: Se ejecuta las sentncia SQL
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        //robotId = Convert::ToInt32(cmd->Parameters["@ID"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        if (conn != nullptr) conn->Close();
+    }
+    return 1;
+}
+
+List<User^>^ BarryPersistance::Persistance::ConsultarTodosUsuarios()
+{
+    List<User^>^ usersList = gcnew List<User^>();
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        //String^ sqlStr = "SELECT * FROM ROBOT_WAITER";
+        String^ sqlStr = "dbo.usp_QueryAllUsers";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        while (reader->Read()) {
+            User^ user = gcnew User();
+            user->Id = Convert::ToInt32(reader["Id"]->ToString());
+            user->Name = reader["Name"]->ToString();
+            user->Password = reader["Password"]->ToString();
+            user->Role = reader["Role"]->ToString();
+            user->PhoneNumber = Convert::ToInt32(reader["PhoneNumber"]->ToString());
+            usersList->Add(user);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+    return usersList;
+}
