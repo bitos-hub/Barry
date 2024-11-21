@@ -1057,7 +1057,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 #pragma endregion
 	public:
 		void FillPetsComboPets() {
-			List<Pet^>^ petsList = Service::QueryAllPets();
+			List<Pet^>^ petsList = Service::SQLQueryAllPets();
 			if (petsList != nullptr) {
 				cmbPets->Items->Clear();
 				for each (Pet ^ pet in petsList) {
