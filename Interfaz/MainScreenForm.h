@@ -1084,7 +1084,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 #pragma endregion
 	public:
 		void FillPetsComboPets() {
-			List<Pet^>^ petsList = Service::QueryAllPets();
+			List<Pet^>^ petsList = Service::SQLQueryAllPets();
 			if (petsList != nullptr) {
 				cmbPets->Items->Clear();
 				for each (Pet ^ pet in petsList) {
@@ -1229,7 +1229,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 
 
 	private: System::Void cmbPets_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+		Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 		txtPetName->Text = pet->Name;
 		txtEspecie->Text = pet->Specie;
 		txtWeight->Text = Convert::ToString(pet->Weight);
@@ -1260,14 +1260,14 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 
 	private: System::Void btnFeed_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-			Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+			Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 			int id = pet->Id;
 			if (pet->PetDispenser != nullptr) {
 				String^ result = Service::DispenseFoodUART(id);
 				MessageBox::Show(result);
 				String^ LastTimeFed = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd HH:mm:ss");
 				pet->LastTimeFeD = LastTimeFed;
-				Service::UpdatePet(pet);
+				int update_confirmation = Service::SQLUpdatePet(pet);
 				txtLastTimeFed->Text = LastTimeFed;
 			}
 
@@ -1302,7 +1302,7 @@ private: System::Void label17_Click(System::Object^ sender, System::EventArgs^ e
 }
 private: System::Void btnHydrate_Click(System::Object^ sender, System::EventArgs^ e) {
 	try {
-		Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+		Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 		int id = pet->Id;
 		if (pet->PetDispenser != nullptr) {
 
@@ -1310,7 +1310,7 @@ private: System::Void btnHydrate_Click(System::Object^ sender, System::EventArgs
 			MessageBox::Show(result);
 			String^ LastTimeHidrated = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd HH:mm:ss");
 			pet->LastTimeHidrated = LastTimeHidrated;
-			Service::UpdatePet(pet);
+			int update_confirmation = Service::SQLUpdatePet(pet);
 			txtLastWater->Text = LastTimeHidrated;
 		}
 		else {
@@ -1322,7 +1322,7 @@ private: System::Void btnHydrate_Click(System::Object^ sender, System::EventArgs
 	}
 }
 private: System::Void btnUpdateWeight_Click(System::Object^ sender, System::EventArgs^ e) {
-	Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+	Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 	UpdateWeightForm^ weightForm = gcnew UpdateWeightForm(pet);
 	weightForm->ShowDialog();
 }

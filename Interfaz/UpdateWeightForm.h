@@ -167,7 +167,8 @@ namespace Interfaz {
 	private: System::Void btnUpdateWeight_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
 			refPet->Weight = Convert::ToDouble(txtWeight->Text);
-			Service::UpdatePet(refPet);
+			int update_confirmation = Service::SQLUpdatePet(refPet);
+			int update_weight = Service::SQLAddWeight(refPet);
 			MessageBox::Show("El peso de " + refPet->Name + " ha sido actualizado.");
 			btnUpdateWeight->Enabled = false;
 		}

@@ -653,7 +653,7 @@ namespace Interfaz {
 				pet->Photo = ms->ToArray();
 			}
 			Pet^ copy_pet = Service::SQLQueryPetById(id);
-			int update=Service::SQLUpdatePet(pet);
+			int update = Service::SQLUpdatePet(pet);
 			if (copy_pet->Weight != pet->Weight)
 				int update_weight = Service::SQLAddWeight(pet);
 			if (copy_pet->FoodServing != pet->FoodServing)

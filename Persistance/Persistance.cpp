@@ -924,8 +924,8 @@ Pet^ BarryPersistance::Persistance::SQLQueryWeightEvolutionByPetId(int petId)
     SqlDataReader^ reader;
     try {
         //Paso 1: Obtener la conexión a la BD
-        conn = GetConnection();
 
+        conn = GetConnection();
         //Paso 2: Preparar la sentencia SQL
         String^ sqlStr = "dbo.usp_QueryWeightEvolutionByPetId";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
@@ -938,9 +938,11 @@ Pet^ BarryPersistance::Persistance::SQLQueryWeightEvolutionByPetId(int petId)
         reader = cmd->ExecuteReader();
 
         //Paso 4: Procesar los resultados
-        if (reader->Read()) {
-            pet->WeightEvolution->Add(Convert::ToDouble(reader["WeightValue"]->ToString()));
-            pet->WeightChanges->Add(Convert::ToDateTime(reader["DateRecorded"]->ToString()));
+        while (reader->Read()) {
+            double weight = Convert::ToDouble(reader["WeightValue"]->ToString());
+            DateTime record_date = Convert::ToDateTime(reader["DateRecorded"]->ToString());
+            pet->WeightEvolution->Add(weight);
+            pet->WeightChanges->Add(record_date);
         }
     }
     catch (Exception^ ex) {
@@ -975,9 +977,11 @@ Pet^ BarryPersistance::Persistance::SQLQueryFoodServingEvolutionByPetId(int petI
         reader = cmd->ExecuteReader();
 
         //Paso 4: Procesar los resultados
-        if (reader->Read()) {
-            pet->FoodEvolution->Add(Convert::ToDouble(reader["FoodServingValue"]->ToString()));
-            pet->FoodChanges->Add(Convert::ToDateTime(reader["DateRecorded"]->ToString()));
+        while (reader->Read()) {
+            double food = Convert::ToDouble(reader["FoodServingValue"]->ToString());
+            DateTime date = Convert::ToDateTime(reader["DateRecorded"]->ToString());
+            pet->FoodEvolution->Add(food);
+            pet->FoodChanges->Add(date);
         }
     }
     catch (Exception^ ex) {
@@ -1012,9 +1016,11 @@ Pet^ BarryPersistance::Persistance::SQLQueryWaterServingEvolutionByPetId(int pet
         reader = cmd->ExecuteReader();
 
         //Paso 4: Procesar los resultados
-        if (reader->Read()) {
-            pet->FoodEvolution->Add(Convert::ToDouble(reader["WaterServingValue"]->ToString()));
-            pet->FoodChanges->Add(Convert::ToDateTime(reader["DateRecorded"]->ToString()));
+        while (reader->Read()) {
+            double water = Convert::ToDouble(reader["WaterServingValue"]->ToString());
+            DateTime date = Convert::ToDateTime(reader["DateRecorded"]->ToString());
+            pet->WaterEvolution->Add(water);
+            pet->WaterChanges->Add(date);
         }
     }
     catch (Exception^ ex) {
