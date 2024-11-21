@@ -284,7 +284,7 @@ namespace Interfaz {
 #pragma endregion
 		public:
 			void FillPetsComboPets() {
-				List<Pet^>^ petsList = Service::QueryAllPets();
+				List<Pet^>^ petsList = Service::SQLQueryAllPets();
 				if (petsList != nullptr) {
 					cmbPets->Items->Clear();
 					for each (Pet ^ pet in petsList) {
@@ -294,7 +294,7 @@ namespace Interfaz {
 				}
 			}
 	private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-		Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+		Pet^ pet = Service::SQLQueryWeightEvolutionByPetId(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 		weightEvolution->Series["Peso (kg)"]->Points->Clear();
 		waterEvolution->Series["Ración (mL)"]->Points->Clear();
 		foodEvolution->Series["Ración (g)"]->Points->Clear();
@@ -303,15 +303,17 @@ namespace Interfaz {
 			weightEvolution->Series["Peso (kg)"]->Points[i]->AxisLabel = "" + pet->WeightChanges[i];
 			weightEvolution->Series["Peso (kg)"]->Points[i]->Label = "" + pet->WeightEvolution[i];
 		}
-		for (int i = 0; i < pet->WaterEvolution->Count; i++) {
-			waterEvolution->Series["Ración (mL)"]->Points->Add(pet->WaterEvolution[i]);
-			waterEvolution->Series["Ración (mL)"]->Points[i]->AxisLabel = "" + pet->WaterChanges[i];
-			waterEvolution->Series["Ración (mL)"]->Points[i]->Label = "" + pet->WaterEvolution[i];
+		Pet^ pet1 = Service::SQLQueryWaterServingEvolutionByPetId(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+		for (int i = 0; i < pet1->WaterEvolution->Count; i++) {
+			waterEvolution->Series["Ración (mL)"]->Points->Add(pet1->WaterEvolution[i]);
+			waterEvolution->Series["Ración (mL)"]->Points[i]->AxisLabel = "" + pet1->WaterChanges[i];
+			waterEvolution->Series["Ración (mL)"]->Points[i]->Label = "" + pet1->WaterEvolution[i];
 		}
-		for (int i = 0; i < pet->FoodEvolution->Count; i++) {
-			foodEvolution->Series["Ración (g)"]->Points->Add(pet->FoodEvolution[i]);
-			foodEvolution->Series["Ración (g)"]->Points[i]->AxisLabel = "" + pet->FoodChanges[i];
-			foodEvolution->Series["Ración (g)"]->Points[i]->Label = "" + pet->FoodEvolution[i];
+		Pet^ pet2 = Service::SQLQueryFoodServingEvolutionByPetId(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+		for (int i = 0; i < pet2->FoodEvolution->Count; i++) {
+			foodEvolution->Series["Ración (g)"]->Points->Add(pet2->FoodEvolution[i]);
+			foodEvolution->Series["Ración (g)"]->Points[i]->AxisLabel = "" + pet2->FoodChanges[i];
+			foodEvolution->Series["Ración (g)"]->Points[i]->Label = "" + pet2->FoodEvolution[i];
 		}
 		if (pet->Photo != nullptr) {
 			System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
