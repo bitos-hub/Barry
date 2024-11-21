@@ -73,7 +73,7 @@ namespace BarryPersistance {
 
 		/*Fran*/
 
-		static void AddDipensadorDisponible(DispensadorDisponible^ dispensador);
+		static int AddDipensadorDisponible(DispensadorDisponible^ dispensador);
 		static List<String^>^ ConsultarMarcas();
 		static List<DispensadorDisponible^>^ ConsultarDispensadoresDisponibles();
 		static List<String^>^ ConsultarDispensadorMarca(String^ marca);

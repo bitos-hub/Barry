@@ -551,12 +551,72 @@ void BarryPersistance::Persistance::EliminarDispensadorPorMascota(Pet^ mascota, 
 
 }
 
-void BarryPersistance::Persistance::AddDipensadorDisponible(DispensadorDisponible^ dispensador)
+int BarryPersistance::Persistance::AddDipensadorDisponible(DispensadorDisponible^ dispensador)
 {
-    lista_dispensadores_disponibles->Add(dispensador);
+    /*lista_dispensadores_disponibles->Add(dispensador);
     PersistBinaryFile(BIN_DISPENSADOR_DISPONIBLE_FILE_NAME, lista_dispensadores_disponibles);
     PersistTextFile(TXT_DISPENSADOR_DISPONIBLE_FILE_NAME, lista_dispensadores_disponibles);
     PersistXMLFile(XML_DISPENSADOR_DISPONIBLE_FILE_NAME, lista_dispensadores_disponibles);
+    */
+    int Disp_DispensadorId  = 0;
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia de BD
+        //String^ sqlStr = "INSERT INTO ROBOT_WAITER(name, brand, model, speed, load_capacity, "+
+        //    "status) VALUES('" + 
+        //    robot->Name + "','" + robot->Brand + "','" + robot->Model + "'," + robot->Speed + "," +
+        //    robot->LoadCapacity + ",'A')";
+        String^ sqlStr = "dbo.usp_AddDispensadorDisponible";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@Marca", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Modelo", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Color", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Largo", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@Largo"]->Precision = 10;
+        cmd->Parameters["@Largo"]->Scale = 2;
+        cmd->Parameters->Add("@Ancho", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@Ancho"]->Precision = 10;
+        cmd->Parameters["@Ancho"]->Scale = 2;
+        cmd->Parameters->Add("@Alto", System::Data::SqlDbType::Decimal);
+        cmd->Parameters["@Alto"]->Precision = 10;
+        cmd->Parameters["@Alto"]->Scale = 2;
+        cmd->Parameters->Add("@Capacidad", System::Data::SqlDbType::VarChar, 50);
+        cmd->Parameters->Add("@Material", System::Data::SqlDbType::VarChar, 80);
+        cmd->Parameters->Add("@FuenteDeAlimentacion", System::Data::SqlDbType::VarChar, 80);
+       
+        SqlParameter^ outputIdParam = gcnew SqlParameter("@Id", System::Data::SqlDbType::Int);
+        outputIdParam->Direction = System::Data::ParameterDirection::Output;
+        cmd->Parameters->Add(outputIdParam);
+        cmd->Prepare();
+        cmd->Parameters["@Marca"]->Value = dispensador->Marca;
+        cmd->Parameters["@Modelo"]->Value = dispensador->Modelo;
+        cmd->Parameters["@Color"]->Value = dispensador->Color;
+        cmd->Parameters["@Largo"]->Value = dispensador->Largo;
+        cmd->Parameters["@Ancho"]->Value = dispensador->Ancho;
+        cmd->Parameters["@Alto"]->Value = dispensador->Alto;
+        cmd->Parameters["@Capacidad"]->Value = dispensador->Capacidad;
+        cmd->Parameters["@Material"]->Value = dispensador->Material;
+        cmd->Parameters["@FuenteDeAlimentacion"]->Value = dispensador->FuenteAlimentacion;
+
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+
+        //Paso 4: Se procesan los resultados
+        Disp_DispensadorId = Convert::ToInt32(cmd->Parameters["@Id"]->Value);
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
+    return Disp_DispensadorId;
+
 }
 
 List<String^>^ BarryPersistance::Persistance::ConsultarMarcas()
@@ -576,13 +636,54 @@ List<String^>^ BarryPersistance::Persistance::ConsultarMarcas()
 
 List<DispensadorDisponible^>^ BarryPersistance::Persistance::ConsultarDispensadoresDisponibles()
 {
-    try {
+   /* try {
         lista_dispensadores_disponibles = (List<DispensadorDisponible^>^)LoadBinaryFile(BIN_DISPENSADOR_DISPONIBLE_FILE_NAME);
         if (lista_dispensadores_disponibles == nullptr)
             lista_dispensadores_disponibles = gcnew List<DispensadorDisponible^>();
     }
     catch (Exception^ ex) {
     }
+    */
+    List<DispensadorDisponible^>^ lista_dispensadores_disponibles = gcnew List<DispensadorDisponible^>();
+    SqlConnection^ conn;
+    SqlDataReader^ reader;
+    try {
+        //Paso 1: Obtener la conexión a la BD
+        conn = GetConnection();
+
+        //Paso 2: Preparar la sentencia SQL
+        String^ sqlStr = "dbo.usp_ConsultarDispensadoresDisponibles";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Prepare();
+
+        //Paso 3: Ejecutar la sentencia SQL
+        reader = cmd->ExecuteReader();
+
+        //Paso 4: Procesar los resultados
+        while (reader->Read()) {
+            DispensadorDisponible^ dispDispenser = gcnew DispensadorDisponible();
+            dispDispenser->Marca= reader["Marca"]->ToString();
+            dispDispenser->Modelo = reader["Modelo"]->ToString();
+            dispDispenser->Color = reader["Color"]->ToString();
+            dispDispenser->Largo = Convert::ToDouble(reader["Largo"]->ToString());
+            dispDispenser->Ancho = Convert::ToDouble(reader["Ancho"]->ToString());
+            dispDispenser->Alto = Convert::ToDouble(reader["Alto"]->ToString());
+            dispDispenser->Capacidad = reader["Capacidad"]->ToString();
+            dispDispenser->Material = reader["Material"]->ToString();
+            dispDispenser->FuenteAlimentacion = reader["FuenteDeAlimentacion"]->ToString();
+            lista_dispensadores_disponibles->Add(dispDispenser);
+        }
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+    finally {
+        //Paso 5: Importante! Cerrar los objetos de conexión a la BD
+        if (reader != nullptr) reader->Close();
+        if (conn != nullptr) conn->Close();
+    }
+
     return lista_dispensadores_disponibles;
 }
 

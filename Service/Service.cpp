@@ -365,7 +365,7 @@ void ServiceBarry::Service::EliminarDispensadorPorMascota(Pet^ mascota, Dispense
 
 void ServiceBarry::Service::AddDipensadorDisponible(DispensadorDisponible^ dispensador)
 {
-	return Persistance::AddDipensadorDisponible(dispensador);
+	 int id = Persistance::AddDipensadorDisponible(dispensador);
 }
 
 List<String^>^ ServiceBarry::Service::ConsultarMarcas()
