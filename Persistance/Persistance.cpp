@@ -1520,6 +1520,7 @@ void BarryPersistance::Persistance::EliminarHorarioDispensador(Dispenser^ dispen
                 throw gcnew System::Exception("El horario no se encontró en la lista de horarios.");
             }
         }
+        //a
     }
 }
 
