@@ -1,5 +1,5 @@
 #pragma once
-
+#include "UpdateADDFood.h"
 namespace Interfaz {
 
 	using namespace System;
@@ -54,15 +54,15 @@ namespace Interfaz {
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::PictureBox^ pictureBox2;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
-	private: System::Windows::Forms::Button^ AddFoodbtn;
+
 	private: System::Windows::Forms::DataGridView^ foodGrid;
 
 
 
 
 
-	private: System::Windows::Forms::Button^ UpdateFoodbtn;
-	private: System::Windows::Forms::Button^ DeleteFoodbtn;
+
+
 	private: System::Windows::Forms::TextBox^ Statustxt;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ o;
@@ -87,6 +87,17 @@ namespace Interfaz {
 	private: System::Windows::Forms::ToolStripMenuItem^ cerrarSesionToolStripMenuItem;
 
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem1;
+
+	private: System::Windows::Forms::Button^ btnSearch;
+
+
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Button^ UpdateFoodbtn;
+	private: System::Windows::Forms::Button^ AddFoodbtn;
+	private: System::Windows::Forms::Button^ btnDelete;
+	private: System::Windows::Forms::RichTextBox^ txtBrandSearch;
+
+
 
 
 
@@ -127,7 +138,6 @@ namespace Interfaz {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
-			this->AddFoodbtn = (gcnew System::Windows::Forms::Button());
 			this->foodGrid = (gcnew System::Windows::Forms::DataGridView());
 			this->o = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->FoodNamebx = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -135,8 +145,6 @@ namespace Interfaz {
 			this->FoodPricbx = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->FoodAmount = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->UpdateFoodbtn = (gcnew System::Windows::Forms::Button());
-			this->DeleteFoodbtn = (gcnew System::Windows::Forms::Button());
 			this->Statustxt = (gcnew System::Windows::Forms::TextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->FoodBrandtxt = (gcnew System::Windows::Forms::TextBox());
@@ -145,6 +153,12 @@ namespace Interfaz {
 			this->cerrarSesionToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->btnSearch = (gcnew System::Windows::Forms::Button());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->UpdateFoodbtn = (gcnew System::Windows::Forms::Button());
+			this->AddFoodbtn = (gcnew System::Windows::Forms::Button());
+			this->btnDelete = (gcnew System::Windows::Forms::Button());
+			this->txtBrandSearch = (gcnew System::Windows::Forms::RichTextBox());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->foodGrid))->BeginInit();
@@ -154,9 +168,11 @@ namespace Interfaz {
 			// 
 			// FoodPricetxt
 			// 
-			this->FoodPricetxt->Location = System::Drawing::Point(121, 411);
+			this->FoodPricetxt->Location = System::Drawing::Point(155, 580);
+			this->FoodPricetxt->Margin = System::Windows::Forms::Padding(4);
 			this->FoodPricetxt->Name = L"FoodPricetxt";
-			this->FoodPricetxt->Size = System::Drawing::Size(258, 20);
+			this->FoodPricetxt->ReadOnly = true;
+			this->FoodPricetxt->Size = System::Drawing::Size(343, 22);
 			this->FoodPricetxt->TabIndex = 18;
 			// 
 			// label3
@@ -164,9 +180,10 @@ namespace Interfaz {
 			this->label3->AutoSize = true;
 			this->label3->BackColor = System::Drawing::SystemColors::Control;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 15.75F, System::Drawing::FontStyle::Bold));
-			this->label3->Location = System::Drawing::Point(116, 379);
+			this->label3->Location = System::Drawing::Point(149, 540);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(119, 27);
+			this->label3->Size = System::Drawing::Size(148, 35);
 			this->label3->TabIndex = 16;
 			this->label3->Text = L"Precio [$]";
 			// 
@@ -175,19 +192,23 @@ namespace Interfaz {
 			this->label2->AutoSize = true;
 			this->label2->BackColor = System::Drawing::SystemColors::Control;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 15.75F, System::Drawing::FontStyle::Bold));
-			this->label2->Location = System::Drawing::Point(116, 327);
+			this->label2->Location = System::Drawing::Point(149, 476);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(79, 27);
+			this->label2->Size = System::Drawing::Size(99, 35);
 			this->label2->TabIndex = 14;
 			this->label2->Text = L"Marca";
 			// 
 			// FoodNametxt
 			// 
 			this->FoodNametxt->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->FoodNametxt->Location = System::Drawing::Point(121, 306);
+			this->FoodNametxt->Location = System::Drawing::Point(155, 451);
+			this->FoodNametxt->Margin = System::Windows::Forms::Padding(4);
 			this->FoodNametxt->Name = L"FoodNametxt";
-			this->FoodNametxt->Size = System::Drawing::Size(258, 20);
+			this->FoodNametxt->ReadOnly = true;
+			this->FoodNametxt->Size = System::Drawing::Size(343, 22);
 			this->FoodNametxt->TabIndex = 13;
+			this->FoodNametxt->TextChanged += gcnew System::EventHandler(this, &AddFood::FoodNametxt_TextChanged);
 			// 
 			// label1
 			// 
@@ -195,18 +216,21 @@ namespace Interfaz {
 			this->label1->BackColor = System::Drawing::SystemColors::Control;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(116, 274);
+			this->label1->Location = System::Drawing::Point(149, 411);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(96, 27);
+			this->label1->Size = System::Drawing::Size(120, 35);
 			this->label1->TabIndex = 12;
 			this->label1->Text = L"Nombre";
 			// 
 			// FoodAmountxt
 			// 
 			this->FoodAmountxt->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->FoodAmountxt->Location = System::Drawing::Point(121, 464);
+			this->FoodAmountxt->Location = System::Drawing::Point(155, 645);
+			this->FoodAmountxt->Margin = System::Windows::Forms::Padding(4);
 			this->FoodAmountxt->Name = L"FoodAmountxt";
-			this->FoodAmountxt->Size = System::Drawing::Size(258, 20);
+			this->FoodAmountxt->ReadOnly = true;
+			this->FoodAmountxt->Size = System::Drawing::Size(343, 22);
 			this->FoodAmountxt->TabIndex = 20;
 			this->FoodAmountxt->TextChanged += gcnew System::EventHandler(this, &AddFood::FoodAmountxt_TextChanged);
 			// 
@@ -216,9 +240,10 @@ namespace Interfaz {
 			this->label6->BackColor = System::Drawing::SystemColors::Control;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(116, 432);
+			this->label6->Location = System::Drawing::Point(149, 606);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(156, 27);
+			this->label6->Size = System::Drawing::Size(197, 35);
 			this->label6->TabIndex = 19;
 			this->label6->Text = L"Cantidad [kg]";
 			// 
@@ -228,9 +253,10 @@ namespace Interfaz {
 			this->label4->BackColor = System::Drawing::SystemColors::Control;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(217, 116);
+			this->label4->Location = System::Drawing::Point(269, 110);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(887, 91);
+			this->label4->Size = System::Drawing::Size(1108, 114);
 			this->label4->TabIndex = 21;
 			this->label4->Text = L"Inventario de comida";
 			this->label4->Click += gcnew System::EventHandler(this, &AddFood::label4_Click);
@@ -240,10 +266,10 @@ namespace Interfaz {
 			this->pictureBox2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(145, 133);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox2->Location = System::Drawing::Point(179, 134);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(62, 58);
+			this->pictureBox2->Size = System::Drawing::Size(83, 71);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 22;
 			this->pictureBox2->TabStop = false;
@@ -252,27 +278,12 @@ namespace Interfaz {
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::SystemColors::Control;
-			this->pictureBox3->Location = System::Drawing::Point(102, 89);
-			this->pictureBox3->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox3->Location = System::Drawing::Point(136, 110);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(1217, 664);
+			this->pictureBox3->Size = System::Drawing::Size(1623, 817);
 			this->pictureBox3->TabIndex = 23;
 			this->pictureBox3->TabStop = false;
-			// 
-			// AddFoodbtn
-			// 
-			this->AddFoodbtn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->AddFoodbtn->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->AddFoodbtn->Location = System::Drawing::Point(121, 557);
-			this->AddFoodbtn->Margin = System::Windows::Forms::Padding(2);
-			this->AddFoodbtn->Name = L"AddFoodbtn";
-			this->AddFoodbtn->Size = System::Drawing::Size(257, 45);
-			this->AddFoodbtn->TabIndex = 24;
-			this->AddFoodbtn->Text = L"Añadir";
-			this->AddFoodbtn->UseVisualStyleBackColor = false;
-			this->AddFoodbtn->Click += gcnew System::EventHandler(this, &AddFood::AddFoodbtn_Click);
 			// 
 			// foodGrid
 			// 
@@ -290,12 +301,12 @@ namespace Interfaz {
 				this->o, this->FoodNamebx,
 					this->Brandbx, this->FoodPricbx, this->FoodAmount, this->Column1
 			});
-			this->foodGrid->Location = System::Drawing::Point(399, 225);
-			this->foodGrid->Margin = System::Windows::Forms::Padding(2);
+			this->foodGrid->Location = System::Drawing::Point(532, 323);
+			this->foodGrid->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->foodGrid->Name = L"foodGrid";
 			this->foodGrid->RowHeadersWidth = 51;
 			this->foodGrid->RowTemplate->Height = 24;
-			this->foodGrid->Size = System::Drawing::Size(899, 481);
+			this->foodGrid->Size = System::Drawing::Size(1199, 546);
 			this->foodGrid->TabIndex = 25;
 			this->foodGrid->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &AddFood::foodGrid_CellClick);
 			// 
@@ -351,42 +362,14 @@ namespace Interfaz {
 			this->Column1->Name = L"Column1";
 			this->Column1->Width = 125;
 			// 
-			// UpdateFoodbtn
-			// 
-			this->UpdateFoodbtn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->UpdateFoodbtn->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->UpdateFoodbtn->Location = System::Drawing::Point(121, 618);
-			this->UpdateFoodbtn->Margin = System::Windows::Forms::Padding(2);
-			this->UpdateFoodbtn->Name = L"UpdateFoodbtn";
-			this->UpdateFoodbtn->Size = System::Drawing::Size(257, 45);
-			this->UpdateFoodbtn->TabIndex = 26;
-			this->UpdateFoodbtn->Text = L"Actualizar";
-			this->UpdateFoodbtn->UseVisualStyleBackColor = false;
-			this->UpdateFoodbtn->Click += gcnew System::EventHandler(this, &AddFood::UpdateFoodbtn_Click);
-			// 
-			// DeleteFoodbtn
-			// 
-			this->DeleteFoodbtn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
-				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->DeleteFoodbtn->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 16.2F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->DeleteFoodbtn->Location = System::Drawing::Point(121, 678);
-			this->DeleteFoodbtn->Margin = System::Windows::Forms::Padding(2);
-			this->DeleteFoodbtn->Name = L"DeleteFoodbtn";
-			this->DeleteFoodbtn->Size = System::Drawing::Size(257, 45);
-			this->DeleteFoodbtn->TabIndex = 27;
-			this->DeleteFoodbtn->Text = L"Eliminar";
-			this->DeleteFoodbtn->UseVisualStyleBackColor = false;
-			this->DeleteFoodbtn->Click += gcnew System::EventHandler(this, &AddFood::DeleteFoodbtn_Click);
-			// 
 			// Statustxt
 			// 
 			this->Statustxt->BackColor = System::Drawing::SystemColors::HighlightText;
-			this->Statustxt->Location = System::Drawing::Point(121, 517);
+			this->Statustxt->Location = System::Drawing::Point(155, 710);
+			this->Statustxt->Margin = System::Windows::Forms::Padding(4);
 			this->Statustxt->Name = L"Statustxt";
-			this->Statustxt->Size = System::Drawing::Size(258, 20);
+			this->Statustxt->ReadOnly = true;
+			this->Statustxt->Size = System::Drawing::Size(343, 22);
 			this->Statustxt->TabIndex = 29;
 			// 
 			// label5
@@ -395,18 +378,20 @@ namespace Interfaz {
 			this->label5->BackColor = System::Drawing::SystemColors::Control;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(116, 485);
+			this->label5->Location = System::Drawing::Point(149, 671);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(85, 27);
+			this->label5->Size = System::Drawing::Size(107, 35);
 			this->label5->TabIndex = 28;
 			this->label5->Text = L"Estado";
 			// 
 			// FoodBrandtxt
 			// 
-			this->FoodBrandtxt->Location = System::Drawing::Point(124, 358);
-			this->FoodBrandtxt->Margin = System::Windows::Forms::Padding(2);
+			this->FoodBrandtxt->Location = System::Drawing::Point(159, 515);
+			this->FoodBrandtxt->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->FoodBrandtxt->Name = L"FoodBrandtxt";
-			this->FoodBrandtxt->Size = System::Drawing::Size(254, 20);
+			this->FoodBrandtxt->ReadOnly = true;
+			this->FoodBrandtxt->Size = System::Drawing::Size(337, 22);
 			this->FoodBrandtxt->TabIndex = 32;
 			// 
 			// menuStrip1
@@ -417,8 +402,8 @@ namespace Interfaz {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
-			this->menuStrip1->Size = System::Drawing::Size(1028, 38);
+			this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
+			this->menuStrip1->Size = System::Drawing::Size(1924, 46);
 			this->menuStrip1->TabIndex = 34;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -430,14 +415,14 @@ namespace Interfaz {
 			});
 			this->salirToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"salirToolStripMenuItem.Image")));
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(85, 34);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(102, 42);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			// 
 			// cerrarSesionToolStripMenuItem
 			// 
 			this->cerrarSesionToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"cerrarSesionToolStripMenuItem.Image")));
 			this->cerrarSesionToolStripMenuItem->Name = L"cerrarSesionToolStripMenuItem";
-			this->cerrarSesionToolStripMenuItem->Size = System::Drawing::Size(209, 34);
+			this->cerrarSesionToolStripMenuItem->Size = System::Drawing::Size(256, 42);
 			this->cerrarSesionToolStripMenuItem->Text = L"Cerrar Sesión";
 			this->cerrarSesionToolStripMenuItem->Click += gcnew System::EventHandler(this, &AddFood::cerrarSesionToolStripMenuItem_Click);
 			// 
@@ -445,32 +430,115 @@ namespace Interfaz {
 			// 
 			this->salirToolStripMenuItem1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"salirToolStripMenuItem1.Image")));
 			this->salirToolStripMenuItem1->Name = L"salirToolStripMenuItem1";
-			this->salirToolStripMenuItem1->Size = System::Drawing::Size(209, 34);
+			this->salirToolStripMenuItem1->Size = System::Drawing::Size(256, 42);
 			this->salirToolStripMenuItem1->Text = L"Salir";
 			this->salirToolStripMenuItem1->Click += gcnew System::EventHandler(this, &AddFood::salirToolStripMenuItem1_Click);
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1348, 38);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(2);
+			this->pictureBox1->Location = System::Drawing::Point(1797, 47);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(126, 161);
+			this->pictureBox1->Size = System::Drawing::Size(168, 198);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 35;
 			this->pictureBox1->TabStop = false;
 			// 
+			// btnSearch
+			// 
+			this->btnSearch->BackColor = System::Drawing::Color::Gainsboro;
+			this->btnSearch->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnSearch->Location = System::Drawing::Point(155, 332);
+			this->btnSearch->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnSearch->Name = L"btnSearch";
+			this->btnSearch->Size = System::Drawing::Size(173, 42);
+			this->btnSearch->TabIndex = 37;
+			this->btnSearch->Text = L"Buscar";
+			this->btnSearch->UseVisualStyleBackColor = false;
+			this->btnSearch->Click += gcnew System::EventHandler(this, &AddFood::button1_Click);
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->BackColor = System::Drawing::SystemColors::Control;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(149, 247);
+			this->label7->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(433, 35);
+			this->label7->TabIndex = 38;
+			this->label7->Text = L"Ingrese el nombre de la marca:";
+			// 
+			// UpdateFoodbtn
+			// 
+			this->UpdateFoodbtn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->UpdateFoodbtn->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->UpdateFoodbtn->Location = System::Drawing::Point(155, 765);
+			this->UpdateFoodbtn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->UpdateFoodbtn->Name = L"UpdateFoodbtn";
+			this->UpdateFoodbtn->Size = System::Drawing::Size(202, 41);
+			this->UpdateFoodbtn->TabIndex = 26;
+			this->UpdateFoodbtn->Text = L"Modificar Datos ";
+			this->UpdateFoodbtn->UseVisualStyleBackColor = false;
+			this->UpdateFoodbtn->Click += gcnew System::EventHandler(this, &AddFood::UpdateFoodbtn_Click);
+			// 
+			// AddFoodbtn
+			// 
+			this->AddFoodbtn->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->AddFoodbtn->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->AddFoodbtn->Location = System::Drawing::Point(1444, 268);
+			this->AddFoodbtn->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->AddFoodbtn->Name = L"AddFoodbtn";
+			this->AddFoodbtn->Size = System::Drawing::Size(287, 39);
+			this->AddFoodbtn->TabIndex = 24;
+			this->AddFoodbtn->Text = L"Añadir nueva comida";
+			this->AddFoodbtn->UseVisualStyleBackColor = false;
+			this->AddFoodbtn->Click += gcnew System::EventHandler(this, &AddFood::AddFoodbtn_Click);
+			// 
+			// btnDelete
+			// 
+			this->btnDelete->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)));
+			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 13.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnDelete->Location = System::Drawing::Point(155, 819);
+			this->btnDelete->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnDelete->Name = L"btnDelete";
+			this->btnDelete->Size = System::Drawing::Size(199, 38);
+			this->btnDelete->TabIndex = 39;
+			this->btnDelete->Text = L"Eliminar";
+			this->btnDelete->UseVisualStyleBackColor = false;
+			this->btnDelete->Click += gcnew System::EventHandler(this, &AddFood::btnDelete_Click);
+			// 
+			// txtBrandSearch
+			// 
+			this->txtBrandSearch->Location = System::Drawing::Point(155, 298);
+			this->txtBrandSearch->Name = L"txtBrandSearch";
+			this->txtBrandSearch->Size = System::Drawing::Size(272, 29);
+			this->txtBrandSearch->TabIndex = 40;
+			this->txtBrandSearch->Text = L"";
+			// 
 			// AddFood
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ControlLightLight;
-			this->ClientSize = System::Drawing::Size(1028, 609);
+			this->ClientSize = System::Drawing::Size(1924, 1012);
+			this->Controls->Add(this->txtBrandSearch);
+			this->Controls->Add(this->btnDelete);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->btnSearch);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->FoodBrandtxt);
 			this->Controls->Add(this->Statustxt);
 			this->Controls->Add(this->label5);
-			this->Controls->Add(this->DeleteFoodbtn);
 			this->Controls->Add(this->UpdateFoodbtn);
 			this->Controls->Add(this->foodGrid);
 			this->Controls->Add(this->AddFoodbtn);
@@ -486,7 +554,7 @@ namespace Interfaz {
 			this->Controls->Add(this->pictureBox3);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2);
+			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"AddFood";
 			this->Text = L"AddFood";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
@@ -506,19 +574,9 @@ namespace Interfaz {
 	}
 	private: System::Void AddFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
-
-			//int id = Convert::ToInt32(FoodIdtxt->Text);
-			Food^ food = gcnew Food();
-			food->Name = FoodNametxt->Text;
-			food->FoodBrand = FoodBrandtxt->Text;
-			food->Status = Statustxt->Text;
-			food->FoodPrice = Convert::ToDouble(FoodPricetxt->Text);
-			food->FoodAmount = Convert::ToDouble(FoodAmountxt->Text);
-
-			Service::AddFood(food);
+			UpdateADDFood^ form = gcnew UpdateADDFood(nullptr);
+			form->ShowDialog();
 			ShowFoods();
-			Clear();
-			MessageBox::Show("Comida agregada con éxito");
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("No se ha podido agregar la mascota por el siguiente motivo:\n" +
@@ -535,18 +593,12 @@ namespace Interfaz {
 		}
 		try {
 			int id = Convert::ToInt32(Id);
-			String^ foodName = FoodNametxt->Text;
-			String^ brand = FoodBrandtxt->Text;
-			String^ status = Statustxt->Text;
-			double foodPrice = Convert::ToDouble(FoodPricetxt->Text);
-			double foodAmount = Convert::ToDouble(FoodAmountxt->Text);
+			Food^ food = gcnew Food();
+			food->Id = id;
 
-
-			Food^ food = gcnew Food(id, brand, foodPrice, foodName, status, foodAmount);
-			Service::UpdateFood(food);
+			UpdateADDFood^ form = gcnew UpdateADDFood(food);
+			form->ShowDialog();
 			ShowFoods();
-			Clear();
-			MessageBox::Show("Se ha modificado la comida " + foodName);
 		}
 		catch (Exception^ ex) {
 			MessageBox::Show("No se ha podido modificar la comida por el siguiente motivo:\n" +
@@ -573,6 +625,19 @@ namespace Interfaz {
 				}
 			}
 		}
+		void FillFoodGrid(List<Food^>^ FoodsFound) {
+			if (FoodsFound != nullptr) {
+				foodGrid->Rows->Clear();
+				for (int i = 0; i < FoodsFound->Count; i++) {
+					foodGrid->Rows->Add(gcnew array<String^> {"" + FoodsFound[i]->Id,
+						FoodsFound[i]->Name,
+						FoodsFound[i]->FoodBrand,
+						"" + FoodsFound[i]->FoodPrice,
+						"" + FoodsFound[i]->FoodAmount,
+						FoodsFound[i]->Status});
+				}
+			}
+		}
 		void Clear() {
 			for each (Control ^ control in this->Controls) {
 				if (control->GetType() == TextBox::typeid) {
@@ -580,23 +645,6 @@ namespace Interfaz {
 				}
 			}
 		}
-	private: System::Void DeleteFoodbtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		String^ Id = foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString();
-		if (Id->Equals("")) {
-			MessageBox::Show("Debe seleccionar una comida");
-			return;
-		}
-		try {
-			Service::DeleteFood(Convert::ToInt32(Id));
-			ShowFoods();
-			Clear();
-			MessageBox::Show("Se ha eliminado la comida ");
-		}
-		catch (Exception^ ex) {
-			MessageBox::Show("No ha sido posible eliminar la comida por el siguiente motivo:\n" +
-				ex->Message);
-		}
-	}
 	private: System::Void foodGrid_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		if (foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value != nullptr) {
 
@@ -627,5 +675,30 @@ namespace Interfaz {
 		this->Close();
 		Application::Restart();
 	}
+private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+	List<Food^>^ FoodsFound = Service::SearchFoodByBrand(txtBrandSearch->Text);
+	FillFoodGrid(FoodsFound);
+}
+private: System::Void FoodNametxt_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+
+private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	String^ Id = foodGrid->Rows[foodGrid->SelectedCells[0]->RowIndex]->Cells[0]->Value->ToString();
+	if (Id->Equals("")) {
+		MessageBox::Show("Debe seleccionar una comida");
+		return;
+	}
+	try {
+		Service::DeleteFood(Convert::ToInt32(Id));
+		ShowFoods();
+		Clear();
+		MessageBox::Show("Se ha eliminado la comida ");
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("No ha sido posible eliminar la comida por el siguiente motivo:\n" +
+			ex->Message);
+	}
+}
 };
 }

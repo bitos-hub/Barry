@@ -75,6 +75,9 @@
     <ClCompile Include="ExpensesReportForm.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="UpdateADDFood.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgregarUsuarios.h">
@@ -135,6 +138,9 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="ExpensesReportForm.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateADDFood.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

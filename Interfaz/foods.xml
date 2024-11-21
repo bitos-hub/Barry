@@ -2,11 +2,11 @@
 <ArrayOfFood xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Food>
     <Id>1</Id>
-    <FoodBrand>Ricocan</FoodBrand>
-    <FoodPrice>7</FoodPrice>
-    <Name>Croqueta balanceada para perros</Name>
-    <Status>-</Status>
-    <FoodAmount>5</FoodAmount>
+    <FoodBrand>Vitakraft</FoodBrand>
+    <FoodPrice>30</FoodPrice>
+    <Name>Menu Vital Para Conejos</Name>
+    <Status>A</Status>
+    <FoodAmount>2</FoodAmount>
   </Food>
   <Food>
     <Id>3</Id>
@@ -138,10 +138,10 @@
   </Food>
   <Food>
     <Id>19</Id>
-    <FoodBrand>Vitakraft</FoodBrand>
+    <FoodBrand>Vitacraft</FoodBrand>
     <FoodPrice>20</FoodPrice>
-    <Name>Menu Vital para Conejos</Name>
-    <Status>-</Status>
-    <FoodAmount>2</FoodAmount>
+    <Name>Menu Para Conejos</Name>
+    <Status>A</Status>
+    <FoodAmount>3</FoodAmount>
   </Food>
 </ArrayOfFood>
