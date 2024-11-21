@@ -22,9 +22,9 @@ int ServiceBarry::Service::VerifyAdmin()
 }
 
 
-void ServiceBarry::Service::AddUsuario(User^ usuario)
+int ServiceBarry::Service::AddUsuario(User^ usuario)
 {
-	lista_usuarios->Add(usuario);
+	/*lista_usuarios->Add(usuario);
 	int id = lista_usuarios->Count;
 	lista_usuarios[id - 1]->Id = id;
 	int id_mayor = 0;
@@ -37,23 +37,26 @@ void ServiceBarry::Service::AddUsuario(User^ usuario)
 		lista_usuarios[id - 1]->Id = id_mayor + 1;
 	}
 	Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
-	Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
+	Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);*/
+	return Persistance::AddUsuario(usuario);
 }
 
-void ServiceBarry::Service::ActualizarUsuario(User^ usuario)
+int ServiceBarry::Service::ActualizarUsuario(User^ usuario)
 {
-	for (int i = 0; i < lista_usuarios->Count; i++) {
+	/*for (int i = 0; i < lista_usuarios->Count; i++) {
 		if (lista_usuarios[i]->Id == usuario->Id) {
 			lista_usuarios[i] = usuario;
 			Persistance::PersistBinaryFile(BIN_USER_FILE_NAME, lista_usuarios);
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
-	}
+	}*/
+	return Persistance::ActualizarUsuario(usuario);
 }
 
-void ServiceBarry::Service::EliminarUsuario(int id)
+int ServiceBarry::Service::EliminarUsuario(int id)
 {
+	/*
 	for (int i = 0; i < lista_usuarios->Count; i++) {
 		if (lista_usuarios[i]->Id == id) {
 			lista_usuarios->RemoveAt(i);
@@ -61,7 +64,8 @@ void ServiceBarry::Service::EliminarUsuario(int id)
 			Persistance::PersistTextFile(TXT_USER_FILE_NAME, lista_usuarios);
 			return;
 		}
-	}
+	}*/
+	return Persistance::EliminarUsuario(id);
 }
 
 User^ ServiceBarry::Service::ConsultarUsuario(String^ UserName)
@@ -76,16 +80,16 @@ User^ ServiceBarry::Service::ConsultarUsuario(String^ UserName)
 
 List<User^>^ ServiceBarry::Service::ConsultarTodosUsuarios()
 {
-	try {
+	/*try {
 
 		lista_usuarios = (List<User^>^)Persistance::LoadBinaryFile(BIN_USER_FILE_NAME);
 		if (lista_usuarios == nullptr)
 			lista_usuarios = gcnew List<User^>();
 	}
 	catch (FileNotFoundException^ ex) {
-	}
+	}*/
 
-	return lista_usuarios;
+	return Persistance::ConsultarTodosUsuarios();
 }
 
 List<User^>^ ServiceBarry::Service::QueryUserByName(String^ Username)

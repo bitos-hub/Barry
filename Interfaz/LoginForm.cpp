@@ -6,11 +6,11 @@ System::Void Interfaz::LoginForm::btnAcces_Click(System::Object^ sender, System:
 	String^ Password = txtPassword->Text;
 	User^ usuario = VerifyUser(UserName, Password);
 	if (usuario != nullptr) {
-		if (usuario->GetType() == Administrator::typeid)
+		if (usuario->Role == "Administrador")
 			((MainScreenForm^)refMainForm)->EnableAdminOptions();
-		if (usuario->GetType() == InternalUser::typeid)
+		if (usuario->Role == "Usuario Interno")
 			((MainScreenForm^)refMainForm)->EnableInternalUserOptions();
-		if (usuario->GetType() == PortalUser::typeid)
+		if (usuario->Role == "Usuario Portal")
 			((MainScreenForm^)refMainForm)->EnablePortalUserOptions();
 		this->Close();
 	}
