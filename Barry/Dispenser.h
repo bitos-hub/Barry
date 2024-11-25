@@ -18,14 +18,12 @@ namespace Barry {
         List<int>^ FeedingSchedule = gcnew List<int>();
         double FoodAmount; //Cantidad en el plato
         bool IsPlateFull; //estado
-        double DispenserFood;//cant comida
-        Report^ AssignedTo;
+        double DispenserFood;//cant comida en el contenedor (ojito)
+        //Report^ AssignedTo;
         DispensadorDisponible^ DispensadorAsignado;
         Food^ ComidaAsignada;
         String^ ModoOperacion;
         List<Dispensation^>^ dispensationRecord =  gcnew List<Dispensation^>();
-
-
         bool DispenseFood(Food^);
         bool DispenseWater();
     };

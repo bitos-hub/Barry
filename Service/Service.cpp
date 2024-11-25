@@ -357,12 +357,12 @@ List<Dispensation^>^ ServiceBarry::Service::ConsultarDispensadasPorDispensador(D
 
 
 
-void ServiceBarry::Service::AddDispensador(int id, DispensadorDisponible^ disp)
+int ServiceBarry::Service::AddDispensador(DispensadorDisponible^ disp)
 {
-	return Persistance::AddDispensador(id, disp);
+	return Persistance::AddDispensador(disp);
 }
 
-void ServiceBarry::Service::EliminarDispensador(int id)
+int ServiceBarry::Service::EliminarDispensador(int id)
 {
 	return Persistance::EliminarDispensador(id);
 }
@@ -456,10 +456,9 @@ void ServiceBarry::Service::AsignarComidaDispensador(Dispenser^ dispensador, Foo
 	for each (Dispenser^ d in Persistance::lista_dispensadores) {
 		if (d->Id = dispensador->Id) {
 			d->ComidaAsignada = comida;
+			ActualizarDispensador(d);
 		}
 	}
-	Persistance::PersistBinaryFile(Persistance::BIN_DISPENSADOR_FILE_NAME,Persistance::lista_dispensadores);
-	Persistance::PersistXMLFile(Persistance::XML_DISPENSADOR_FILE_NAME, Persistance::lista_dispensadores);
 }
 
 void ServiceBarry::Service::AsignarModoDipensador(Dispenser^ dispensador, String^ modo)
@@ -469,16 +468,18 @@ void ServiceBarry::Service::AsignarModoDipensador(Dispenser^ dispensador, String
 
 void ServiceBarry::Service::ModificarPorcionAgua(Pet^ masctotaSeleccionada,double porcion, double agua)
 {
-	Persistance::PetsList = QueryAllPets();
+	List<Pet^>^ lista_masc = SQLQueryAllPets();
 	if (masctotaSeleccionada != nullptr) {
-		for each (Pet ^ m in Persistance::PetsList) {
+		for each (Pet ^ m in lista_masc) {
 			if (m->Id = masctotaSeleccionada->Id) {
 				m->FoodServing = porcion;
 				m->WaterServing = agua;
 			}
 		}
+		/*
 		Persistance::PersistBinaryFile(Persistance::BIN_PET_FILE_NAME,Persistance::PetsList);
-		Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);
+		Persistance::PersistXMLFile(Persistance::XML_PET_FILE_NAME, Persistance::PetsList);*/
+
 	}
 }
 
@@ -568,6 +569,21 @@ int ServiceBarry::Service::SQLDeletePet(int petId)
 Pet^ ServiceBarry::Service::SQLQueryPetById(int petId)
 {
 	return Persistance::SQLQueryPetById(petId);
+}
+
+DispensadorDisponible^ ServiceBarry::Service::ConsultarDispensadorDisponiblePorId(int id)
+{
+	return Persistance::ConsultarDispensadorDisponiblePorId(id);
+}
+
+int ServiceBarry::Service::ActualizarDispensador(Dispenser^ d)
+{
+	return Persistance::ActualizarDispensador(d);
+}
+
+Dispenser^ ServiceBarry::Service::ConsultarDispensadorPorMascota(int id)
+{
+	return Persistance::ConsultarDispensadorPorMascota(id);
 }
 
 Pet^ ServiceBarry::Service::ConsultarMascotaPorNombre(String^ nombreMascota)

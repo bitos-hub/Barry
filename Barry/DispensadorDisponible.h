@@ -4,6 +4,7 @@ namespace Barry {
     [Serializable] public ref class DispensadorDisponible
     {
     public:
+        int Id;
         String^ Marca;
         String^ Modelo;
         String^ Color;

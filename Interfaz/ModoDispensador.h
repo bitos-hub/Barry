@@ -388,7 +388,7 @@ namespace Interfaz {
 				throw gcnew System::Exception("Debe seleccionar una mascota.");
 			}
 			Service::AddDispensadorPorMascota(mascotaSeleccionada, dispensadorSeleccionado);
-			MessageBox::Show("Se ha asignado el dispensador " + mascotaSeleccionada->PetDispenser->Id + " a " + mascotaSeleccionada->Name);
+			MessageBox::Show("Se ha asignado el dispensador " + dispensadorSeleccionado->Id + " a " + mascotaSeleccionada->Name);
 		}
 		catch (System::Exception^ ex) {
 			MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
@@ -397,7 +397,7 @@ namespace Interfaz {
 
 private: System::Void cmbMascotas_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	int IdMascota = ((ComboBoxItem^)(cmbMascotas->Items[cmbMascotas->SelectedIndex]))->Value;
-	mascotaSeleccionada = Service::QueryPetById(IdMascota);
+	mascotaSeleccionada = Service::SQLQueryPetById(IdMascota);
 	if (mascotaSeleccionada != nullptr) {
 		txtPorcion->Text = Convert::ToString(mascotaSeleccionada->FoodServing);
 		txtPorcion->ReadOnly = true;
@@ -424,7 +424,7 @@ private: System::Void cmbIdDispensadores_SelectedIndexChanged(System::Object^ se
 		   }
 	   }
 	   void FillPets() {
-		   List<Pet^>^ lista_mascotas = Service::QueryAllPets();
+		   List<Pet^>^ lista_mascotas = Service::SQLQueryAllPets();
 		   if (lista_mascotas != nullptr) {
 			   cmbMascotas->Items->Clear();
 			   for each (Pet ^ pet in lista_mascotas) {
@@ -450,7 +450,7 @@ private: System::Void btnEliminarAsignacion_Click(System::Object^ sender, System
 			throw gcnew System::Exception("Debe seleccionar una mascota.");
 		}
 		Service::EliminarDispensadorPorMascota(mascotaSeleccionada, dispensadorSeleccionado);
-		if (mascotaSeleccionada->PetDispenser->Id == 0) {
+		if (dispensadorSeleccionado->Id != 0) {
 			MessageBox::Show("Se quitado la asignación del dispensador " + dispensadorSeleccionado->Id + " a " + mascotaSeleccionada->Name);
 		}
 	}
