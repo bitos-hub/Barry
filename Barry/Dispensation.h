@@ -7,6 +7,7 @@ namespace Barry {
     [Serializable] public ref class Dispensation
     {
     public:
+        property int Id;
         property String^ Date;
         property int TimesDispensedFood;
         property int TimesDispensedWater;

@@ -425,13 +425,11 @@ namespace Interfaz {
 
 		}
 #pragma endregion
-		static int id = 0;
 		public:
 			String^ marcaSelec;
 			String^ modeloSelec;
 			String^ colorSelec;
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		id++;
 		try {
 			marcaSelec = txtMarca->Text;
 			modeloSelec = txtModelo->Text;
@@ -439,10 +437,10 @@ namespace Interfaz {
 			DispensadorDisponible^ DispDisp = gcnew DispensadorDisponible();
 			DispDisp = Service::EncontrarDispensador(marcaSelec, modeloSelec);
 			DispDisp->Color = colorSelec;
-			Service::AddDispensador(id,DispDisp);
+			int id_disp=Service::AddDispensador(DispDisp);
 			LimpiarCuadrosTexto();
-			int x = LlenarDispensadores();
-			MessageBox::Show("El dispensador con ID: " + id + " fue agregado correctamente.");
+			LlenarDispensadores();
+			MessageBox::Show("El dispensador con ID: " + id_disp + " fue agregado correctamente.");
 		}
 		catch (System::Exception^ ex) {
 			MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
@@ -466,27 +464,22 @@ private: System::Void btnEliminar_Click(System::Object^ sender, System::EventArg
 		try {
 			Service::EliminarDispensador(dispensadorSeleccionado->Id);
 			LimpiarCuadrosTexto();
-			int x = LlenarDispensadores();
+			LlenarDispensadores();
 			MessageBox::Show("El dispensador con ID: "+ dispensadorSeleccionado->Id +" fue eliminado correctamente.");
 		}
 		catch (System::Exception^ ex) {
 			MessageBox::Show(ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 }
-	   int LlenarDispensadores() {
+	   void LlenarDispensadores() {
 		   List<Dispenser^>^ lista_dispensadores = Service::ConsultarTodosDispensadores();
-		   int mayor = 0;
 		   if (lista_dispensadores != nullptr) {
 			   cmbIdDispensador->Items->Clear();
 			   for each (Dispenser ^ d in lista_dispensadores) {
 				   cmbIdDispensador->Items->Add(gcnew ComboBoxItem(d->Id,
 					   Convert::ToString(d->Id)));
-				   if (d->Id > mayor) {
-					   mayor = d->Id;
-				   }
 			   }
 		   }
-		   return mayor;
 	   }
 	   
 	   public:
@@ -525,7 +518,7 @@ private: System::Void cmbIdDispensador_SelectedIndexChanged(System::Object^ send
 	txtMaterial->Text = dispensadorSeleccionado->DispensadorAsignado->Material;
 }
 private: System::Void AgregarDispensador_Load(System::Object^ sender, System::EventArgs^ e) {
-	id = LlenarDispensadores();
+	LlenarDispensadores();
 }
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 }

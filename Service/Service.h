@@ -79,8 +79,9 @@ namespace ServiceBarry {
 
 		static List<Dispensation^>^ ConsultarDispensadasPorDispensador(Dispenser^ d);
 
-		static void AddDispensador(int id, DispensadorDisponible^ disp); //quedarse con este
-		static void EliminarDispensador(int);
+
+		static int AddDispensador(DispensadorDisponible^ disp); //quedarse con este
+		static int EliminarDispensador(int);
 		static List<Dispenser^>^ ConsultarTodosDispensadores();
 		static Dispenser^ ConsultarDispensadorPorId(int);
 		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
@@ -129,6 +130,11 @@ namespace ServiceBarry {
 		static Pet^ SQLQueryPetById(int petId);
 
 		//USER
+
+		//DISPENSADOR
+		static DispensadorDisponible^ ConsultarDispensadorDisponiblePorId(int id);
+		static int ActualizarDispensador(Dispenser^);
+		static Dispenser^ ConsultarDispensadorPorMascota(int id);
 
 	};
 }

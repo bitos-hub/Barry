@@ -62,20 +62,22 @@ namespace BarryPersistance {
 		static Object^ LoadFoodTextFile(String^ fileName);
 		//static Object^ LoadDispensationTextFile(String^ fileName);
 
-		static void AddDispensador(int id, DispensadorDisponible^ disp); //se queda este
-		static List<Dispenser^>^ ConsultarTodosDispensadores();
-		static void EliminarDispensador(int id);
-		static Dispenser^ ConsultarDispensadorPorId(int);
-		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
-		static void ActualizarDispensador(Dispenser^ d);
+		
+		
+		
+		
+		
+		
 		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
+		static List<int>^ ConsultarHorariosPorIdDispensador(int id);
+		static List<Dispensation^>^ ConsultarDispensadasPorIdDispensador(int id);
 
 
 		/*Fran*/
 
-		static int AddDipensadorDisponible(DispensadorDisponible^ dispensador);
+		static int AddDipensadorDisponible(DispensadorDisponible^ dispensador); //ok
 		static List<String^>^ ConsultarMarcas();
-		static List<DispensadorDisponible^>^ ConsultarDispensadoresDisponibles();
+		static List<DispensadorDisponible^>^ ConsultarDispensadoresDisponibles(); //ok
 		static List<String^>^ ConsultarDispensadorMarca(String^ marca);
 		static List<String^>^ ConsultarModelos(String^ marca);
 		static List<String^>^ ConsultarDispensadorModelo(String^ modelo, String^ marca);
@@ -118,5 +120,19 @@ namespace BarryPersistance {
 		static int EliminarUsuario(int id);
 		static List<User^>^ ConsultarTodosUsuarios();
 
+		//Dispensador
+		
+		static int AddDispensador(DispensadorDisponible^ disp);
+		static List<Dispenser^>^ ConsultarTodosDispensadores();
+		static int AddModoOperacionDispensador(int id,String^ ModoOperacion);
+		static int AddComidaDispensador(int id, Food^ comida);
+		static DispensadorDisponible^ ConsultarDispensadorDisponiblePorId(int id);
+		static int EliminarDispensador(int id);
+		static int ActualizarDispensador(Dispenser^ d);
+		static Dispenser^ ConsultarDispensadorPorId(int);
+		static void AddHorarioDispensador(Dispenser^ dispensadorSeleccionado, int horario);
+		static void AgregarDispensadasPorDispensador(int idDispensador,Dispensation^ dispensada);
+		static void ActualizarDispensadasPorDispensador(int idDispensasor,Dispensation^ dispensada);
+		static Dispenser^ ConsultarDispensadorPorMascota(int id);
 	};
 }

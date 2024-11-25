@@ -1313,11 +1313,11 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		txtLastWater->Text = pet->LastTimeHidrated;
 		txtLastTimeFed->Text = pet->LastTimeFeD;
 		txtStatus->Text = pet->Status;
-		if (pet->PetDispenser==nullptr || pet->PetDispenser->Id == 0) {
+		if (Service::ConsultarDispensadorPorMascota(pet->Id)==nullptr || Service::ConsultarDispensadorPorMascota(pet->Id)->Id == 0) {
 			txtAssignedDispenser->Text = "No hay dispensador asignado.";
 		}
 		else {
-			txtAssignedDispenser->Text = "Dispensador " + Convert::ToString(pet->PetDispenser->Id);
+			txtAssignedDispenser->Text = "Dispensador " + Convert::ToString(Service::ConsultarDispensadorPorMascota(pet->Id)->Id);
 		}
 
 		if (pet->Photo != nullptr) {
