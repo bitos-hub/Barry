@@ -1090,19 +1090,31 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		}
 
 		void ClearPetControls() {
-			for each (Control ^ control in this->Controls) {
-				if (control->GetType() == TextBox::typeid) {
-					dynamic_cast<TextBox^>(control)->Text = "";
-				}
-				if (control->GetType() == PictureBox::typeid) {
-					dynamic_cast<PictureBox^>(control)->Image = nullptr;
-					dynamic_cast<PictureBox^>(control)->Invalidate();
-				}
-				if (control->GetType() == ComboBox::typeid) {
-					dynamic_cast<ComboBox^>(control)->Text = "";
-				}
-			}
+			txtPetName->Text = "";
+			txtEspecie->Text = "";
+			txtWeight->Text = "";
+			txtPortion->Text = "";
+			txtWater->Text = "";
+			txtLastWater->Text = "";
+			txtLastTimeFed->Text = "";
+			txtStatus->Text = "";
+			txtAssignedDispenser->Text = "";
+			
+			pbPet->Image = nullptr;
+			pbPet->Invalidate();
+			btnFeed->Enabled = false;
+			btnHydrate->Enabled = false;
+			btnUpdateWeight->Enabled = false;
+			cmbPets->Text = "";
 		}
+		void ClearDispenserControls() {
+
+			txtAssignedPet->Text = "";
+			cmbSchedules->Items->Clear();
+			cmbDispenser->Text = "";
+
+		}
+
 
 
 	private: System::Void hisoToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1159,46 +1171,59 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			   if (petSelected !=nullptr) {
 
 				   Pet^ pet = Service::SQLQueryPetById(petSelected->Id);
-				   txtPetName->Text = pet->Name;
-				   txtEspecie->Text = pet->Specie;
-				   txtWeight->Text = Convert::ToString(pet->Weight);
-				   txtPortion->Text = Convert::ToString(pet->FoodServing);
-				   txtWater->Text = Convert::ToString(pet->WaterServing);
-				   txtLastWater->Text = pet->LastTimeHidrated;
-				   txtLastTimeFed->Text = pet->LastTimeFeD;
-				   txtStatus->Text = pet->Status;
-				   if (pet->PetDispenser == nullptr || pet->PetDispenser->Id == 0) {
-					   txtAssignedDispenser->Text = "No hay dispensador asignado.";
-				   }
-				   else {
-					   txtAssignedDispenser->Text = "Dispensador " + Convert::ToString(pet->PetDispenser->Id);
-				   }
+				   if (pet != nullptr) {
 
-				   if (pet->Photo != nullptr) {
-					   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
-					   pbPet->Image = Image::FromStream(ms);
+					   txtPetName->Text = pet->Name;
+					   txtEspecie->Text = pet->Specie;
+					   txtWeight->Text = Convert::ToString(pet->Weight);
+					   txtPortion->Text = Convert::ToString(pet->FoodServing);
+					   txtWater->Text = Convert::ToString(pet->WaterServing);
+					   txtLastWater->Text = pet->LastTimeHidrated;
+					   txtLastTimeFed->Text = pet->LastTimeFeD;
+					   txtStatus->Text = pet->Status;
+					   if (pet->PetDispenser == nullptr || pet->PetDispenser->Id == 0) {
+						   txtAssignedDispenser->Text = "No hay dispensador asignado.";
+					   }
+					   else {
+						   txtAssignedDispenser->Text = "Dispensador " + Convert::ToString(pet->PetDispenser->Id);
+					   }
+
+					   if (pet->Photo != nullptr) {
+						   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+						   pbPet->Image = Image::FromStream(ms);
+					   }
+					   else {
+						   pbPet->Image = nullptr;
+						   pbPet->Invalidate();
+					   }
+					   btnFeed->Enabled = true;
+					   btnHydrate->Enabled = true;
+					   btnUpdateWeight->Enabled = true;
 				   }
 				   else {
-					   pbPet->Image = nullptr;
-					   pbPet->Invalidate();
+					   ClearPetControls();
 				   }
-				   btnFeed->Enabled = true;
-				   btnHydrate->Enabled = true;
-				   btnUpdateWeight->Enabled = true;
 			   }
 
 		   }
 		   void UpdateDispenserTextBox() {
 			   if (dispenserSelect != nullptr) {
 				   Dispenser^ d = Service::ConsultarDispensadorPorId(dispenserSelect->Id);
-				   Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(d->Id);
-				   if (pet != nullptr) {
-					   txtAssignedPet->Text = pet->Name;
+				   if (d != nullptr) {
+
+					   Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(d->Id);
+					   if (pet != nullptr) {
+						   txtAssignedPet->Text = pet->Name;
+					   }
+					   else {
+						   txtAssignedPet->Text = "No hay mascota asignada.";
+					   }
+					   FillSchedulesComboBox(d);
 				   }
 				   else {
-					   txtAssignedPet->Text = "No hay mascota asignada.";
+					   ClearDispenserControls();
 				   }
-				   FillSchedulesComboBox(d);
+
 			   }
 
 		   }
