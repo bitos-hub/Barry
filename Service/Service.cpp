@@ -284,11 +284,16 @@ List<Food^>^ ServiceBarry::Service::SearchFoodByBrand(String^ foodBrand)
 {
 	List<Food^>^ foodsList = QueryAllFoods();
 	List<Food^>^ listToReturn = gcnew List<Food^>();
-	for (int i = 0; i < foodsList->Count; i++) {
-		if (foodsList[i]->FoodBrand->Contains(foodBrand))
-			listToReturn->Add(FoodList[i]);
+	if (foodBrand != "") {
+		for (int i = 0; i < foodsList->Count; i++) {
+			if (foodsList[i]->FoodBrand->Contains(foodBrand->Trim()))
+				listToReturn->Add(foodsList[i]);
+		}
+		return listToReturn;
 	}
-	return listToReturn;
+	else {
+		return foodsList;
+	}
 }
 
 void ServiceBarry::Service::AddDispensadorPorMascota(Pet^ mascotaSeleccionada, Dispenser^ DispensadorSeleccionado)

@@ -21,6 +21,7 @@ namespace Interfaz {
 	using namespace System::Collections::Generic;
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
+	using namespace System::Threading;
 	using namespace System::Drawing;
 	using namespace ServiceBarry;
 	using namespace Barry;
@@ -31,6 +32,9 @@ namespace Interfaz {
 	public ref class MainScreenForm : public System::Windows::Forms::Form
 	{
 	public:
+		Thread^ myThread;
+		Pet^ petSelected;
+		Dispenser^ dispenserSelect;
 		MainScreenForm(void)
 		{
 			InitializeComponent();
@@ -1129,7 +1133,77 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		btnFeed->Enabled = false;
 		btnHydrate->Enabled = false;
 		btnUpdateWeight->Enabled = false;
+		myThread = gcnew Thread(gcnew ThreadStart(this, &MainScreenForm::MyExecutionProcess));
+		myThread->Start();
 	}
+		   delegate void MyDelegate();
+
+		   void MyExecutionProcess() {
+			   while (true) {
+				   try {
+					   myThread->Sleep(2000);
+					   Invoke(gcnew MyDelegate(this, &MainScreenForm::UpdateTexBox));
+				   }
+				   catch (Exception^ ex) {
+					   return;
+				   }
+			   }
+		   }
+
+		   void UpdateTexBox() {
+			   UpdatePetTextBox();
+			   UpdateDispenserTextBox();
+			   //FillPetsComboPets();
+		   }
+		   void UpdatePetTextBox() {
+			   if (petSelected !=nullptr) {
+
+				   Pet^ pet = Service::SQLQueryPetById(petSelected->Id);
+				   txtPetName->Text = pet->Name;
+				   txtEspecie->Text = pet->Specie;
+				   txtWeight->Text = Convert::ToString(pet->Weight);
+				   txtPortion->Text = Convert::ToString(pet->FoodServing);
+				   txtWater->Text = Convert::ToString(pet->WaterServing);
+				   txtLastWater->Text = pet->LastTimeHidrated;
+				   txtLastTimeFed->Text = pet->LastTimeFeD;
+				   txtStatus->Text = pet->Status;
+				   if (pet->PetDispenser == nullptr || pet->PetDispenser->Id == 0) {
+					   txtAssignedDispenser->Text = "No hay dispensador asignado.";
+				   }
+				   else {
+					   txtAssignedDispenser->Text = "Dispensador " + Convert::ToString(pet->PetDispenser->Id);
+				   }
+
+				   if (pet->Photo != nullptr) {
+					   System::IO::MemoryStream^ ms = gcnew System::IO::MemoryStream(pet->Photo);
+					   pbPet->Image = Image::FromStream(ms);
+				   }
+				   else {
+					   pbPet->Image = nullptr;
+					   pbPet->Invalidate();
+				   }
+				   btnFeed->Enabled = true;
+				   btnHydrate->Enabled = true;
+				   btnUpdateWeight->Enabled = true;
+			   }
+
+		   }
+		   void UpdateDispenserTextBox() {
+			   if (dispenserSelect != nullptr) {
+				   Dispenser^ d = Service::ConsultarDispensadorPorId(dispenserSelect->Id);
+				   Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(d->Id);
+				   if (pet != nullptr) {
+					   txtAssignedPet->Text = pet->Name;
+				   }
+				   else {
+					   txtAssignedPet->Text = "No hay mascota asignada.";
+				   }
+				   FillSchedulesComboBox(d);
+			   }
+
+		   }
+		   
+	
 	public:
 		void EnableAdminOptions() {
 			addToolStripMenuItem->Enabled = true;
@@ -1205,6 +1279,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 
 	private: System::Void cmbPets_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+		petSelected = pet;
 		txtPetName->Text = pet->Name;
 		txtEspecie->Text = pet->Specie;
 		txtWeight->Text = Convert::ToString(pet->Weight);
@@ -1264,7 +1339,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		AgregarDispensador^ form = gcnew AgregarDispensador();
 		//ClearPetControls();
 		form->ShowDialog();
-		FillPetsComboPets();
+		
 		FillDispenserComboBox();
 	}
 	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -1308,11 +1383,12 @@ private: System::Void txtLastWater_TextChanged(System::Object^ sender, System::E
 private: System::Void label16_Click(System::Object^ sender, System::EventArgs^ e) {
 }
 
-	   Dispenser^ dispenserSelect;
+	  
 private: System::Void cmbDispenser_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 	try {
 
 		dispenserSelect = Service::ConsultarDispensadorPorId(((ComboBoxItem^)(cmbDispenser->Items[cmbDispenser->SelectedIndex]))->Value);
+	
 		Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(dispenserSelect->Id);
 		if (pet != nullptr) {
 			txtAssignedPet->Text = pet->Name;

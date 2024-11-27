@@ -7,8 +7,8 @@ using namespace System::IO;
 SqlConnection^ BarryPersistance::Persistance::GetConnection()
 {
     SqlConnection^ conn = gcnew SqlConnection();
-    String^ password = "BarryBites123";
-    String^ serverName = "barrybites.ci18bdbqfkoj.us-east-1.rds.amazonaws.com";
+    String^ password = "barrybites123";
+    String^ serverName = "barrybites.ccoaqutqeysh.us-east-1.rds.amazonaws.com";
     conn->ConnectionString = "Server=" + serverName + ";Database = barrybites;User ID = admin; Password = " +
         password + ";";
     conn->Open();
