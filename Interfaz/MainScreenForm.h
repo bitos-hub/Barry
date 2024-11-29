@@ -33,6 +33,7 @@ namespace Interfaz {
 	{
 	public:
 		Thread^ myThread;
+		Thread^ myThread2;
 		Pet^ petSelected;
 		Dispenser^ dispenserSelect;
 		MainScreenForm(void)
@@ -1147,6 +1148,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		btnUpdateWeight->Enabled = false;
 		myThread = gcnew Thread(gcnew ThreadStart(this, &MainScreenForm::MyExecutionProcess));
 		myThread->Start();
+		myThread2 = gcnew Thread(gcnew ThreadStart(this, &MainScreenForm::MyExecutionProcess2));
+		myThread2->Start();
 	}
 		   delegate void MyDelegate();
 
@@ -1160,6 +1163,24 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 					   return;
 				   }
 			   }
+		   }
+
+		   delegate void MyDelegate2();
+
+		   void MyExecutionProcess2() {
+			   while (true) {
+				   try {
+					   myThread->Sleep(60000);
+					   Invoke(gcnew MyDelegate2(this, &MainScreenForm::Dispense));
+				   }
+				   catch (Exception^ ex) {
+					   return;
+				   }
+			   }
+		   }
+
+		   void Dispense() {
+
 		   }
 
 		   void UpdateTexBox() {
@@ -1337,7 +1358,11 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		try {
 			Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 			int id = pet->Id;
-			if (pet->PetDispenser != nullptr) {
+			Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(id);
+			Food^ food = dispensador->ComidaAsignada;
+			food->FoodAmount = ((food->FoodAmount)*1000 - pet->FoodServing)/1000;
+			//Service::UpdateFood(food);
+			if (dispensador != nullptr) {
 				String^ result = Service::DispenseFoodUART(id);
 				MessageBox::Show(result);
 				String^ LastTimeFed = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd HH:mm:ss");
@@ -1347,7 +1372,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			}
 
 			else {
-				MessageBox::Show("No se pudo alimentar correctamente debido que tiene un dispensador asignado.");
+				MessageBox::Show("No se pudo alimentar correctamente debido que no tiene un dispensador asignado.");
 			}
 			
 			//Food^ foodDispensed = Service::ConsultarComidaDispensador(pet);

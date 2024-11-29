@@ -34,6 +34,7 @@
       <IsPlateFull>false</IsPlateFull>
       <DispenserFood>0</DispenserFood>
       <DispensadorAsignado>
+        <Id>0</Id>
         <Marca>Xiaomi</Marca>
         <Modelo>X105</Modelo>
         <Color>Rosado</Color>
@@ -84,6 +85,7 @@
       <IsPlateFull>false</IsPlateFull>
       <DispenserFood>0</DispenserFood>
       <DispensadorAsignado>
+        <Id>0</Id>
         <Marca>Samsung</Marca>
         <Modelo>SM210</Modelo>
         <Color>Verde</Color>
@@ -100,6 +102,7 @@
           <TimesDispensedWater>0</TimesDispensedWater>
           <TimesDispensedFood>4</TimesDispensedFood>
           <Date>2024/11/11</Date>
+          <Id>0</Id>
         </Dispensation>
       </dispensationRecord>
     </PetDispenser>
@@ -142,6 +145,7 @@
       <IsPlateFull>false</IsPlateFull>
       <DispenserFood>0</DispenserFood>
       <DispensadorAsignado>
+        <Id>0</Id>
         <Marca>Samsung</Marca>
         <Modelo>SM320</Modelo>
         <Color>Rosado</Color>
@@ -190,6 +194,7 @@
       <IsPlateFull>false</IsPlateFull>
       <DispenserFood>0</DispenserFood>
       <DispensadorAsignado>
+        <Id>0</Id>
         <Marca>Nexxt</Marca>
         <Modelo>NXXT03</Modelo>
         <Color>Negro</Color>

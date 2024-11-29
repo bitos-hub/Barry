@@ -606,10 +606,10 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 
 	try {
 		OpenPort();
-		Pet^ pet = QueryPetById(petId);
-		Dispenser^ d = pet->PetDispenser;
+		Pet^ pet = SQLQueryPetById(petId);
+		Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(petId);
 
-		List<Dispensation^>^DispensationList = Service::ConsultarDispensadasPorDispensador(d);
+		List<Dispensation^>^DispensationList = Service::ConsultarDispensadasPorDispensador(dispensador);
 
 		Dispensation^ existingDispensation = nullptr;
 		for each (Dispensation ^ disp in DispensationList) {
@@ -626,22 +626,21 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 			existingDispensation = gcnew Dispensation();
 			existingDispensation->FoodDispensationInitialize();
 			DispensationList->Add(existingDispensation);
-			d->dispensationRecord = DispensationList;
+			dispensador->dispensationRecord = DispensationList;
 		}
 		else {
 			existingDispensation->TimesDispensedFood += 1;
 			for (int i = 0; i < DispensationList->Count; i++) {
 				if (DispensationList[i]->Date == existingDispensation->Date) {
 					DispensationList[i] = existingDispensation;
-					d->dispensationRecord = DispensationList;
+					dispensador->dispensationRecord = DispensationList;
 					break;
 				}
 			}
 		}
-		pet->PetDispenser = d;
-		Persistance::ActualizarDispensador(d);
-		Service::UpdatePet(pet);
-
+		//pet->PetDispenser = dispensador;
+		Persistance::ActualizarDispensador(dispensador);
+		int update =Service::SQLUpdatePet(pet);
 
 		result = "Se están dispensando " + Convert::ToString(pet->FoodServing) + "g en el plato de " + pet->Name;
 		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);

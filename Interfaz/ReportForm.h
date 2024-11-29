@@ -405,7 +405,7 @@ namespace Interfaz {
 #pragma endregion
 		public:
 			void FillPetsComboPets() {
-				List<Pet^>^ petsList = Service::QueryAllPets();
+				List<Pet^>^ petsList = Service::SQLQueryAllPets();
 				if (petsList != nullptr) {
 					cmbPets->Items->Clear();
 					for each (Pet ^ pet in petsList) {
@@ -433,8 +433,8 @@ private: System::Void pictureBox4_Click(System::Object^ sender, System::EventArg
 private: System::Void bntGenerarReporte_Click(System::Object^ sender, System::EventArgs^ e) {
 	dispensedFoodTimeschart->Series["Veces Dispensado"]->Points->Clear();
 	dispensedWhaterTimeschart->Series["Veces Dispensado agua"]->Points->Clear();
-	Pet^ pet = Service::QueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
-
+	Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
+	Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(pet->Id);
 	List<Dispensation^>^ dispensationList = Service::ConsultarDispensadasPorDispensador(pet->PetDispenser);
 	if ((dtpEndDate->Value > dtpStartDate->Value)) {
 		DateTime startDate = dtpStartDate->Value;
