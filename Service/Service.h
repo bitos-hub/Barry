@@ -58,7 +58,7 @@ namespace ServiceBarry {
 		static List<Food^>^ SearchFoodByBrand(String^);
 	public:
 		static int VerifyAdmin();
-
+		static List<int>^ ConsultarHorariosPorIdDispensador(int);
 	public:
 		//Arduino
 		static String^ SendDispenserInfoUART(int petId);

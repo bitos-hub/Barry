@@ -1180,7 +1180,21 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		   }
 
 		   void Dispense() {
-
+			   List<Dispenser^>^ dispenserList = Service::ConsultarTodosDispensadores();
+			   for each (Dispenser ^ disp in dispenserList) {
+				   if (disp->ModoOperacion == "Horarios") {
+					   DateTime^ now = DateTime::Now;
+					   String^ formattedTime = now->ToString("HHmm");
+					   int time = Convert::ToInt32(formattedTime);
+					   List<int>^ schedules =Service::ConsultarHorariosPorIdDispensador(disp->Id);
+					   for each (int schedule in schedules) {
+						   if (schedule == time) {
+							   Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(disp->Id);
+							   Service::DispenseFoodUART(pet->Id);
+						   }
+					   }
+				   }
+			   }
 		   }
 
 		   void UpdateTexBox() {
@@ -1361,7 +1375,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(id);
 			Food^ food = dispensador->ComidaAsignada;
 			food->FoodAmount = ((food->FoodAmount)*1000 - pet->FoodServing)/1000;
-			//Service::UpdateFood(food);
+			Service::UpdateFood(food);
 			if (dispensador != nullptr) {
 				String^ result = Service::DispenseFoodUART(id);
 				MessageBox::Show(result);
@@ -1407,7 +1421,7 @@ private: System::Void btnHydrate_Click(System::Object^ sender, System::EventArgs
 		Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 		int id = pet->Id;
 		if (pet->PetDispenser != nullptr) {
-
+			//ACTUALIZAR LO DE PET DISPENSER
 			String^ result = Service::DispenseWater(id);
 			MessageBox::Show(result);
 			String^ LastTimeHidrated = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd HH:mm:ss");

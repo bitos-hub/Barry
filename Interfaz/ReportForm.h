@@ -435,7 +435,7 @@ private: System::Void bntGenerarReporte_Click(System::Object^ sender, System::Ev
 	dispensedWhaterTimeschart->Series["Veces Dispensado agua"]->Points->Clear();
 	Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 	Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(pet->Id);
-	List<Dispensation^>^ dispensationList = Service::ConsultarDispensadasPorDispensador(pet->PetDispenser);
+	List<Dispensation^>^ dispensationList = Service::ConsultarDispensadasPorDispensador(dispensador);
 	if ((dtpEndDate->Value > dtpStartDate->Value)) {
 		DateTime startDate = dtpStartDate->Value;
 		DateTime endDate = dtpEndDate->Value;

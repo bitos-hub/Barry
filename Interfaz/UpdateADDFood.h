@@ -58,7 +58,7 @@ namespace Interfaz {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -284,13 +284,25 @@ namespace Interfaz {
 
 		}
 	}
-private: System::Void UpdateADDFood_Load(System::Object^ sender, System::EventArgs^ e) {
-	if (foodSent == nullptr) {
-		btnAddUpdate->Text = "Añadir Comida";
+	private: System::Void UpdateADDFood_Load(System::Object^ sender, System::EventArgs^ e) {
+		if (foodSent == nullptr) {
+			btnAddUpdate->Text = "Añadir Comida";
+		}
+		else {
+			btnAddUpdate->Text = "Modificar Comida";
+			FillText(foodSent);
+		}
 	}
-	else {
-		btnAddUpdate->Text = "Modificar Comida";
-	}
+	public:
+		void FillText(Food^ food) {
+			foodSent = Service::QueryFoodbyId(food->Id);
+			FoodNametxt->Text = foodSent->Name;
+			FoodBrandtxt->Text = foodSent->FoodBrand;
+			Statustxt->Text = foodSent->Status;
+			FoodPricetxt->Text = Convert::ToString(foodSent->FoodPrice);
+			FoodAmountxt->Text = Convert::ToString(foodSent->FoodAmount);
+
+		}
+	};
 }
-};
-}
+

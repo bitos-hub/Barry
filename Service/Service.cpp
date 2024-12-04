@@ -21,6 +21,11 @@ int ServiceBarry::Service::VerifyAdmin()
 	return 0;
 }
 
+List<int>^ ServiceBarry::Service::ConsultarHorariosPorIdDispensador(int id)
+{
+	return Persistance::ConsultarHorariosPorIdDispensador(id);
+}
+
 
 int ServiceBarry::Service::AddUsuario(User^ usuario)
 {
@@ -643,8 +648,8 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 		int update =Service::SQLUpdatePet(pet);
 
 		result = "Se están dispensando " + Convert::ToString(pet->FoodServing) + "g en el plato de " + pet->Name;
-		Byte FoodServingByte = Convert::ToByte(pet->FoodServing);
-		ArduinoPort->Write(Convert::ToString(FoodServingByte, 16));
+		String^ dataToSend = Convert::ToString(pet->FoodServing) + "\n";
+		ArduinoPort->Write(dataToSend);
 
 
 	}
@@ -722,8 +727,8 @@ void ServiceBarry::Service::OpenPort()
 {
 	try {
 		ArduinoPort = gcnew SerialPort();
-		ArduinoPort->PortName = "COM4";
-		ArduinoPort->BaudRate = 9600;
+		ArduinoPort->PortName = "COM6";
+		ArduinoPort->BaudRate = 115200;
 		ArduinoPort->Open();
 	}
 	catch (Exception^ ex) {
