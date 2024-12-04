@@ -614,7 +614,7 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 		Pet^ pet = SQLQueryPetById(petId);
 		Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(petId);
 
-		List<Dispensation^>^DispensationList = Service::ConsultarDispensadasPorDispensador(dispensador);
+		List<Dispensation^>^DispensationList = dispensador->dispensationRecord;
 
 		Dispensation^ existingDispensation = nullptr;
 		for each (Dispensation ^ disp in DispensationList) {
@@ -630,22 +630,23 @@ String^ ServiceBarry::Service::DispenseFoodUART(int petId)
 		if (existingDispensation == nullptr) {
 			existingDispensation = gcnew Dispensation();
 			existingDispensation->FoodDispensationInitialize();
-			DispensationList->Add(existingDispensation);
-			dispensador->dispensationRecord = DispensationList;
+			Persistance::AgregarDispensadasPorDispensador(dispensador->Id, existingDispensation);
+			
 		}
 		else {
 			existingDispensation->TimesDispensedFood += 1;
-			for (int i = 0; i < DispensationList->Count; i++) {
+			Persistance::ActualizarDipensadas( dispensador->Id, existingDispensation);
+			/*for (int i = 0; i < DispensationList->Count; i++) {
 				if (DispensationList[i]->Date == existingDispensation->Date) {
 					DispensationList[i] = existingDispensation;
 					dispensador->dispensationRecord = DispensationList;
 					break;
 				}
-			}
+			}*/
 		}
 		//pet->PetDispenser = dispensador;
-		Persistance::ActualizarDispensador(dispensador);
-		int update =Service::SQLUpdatePet(pet);
+		//Persistance::ActualizarDispensador(dispensador);
+		//int update =Service::SQLUpdatePet(pet);
 
 		result = "Se están dispensando " + Convert::ToString(pet->FoodServing) + "g en el plato de " + pet->Name;
 		String^ dataToSend = Convert::ToString(pet->FoodServing) + "\n";
@@ -673,9 +674,9 @@ String^ ServiceBarry::Service::DispenseWater(int petId)
 	Pet^ pet = QueryPetById(petId);
 	try {
 		OpenPort();
-		Dispenser^ d = pet->PetDispenser;
+		Dispenser^ d =ConsultarDispensadorPorMascota(petId);
 
-		List<Dispensation^>^ DispensationList = Service::ConsultarDispensadasPorDispensador(d);
+		List<Dispensation^>^ DispensationList = d->dispensationRecord;
 
 		Dispensation^ existingDispensation = nullptr;
 		for each (Dispensation ^ disp in DispensationList) {
@@ -691,22 +692,19 @@ String^ ServiceBarry::Service::DispenseWater(int petId)
 		if (existingDispensation == nullptr) {
 			existingDispensation = gcnew Dispensation();
 			existingDispensation->WaterDispensationInitialize();
-			DispensationList->Add(existingDispensation);
-			d->dispensationRecord = DispensationList;
+			Persistance::AgregarDispensadasPorDispensador(d->Id,existingDispensation);
 		}
 		else {
 			existingDispensation->TimesDispensedWater += 1;
-			for (int i = 0; i < DispensationList->Count; i++) {
+			Persistance::ActualizarDispensadasPorDispensador(d->Id, existingDispensation);
+			/*for (int i = 0; i < DispensationList->Count; i++) {
 				if (DispensationList[i]->Date == existingDispensation->Date) {
 					DispensationList[i] = existingDispensation;
 					d->dispensationRecord = DispensationList;
 					break;
 				}
-			}
+			}*/
 		}
-		pet->PetDispenser = d;
-		Persistance::ActualizarDispensador(d);
-		Service::UpdatePet(pet);
 
 		result = "Se están dispensando " + Convert::ToString(pet->WaterServing) + "mL en el recipiente de " + pet->Name;
 		Byte WaterServingByte = Convert::ToByte(pet->WaterServing);

@@ -637,7 +637,7 @@ Dispenser^ BarryPersistance::Persistance::ConsultarDispensadorPorId(int id)
             d->ComidaAsignada = SQLQueryFoodById(id_comida_asignada);
             d->ModoOperacion = reader["ModoOperacion"]->ToString();
             int id_disp_record = Convert::ToInt32(reader["IdDispensationRecord"]->ToString());
-            //d->dispensationRecord = ConsultarDispensadasPorIdDispensador(id_disp_record);
+            d->dispensationRecord = ConsultarDispensadasPorIdDispensador(id);
             d->IsPlateFull = Convert::ToBoolean(reader["IsPlateFull"]->ToString());
             d->DispenserFood = Convert::ToDouble(reader["DispenserFood"]->ToString());
             d->FoodAmount = Convert::ToDouble(reader["FoodAmount"]->ToString());
@@ -711,20 +711,17 @@ void BarryPersistance::Persistance::AgregarDispensadasPorDispensador(int idDispe
         String^ sqlStr = "dbo.usp_AddDispensadasPorDispensador";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
-        cmd->Parameters->Add("@date", System::Data::SqlDbType::VarChar,10);
+        cmd->Parameters->Add("@DispensedDate", System::Data::SqlDbType::VarChar,10);
         cmd->Parameters->Add("@idDispenser", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@timesDispensedFood", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@timesDispensedWater", System::Data::SqlDbType::Int);
         cmd->Prepare();
-        try {
-            cmd->Parameters["@date"]->Value = dispensada->Date;
-            cmd->Parameters["@idDispenser"]->Value = idDispensador;
-            cmd->Parameters["@timesDispensedFood"]->Value = dispensada->TimesDispensedFood;
-            cmd->Parameters["@timesDispensedWater"]->Value = dispensada->TimesDispensedWater;
-        }
-        catch (SqlException^ e) {
-            throw e;
-        }
+     
+        cmd->Parameters["@DispensedDate"]->Value = dispensada->Date;
+        cmd->Parameters["@idDispenser"]->Value = idDispensador;
+        cmd->Parameters["@timesDispensedFood"]->Value = dispensada->TimesDispensedFood;
+        cmd->Parameters["@timesDispensedWater"]->Value = dispensada->TimesDispensedWater;
+ 
         //Paso 3: Ejecutar la sentencia de BD
         cmd->ExecuteNonQuery();
     }
@@ -747,13 +744,13 @@ void BarryPersistance::Persistance::ActualizarDispensadasPorDispensador(int idDi
         String^ sqlStr = "dbo.usp_ActualizarDispensadasPorDispensador";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
-        cmd->Parameters->Add("@date", System::Data::SqlDbType::VarChar, 10);
+        cmd->Parameters->Add("@DispensedDate", System::Data::SqlDbType::VarChar, 10);
         cmd->Parameters->Add("@idDispenser", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@timesDispensedFood", System::Data::SqlDbType::Int);
         cmd->Parameters->Add("@timesDispensedWater", System::Data::SqlDbType::Int);
         cmd->Prepare();
         try {
-            cmd->Parameters["@date"]->Value = dispensada->Date;
+            cmd->Parameters["@DispensedDate"]->Value = dispensada->Date;
             cmd->Parameters["@idDispenser"]->Value = idDispensasor;
             cmd->Parameters["@timesDispensedFood"]->Value = dispensada->TimesDispensedFood;
             cmd->Parameters["@timesDispensedWater"]->Value = dispensada->TimesDispensedWater;
@@ -982,7 +979,7 @@ List<Dispensation^>^ BarryPersistance::Persistance::ConsultarDispensadasPorIdDis
         //Paso 4: Procesar los resultados
         while (reader->Read()) {
             Dispensation^ dispensadas = gcnew Dispensation();
-            dispensadas->Date = (reader["Date"]->ToString());
+            dispensadas->Date = (reader["DispensedDate"]->ToString());
             dispensadas->TimesDispensedFood = Convert::ToInt32(reader["TimesDispensedFood"]->ToString());
             dispensadas->TimesDispensedWater = Convert::ToInt32(reader["TimesDispensedWater"]->ToString());
             lista_dispensadas->Add(dispensadas);
@@ -997,6 +994,43 @@ List<Dispensation^>^ BarryPersistance::Persistance::ConsultarDispensadasPorIdDis
         if (conn != nullptr) conn->Close();
     }
     return lista_dispensadas;
+}
+
+void BarryPersistance::Persistance::ActualizarDipensadas(int dispensadorId, Dispensation^ disp)
+{
+
+    SqlConnection^ conn;
+    try {
+        //Paso 1: Abrir y obtener la conexión a la BD
+        conn = GetConnection();
+        String^ sqlStr = "dbo.usp_ActualizarDispensadasPorDispensador";
+        SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+        cmd->CommandType = System::Data::CommandType::StoredProcedure;
+        cmd->Parameters->Add("@DispensedDate", System::Data::SqlDbType::VarChar, 10);
+        cmd->Parameters->Add("@idDispenser", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@timesDispensedFood", System::Data::SqlDbType::Int);
+        cmd->Parameters->Add("@timesDispensedWater", System::Data::SqlDbType::Int);
+        cmd->Prepare();
+        try {
+            cmd->Parameters["@DispensedDate"]->Value = disp->Date;
+            cmd->Parameters["@idDispenser"]->Value = dispensadorId;
+            cmd->Parameters["@timesDispensedFood"]->Value = disp->TimesDispensedFood;
+            cmd->Parameters["@timesDispensedWater"]->Value = disp->TimesDispensedWater;
+        }
+        catch (SqlException^ e) {
+            throw e;
+        }
+        //Paso 3: Ejecutar la sentencia de BD
+        cmd->ExecuteNonQuery();
+    }
+    catch (Exception^ ex) {
+        throw ex;
+    }
+
+    finally {
+        //Paso 5: Cerrar los objetos de conexión de la BD.
+        if (conn != nullptr) conn->Close();
+    }
 }
 
 int BarryPersistance::Persistance::AddDipensadorDisponible(DispensadorDisponible^ dispensador)
