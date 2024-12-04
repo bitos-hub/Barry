@@ -1406,7 +1406,7 @@ private: System::Void btnHydrate_Click(System::Object^ sender, System::EventArgs
 	try {
 		Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 		int id = pet->Id;
-		if (pet->PetDispenser != nullptr) {
+		if (pet->PetDispenser == nullptr) {
 
 			String^ result = Service::DispenseWater(id);
 			MessageBox::Show(result);
