@@ -71,6 +71,7 @@ namespace BarryPersistance {
 		static void EliminarDispensadorPorMascota(Pet^ mascota, Dispenser^ dispensador);
 		static List<int>^ ConsultarHorariosPorIdDispensador(int id);
 		static List<Dispensation^>^ ConsultarDispensadasPorIdDispensador(int id);
+		static void ActualizarDipensadas(int dispensadorId, Dispensation^ disp);
 
 
 		/*Fran*/
