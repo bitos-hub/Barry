@@ -708,7 +708,7 @@ void BarryPersistance::Persistance::AgregarDispensadasPorDispensador(int idDispe
     try {
         //Paso 1: Abrir y obtener la conexión a la BD
         conn = GetConnection();
-        String^ sqlStr = "dbo.usp_AddDispensadasPorDispensador";
+        String^ sqlStr = "dbo.usp_AddDispensadasPorDisp";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
         cmd->Parameters->Add("@DispensedDate", System::Data::SqlDbType::VarChar,10);
@@ -2302,7 +2302,7 @@ DispensadorDisponible^ BarryPersistance::Persistance::ConsultarDispensadorDispon
 
         //Paso 2: Preparar la sentencia SQL
         //String^ sqlStr = "SELECT * FROM ROBOT_WAITER WHERE ID=" + robotId;
-        String^ sqlStr = "dbo.usp_ConsultarDispDisponiblePorId";
+        String^ sqlStr = "dbo.usp_ConsultarDDPorId";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
         cmd->Parameters->Add("@id", System::Data::SqlDbType::Int);

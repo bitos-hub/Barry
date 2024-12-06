@@ -459,7 +459,7 @@ void ServiceBarry::Service::AsignarComidaDispensador(Dispenser^ dispensador, Foo
 {
 	Persistance::lista_dispensadores = ConsultarTodosDispensadores();
 	for each (Dispenser^ d in Persistance::lista_dispensadores) {
-		if (d->Id = dispensador->Id) {
+		if (d->Id == dispensador->Id) {
 			d->ComidaAsignada = comida;
 			ActualizarDispensador(d);
 		}
@@ -725,7 +725,7 @@ void ServiceBarry::Service::OpenPort()
 {
 	try {
 		ArduinoPort = gcnew SerialPort();
-		ArduinoPort->PortName = "COM6";
+		ArduinoPort->PortName = "COM4";
 		ArduinoPort->BaudRate = 115200;
 		ArduinoPort->Open();
 	}
