@@ -80,18 +80,18 @@ namespace Interfaz {
 			// 
 			// txtComida
 			// 
-			this->txtComida->Location = System::Drawing::Point(109, 34);
-			this->txtComida->Margin = System::Windows::Forms::Padding(2);
+			this->txtComida->Location = System::Drawing::Point(145, 42);
+			this->txtComida->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtComida->Name = L"txtComida";
-			this->txtComida->Size = System::Drawing::Size(142, 20);
+			this->txtComida->Size = System::Drawing::Size(188, 22);
 			this->txtComida->TabIndex = 68;
 			// 
 			// btnBuscarMarca
 			// 
-			this->btnBuscarMarca->Location = System::Drawing::Point(139, 64);
-			this->btnBuscarMarca->Margin = System::Windows::Forms::Padding(2);
+			this->btnBuscarMarca->Location = System::Drawing::Point(185, 79);
+			this->btnBuscarMarca->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnBuscarMarca->Name = L"btnBuscarMarca";
-			this->btnBuscarMarca->Size = System::Drawing::Size(76, 22);
+			this->btnBuscarMarca->Size = System::Drawing::Size(101, 27);
 			this->btnBuscarMarca->TabIndex = 67;
 			this->btnBuscarMarca->Text = L"Buscar";
 			this->btnBuscarMarca->UseVisualStyleBackColor = true;
@@ -102,13 +102,13 @@ namespace Interfaz {
 			this->dgvComida->AllowUserToAddRows = false;
 			this->dgvComida->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvComida->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->dataGridViewTextBoxColumn1 });
-			this->dgvComida->Location = System::Drawing::Point(42, 101);
-			this->dgvComida->Margin = System::Windows::Forms::Padding(2);
+			this->dgvComida->Location = System::Drawing::Point(56, 124);
+			this->dgvComida->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvComida->Name = L"dgvComida";
 			this->dgvComida->RowHeadersVisible = false;
 			this->dgvComida->RowHeadersWidth = 82;
 			this->dgvComida->RowTemplate->Height = 33;
-			this->dgvComida->Size = System::Drawing::Size(223, 170);
+			this->dgvComida->Size = System::Drawing::Size(297, 209);
 			this->dgvComida->TabIndex = 66;
 			this->dgvComida->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &BuscarComida::dgvMarcas_CellClick);
 			// 
@@ -122,27 +122,28 @@ namespace Interfaz {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(39, 35);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(52, 43);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(42, 13);
+			this->label1->Size = System::Drawing::Size(54, 16);
 			this->label1->TabIndex = 65;
 			this->label1->Text = L"Comida";
 			// 
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox1->Location = System::Drawing::Point(24, 22);
+			this->pictureBox1->Location = System::Drawing::Point(32, 27);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(254, 267);
+			this->pictureBox1->Size = System::Drawing::Size(339, 329);
 			this->pictureBox1->TabIndex = 64;
 			this->pictureBox1->TabStop = false;
 			// 
 			// btnCancelar
 			// 
-			this->btnCancelar->Location = System::Drawing::Point(164, 299);
+			this->btnCancelar->Location = System::Drawing::Point(219, 368);
+			this->btnCancelar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnCancelar->Name = L"btnCancelar";
-			this->btnCancelar->Size = System::Drawing::Size(101, 28);
+			this->btnCancelar->Size = System::Drawing::Size(135, 34);
 			this->btnCancelar->TabIndex = 76;
 			this->btnCancelar->Text = L"Cancelar";
 			this->btnCancelar->UseVisualStyleBackColor = true;
@@ -150,9 +151,10 @@ namespace Interfaz {
 			// 
 			// btnAgregar
 			// 
-			this->btnAgregar->Location = System::Drawing::Point(29, 299);
+			this->btnAgregar->Location = System::Drawing::Point(39, 368);
+			this->btnAgregar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(101, 28);
+			this->btnAgregar->Size = System::Drawing::Size(135, 34);
 			this->btnAgregar->TabIndex = 75;
 			this->btnAgregar->Text = L"Aceptar";
 			this->btnAgregar->UseVisualStyleBackColor = true;
@@ -160,9 +162,9 @@ namespace Interfaz {
 			// 
 			// BuscarComida
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(302, 339);
+			this->ClientSize = System::Drawing::Size(403, 417);
 			this->Controls->Add(this->btnCancelar);
 			this->Controls->Add(this->btnAgregar);
 			this->Controls->Add(this->txtComida);
@@ -170,8 +172,9 @@ namespace Interfaz {
 			this->Controls->Add(this->dgvComida);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"BuscarComida";
-			this->Text = L"BuscarComida";
+			this->Text = L"Buscador de comida";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvComida))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);

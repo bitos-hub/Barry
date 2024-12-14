@@ -65,17 +65,19 @@ namespace Interfaz {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(21, 26);
+			this->label1->Location = System::Drawing::Point(28, 32);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(223, 13);
+			this->label1->Size = System::Drawing::Size(286, 16);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"¿Estás seguro del dispensador seleccionado\?";
 			// 
 			// btnSi
 			// 
-			this->btnSi->Location = System::Drawing::Point(55, 65);
+			this->btnSi->Location = System::Drawing::Point(73, 80);
+			this->btnSi->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnSi->Name = L"btnSi";
-			this->btnSi->Size = System::Drawing::Size(59, 27);
+			this->btnSi->Size = System::Drawing::Size(79, 33);
 			this->btnSi->TabIndex = 1;
 			this->btnSi->Text = L"Sí";
 			this->btnSi->UseVisualStyleBackColor = true;
@@ -83,9 +85,10 @@ namespace Interfaz {
 			// 
 			// btnNo
 			// 
-			this->btnNo->Location = System::Drawing::Point(146, 65);
+			this->btnNo->Location = System::Drawing::Point(195, 80);
+			this->btnNo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnNo->Name = L"btnNo";
-			this->btnNo->Size = System::Drawing::Size(59, 27);
+			this->btnNo->Size = System::Drawing::Size(79, 33);
 			this->btnNo->TabIndex = 2;
 			this->btnNo->Text = L"No";
 			this->btnNo->UseVisualStyleBackColor = true;
@@ -93,14 +96,15 @@ namespace Interfaz {
 			// 
 			// VentanaConfirmacion
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(262, 117);
+			this->ClientSize = System::Drawing::Size(349, 144);
 			this->Controls->Add(this->btnNo);
 			this->Controls->Add(this->btnSi);
 			this->Controls->Add(this->label1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"VentanaConfirmacion";
-			this->Text = L"VentanaConfirmacion";
+			this->Text = L"--";
 			this->ResumeLayout(false);
 			this->PerformLayout();
 

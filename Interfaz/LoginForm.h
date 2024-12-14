@@ -50,7 +50,7 @@ namespace Interfaz {
 	private: System::Windows::Forms::Label^ label1;
 
 	private: System::Windows::Forms::LinkLabel^ linkCreateAccount;
-	private: System::Windows::Forms::LinkLabel^ linkPasswordForgotten;
+
 
 
 	private: System::Windows::Forms::Label^ label2;
@@ -81,7 +81,6 @@ namespace Interfaz {
 			this->btnAcces = (gcnew System::Windows::Forms::Button());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->linkCreateAccount = (gcnew System::Windows::Forms::LinkLabel());
-			this->linkPasswordForgotten = (gcnew System::Windows::Forms::LinkLabel());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
@@ -167,16 +166,6 @@ namespace Interfaz {
 			this->linkCreateAccount->Text = L"Crear cuenta";
 			this->linkCreateAccount->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &LoginForm::linkCreateAccount_LinkClicked);
 			// 
-			// linkPasswordForgotten
-			// 
-			this->linkPasswordForgotten->AutoSize = true;
-			this->linkPasswordForgotten->Location = System::Drawing::Point(51, 490);
-			this->linkPasswordForgotten->Name = L"linkPasswordForgotten";
-			this->linkPasswordForgotten->Size = System::Drawing::Size(186, 16);
-			this->linkPasswordForgotten->TabIndex = 23;
-			this->linkPasswordForgotten->TabStop = true;
-			this->linkPasswordForgotten->Text = L"¿Has olvidado la contraseña\?";
-			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
@@ -193,9 +182,7 @@ namespace Interfaz {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(843, 526);
-			this->ControlBox = false;
 			this->Controls->Add(this->label2);
-			this->Controls->Add(this->linkPasswordForgotten);
 			this->Controls->Add(this->linkCreateAccount);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnAcces);
@@ -205,7 +192,7 @@ namespace Interfaz {
 			this->Controls->Add(this->label3);
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"LoginForm";
-			this->Text = L"LoginForm";
+			this->Text = L"Inicio";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &LoginForm::LoginForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

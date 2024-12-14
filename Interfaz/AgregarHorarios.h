@@ -88,8 +88,8 @@ namespace Interfaz {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(AgregarHorarios::typeid));
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->txt_horario = (gcnew System::Windows::Forms::TextBox());
@@ -104,9 +104,10 @@ namespace Interfaz {
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(12, 22);
+			this->pictureBox2->Location = System::Drawing::Point(16, 27);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(48, 50);
+			this->pictureBox2->Size = System::Drawing::Size(64, 62);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 18;
 			this->pictureBox2->TabStop = false;
@@ -116,26 +117,29 @@ namespace Interfaz {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(71, 24);
+			this->label1->Location = System::Drawing::Point(95, 30);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(241, 21);
+			this->label1->Size = System::Drawing::Size(293, 26);
 			this->label1->TabIndex = 21;
 			this->label1->Text = L"Horario de porción (HHmm)";
 			// 
 			// txt_horario
 			// 
-			this->txt_horario->Location = System::Drawing::Point(74, 52);
+			this->txt_horario->Location = System::Drawing::Point(99, 64);
+			this->txt_horario->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txt_horario->Name = L"txt_horario";
-			this->txt_horario->Size = System::Drawing::Size(273, 20);
+			this->txt_horario->Size = System::Drawing::Size(363, 22);
 			this->txt_horario->TabIndex = 22;
 			// 
 			// btn_agregar
 			// 
 			this->btn_agregar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->btn_agregar->Location = System::Drawing::Point(406, 123);
+			this->btn_agregar->Location = System::Drawing::Point(541, 151);
+			this->btn_agregar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_agregar->Name = L"btn_agregar";
-			this->btn_agregar->Size = System::Drawing::Size(135, 35);
+			this->btn_agregar->Size = System::Drawing::Size(180, 43);
 			this->btn_agregar->TabIndex = 23;
 			this->btn_agregar->Text = L"Agregar";
 			this->btn_agregar->UseVisualStyleBackColor = false;
@@ -145,9 +149,10 @@ namespace Interfaz {
 			// 
 			this->btn_eliminar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->btn_eliminar->Location = System::Drawing::Point(406, 184);
+			this->btn_eliminar->Location = System::Drawing::Point(541, 226);
+			this->btn_eliminar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btn_eliminar->Name = L"btn_eliminar";
-			this->btn_eliminar->Size = System::Drawing::Size(135, 35);
+			this->btn_eliminar->Size = System::Drawing::Size(180, 43);
 			this->btn_eliminar->TabIndex = 25;
 			this->btn_eliminar->Text = L"Eliminar";
 			this->btn_eliminar->UseVisualStyleBackColor = false;
@@ -155,44 +160,48 @@ namespace Interfaz {
 			// 
 			// dgv_horarios
 			// 
-			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
-			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgv_horarios->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgv_horarios->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
 			this->dgv_horarios->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgv_horarios->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->Horario });
-			this->dgv_horarios->Location = System::Drawing::Point(74, 101);
+			this->dgv_horarios->Location = System::Drawing::Point(99, 124);
+			this->dgv_horarios->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->dgv_horarios->Name = L"dgv_horarios";
+			this->dgv_horarios->RowHeadersWidth = 51;
 			this->dgv_horarios->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
-			this->dgv_horarios->Size = System::Drawing::Size(297, 167);
+			this->dgv_horarios->Size = System::Drawing::Size(396, 206);
 			this->dgv_horarios->TabIndex = 26;
 			// 
 			// Horario
 			// 
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
-			this->Horario->DefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle4->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleCenter;
+			this->Horario->DefaultCellStyle = dataGridViewCellStyle4;
 			this->Horario->HeaderText = L"Horarios";
+			this->Horario->MinimumWidth = 6;
 			this->Horario->Name = L"Horario";
 			this->Horario->Width = 253;
 			// 
 			// AgregarHorarios
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(562, 293);
+			this->ClientSize = System::Drawing::Size(749, 361);
 			this->Controls->Add(this->dgv_horarios);
 			this->Controls->Add(this->btn_eliminar);
 			this->Controls->Add(this->btn_agregar);
 			this->Controls->Add(this->txt_horario);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox2);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"AgregarHorarios";
-			this->Text = L"AgregarHorarios";
+			this->Text = L"Configurar horarios";
 			this->Load += gcnew System::EventHandler(this, &AgregarHorarios::AgregarHorarios_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgv_horarios))->EndInit();

@@ -287,10 +287,12 @@ namespace Interfaz {
 	private: System::Void UpdateADDFood_Load(System::Object^ sender, System::EventArgs^ e) {
 		if (foodSent == nullptr) {
 			btnAddUpdate->Text = "Añadir Comida";
+			this->Text = "Añadir Comida";
 		}
 		else {
 			btnAddUpdate->Text = "Modificar Comida";
 			FillText(foodSent);
+			this->Text = "Modificar Comida";
 		}
 	}
 	public:

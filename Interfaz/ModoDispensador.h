@@ -127,9 +127,10 @@ namespace Interfaz {
 			// 
 			this->btnEliminarAsignacion->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(128)), static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->btnEliminarAsignacion->Location = System::Drawing::Point(374, 170);
+			this->btnEliminarAsignacion->Location = System::Drawing::Point(499, 209);
+			this->btnEliminarAsignacion->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnEliminarAsignacion->Name = L"btnEliminarAsignacion";
-			this->btnEliminarAsignacion->Size = System::Drawing::Size(135, 35);
+			this->btnEliminarAsignacion->Size = System::Drawing::Size(180, 43);
 			this->btnEliminarAsignacion->TabIndex = 42;
 			this->btnEliminarAsignacion->Text = L"Eliminar asignación";
 			this->btnEliminarAsignacion->UseVisualStyleBackColor = false;
@@ -139,9 +140,10 @@ namespace Interfaz {
 			// 
 			this->btnAsignar->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(0)));
-			this->btnAsignar->Location = System::Drawing::Point(233, 170);
+			this->btnAsignar->Location = System::Drawing::Point(311, 209);
+			this->btnAsignar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnAsignar->Name = L"btnAsignar";
-			this->btnAsignar->Size = System::Drawing::Size(135, 35);
+			this->btnAsignar->Size = System::Drawing::Size(180, 43);
 			this->btnAsignar->TabIndex = 41;
 			this->btnAsignar->Text = L"Asignar dispensador";
 			this->btnAsignar->UseVisualStyleBackColor = false;
@@ -150,9 +152,10 @@ namespace Interfaz {
 			// cmbIdDispensadores
 			// 
 			this->cmbIdDispensadores->FormattingEnabled = true;
-			this->cmbIdDispensadores->Location = System::Drawing::Point(53, 178);
+			this->cmbIdDispensadores->Location = System::Drawing::Point(71, 219);
+			this->cmbIdDispensadores->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->cmbIdDispensadores->Name = L"cmbIdDispensadores";
-			this->cmbIdDispensadores->Size = System::Drawing::Size(108, 21);
+			this->cmbIdDispensadores->Size = System::Drawing::Size(143, 24);
 			this->cmbIdDispensadores->TabIndex = 40;
 			this->cmbIdDispensadores->SelectedIndexChanged += gcnew System::EventHandler(this, &ModoDispensador::cmbIdDispensadores_SelectedIndexChanged);
 			// 
@@ -161,18 +164,20 @@ namespace Interfaz {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(49, 154);
+			this->label3->Location = System::Drawing::Point(65, 190);
+			this->label3->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(166, 21);
+			this->label3->Size = System::Drawing::Size(204, 26);
 			this->label3->TabIndex = 39;
 			this->label3->Text = L"ID del dispensador";
 			// 
 			// cmbMascotas
 			// 
 			this->cmbMascotas->FormattingEnabled = true;
-			this->cmbMascotas->Location = System::Drawing::Point(53, 122);
+			this->cmbMascotas->Location = System::Drawing::Point(71, 150);
+			this->cmbMascotas->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->cmbMascotas->Name = L"cmbMascotas";
-			this->cmbMascotas->Size = System::Drawing::Size(272, 21);
+			this->cmbMascotas->Size = System::Drawing::Size(361, 24);
 			this->cmbMascotas->TabIndex = 38;
 			this->cmbMascotas->SelectedIndexChanged += gcnew System::EventHandler(this, &ModoDispensador::cmbMascotas_SelectedIndexChanged);
 			// 
@@ -181,9 +186,10 @@ namespace Interfaz {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Yu Gothic Medium", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(50, 93);
+			this->label2->Location = System::Drawing::Point(67, 114);
+			this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(81, 21);
+			this->label2->Size = System::Drawing::Size(97, 26);
 			this->label2->TabIndex = 37;
 			this->label2->Text = L"Mascota";
 			// 
@@ -192,18 +198,20 @@ namespace Interfaz {
 			this->agreg->AutoSize = true;
 			this->agreg->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->agreg->Location = System::Drawing::Point(86, 41);
+			this->agreg->Location = System::Drawing::Point(115, 50);
+			this->agreg->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->agreg->Name = L"agreg";
-			this->agreg->Size = System::Drawing::Size(200, 33);
+			this->agreg->Size = System::Drawing::Size(251, 43);
 			this->agreg->TabIndex = 36;
 			this->agreg->Text = L"Dispensador";
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(32, 29);
+			this->pictureBox2->Location = System::Drawing::Point(43, 36);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(48, 50);
+			this->pictureBox2->Size = System::Drawing::Size(64, 62);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox2->TabIndex = 35;
 			this->pictureBox2->TabStop = false;
@@ -211,9 +219,10 @@ namespace Interfaz {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(415, 15);
+			this->pictureBox1->Location = System::Drawing::Point(553, 18);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(93, 128);
+			this->pictureBox1->Size = System::Drawing::Size(124, 158);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 34;
 			this->pictureBox1->TabStop = false;
@@ -221,17 +230,19 @@ namespace Interfaz {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(52, 238);
+			this->label1->Location = System::Drawing::Point(69, 293);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(42, 13);
+			this->label1->Size = System::Drawing::Size(54, 16);
 			this->label1->TabIndex = 43;
 			this->label1->Text = L"Comida";
 			// 
 			// btnBuscar
 			// 
-			this->btnBuscar->Location = System::Drawing::Point(133, 233);
+			this->btnBuscar->Location = System::Drawing::Point(177, 287);
+			this->btnBuscar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnBuscar->Name = L"btnBuscar";
-			this->btnBuscar->Size = System::Drawing::Size(94, 23);
+			this->btnBuscar->Size = System::Drawing::Size(125, 28);
 			this->btnBuscar->TabIndex = 45;
 			this->btnBuscar->Text = L"Buscar";
 			this->btnBuscar->UseVisualStyleBackColor = true;
@@ -239,16 +250,18 @@ namespace Interfaz {
 			// 
 			// txtComida
 			// 
-			this->txtComida->Location = System::Drawing::Point(53, 268);
+			this->txtComida->Location = System::Drawing::Point(71, 330);
+			this->txtComida->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtComida->Name = L"txtComida";
-			this->txtComida->Size = System::Drawing::Size(174, 20);
+			this->txtComida->Size = System::Drawing::Size(231, 22);
 			this->txtComida->TabIndex = 46;
 			// 
 			// btnHorario
 			// 
-			this->btnHorario->Location = System::Drawing::Point(387, 327);
+			this->btnHorario->Location = System::Drawing::Point(516, 402);
+			this->btnHorario->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnHorario->Name = L"btnHorario";
-			this->btnHorario->Size = System::Drawing::Size(121, 31);
+			this->btnHorario->Size = System::Drawing::Size(161, 38);
 			this->btnHorario->TabIndex = 47;
 			this->btnHorario->Text = L"Configure los horarios";
 			this->btnHorario->UseVisualStyleBackColor = true;
@@ -258,9 +271,10 @@ namespace Interfaz {
 			// label4
 			// 
 			this->label4->AutoSize = true;
-			this->label4->Location = System::Drawing::Point(51, 336);
+			this->label4->Location = System::Drawing::Point(68, 414);
+			this->label4->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(111, 13);
+			this->label4->Size = System::Drawing::Size(140, 16);
 			this->label4->TabIndex = 49;
 			this->label4->Text = L"Modo de alimentación";
 			// 
@@ -268,9 +282,10 @@ namespace Interfaz {
 			// 
 			this->cmbModos->FormattingEnabled = true;
 			this->cmbModos->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Horarios", L"Detector de movimiento" });
-			this->cmbModos->Location = System::Drawing::Point(186, 333);
+			this->cmbModos->Location = System::Drawing::Point(248, 410);
+			this->cmbModos->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->cmbModos->Name = L"cmbModos";
-			this->cmbModos->Size = System::Drawing::Size(148, 21);
+			this->cmbModos->Size = System::Drawing::Size(196, 24);
 			this->cmbModos->TabIndex = 53;
 			this->cmbModos->SelectedIndexChanged += gcnew System::EventHandler(this, &ModoDispensador::cmbModos_SelectedIndexChanged);
 			// 
@@ -278,51 +293,57 @@ namespace Interfaz {
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 				static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->pictureBox3->Location = System::Drawing::Point(285, 220);
+			this->pictureBox3->Location = System::Drawing::Point(380, 271);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(203, 91);
+			this->pictureBox3->Size = System::Drawing::Size(271, 112);
 			this->pictureBox3->TabIndex = 58;
 			this->pictureBox3->TabStop = false;
 			// 
 			// txtAgua
 			// 
-			this->txtAgua->Location = System::Drawing::Point(359, 254);
+			this->txtAgua->Location = System::Drawing::Point(479, 313);
+			this->txtAgua->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtAgua->Name = L"txtAgua";
-			this->txtAgua->Size = System::Drawing::Size(113, 20);
+			this->txtAgua->Size = System::Drawing::Size(149, 22);
 			this->txtAgua->TabIndex = 62;
 			// 
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(295, 257);
+			this->label6->Location = System::Drawing::Point(393, 316);
+			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(55, 13);
+			this->label6->Size = System::Drawing::Size(68, 16);
 			this->label6->TabIndex = 61;
 			this->label6->Text = L"Agua (mL)";
 			this->label6->Click += gcnew System::EventHandler(this, &ModoDispensador::label6_Click);
 			// 
 			// txtPorcion
 			// 
-			this->txtPorcion->Location = System::Drawing::Point(359, 228);
+			this->txtPorcion->Location = System::Drawing::Point(479, 281);
+			this->txtPorcion->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->txtPorcion->Name = L"txtPorcion";
-			this->txtPorcion->Size = System::Drawing::Size(113, 20);
+			this->txtPorcion->Size = System::Drawing::Size(149, 22);
 			this->txtPorcion->TabIndex = 60;
 			// 
 			// label5
 			// 
 			this->label5->AutoSize = true;
-			this->label5->Location = System::Drawing::Point(295, 231);
+			this->label5->Location = System::Drawing::Point(393, 284);
+			this->label5->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(58, 13);
+			this->label5->Size = System::Drawing::Size(72, 16);
 			this->label5->TabIndex = 59;
 			this->label5->Text = L"Porción (g)";
 			// 
 			// btnEditar
 			// 
 			this->btnEditar->BackColor = System::Drawing::Color::WhiteSmoke;
-			this->btnEditar->Location = System::Drawing::Point(303, 280);
+			this->btnEditar->Location = System::Drawing::Point(404, 345);
+			this->btnEditar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnEditar->Name = L"btnEditar";
-			this->btnEditar->Size = System::Drawing::Size(78, 23);
+			this->btnEditar->Size = System::Drawing::Size(104, 28);
 			this->btnEditar->TabIndex = 63;
 			this->btnEditar->Text = L"Editar";
 			this->btnEditar->UseVisualStyleBackColor = false;
@@ -331,9 +352,10 @@ namespace Interfaz {
 			// btnAceptar
 			// 
 			this->btnAceptar->BackColor = System::Drawing::Color::WhiteSmoke;
-			this->btnAceptar->Location = System::Drawing::Point(394, 280);
+			this->btnAceptar->Location = System::Drawing::Point(525, 345);
+			this->btnAceptar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnAceptar->Name = L"btnAceptar";
-			this->btnAceptar->Size = System::Drawing::Size(78, 23);
+			this->btnAceptar->Size = System::Drawing::Size(104, 28);
 			this->btnAceptar->TabIndex = 64;
 			this->btnAceptar->Text = L"Aceptar";
 			this->btnAceptar->UseVisualStyleBackColor = false;
@@ -341,9 +363,9 @@ namespace Interfaz {
 			// 
 			// ModoDispensador
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(534, 380);
+			this->ClientSize = System::Drawing::Size(712, 468);
 			this->Controls->Add(this->btnAceptar);
 			this->Controls->Add(this->btnEditar);
 			this->Controls->Add(this->txtAgua);
@@ -366,8 +388,9 @@ namespace Interfaz {
 			this->Controls->Add(this->agreg);
 			this->Controls->Add(this->pictureBox2);
 			this->Controls->Add(this->pictureBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ModoDispensador";
-			this->Text = L"ModoDispensador";
+			this->Text = L"Configurar dispensador";
 			this->Load += gcnew System::EventHandler(this, &ModoDispensador::ModoDispensador_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

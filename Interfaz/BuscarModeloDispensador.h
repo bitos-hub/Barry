@@ -136,9 +136,10 @@ namespace Interfaz {
 			// 
 			// btnAgregar
 			// 
-			this->btnAgregar->Location = System::Drawing::Point(345, 324);
+			this->btnAgregar->Location = System::Drawing::Point(460, 399);
+			this->btnAgregar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnAgregar->Name = L"btnAgregar";
-			this->btnAgregar->Size = System::Drawing::Size(101, 28);
+			this->btnAgregar->Size = System::Drawing::Size(135, 34);
 			this->btnAgregar->TabIndex = 49;
 			this->btnAgregar->Text = L"Aceptar";
 			this->btnAgregar->UseVisualStyleBackColor = true;
@@ -147,26 +148,27 @@ namespace Interfaz {
 			// pictureBox1
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox1->Location = System::Drawing::Point(26, 35);
+			this->pictureBox1->Location = System::Drawing::Point(35, 43);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(254, 267);
+			this->pictureBox1->Size = System::Drawing::Size(339, 329);
 			this->pictureBox1->TabIndex = 57;
 			this->pictureBox1->TabStop = false;
 			// 
 			// txtMarca
 			// 
-			this->txtMarca->Location = System::Drawing::Point(111, 47);
-			this->txtMarca->Margin = System::Windows::Forms::Padding(2);
+			this->txtMarca->Location = System::Drawing::Point(148, 58);
+			this->txtMarca->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtMarca->Name = L"txtMarca";
-			this->txtMarca->Size = System::Drawing::Size(142, 20);
+			this->txtMarca->Size = System::Drawing::Size(188, 22);
 			this->txtMarca->TabIndex = 63;
 			// 
 			// btnBuscarMarca
 			// 
-			this->btnBuscarMarca->Location = System::Drawing::Point(141, 77);
-			this->btnBuscarMarca->Margin = System::Windows::Forms::Padding(2);
+			this->btnBuscarMarca->Location = System::Drawing::Point(188, 95);
+			this->btnBuscarMarca->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnBuscarMarca->Name = L"btnBuscarMarca";
-			this->btnBuscarMarca->Size = System::Drawing::Size(76, 22);
+			this->btnBuscarMarca->Size = System::Drawing::Size(101, 27);
 			this->btnBuscarMarca->TabIndex = 62;
 			this->btnBuscarMarca->Text = L"Buscar";
 			this->btnBuscarMarca->UseVisualStyleBackColor = true;
@@ -177,13 +179,13 @@ namespace Interfaz {
 			this->dgvMarcas->AllowUserToAddRows = false;
 			this->dgvMarcas->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvMarcas->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->dataGridViewTextBoxColumn1 });
-			this->dgvMarcas->Location = System::Drawing::Point(44, 114);
-			this->dgvMarcas->Margin = System::Windows::Forms::Padding(2);
+			this->dgvMarcas->Location = System::Drawing::Point(59, 140);
+			this->dgvMarcas->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvMarcas->Name = L"dgvMarcas";
 			this->dgvMarcas->RowHeadersVisible = false;
 			this->dgvMarcas->RowHeadersWidth = 82;
 			this->dgvMarcas->RowTemplate->Height = 33;
-			this->dgvMarcas->Size = System::Drawing::Size(223, 170);
+			this->dgvMarcas->Size = System::Drawing::Size(297, 209);
 			this->dgvMarcas->TabIndex = 61;
 			this->dgvMarcas->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &BuscarModeloDispensador::dgvMarcas_CellClick);
 			// 
@@ -197,27 +199,26 @@ namespace Interfaz {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(41, 48);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(55, 59);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(37, 13);
+			this->label1->Size = System::Drawing::Size(45, 16);
 			this->label1->TabIndex = 60;
 			this->label1->Text = L"Marca";
 			// 
 			// txtModelo
 			// 
-			this->txtModelo->Location = System::Drawing::Point(379, 47);
-			this->txtModelo->Margin = System::Windows::Forms::Padding(2);
+			this->txtModelo->Location = System::Drawing::Point(505, 58);
+			this->txtModelo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtModelo->Name = L"txtModelo";
-			this->txtModelo->Size = System::Drawing::Size(142, 20);
+			this->txtModelo->Size = System::Drawing::Size(188, 22);
 			this->txtModelo->TabIndex = 68;
 			// 
 			// btnBuscarModelo
 			// 
-			this->btnBuscarModelo->Location = System::Drawing::Point(410, 77);
-			this->btnBuscarModelo->Margin = System::Windows::Forms::Padding(2);
+			this->btnBuscarModelo->Location = System::Drawing::Point(547, 95);
+			this->btnBuscarModelo->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnBuscarModelo->Name = L"btnBuscarModelo";
-			this->btnBuscarModelo->Size = System::Drawing::Size(76, 22);
+			this->btnBuscarModelo->Size = System::Drawing::Size(101, 27);
 			this->btnBuscarModelo->TabIndex = 67;
 			this->btnBuscarModelo->Text = L"Buscar";
 			this->btnBuscarModelo->UseVisualStyleBackColor = true;
@@ -228,13 +229,13 @@ namespace Interfaz {
 			this->dgvModelos->AllowUserToAddRows = false;
 			this->dgvModelos->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvModelos->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->dataGridViewTextBoxColumn2 });
-			this->dgvModelos->Location = System::Drawing::Point(317, 114);
-			this->dgvModelos->Margin = System::Windows::Forms::Padding(2);
+			this->dgvModelos->Location = System::Drawing::Point(423, 140);
+			this->dgvModelos->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvModelos->Name = L"dgvModelos";
 			this->dgvModelos->RowHeadersVisible = false;
 			this->dgvModelos->RowHeadersWidth = 82;
 			this->dgvModelos->RowTemplate->Height = 33;
-			this->dgvModelos->Size = System::Drawing::Size(223, 170);
+			this->dgvModelos->Size = System::Drawing::Size(297, 209);
 			this->dgvModelos->TabIndex = 66;
 			this->dgvModelos->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &BuscarModeloDispensador::dgvModelos_CellClick);
 			// 
@@ -248,36 +249,36 @@ namespace Interfaz {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(314, 48);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(419, 59);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(42, 13);
+			this->label2->Size = System::Drawing::Size(53, 16);
 			this->label2->TabIndex = 65;
 			this->label2->Text = L"Modelo";
 			// 
 			// pictureBox2
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox2->Location = System::Drawing::Point(299, 35);
+			this->pictureBox2->Location = System::Drawing::Point(399, 43);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox2->Name = L"pictureBox2";
-			this->pictureBox2->Size = System::Drawing::Size(254, 267);
+			this->pictureBox2->Size = System::Drawing::Size(339, 329);
 			this->pictureBox2->TabIndex = 64;
 			this->pictureBox2->TabStop = false;
 			// 
 			// txtColor
 			// 
-			this->txtColor->Location = System::Drawing::Point(657, 47);
-			this->txtColor->Margin = System::Windows::Forms::Padding(2);
+			this->txtColor->Location = System::Drawing::Point(876, 58);
+			this->txtColor->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtColor->Name = L"txtColor";
-			this->txtColor->Size = System::Drawing::Size(142, 20);
+			this->txtColor->Size = System::Drawing::Size(188, 22);
 			this->txtColor->TabIndex = 73;
 			// 
 			// btnBuscarColor
 			// 
-			this->btnBuscarColor->Location = System::Drawing::Point(687, 77);
-			this->btnBuscarColor->Margin = System::Windows::Forms::Padding(2);
+			this->btnBuscarColor->Location = System::Drawing::Point(916, 95);
+			this->btnBuscarColor->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnBuscarColor->Name = L"btnBuscarColor";
-			this->btnBuscarColor->Size = System::Drawing::Size(76, 22);
+			this->btnBuscarColor->Size = System::Drawing::Size(101, 27);
 			this->btnBuscarColor->TabIndex = 72;
 			this->btnBuscarColor->Text = L"Buscar";
 			this->btnBuscarColor->UseVisualStyleBackColor = true;
@@ -288,13 +289,13 @@ namespace Interfaz {
 			this->dgvColores->AllowUserToAddRows = false;
 			this->dgvColores->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvColores->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(1) { this->dataGridViewTextBoxColumn3 });
-			this->dgvColores->Location = System::Drawing::Point(590, 114);
-			this->dgvColores->Margin = System::Windows::Forms::Padding(2);
+			this->dgvColores->Location = System::Drawing::Point(787, 140);
+			this->dgvColores->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvColores->Name = L"dgvColores";
 			this->dgvColores->RowHeadersVisible = false;
 			this->dgvColores->RowHeadersWidth = 82;
 			this->dgvColores->RowTemplate->Height = 33;
-			this->dgvColores->Size = System::Drawing::Size(223, 170);
+			this->dgvColores->Size = System::Drawing::Size(297, 209);
 			this->dgvColores->TabIndex = 71;
 			this->dgvColores->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &BuscarModeloDispensador::dgvColores_CellClick);
 			// 
@@ -308,27 +309,28 @@ namespace Interfaz {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Location = System::Drawing::Point(601, 50);
-			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label3->Location = System::Drawing::Point(801, 62);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(31, 13);
+			this->label3->Size = System::Drawing::Size(39, 16);
 			this->label3->TabIndex = 70;
 			this->label3->Text = L"Color";
 			// 
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox3->Location = System::Drawing::Point(572, 35);
+			this->pictureBox3->Location = System::Drawing::Point(763, 43);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(254, 267);
+			this->pictureBox3->Size = System::Drawing::Size(339, 329);
 			this->pictureBox3->TabIndex = 69;
 			this->pictureBox3->TabStop = false;
 			// 
 			// btnCancelar
 			// 
-			this->btnCancelar->Location = System::Drawing::Point(480, 324);
+			this->btnCancelar->Location = System::Drawing::Point(640, 399);
+			this->btnCancelar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->btnCancelar->Name = L"btnCancelar";
-			this->btnCancelar->Size = System::Drawing::Size(101, 28);
+			this->btnCancelar->Size = System::Drawing::Size(135, 34);
 			this->btnCancelar->TabIndex = 74;
 			this->btnCancelar->Text = L"Cancelar";
 			this->btnCancelar->UseVisualStyleBackColor = true;
@@ -336,9 +338,9 @@ namespace Interfaz {
 			// 
 			// BuscarModeloDispensador
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(852, 370);
+			this->ClientSize = System::Drawing::Size(1136, 455);
 			this->Controls->Add(this->btnCancelar);
 			this->Controls->Add(this->txtColor);
 			this->Controls->Add(this->btnBuscarColor);
@@ -356,8 +358,9 @@ namespace Interfaz {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->btnAgregar);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"BuscarModeloDispensador";
-			this->Text = L"BuscarModeloDispensador";
+			this->Text = L"Busqueda de dispensadores";
 			this->Load += gcnew System::EventHandler(this, &BuscarModeloDispensador::BuscarModeloDispensador_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvMarcas))->EndInit();

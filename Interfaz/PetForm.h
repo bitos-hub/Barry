@@ -269,7 +269,7 @@ namespace Interfaz {
 			// txtPetName
 			// 
 			this->txtPetName->Location = System::Drawing::Point(204, 239);
-			this->txtPetName->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtPetName->Margin = System::Windows::Forms::Padding(4);
 			this->txtPetName->Name = L"txtPetName";
 			this->txtPetName->Size = System::Drawing::Size(256, 22);
 			this->txtPetName->TabIndex = 6;
@@ -277,7 +277,7 @@ namespace Interfaz {
 			// txtPetWater
 			// 
 			this->txtPetWater->Location = System::Drawing::Point(208, 617);
-			this->txtPetWater->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtPetWater->Margin = System::Windows::Forms::Padding(4);
 			this->txtPetWater->Name = L"txtPetWater";
 			this->txtPetWater->Size = System::Drawing::Size(256, 22);
 			this->txtPetWater->TabIndex = 7;
@@ -285,7 +285,7 @@ namespace Interfaz {
 			// txtSpecie
 			// 
 			this->txtSpecie->Location = System::Drawing::Point(203, 336);
-			this->txtSpecie->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtSpecie->Margin = System::Windows::Forms::Padding(4);
 			this->txtSpecie->Name = L"txtSpecie";
 			this->txtSpecie->Size = System::Drawing::Size(256, 22);
 			this->txtSpecie->TabIndex = 8;
@@ -293,7 +293,7 @@ namespace Interfaz {
 			// txtWeight
 			// 
 			this->txtWeight->Location = System::Drawing::Point(204, 430);
-			this->txtWeight->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtWeight->Margin = System::Windows::Forms::Padding(4);
 			this->txtWeight->Name = L"txtWeight";
 			this->txtWeight->Size = System::Drawing::Size(256, 22);
 			this->txtWeight->TabIndex = 9;
@@ -301,7 +301,7 @@ namespace Interfaz {
 			// txtFood
 			// 
 			this->txtFood->Location = System::Drawing::Point(208, 524);
-			this->txtFood->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtFood->Margin = System::Windows::Forms::Padding(4);
 			this->txtFood->Name = L"txtFood";
 			this->txtFood->Size = System::Drawing::Size(256, 22);
 			this->txtFood->TabIndex = 10;
@@ -309,7 +309,7 @@ namespace Interfaz {
 			// txtStatus
 			// 
 			this->txtStatus->Location = System::Drawing::Point(208, 708);
-			this->txtStatus->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtStatus->Margin = System::Windows::Forms::Padding(4);
 			this->txtStatus->Name = L"txtStatus";
 			this->txtStatus->Size = System::Drawing::Size(256, 22);
 			this->txtStatus->TabIndex = 11;
@@ -321,7 +321,7 @@ namespace Interfaz {
 			this->btnAdd->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAdd->Location = System::Drawing::Point(568, 686);
-			this->btnAdd->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnAdd->Margin = System::Windows::Forms::Padding(4);
 			this->btnAdd->Name = L"btnAdd";
 			this->btnAdd->Size = System::Drawing::Size(257, 47);
 			this->btnAdd->TabIndex = 12;
@@ -336,7 +336,7 @@ namespace Interfaz {
 			this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnUpdate->Location = System::Drawing::Point(895, 686);
-			this->btnUpdate->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnUpdate->Margin = System::Windows::Forms::Padding(4);
 			this->btnUpdate->Name = L"btnUpdate";
 			this->btnUpdate->Size = System::Drawing::Size(257, 47);
 			this->btnUpdate->TabIndex = 13;
@@ -351,7 +351,7 @@ namespace Interfaz {
 			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnDelete->Location = System::Drawing::Point(1213, 686);
-			this->btnDelete->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnDelete->Margin = System::Windows::Forms::Padding(4);
 			this->btnDelete->Name = L"btnDelete";
 			this->btnDelete->Size = System::Drawing::Size(257, 47);
 			this->btnDelete->TabIndex = 14;
@@ -375,7 +375,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(1593, 52);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(224, 244);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -399,7 +399,7 @@ namespace Interfaz {
 					this->Specie, this->Weight, this->FoodServing, this->WaterServing, this->Status
 			});
 			this->dgvPets->Location = System::Drawing::Point(491, 212);
-			this->dgvPets->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->dgvPets->Margin = System::Windows::Forms::Padding(4);
 			this->dgvPets->Name = L"dgvPets";
 			this->dgvPets->RowHeadersWidth = 51;
 			this->dgvPets->Size = System::Drawing::Size(1017, 430);
@@ -503,7 +503,7 @@ namespace Interfaz {
 			this->btnPetPhoto->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnPetPhoto->Location = System::Drawing::Point(1541, 594);
-			this->btnPetPhoto->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnPetPhoto->Margin = System::Windows::Forms::Padding(4);
 			this->btnPetPhoto->Name = L"btnPetPhoto";
 			this->btnPetPhoto->Size = System::Drawing::Size(257, 47);
 			this->btnPetPhoto->TabIndex = 19;
@@ -514,7 +514,7 @@ namespace Interfaz {
 			// pbPetPhoto
 			// 
 			this->pbPetPhoto->Location = System::Drawing::Point(1528, 319);
-			this->pbPetPhoto->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pbPetPhoto->Margin = System::Windows::Forms::Padding(4);
 			this->pbPetPhoto->Name = L"pbPetPhoto";
 			this->pbPetPhoto->Size = System::Drawing::Size(283, 254);
 			this->pbPetPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -548,9 +548,9 @@ namespace Interfaz {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->menuStrip1);
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"PetForm";
-			this->Text = L"PetForm";
+			this->Text = L"Registro de mascotas";
 			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &PetForm::PetForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &PetForm::PetForm_Load);

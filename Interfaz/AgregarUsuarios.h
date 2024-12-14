@@ -102,7 +102,7 @@ namespace Interfaz {
 			// 
 			this->txtNombreUsuario->BackColor = System::Drawing::SystemColors::HighlightText;
 			this->txtNombreUsuario->Location = System::Drawing::Point(252, 225);
-			this->txtNombreUsuario->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtNombreUsuario->Margin = System::Windows::Forms::Padding(4);
 			this->txtNombreUsuario->Name = L"txtNombreUsuario";
 			this->txtNombreUsuario->Size = System::Drawing::Size(283, 22);
 			this->txtNombreUsuario->TabIndex = 1;
@@ -111,7 +111,7 @@ namespace Interfaz {
 			// txtContrasena
 			// 
 			this->txtContrasena->Location = System::Drawing::Point(252, 295);
-			this->txtContrasena->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtContrasena->Margin = System::Windows::Forms::Padding(4);
 			this->txtContrasena->Name = L"txtContrasena";
 			this->txtContrasena->Size = System::Drawing::Size(283, 22);
 			this->txtContrasena->TabIndex = 3;
@@ -120,7 +120,7 @@ namespace Interfaz {
 			// txtNumeroTelefono
 			// 
 			this->txtNumeroTelefono->Location = System::Drawing::Point(252, 444);
-			this->txtNumeroTelefono->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtNumeroTelefono->Margin = System::Windows::Forms::Padding(4);
 			this->txtNumeroTelefono->Name = L"txtNumeroTelefono";
 			this->txtNumeroTelefono->Size = System::Drawing::Size(283, 22);
 			this->txtNumeroTelefono->TabIndex = 7;
@@ -145,7 +145,7 @@ namespace Interfaz {
 			this->btnCreateUser->Font = (gcnew System::Drawing::Font(L"Yu Gothic", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnCreateUser->Location = System::Drawing::Point(300, 489);
-			this->btnCreateUser->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnCreateUser->Margin = System::Windows::Forms::Padding(4);
 			this->btnCreateUser->Name = L"btnCreateUser";
 			this->btnCreateUser->Size = System::Drawing::Size(181, 42);
 			this->btnCreateUser->TabIndex = 8;
@@ -158,7 +158,7 @@ namespace Interfaz {
 			this->txtRol->FormattingEnabled = true;
 			this->txtRol->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Administrador", L"Usuario interno", L"Usuario portal" });
 			this->txtRol->Location = System::Drawing::Point(252, 367);
-			this->txtRol->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtRol->Margin = System::Windows::Forms::Padding(4);
 			this->txtRol->Name = L"txtRol";
 			this->txtRol->Size = System::Drawing::Size(283, 24);
 			this->txtRol->TabIndex = 9;
@@ -257,9 +257,9 @@ namespace Interfaz {
 			this->Controls->Add(this->txtContrasena);
 			this->Controls->Add(this->txtNombreUsuario);
 			this->Controls->Add(this->pictureBox1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AgregarUsuarios";
-			this->Text = L"AgregarUsuarios";
+			this->Text = L"Añadir Usuarios";
 			this->TopMost = true;
 			this->Load += gcnew System::EventHandler(this, &AgregarUsuarios::AgregarUsuarios_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
