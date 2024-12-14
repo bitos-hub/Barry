@@ -674,7 +674,6 @@ String^ ServiceBarry::Service::DispenseWater(int petId)
 	Pet^ pet = SQLQueryPetById(petId);
 	try {
 		//OpenPort();
-		ArduinoPort->Write("1");
 		Dispenser^ d =ConsultarDispensadorPorMascota(petId);
 
 		List<Dispensation^>^ DispensationList = d->dispensationRecord;
@@ -692,7 +691,7 @@ String^ ServiceBarry::Service::DispenseWater(int petId)
 		// Si no existe, crear una nueva
 		if (existingDispensation == nullptr) {
 			existingDispensation = gcnew Dispensation();
-			existingDispensation->FoodDispensationInitialize();
+			existingDispensation->WaterDispensationInitialize();
 			Persistance::AgregarDispensadasPorDispensador(d->Id,existingDispensation);
 		}
 		else {
@@ -727,10 +726,11 @@ int ServiceBarry::Service::DispenseFoodMovement(int petId)
 	String^ dateNow = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd");
 	Pet^ pet = SQLQueryPetById(petId);
 	try {
-		OpenPort2();
-		String^ receivedData;
+		//OpenPort2();
+		//ArduinoPort2->Write("1");
+		String^ receivedData="0";
 		try {
-			receivedData = ArduinoPort2->ReadLine();
+			//receivedData = ArduinoPort2->ReadLine();
 		}
 		catch (TimeoutException^ ex) {
 			receivedData = "0";
@@ -754,7 +754,7 @@ int ServiceBarry::Service::DispenseFoodMovement(int petId)
 			// Si no existe, crear una nueva
 			if (existingDispensation == nullptr) {
 				existingDispensation = gcnew Dispensation();
-				existingDispensation->WaterDispensationInitialize();
+				existingDispensation->FoodDispensationInitialize();
 				Persistance::AgregarDispensadasPorDispensador(d->Id, existingDispensation);
 			}
 			else {
@@ -774,7 +774,7 @@ int ServiceBarry::Service::DispenseFoodMovement(int petId)
 		throw ex;
 	}
 	finally {
-		ClosePort2();
+		//ClosePort2();
 	}
 	return detected;
 }
