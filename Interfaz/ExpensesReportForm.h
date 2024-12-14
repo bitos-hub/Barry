@@ -131,7 +131,7 @@ namespace Interfaz {
 			this->piePrices->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->piePrices->Legends->Add(legend1);
-			this->piePrices->Location = System::Drawing::Point(133, 238);
+			this->piePrices->Location = System::Drawing::Point(11, 238);
 			this->piePrices->Name = L"piePrices";
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
@@ -149,14 +149,14 @@ namespace Interfaz {
 			this->LeftFoodchart->ChartAreas->Add(chartArea2);
 			legend2->Name = L"Legend1";
 			this->LeftFoodchart->Legends->Add(legend2);
-			this->LeftFoodchart->Location = System::Drawing::Point(736, 238);
+			this->LeftFoodchart->Location = System::Drawing::Point(496, 238);
 			this->LeftFoodchart->Name = L"LeftFoodchart";
 			this->LeftFoodchart->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
 			series2->ChartArea = L"ChartArea1";
 			series2->Legend = L"Legend1";
 			series2->Name = L"Cantidad restante (kg)";
 			this->LeftFoodchart->Series->Add(series2);
-			this->LeftFoodchart->Size = System::Drawing::Size(512, 377);
+			this->LeftFoodchart->Size = System::Drawing::Size(862, 377);
 			this->LeftFoodchart->TabIndex = 34;
 			this->LeftFoodchart->Text = L"chart2";
 			// 
@@ -190,7 +190,7 @@ private: System::Void ExpensesReportForm_Load(System::Object^ sender, System::Ev
 	List<Food^>^ foodsList = Service::QueryAllFoods();
 	for (int i = 0; i < foodsList->Count; i++) {
 		LeftFoodchart->Series["Cantidad restante (kg)"]->Points->Add(foodsList[i]->FoodAmount);
-		LeftFoodchart->Series["Cantidad restante (kg)"]->Points[i]->AxisLabel = foodsList[i]->Name;
+		LeftFoodchart->Series["Cantidad restante (kg)"]->Points[i]->AxisLabel = ""+foodsList[i]->Id;
 		LeftFoodchart->Series["Cantidad restante (kg)"]->Points[i]->Label = ""+foodsList[i]->FoodAmount;
 	}
 	

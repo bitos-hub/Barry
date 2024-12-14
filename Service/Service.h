@@ -31,6 +31,7 @@ namespace ServiceBarry {
 		static List<Food^>^ FoodList = gcnew List<Food^>();
 		static List<String^>^ commandsList = gcnew List<String^>;
 		static SerialPort^ ArduinoPort;
+		static SerialPort^ ArduinoPort2;
 	public:
 
 		static void cargarUsuarios();
@@ -64,8 +65,11 @@ namespace ServiceBarry {
 		static String^ SendDispenserInfoUART(int petId);
 		static String^ DispenseFoodUART(int); //Para simulación
 		static String^ DispenseWater(int);
+		static int DispenseFoodMovement(int);
 		static void OpenPort();
 		static void ClosePort();
+		static void OpenPort2();
+		static void ClosePort2();
 
 
 

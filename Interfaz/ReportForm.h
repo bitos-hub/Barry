@@ -451,6 +451,13 @@ private: System::Void bntGenerarReporte_Click(System::Object^ sender, System::Ev
 					timesDispensedWather = dispensationList[i]->TimesDispensedWater;
 					i++;
 				}
+				else {
+					DateTime dispensationDate = DateTime::Parse(dispensationList[i]->Date);
+					DateTime targetDate = DateTime::Parse(date.ToString("yyyy/MM/dd"));
+					if (DateTime::Compare(dispensationDate, targetDate) < 0) {
+						i++;
+					}
+				}
 			}
 			dispensedFoodTimeschart->Series["Veces Dispensado"]->Points->Add(timesDispensed);
 			dispensedFoodTimeschart->Series["Veces Dispensado"]->Points[j]->AxisLabel = "" + date.ToString("yyyy/MM/dd");
