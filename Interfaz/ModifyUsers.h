@@ -258,6 +258,7 @@ namespace Interfaz {
 	}
 private: System::Void ModifyUsers_Load(System::Object^ sender, System::EventArgs^ e) {
 	FillComboBox();
+	txtNewName->Text = refUser->Name;
 }
 	   public:
 		   void FillComboBox() {

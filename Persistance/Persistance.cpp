@@ -2145,6 +2145,7 @@ int BarryPersistance::Persistance::ActualizarUsuario(User^ user)
         cmd->Parameters->Add("@Role", System::Data::SqlDbType::VarChar, 30);
         cmd->Parameters->Add("@PhoneNumber", System::Data::SqlDbType::Int);
         cmd->Prepare();
+        cmd->Parameters["@Id"]->Value = user->Id;
         cmd->Parameters["@Name"]->Value = user->Name;
         cmd->Parameters["@Password"]->Value = user->Password;
         cmd->Parameters["@Role"]->Value = user->Role;
