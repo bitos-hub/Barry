@@ -427,6 +427,7 @@ private: System::Void cmbMascotas_SelectedIndexChanged(System::Object^ sender, S
 		txtPorcion->ReadOnly = true;
 		txtAgua->Text = Convert::ToString(mascotaSeleccionada->WaterServing);
 		txtAgua->ReadOnly = true;
+		
 	}
 }
 private: System::Void cmbIdDispensadores_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
