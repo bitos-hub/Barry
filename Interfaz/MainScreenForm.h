@@ -336,8 +336,8 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
 			this->addToolStripMenuItem->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"addToolStripMenuItem.Image")));
 			this->addToolStripMenuItem->Name = L"addToolStripMenuItem";
-			this->addToolStripMenuItem->Size = System::Drawing::Size(132, 42);
-			this->addToolStripMenuItem->Text = L"Archivo";
+			this->addToolStripMenuItem->Size = System::Drawing::Size(123, 42);
+			this->addToolStripMenuItem->Text = L"Añadir";
 			this->addToolStripMenuItem->Click += gcnew System::EventHandler(this, &MainScreenForm::añadirToolStripMenuItem_Click);
 			// 
 			// añadirUsuarioToolStripMenuItem
@@ -463,7 +463,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
 			this->pictureBox1->Location = System::Drawing::Point(1064, 50);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(151, 176);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -993,7 +993,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			// 
 			this->cmbDispenser->FormattingEnabled = true;
 			this->cmbDispenser->Location = System::Drawing::Point(53, 551);
-			this->cmbDispenser->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->cmbDispenser->Margin = System::Windows::Forms::Padding(4);
 			this->cmbDispenser->Name = L"cmbDispenser";
 			this->cmbDispenser->Size = System::Drawing::Size(216, 24);
 			this->cmbDispenser->TabIndex = 56;
@@ -1058,6 +1058,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"MainScreenForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Pantalla principal";
 			this->Load += gcnew System::EventHandler(this, &MainScreenForm::MainScreenForm_Load);
 			this->menuStrip1->ResumeLayout(false);
