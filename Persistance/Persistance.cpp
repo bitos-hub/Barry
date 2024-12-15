@@ -1879,7 +1879,7 @@ int BarryPersistance::Persistance::SQLUpdateFood(Food^ food)
         conn = GetConnection();
 
         //Paso 2: Se prepara la sentencia
-        String^ sqlStr = "dbo.usp_UpdateFood";
+        String^ sqlStr = "dbo.usp_ActualizarComida";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
         cmd->Parameters->Add("@ID", System::Data::SqlDbType::Int);
@@ -2061,7 +2061,7 @@ void BarryPersistance::Persistance::EliminarHorarioDispensador(Dispenser^ dispen
         conn = GetConnection();
 
         //Paso 2: Se prepara la sentencia
-        String^ sqlStr = "dbo.usp_EliminarHorarioDispensador";
+        String^ sqlStr = "dbo.usp_EliminarHorarioDispens";
         SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
         cmd->CommandType = System::Data::CommandType::StoredProcedure;
         cmd->Parameters->Add("@IdDispensador", System::Data::SqlDbType::Int);

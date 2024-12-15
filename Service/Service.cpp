@@ -476,9 +476,10 @@ void ServiceBarry::Service::ModificarPorcionAgua(Pet^ masctotaSeleccionada,doubl
 	List<Pet^>^ lista_masc = SQLQueryAllPets();
 	if (masctotaSeleccionada != nullptr) {
 		for each (Pet ^ m in lista_masc) {
-			if (m->Id = masctotaSeleccionada->Id) {
+			if (m->Id == masctotaSeleccionada->Id) {
 				m->FoodServing = porcion;
 				m->WaterServing = agua;
+				int xd = Service::SQLUpdatePet(m);
 			}
 		}
 		/*
@@ -784,7 +785,7 @@ void ServiceBarry::Service::OpenPort()
 {
 	try {
 		ArduinoPort = gcnew SerialPort();
-		ArduinoPort->PortName = "COM4";
+		ArduinoPort->PortName = "COM11";
 		ArduinoPort->BaudRate = 115200;
 		ArduinoPort->Open();
 	}

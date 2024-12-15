@@ -25,6 +25,7 @@ namespace Interfaz {
 	using namespace System::Drawing;
 	using namespace ServiceBarry;
 	using namespace Barry;
+	using namespace System::IO::Ports;
 
 	/// <summary>
 	/// Resumen de MainScreenForm
@@ -37,9 +38,14 @@ namespace Interfaz {
 		Thread^ myThread3;
 		Pet^ petSelected;
 		Dispenser^ dispenserSelect;
+		SerialPort^ arduinoPort;
+		bool isReceiving;
 		MainScreenForm(void)
 		{
 			InitializeComponent();
+			arduinoPort = gcnew SerialPort("COM11", 115200);
+			arduinoPort->DataReceived += gcnew SerialDataReceivedEventHandler(this, &MainScreenForm::OnDataReceived);
+			//isReceiving = false;
 			//
 			//TODO: agregar código de constructor aquí
 			//
@@ -1153,7 +1159,6 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 	}
 
 
-
 	private: System::Void MainScreenForm_Load(System::Object^ sender, System::EventArgs^ e) {
 		LoginForm^ loginForm = gcnew LoginForm(this);
 		loginForm->ShowDialog();
@@ -1339,6 +1344,36 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			usuariosToolStripMenuItem->Enabled = false;
 		}
 
+		void OnDataReceived(Object^ sender, SerialDataReceivedEventArgs^ e) {
+			if (isReceiving) {
+				try {
+					String^ data = arduinoPort->ReadLine(); // Leer datos del Arduino
+					this->Invoke(gcnew Action<String^>(this, &MainScreenForm::UpdateLabel), data);
+				}
+				catch (Exception^ ex) {
+					MessageBox::Show("Error al leer datos: " + ex->Message);
+				}
+			}
+		}
+		void UpdateLabel(String^ data) {
+			if (data->StartsWith("peso:")) {
+				String^ pesoValue = data->Substring(5)->Trim(); // Extraer "15.6"
+				txtAvaibleFoodPlate->Text = pesoValue;
+				if (Convert::ToDouble(pesoValue) > 0) {
+					rbtnBowlFullYes->Checked = true;
+					rbtnBowlFullNo->Checked = false;
+				}
+				else {
+					rbtnBowlFullYes->Checked = false;
+					rbtnBowlFullNo->Checked = true;
+				}
+			}
+			else if (data->StartsWith("cantidad:")) {
+				String^ cantidadValue = data->Substring(9)->Trim(); // Extraer "20"
+				txtFoodAvaibleContainer->Text = cantidadValue + "%";
+			}
+		}
+
 	private: System::Void pbPetPhoto_Click(System::Object^ sender, System::EventArgs^ e) {
 
 	}
@@ -1388,8 +1423,6 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		form->ShowDialog();
 	}
 
-
-
 	private: System::Void cmbPets_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 		petSelected = pet;
@@ -1423,13 +1456,15 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 
 	private: System::Void btnFeed_Click(System::Object^ sender, System::EventArgs^ e) {
 		try {
+			//arduinoPort->Write("detener\n");
 			Pet^ pet = Service::SQLQueryPetById(((ComboBoxItem^)(cmbPets->Items[cmbPets->SelectedIndex]))->Value);
 			int id = pet->Id;
 			Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(id);
-			Food^ food = dispensador->ComidaAsignada;
-			food->FoodAmount = ((food->FoodAmount)*1000 - pet->FoodServing)/1000;
-			Service::UpdateFood(food);
+			
 			if (dispensador != nullptr) {
+				Food^ food = dispensador->ComidaAsignada;
+				food->FoodAmount = ((food->FoodAmount) * 1000 - pet->FoodServing) / 1000;
+				Service::UpdateFood(food);
 				String^ result = Service::DispenseFoodUART(id);
 				MessageBox::Show(result);
 				String^ LastTimeFed = ((DateTime^)DateTime::Now)->ToString("HH:mm:ss");
@@ -1505,7 +1540,16 @@ private: System::Void cmbDispenser_SelectedIndexChanged(System::Object^ sender, 
 	try {
 
 		dispenserSelect = Service::ConsultarDispensadorPorId(((ComboBoxItem^)(cmbDispenser->Items[cmbDispenser->SelectedIndex]))->Value);
-	
+		if (cmbDispenser->SelectedItem != nullptr) {
+			String^ selectedOption = cmbDispenser->SelectedItem->ToString();
+			//MessageBox::Show("Seleccionaste: " + selectedOption);
+			// Comenzar a recibir datos solo si se selecciona una opción válida
+			if (!arduinoPort->IsOpen) {
+				arduinoPort->Open();
+			}
+			arduinoPort->Write("envio\n");
+			isReceiving = true; // Habilitar recepción
+		}
 		Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(dispenserSelect->Id);
 		if (pet != nullptr) {
 			txtAssignedPet->Text = pet->Name;

@@ -4,6 +4,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 using namespace Barry;
 using namespace ServiceBarry;
+using namespace System::IO::Ports;
 
 int main(array<System::String ^> ^args)
 {
@@ -19,7 +20,7 @@ int main(array<System::String ^> ^args)
         Console::WriteLine("Usuario " + lista[i]->Id + ": " + lista[i]->Name + " tiene permisos de " + lista[i]->Role);
     }*/
 
-    List<String^>^ lista_colores_Xiomi = gcnew List<String^>();
+    /*List<String^>^ lista_colores_Xiomi = gcnew List<String^>();
     lista_colores_Xiomi->Add("Rojo");
     lista_colores_Xiomi->Add("Rosado");
     lista_colores_Xiomi->Add("Verde");
@@ -80,5 +81,34 @@ int main(array<System::String ^> ^args)
         Service::AddDipensadorDisponible(d1);
         DispensadorDisponible^ d2 = gcnew DispensadorDisponible("Wapet", "WPT592", c, 24, 24, 30, "10L", "Alumnio", "Panel Solar");
         Service::AddDipensadorDisponible(d2);
+    }*/
+    SerialPort^ serialPort = gcnew SerialPort("COM3", 115200);
+    try {
+        serialPort->Open();
+        String^ dato_recibido = serialPort->PortName;
+        Console::WriteLine(dato_recibido);
+        while (true) {
+            if (serialPort->BytesToRead > 0) {
+                String^ data = serialPort->ReadLine(); // Leer una línea desde el puerto
+                Console::WriteLine("Dato recibido: {0}", data);
+            }
+        }
     }
+    catch (IO::IOException^ e) {
+        Console::WriteLine("Error de comunicación: {0}", e->Message);
+    }
+    catch (UnauthorizedAccessException^ e) {
+        Console::WriteLine("Acceso denegado al puerto: {0}", e->Message);
+    }
+    catch (Exception^ e) {
+        Console::WriteLine("Error inesperado: {0}", e->Message);
+    }
+    finally {
+        // Cerrar el puerto al salir
+        if (serialPort->IsOpen) {
+            serialPort->Close();
+            Console::WriteLine("Puerto cerrado.");
+        }
+    }
+    return 0;
 }
