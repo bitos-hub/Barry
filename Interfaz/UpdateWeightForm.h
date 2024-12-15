@@ -153,8 +153,9 @@ namespace Interfaz {
 			this->Controls->Add(this->txtWeight);
 			this->Controls->Add(this->txtPetName);
 			this->Controls->Add(this->pictureBox2);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"UpdateWeightForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Actualizar peso";
 			this->Load += gcnew System::EventHandler(this, &UpdateWeightForm::UpdateWeightForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();

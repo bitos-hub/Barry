@@ -75,7 +75,7 @@ namespace Interfaz {
 			// btnSi
 			// 
 			this->btnSi->Location = System::Drawing::Point(73, 80);
-			this->btnSi->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnSi->Margin = System::Windows::Forms::Padding(4);
 			this->btnSi->Name = L"btnSi";
 			this->btnSi->Size = System::Drawing::Size(79, 33);
 			this->btnSi->TabIndex = 1;
@@ -86,7 +86,7 @@ namespace Interfaz {
 			// btnNo
 			// 
 			this->btnNo->Location = System::Drawing::Point(195, 80);
-			this->btnNo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnNo->Margin = System::Windows::Forms::Padding(4);
 			this->btnNo->Name = L"btnNo";
 			this->btnNo->Size = System::Drawing::Size(79, 33);
 			this->btnNo->TabIndex = 2;
@@ -102,8 +102,9 @@ namespace Interfaz {
 			this->Controls->Add(this->btnNo);
 			this->Controls->Add(this->btnSi);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"VentanaConfirmacion";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"--";
 			this->ResumeLayout(false);
 			this->PerformLayout();

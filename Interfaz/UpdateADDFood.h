@@ -231,6 +231,7 @@ namespace Interfaz {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Name = L"UpdateADDFood";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"UpdateADDFood";
 			this->Load += gcnew System::EventHandler(this, &UpdateADDFood::UpdateADDFood_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

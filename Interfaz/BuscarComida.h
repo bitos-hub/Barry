@@ -132,7 +132,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox1->Location = System::Drawing::Point(32, 27);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(339, 329);
 			this->pictureBox1->TabIndex = 64;
@@ -141,7 +141,7 @@ namespace Interfaz {
 			// btnCancelar
 			// 
 			this->btnCancelar->Location = System::Drawing::Point(219, 368);
-			this->btnCancelar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnCancelar->Margin = System::Windows::Forms::Padding(4);
 			this->btnCancelar->Name = L"btnCancelar";
 			this->btnCancelar->Size = System::Drawing::Size(135, 34);
 			this->btnCancelar->TabIndex = 76;
@@ -152,7 +152,7 @@ namespace Interfaz {
 			// btnAgregar
 			// 
 			this->btnAgregar->Location = System::Drawing::Point(39, 368);
-			this->btnAgregar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnAgregar->Margin = System::Windows::Forms::Padding(4);
 			this->btnAgregar->Name = L"btnAgregar";
 			this->btnAgregar->Size = System::Drawing::Size(135, 34);
 			this->btnAgregar->TabIndex = 75;
@@ -172,8 +172,9 @@ namespace Interfaz {
 			this->Controls->Add(this->dgvComida);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"BuscarComida";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Buscador de comida";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvComida))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

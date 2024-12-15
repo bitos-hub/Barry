@@ -94,13 +94,13 @@ namespace Interfaz {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea9 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series9 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ReportForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea10 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->dispensedFoodTimeschart = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -130,19 +130,19 @@ namespace Interfaz {
 			// 
 			// dispensedFoodTimeschart
 			// 
-			chartArea1->Name = L"ChartArea1";
-			this->dispensedFoodTimeschart->ChartAreas->Add(chartArea1);
-			legend1->Name = L"Legend1";
-			this->dispensedFoodTimeschart->Legends->Add(legend1);
-			this->dispensedFoodTimeschart->Location = System::Drawing::Point(383, 196);
+			chartArea9->Name = L"ChartArea1";
+			this->dispensedFoodTimeschart->ChartAreas->Add(chartArea9);
+			legend9->Name = L"Legend1";
+			this->dispensedFoodTimeschart->Legends->Add(legend9);
+			this->dispensedFoodTimeschart->Location = System::Drawing::Point(455, 323);
 			this->dispensedFoodTimeschart->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dispensedFoodTimeschart->Name = L"dispensedFoodTimeschart";
 			this->dispensedFoodTimeschart->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
-			series1->ChartArea = L"ChartArea1";
-			series1->Legend = L"Legend1";
-			series1->Name = L"Veces Dispensado";
-			this->dispensedFoodTimeschart->Series->Add(series1);
-			this->dispensedFoodTimeschart->Size = System::Drawing::Size(603, 455);
+			series9->ChartArea = L"ChartArea1";
+			series9->Legend = L"Legend1";
+			series9->Name = L"Veces Dispensado";
+			this->dispensedFoodTimeschart->Series->Add(series9);
+			this->dispensedFoodTimeschart->Size = System::Drawing::Size(623, 473);
 			this->dispensedFoodTimeschart->TabIndex = 0;
 			this->dispensedFoodTimeschart->Text = L"chart1";
 			this->dispensedFoodTimeschart->UseWaitCursor = true;
@@ -153,7 +153,7 @@ namespace Interfaz {
 			this->label1->BackColor = System::Drawing::Color::Gainsboro;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(363, 132);
+			this->label1->Location = System::Drawing::Point(455, 259);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(220, 29);
 			this->label1->TabIndex = 1;
@@ -164,7 +164,7 @@ namespace Interfaz {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 48, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(12, 9);
+			this->label3->Location = System::Drawing::Point(12, 62);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(445, 110);
 			this->label3->TabIndex = 16;
@@ -173,10 +173,10 @@ namespace Interfaz {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1707, 2);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Location = System::Drawing::Point(1835, 9);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(107, 118);
+			this->pictureBox1->Size = System::Drawing::Size(168, 163);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBox1->TabIndex = 15;
 			this->pictureBox1->TabStop = false;
@@ -187,7 +187,7 @@ namespace Interfaz {
 			this->label4->BackColor = System::Drawing::Color::Gainsboro;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(28, 181);
+			this->label4->Location = System::Drawing::Point(98, 308);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(119, 21);
 			this->label4->TabIndex = 18;
@@ -196,29 +196,29 @@ namespace Interfaz {
 			// cmbPets
 			// 
 			this->cmbPets->FormattingEnabled = true;
-			this->cmbPets->Location = System::Drawing::Point(32, 206);
+			this->cmbPets->Location = System::Drawing::Point(102, 331);
 			this->cmbPets->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->cmbPets->Name = L"cmbPets";
-			this->cmbPets->Size = System::Drawing::Size(129, 24);
+			this->cmbPets->Size = System::Drawing::Size(149, 24);
 			this->cmbPets->TabIndex = 19;
 			this->cmbPets->SelectedIndexChanged += gcnew System::EventHandler(this, &ReportForm::cmbPets_SelectedIndexChanged);
 			// 
 			// pictureBox3
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox3->Location = System::Drawing::Point(17, 122);
+			this->pictureBox3->Location = System::Drawing::Point(67, 249);
 			this->pictureBox3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox3->Name = L"pictureBox3";
-			this->pictureBox3->Size = System::Drawing::Size(328, 617);
+			this->pictureBox3->Size = System::Drawing::Size(348, 635);
 			this->pictureBox3->TabIndex = 22;
 			this->pictureBox3->TabStop = false;
 			// 
 			// txtGeneratedTime
 			// 
-			this->txtGeneratedTime->Location = System::Drawing::Point(31, 156);
+			this->txtGeneratedTime->Location = System::Drawing::Point(103, 283);
 			this->txtGeneratedTime->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtGeneratedTime->Name = L"txtGeneratedTime";
-			this->txtGeneratedTime->Size = System::Drawing::Size(177, 22);
+			this->txtGeneratedTime->Size = System::Drawing::Size(197, 22);
 			this->txtGeneratedTime->TabIndex = 26;
 			this->txtGeneratedTime->TextChanged += gcnew System::EventHandler(this, &ReportForm::textBox2_TextChanged);
 			// 
@@ -228,7 +228,7 @@ namespace Interfaz {
 			this->label6->BackColor = System::Drawing::Color::Gainsboro;
 			this->label6->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(28, 132);
+			this->label6->Location = System::Drawing::Point(98, 259);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(100, 21);
 			this->label6->TabIndex = 25;
@@ -237,10 +237,10 @@ namespace Interfaz {
 			// pictureBox4
 			// 
 			this->pictureBox4->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox4->Location = System::Drawing::Point(351, 122);
+			this->pictureBox4->Location = System::Drawing::Point(423, 249);
 			this->pictureBox4->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox4->Name = L"pictureBox4";
-			this->pictureBox4->Size = System::Drawing::Size(716, 617);
+			this->pictureBox4->Size = System::Drawing::Size(736, 635);
 			this->pictureBox4->TabIndex = 27;
 			this->pictureBox4->TabStop = false;
 			this->pictureBox4->Click += gcnew System::EventHandler(this, &ReportForm::pictureBox4_Click);
@@ -251,7 +251,7 @@ namespace Interfaz {
 			this->label2->BackColor = System::Drawing::Color::Gainsboro;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(1101, 132);
+			this->label2->Location = System::Drawing::Point(1211, 259);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(200, 29);
 			this->label2->TabIndex = 29;
@@ -259,19 +259,19 @@ namespace Interfaz {
 			// 
 			// dispensedWhaterTimeschart
 			// 
-			chartArea2->Name = L"ChartArea1";
-			this->dispensedWhaterTimeschart->ChartAreas->Add(chartArea2);
-			legend2->Name = L"Legend1";
-			this->dispensedWhaterTimeschart->Legends->Add(legend2);
-			this->dispensedWhaterTimeschart->Location = System::Drawing::Point(1107, 196);
+			chartArea10->Name = L"ChartArea1";
+			this->dispensedWhaterTimeschart->ChartAreas->Add(chartArea10);
+			legend10->Name = L"Legend1";
+			this->dispensedWhaterTimeschart->Legends->Add(legend10);
+			this->dispensedWhaterTimeschart->Location = System::Drawing::Point(1197, 323);
 			this->dispensedWhaterTimeschart->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dispensedWhaterTimeschart->Name = L"dispensedWhaterTimeschart";
 			this->dispensedWhaterTimeschart->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Pastel;
-			series2->ChartArea = L"ChartArea1";
-			series2->Legend = L"Legend1";
-			series2->Name = L"Veces Dispensado agua";
-			this->dispensedWhaterTimeschart->Series->Add(series2);
-			this->dispensedWhaterTimeschart->Size = System::Drawing::Size(603, 455);
+			series10->ChartArea = L"ChartArea1";
+			series10->Legend = L"Legend1";
+			series10->Name = L"Veces Dispensado agua";
+			this->dispensedWhaterTimeschart->Series->Add(series10);
+			this->dispensedWhaterTimeschart->Size = System::Drawing::Size(623, 473);
 			this->dispensedWhaterTimeschart->TabIndex = 28;
 			this->dispensedWhaterTimeschart->Text = L"chart1";
 			this->dispensedWhaterTimeschart->UseWaitCursor = true;
@@ -279,10 +279,10 @@ namespace Interfaz {
 			// pictureBox5
 			// 
 			this->pictureBox5->BackColor = System::Drawing::Color::Gainsboro;
-			this->pictureBox5->Location = System::Drawing::Point(1075, 122);
+			this->pictureBox5->Location = System::Drawing::Point(1165, 249);
 			this->pictureBox5->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBox5->Name = L"pictureBox5";
-			this->pictureBox5->Size = System::Drawing::Size(716, 617);
+			this->pictureBox5->Size = System::Drawing::Size(736, 635);
 			this->pictureBox5->TabIndex = 30;
 			this->pictureBox5->TabStop = false;
 			this->pictureBox5->Click += gcnew System::EventHandler(this, &ReportForm::pictureBox5_Click);
@@ -293,7 +293,7 @@ namespace Interfaz {
 			this->label5->BackColor = System::Drawing::Color::Gainsboro;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(27, 231);
+			this->label5->Location = System::Drawing::Point(100, 357);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(216, 21);
 			this->label5->TabIndex = 31;
@@ -305,7 +305,7 @@ namespace Interfaz {
 			this->label7->BackColor = System::Drawing::Color::Gainsboro;
 			this->label7->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label7->Location = System::Drawing::Point(28, 254);
+			this->label7->Location = System::Drawing::Point(98, 392);
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(49, 21);
 			this->label7->TabIndex = 34;
@@ -317,7 +317,7 @@ namespace Interfaz {
 			this->label8->BackColor = System::Drawing::Color::Gainsboro;
 			this->label8->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label8->Location = System::Drawing::Point(28, 302);
+			this->label8->Location = System::Drawing::Point(100, 445);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(33, 21);
 			this->label8->TabIndex = 35;
@@ -325,18 +325,18 @@ namespace Interfaz {
 			// 
 			// dtpStartDate
 			// 
-			this->dtpStartDate->Location = System::Drawing::Point(31, 277);
+			this->dtpStartDate->Location = System::Drawing::Point(102, 415);
 			this->dtpStartDate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dtpStartDate->Name = L"dtpStartDate";
-			this->dtpStartDate->Size = System::Drawing::Size(167, 22);
+			this->dtpStartDate->Size = System::Drawing::Size(187, 22);
 			this->dtpStartDate->TabIndex = 36;
 			// 
 			// dtpEndDate
 			// 
-			this->dtpEndDate->Location = System::Drawing::Point(32, 324);
+			this->dtpEndDate->Location = System::Drawing::Point(102, 468);
 			this->dtpEndDate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dtpEndDate->Name = L"dtpEndDate";
-			this->dtpEndDate->Size = System::Drawing::Size(167, 22);
+			this->dtpEndDate->Size = System::Drawing::Size(187, 22);
 			this->dtpEndDate->TabIndex = 37;
 			// 
 			// bntGenerarReporte
@@ -346,10 +346,10 @@ namespace Interfaz {
 			this->bntGenerarReporte->FlatStyle = System::Windows::Forms::FlatStyle::Popup;
 			this->bntGenerarReporte->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Medium Cond", 12, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->bntGenerarReporte->Location = System::Drawing::Point(32, 383);
+			this->bntGenerarReporte->Location = System::Drawing::Point(102, 524);
 			this->bntGenerarReporte->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->bntGenerarReporte->Name = L"bntGenerarReporte";
-			this->bntGenerarReporte->Size = System::Drawing::Size(177, 32);
+			this->bntGenerarReporte->Size = System::Drawing::Size(197, 50);
 			this->bntGenerarReporte->TabIndex = 57;
 			this->bntGenerarReporte->Text = L"Generar reporte";
 			this->bntGenerarReporte->UseVisualStyleBackColor = false;
@@ -359,7 +359,7 @@ namespace Interfaz {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1827, 750);
+			this->ClientSize = System::Drawing::Size(1924, 1055);
 			this->Controls->Add(this->bntGenerarReporte);
 			this->Controls->Add(this->dtpEndDate);
 			this->Controls->Add(this->dtpStartDate);

@@ -137,7 +137,7 @@ namespace Interfaz {
 			// btnAgregar
 			// 
 			this->btnAgregar->Location = System::Drawing::Point(460, 399);
-			this->btnAgregar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnAgregar->Margin = System::Windows::Forms::Padding(4);
 			this->btnAgregar->Name = L"btnAgregar";
 			this->btnAgregar->Size = System::Drawing::Size(135, 34);
 			this->btnAgregar->TabIndex = 49;
@@ -149,7 +149,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox1->Location = System::Drawing::Point(35, 43);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(339, 329);
 			this->pictureBox1->TabIndex = 57;
@@ -259,7 +259,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox2->Location = System::Drawing::Point(399, 43);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(339, 329);
 			this->pictureBox2->TabIndex = 64;
@@ -319,7 +319,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox3->Location = System::Drawing::Point(763, 43);
-			this->pictureBox3->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox3->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(339, 329);
 			this->pictureBox3->TabIndex = 69;
@@ -328,7 +328,7 @@ namespace Interfaz {
 			// btnCancelar
 			// 
 			this->btnCancelar->Location = System::Drawing::Point(640, 399);
-			this->btnCancelar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnCancelar->Margin = System::Windows::Forms::Padding(4);
 			this->btnCancelar->Name = L"btnCancelar";
 			this->btnCancelar->Size = System::Drawing::Size(135, 34);
 			this->btnCancelar->TabIndex = 74;
@@ -358,8 +358,9 @@ namespace Interfaz {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->btnAgregar);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"BuscarModeloDispensador";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Busqueda de dispensadores";
 			this->Load += gcnew System::EventHandler(this, &BuscarModeloDispensador::BuscarModeloDispensador_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

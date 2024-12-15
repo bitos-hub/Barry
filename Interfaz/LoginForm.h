@@ -192,6 +192,7 @@ namespace Interfaz {
 			this->Controls->Add(this->label3);
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"LoginForm";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Inicio";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &LoginForm::LoginForm_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &LoginForm::LoginForm_Load);

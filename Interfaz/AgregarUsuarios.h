@@ -259,6 +259,7 @@ namespace Interfaz {
 			this->Controls->Add(this->pictureBox1);
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AgregarUsuarios";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Añadir Usuarios";
 			this->TopMost = true;
 			this->Load += gcnew System::EventHandler(this, &AgregarUsuarios::AgregarUsuarios_Load);

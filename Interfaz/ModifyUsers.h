@@ -230,6 +230,7 @@ namespace Interfaz {
 				static_cast<System::Byte>(0)));
 			this->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
 			this->Name = L"ModifyUsers";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Modificar Usuario";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &ModifyUsers::ModifyUsers_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &ModifyUsers::ModifyUsers_Load);

@@ -110,7 +110,7 @@ namespace Interfaz {
 			// txtColor
 			// 
 			this->txtColor->Location = System::Drawing::Point(209, 155);
-			this->txtColor->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtColor->Margin = System::Windows::Forms::Padding(4);
 			this->txtColor->Name = L"txtColor";
 			this->txtColor->ReadOnly = true;
 			this->txtColor->Size = System::Drawing::Size(176, 22);
@@ -119,7 +119,7 @@ namespace Interfaz {
 			// txtModelo
 			// 
 			this->txtModelo->Location = System::Drawing::Point(209, 113);
-			this->txtModelo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtModelo->Margin = System::Windows::Forms::Padding(4);
 			this->txtModelo->Name = L"txtModelo";
 			this->txtModelo->ReadOnly = true;
 			this->txtModelo->Size = System::Drawing::Size(176, 22);
@@ -138,7 +138,7 @@ namespace Interfaz {
 			// txtMarca
 			// 
 			this->txtMarca->Location = System::Drawing::Point(209, 75);
-			this->txtMarca->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtMarca->Margin = System::Windows::Forms::Padding(4);
 			this->txtMarca->Name = L"txtMarca";
 			this->txtMarca->ReadOnly = true;
 			this->txtMarca->Size = System::Drawing::Size(176, 22);
@@ -169,7 +169,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox1->Location = System::Drawing::Point(120, 63);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(287, 129);
 			this->pictureBox1->TabIndex = 73;
@@ -178,7 +178,7 @@ namespace Interfaz {
 			// txtFuente
 			// 
 			this->txtFuente->Location = System::Drawing::Point(245, 372);
-			this->txtFuente->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtFuente->Margin = System::Windows::Forms::Padding(4);
 			this->txtFuente->Name = L"txtFuente";
 			this->txtFuente->ReadOnly = true;
 			this->txtFuente->Size = System::Drawing::Size(176, 22);
@@ -187,7 +187,7 @@ namespace Interfaz {
 			// txtAlto
 			// 
 			this->txtAlto->Location = System::Drawing::Point(431, 244);
-			this->txtAlto->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtAlto->Margin = System::Windows::Forms::Padding(4);
 			this->txtAlto->Name = L"txtAlto";
 			this->txtAlto->ReadOnly = true;
 			this->txtAlto->Size = System::Drawing::Size(87, 22);
@@ -206,7 +206,7 @@ namespace Interfaz {
 			// txtAncho
 			// 
 			this->txtAncho->Location = System::Drawing::Point(257, 244);
-			this->txtAncho->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtAncho->Margin = System::Windows::Forms::Padding(4);
 			this->txtAncho->Name = L"txtAncho";
 			this->txtAncho->ReadOnly = true;
 			this->txtAncho->Size = System::Drawing::Size(87, 22);
@@ -225,7 +225,7 @@ namespace Interfaz {
 			// txtLargo
 			// 
 			this->txtLargo->Location = System::Drawing::Point(83, 244);
-			this->txtLargo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtLargo->Margin = System::Windows::Forms::Padding(4);
 			this->txtLargo->Name = L"txtLargo";
 			this->txtLargo->ReadOnly = true;
 			this->txtLargo->Size = System::Drawing::Size(87, 22);
@@ -254,7 +254,7 @@ namespace Interfaz {
 			// txtMaterial
 			// 
 			this->txtMaterial->Location = System::Drawing::Point(245, 330);
-			this->txtMaterial->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtMaterial->Margin = System::Windows::Forms::Padding(4);
 			this->txtMaterial->Name = L"txtMaterial";
 			this->txtMaterial->ReadOnly = true;
 			this->txtMaterial->Size = System::Drawing::Size(176, 22);
@@ -273,7 +273,7 @@ namespace Interfaz {
 			// txtCapacidad
 			// 
 			this->txtCapacidad->Location = System::Drawing::Point(245, 292);
-			this->txtCapacidad->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtCapacidad->Margin = System::Windows::Forms::Padding(4);
 			this->txtCapacidad->Name = L"txtCapacidad";
 			this->txtCapacidad->ReadOnly = true;
 			this->txtCapacidad->Size = System::Drawing::Size(176, 22);
@@ -313,7 +313,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox2->Location = System::Drawing::Point(412, 11);
-			this->pictureBox2->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox2->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(123, 37);
 			this->pictureBox2->TabIndex = 82;
@@ -322,7 +322,7 @@ namespace Interfaz {
 			// txtID
 			// 
 			this->txtID->Location = System::Drawing::Point(452, 18);
-			this->txtID->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtID->Margin = System::Windows::Forms::Padding(4);
 			this->txtID->Name = L"txtID";
 			this->txtID->ReadOnly = true;
 			this->txtID->Size = System::Drawing::Size(73, 22);
@@ -367,8 +367,9 @@ namespace Interfaz {
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label3);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"Caracteristicas";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Caracteristicas de dispensador";
 			this->Load += gcnew System::EventHandler(this, &Caracteristicas::Caracteristicas_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

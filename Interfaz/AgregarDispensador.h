@@ -149,7 +149,7 @@ namespace Interfaz {
 			// btnAgregar
 			// 
 			this->btnAgregar->Location = System::Drawing::Point(104, 528);
-			this->btnAgregar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnAgregar->Margin = System::Windows::Forms::Padding(4);
 			this->btnAgregar->Name = L"btnAgregar";
 			this->btnAgregar->Size = System::Drawing::Size(135, 34);
 			this->btnAgregar->TabIndex = 0;
@@ -160,7 +160,7 @@ namespace Interfaz {
 			// btnEliminar
 			// 
 			this->btnEliminar->Location = System::Drawing::Point(287, 528);
-			this->btnEliminar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnEliminar->Margin = System::Windows::Forms::Padding(4);
 			this->btnEliminar->Name = L"btnEliminar";
 			this->btnEliminar->Size = System::Drawing::Size(135, 34);
 			this->btnEliminar->TabIndex = 1;
@@ -192,7 +192,7 @@ namespace Interfaz {
 			// 
 			this->cmbIdDispensador->FormattingEnabled = true;
 			this->cmbIdDispensador->Location = System::Drawing::Point(196, 58);
-			this->cmbIdDispensador->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->cmbIdDispensador->Margin = System::Windows::Forms::Padding(4);
 			this->cmbIdDispensador->Name = L"cmbIdDispensador";
 			this->cmbIdDispensador->Size = System::Drawing::Size(176, 24);
 			this->cmbIdDispensador->TabIndex = 7;
@@ -211,7 +211,7 @@ namespace Interfaz {
 			// txtCapacidad
 			// 
 			this->txtCapacidad->Location = System::Drawing::Point(264, 393);
-			this->txtCapacidad->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtCapacidad->Margin = System::Windows::Forms::Padding(4);
 			this->txtCapacidad->Name = L"txtCapacidad";
 			this->txtCapacidad->ReadOnly = true;
 			this->txtCapacidad->Size = System::Drawing::Size(176, 22);
@@ -250,7 +250,7 @@ namespace Interfaz {
 			// txtMaterial
 			// 
 			this->txtMaterial->Location = System::Drawing::Point(264, 431);
-			this->txtMaterial->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtMaterial->Margin = System::Windows::Forms::Padding(4);
 			this->txtMaterial->Name = L"txtMaterial";
 			this->txtMaterial->ReadOnly = true;
 			this->txtMaterial->Size = System::Drawing::Size(176, 22);
@@ -269,7 +269,7 @@ namespace Interfaz {
 			// txtLargo
 			// 
 			this->txtLargo->Location = System::Drawing::Point(101, 345);
-			this->txtLargo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtLargo->Margin = System::Windows::Forms::Padding(4);
 			this->txtLargo->Name = L"txtLargo";
 			this->txtLargo->ReadOnly = true;
 			this->txtLargo->Size = System::Drawing::Size(87, 22);
@@ -288,7 +288,7 @@ namespace Interfaz {
 			// txtAncho
 			// 
 			this->txtAncho->Location = System::Drawing::Point(287, 345);
-			this->txtAncho->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtAncho->Margin = System::Windows::Forms::Padding(4);
 			this->txtAncho->Name = L"txtAncho";
 			this->txtAncho->ReadOnly = true;
 			this->txtAncho->Size = System::Drawing::Size(87, 22);
@@ -307,7 +307,7 @@ namespace Interfaz {
 			// txtAlto
 			// 
 			this->txtAlto->Location = System::Drawing::Point(469, 345);
-			this->txtAlto->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtAlto->Margin = System::Windows::Forms::Padding(4);
 			this->txtAlto->Name = L"txtAlto";
 			this->txtAlto->ReadOnly = true;
 			this->txtAlto->Size = System::Drawing::Size(87, 22);
@@ -326,7 +326,7 @@ namespace Interfaz {
 			// txtFuente
 			// 
 			this->txtFuente->Location = System::Drawing::Point(264, 473);
-			this->txtFuente->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtFuente->Margin = System::Windows::Forms::Padding(4);
 			this->txtFuente->Name = L"txtFuente";
 			this->txtFuente->ReadOnly = true;
 			this->txtFuente->Size = System::Drawing::Size(176, 22);
@@ -335,7 +335,7 @@ namespace Interfaz {
 			// btnBuscar
 			// 
 			this->btnBuscar->Location = System::Drawing::Point(447, 169);
-			this->btnBuscar->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnBuscar->Margin = System::Windows::Forms::Padding(4);
 			this->btnBuscar->Name = L"btnBuscar";
 			this->btnBuscar->Size = System::Drawing::Size(109, 28);
 			this->btnBuscar->TabIndex = 44;
@@ -347,7 +347,7 @@ namespace Interfaz {
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::Gainsboro;
 			this->pictureBox1->Location = System::Drawing::Point(100, 118);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(287, 129);
 			this->pictureBox1->TabIndex = 51;
@@ -357,7 +357,7 @@ namespace Interfaz {
 			// txtColor
 			// 
 			this->txtColor->Location = System::Drawing::Point(189, 210);
-			this->txtColor->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtColor->Margin = System::Windows::Forms::Padding(4);
 			this->txtColor->Name = L"txtColor";
 			this->txtColor->ReadOnly = true;
 			this->txtColor->Size = System::Drawing::Size(176, 22);
@@ -366,7 +366,7 @@ namespace Interfaz {
 			// txtModelo
 			// 
 			this->txtModelo->Location = System::Drawing::Point(189, 169);
-			this->txtModelo->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtModelo->Margin = System::Windows::Forms::Padding(4);
 			this->txtModelo->Name = L"txtModelo";
 			this->txtModelo->ReadOnly = true;
 			this->txtModelo->Size = System::Drawing::Size(176, 22);
@@ -385,7 +385,7 @@ namespace Interfaz {
 			// txtMarca
 			// 
 			this->txtMarca->Location = System::Drawing::Point(189, 130);
-			this->txtMarca->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->txtMarca->Margin = System::Windows::Forms::Padding(4);
 			this->txtMarca->Name = L"txtMarca";
 			this->txtMarca->ReadOnly = true;
 			this->txtMarca->Size = System::Drawing::Size(176, 22);
@@ -443,8 +443,9 @@ namespace Interfaz {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->btnEliminar);
 			this->Controls->Add(this->btnAgregar);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"AgregarDispensador";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Registro de dispensadores";
 			this->Load += gcnew System::EventHandler(this, &AgregarDispensador::AgregarDispensador_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();

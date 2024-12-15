@@ -70,16 +70,16 @@ namespace Interfaz {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea10 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series10 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(WeightReportForm::typeid));
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea11 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend11 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series11 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
-			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea12 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
-			System::Windows::Forms::DataVisualization::Charting::Legend^ legend12 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
-			System::Windows::Forms::DataVisualization::Charting::Series^ series12 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea2 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series2 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea3 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series3 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			this->weightEvolution = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			this->pbPet = (gcnew System::Windows::Forms::PictureBox());
 			this->cmbPets = (gcnew System::Windows::Forms::ComboBox());
@@ -100,19 +100,19 @@ namespace Interfaz {
 			// 
 			// weightEvolution
 			// 
-			chartArea10->Name = L"ChartArea1";
-			this->weightEvolution->ChartAreas->Add(chartArea10);
-			legend10->Name = L"Legend1";
-			this->weightEvolution->Legends->Add(legend10);
-			this->weightEvolution->Location = System::Drawing::Point(143, 423);
+			chartArea1->Name = L"ChartArea1";
+			this->weightEvolution->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->weightEvolution->Legends->Add(legend1);
+			this->weightEvolution->Location = System::Drawing::Point(309, 423);
 			this->weightEvolution->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->weightEvolution->Name = L"weightEvolution";
 			this->weightEvolution->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
-			series10->ChartArea = L"ChartArea1";
-			series10->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series10->Legend = L"Legend1";
-			series10->Name = L"Peso (kg)";
-			this->weightEvolution->Series->Add(series10);
+			series1->ChartArea = L"ChartArea1";
+			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series1->Legend = L"Legend1";
+			series1->Name = L"Peso (kg)";
+			this->weightEvolution->Series->Add(series1);
 			this->weightEvolution->Size = System::Drawing::Size(595, 442);
 			this->weightEvolution->TabIndex = 26;
 			this->weightEvolution->Text = L"chart2";
@@ -120,7 +120,7 @@ namespace Interfaz {
 			// 
 			// pbPet
 			// 
-			this->pbPet->Location = System::Drawing::Point(443, 149);
+			this->pbPet->Location = System::Drawing::Point(609, 149);
 			this->pbPet->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbPet->Name = L"pbPet";
 			this->pbPet->Size = System::Drawing::Size(253, 212);
@@ -132,7 +132,7 @@ namespace Interfaz {
 			// cmbPets
 			// 
 			this->cmbPets->FormattingEnabled = true;
-			this->cmbPets->Location = System::Drawing::Point(143, 270);
+			this->cmbPets->Location = System::Drawing::Point(309, 270);
 			this->cmbPets->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->cmbPets->Name = L"cmbPets";
 			this->cmbPets->Size = System::Drawing::Size(163, 24);
@@ -144,7 +144,7 @@ namespace Interfaz {
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Franklin Gothic Demi Cond", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(135, 213);
+			this->label4->Location = System::Drawing::Point(301, 213);
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(236, 38);
 			this->label4->TabIndex = 23;
@@ -156,7 +156,7 @@ namespace Interfaz {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 20.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(135, 379);
+			this->label2->Location = System::Drawing::Point(301, 379);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(507, 46);
 			this->label2->TabIndex = 22;
@@ -177,8 +177,8 @@ namespace Interfaz {
 			// pictureBox1
 			// 
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(1660, 15);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Location = System::Drawing::Point(1839, 11);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(151, 176);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
@@ -187,19 +187,19 @@ namespace Interfaz {
 			// 
 			// foodEvolution
 			// 
-			chartArea11->Name = L"ChartArea1";
-			this->foodEvolution->ChartAreas->Add(chartArea11);
-			legend11->Name = L"Legend1";
-			this->foodEvolution->Legends->Add(legend11);
-			this->foodEvolution->Location = System::Drawing::Point(940, 149);
+			chartArea2->Name = L"ChartArea1";
+			this->foodEvolution->ChartAreas->Add(chartArea2);
+			legend2->Name = L"Legend1";
+			this->foodEvolution->Legends->Add(legend2);
+			this->foodEvolution->Location = System::Drawing::Point(1100, 149);
 			this->foodEvolution->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->foodEvolution->Name = L"foodEvolution";
 			this->foodEvolution->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
-			series11->ChartArea = L"ChartArea1";
-			series11->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series11->Legend = L"Legend1";
-			series11->Name = L"Ración (g)";
-			this->foodEvolution->Series->Add(series11);
+			series2->ChartArea = L"ChartArea1";
+			series2->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series2->Legend = L"Legend1";
+			series2->Name = L"Ración (g)";
+			this->foodEvolution->Series->Add(series2);
 			this->foodEvolution->Size = System::Drawing::Size(669, 322);
 			this->foodEvolution->TabIndex = 29;
 			this->foodEvolution->Text = L"chart1";
@@ -207,19 +207,19 @@ namespace Interfaz {
 			// 
 			// waterEvolution
 			// 
-			chartArea12->Name = L"ChartArea1";
-			this->waterEvolution->ChartAreas->Add(chartArea12);
-			legend12->Name = L"Legend1";
-			this->waterEvolution->Legends->Add(legend12);
-			this->waterEvolution->Location = System::Drawing::Point(940, 543);
+			chartArea3->Name = L"ChartArea1";
+			this->waterEvolution->ChartAreas->Add(chartArea3);
+			legend3->Name = L"Legend1";
+			this->waterEvolution->Legends->Add(legend3);
+			this->waterEvolution->Location = System::Drawing::Point(1100, 543);
 			this->waterEvolution->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->waterEvolution->Name = L"waterEvolution";
 			this->waterEvolution->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
-			series12->ChartArea = L"ChartArea1";
-			series12->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
-			series12->Legend = L"Legend1";
-			series12->Name = L"Ración (mL)";
-			this->waterEvolution->Series->Add(series12);
+			series3->ChartArea = L"ChartArea1";
+			series3->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Line;
+			series3->Legend = L"Legend1";
+			series3->Name = L"Ración (mL)";
+			this->waterEvolution->Series->Add(series3);
 			this->waterEvolution->Size = System::Drawing::Size(669, 322);
 			this->waterEvolution->TabIndex = 30;
 			this->waterEvolution->Text = L"chart3";
@@ -230,7 +230,7 @@ namespace Interfaz {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 20.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(932, 106);
+			this->label1->Location = System::Drawing::Point(1092, 106);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(608, 46);
 			this->label1->TabIndex = 31;
@@ -242,7 +242,7 @@ namespace Interfaz {
 			this->label5->AutoSize = true;
 			this->label5->Font = (gcnew System::Drawing::Font(L"Gill Sans Ultra Bold Condensed", 20.25F, System::Drawing::FontStyle::Regular,
 				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(932, 498);
+			this->label5->Location = System::Drawing::Point(1092, 498);
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(598, 46);
 			this->label5->TabIndex = 32;
@@ -253,7 +253,7 @@ namespace Interfaz {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(1827, 922);
+			this->ClientSize = System::Drawing::Size(1924, 922);
 			this->Controls->Add(this->label5);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->waterEvolution);
@@ -265,9 +265,10 @@ namespace Interfaz {
 			this->Controls->Add(this->cmbPets);
 			this->Controls->Add(this->label4);
 			this->Controls->Add(this->label2);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"WeightReportForm";
 			this->Text = L"Reporte de peso";
+			this->WindowState = System::Windows::Forms::FormWindowState::Maximized;
 			this->Load += gcnew System::EventHandler(this, &WeightReportForm::WeightReportForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->weightEvolution))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPet))->EndInit();
