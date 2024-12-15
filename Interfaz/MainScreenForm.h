@@ -38,10 +38,11 @@ namespace Interfaz {
 		Thread^ myThread;
 		Thread^ myThread2;
 		Thread^ myThread3;
+		Thread^ myThread4;
 		Pet^ petSelected;
 		Dispenser^ dispenserSelect;
 		SerialPort^ arduinoPort;
-		bool isReceiving;
+		bool RecibiendoDatos = false;
 		MainScreenForm(void)
 		{
 			InitializeComponent();
@@ -1189,10 +1190,13 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 		myThread2->Start();
 		myThread3 = gcnew Thread(gcnew ThreadStart(this, &MainScreenForm::MyExecutionProcess3));
 		myThread3->Start();
+		myThread4 = gcnew Thread(gcnew ThreadStart(this, &MainScreenForm::MyExecutionProcess4));
+		myThread4->Start();
 	}
 		   delegate void MyDelegate();
-		   
-		   
+		   delegate void MyDelegate3();
+		   delegate void MyDelegate4();
+
 		   void MyExecutionProcess() {
 			   while (true) {
 				   try {
@@ -1231,6 +1235,30 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 				   }
 			   }
 		   }
+
+
+		   void MyExecutionProcess4() {
+			   while (true) {
+				   try {
+					   myThread4->Sleep(1500);
+					   Invoke(gcnew MyDelegate4(this, &MainScreenForm::LoadDispenser));
+				   }
+				   catch (Exception^ ex) {
+					   return;
+				   }
+			   }
+		   }
+
+		   void LoadDispenser() {
+			   if (RecibiendoDatos){
+				   arduinoPort->WriteLine("envio");
+				   Thread::Sleep(1000);
+				   String^ data = arduinoPort->ReadLine();
+				   ProcessData(data);
+			   }
+
+		   }
+
 
 		   void Dispense() {
 			   List<Dispenser^>^ dispenserList = Service::ConsultarTodosDispensadores();
@@ -1391,7 +1419,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 				MessageBox::Show("Error al procesar datos: " + ex->Message);
 			}
 			finally {
-				arduinoPort->Close();
+				//arduinoPort->Close();
 			}
 		}
 
@@ -1482,21 +1510,28 @@ private: System::Windows::Forms::ToolStripMenuItem^ economíaToolStripMenuItem;
 			Dispenser^ dispensador = Service::ConsultarDispensadorPorMascota(id);
 			
 			if (dispensador != nullptr) {
-
+				RecibiendoDatos = false;
+				arduinoPort->Close();
+				Thread::Sleep(2000);
 				Food^ food = dispensador->ComidaAsignada;
 				food->FoodAmount = ((food->FoodAmount) * 1000 - pet->FoodServing) / 1000;
 				Service::UpdateFood(food);
 				String^ result = Service::DispenseFoodUART(id);
 				MessageBox::Show(result);
 				
-
-				//======excepción para verificar que esté ambos seleccionados (isa sabe) ========
-				Thread::Sleep(1000);
+				RecibiendoDatos = true;
+				Thread::Sleep(2000);
 				arduinoPort->Open();
-				arduinoPort->WriteLine("envio");
+				//======excepción para verificar que esté ambos seleccionados (isa sabe) ========
+				
+
+				 /*
+				arduinoPort->Open();
+				dispenser = true;
+				/*arduinoPort->WriteLine("envio");
 				Thread::Sleep(1000);
 				String^ data = arduinoPort->ReadLine();
-				ProcessData(data);
+				ProcessData(data);*/
 
 				String^ LastTimeFed = ((DateTime^)DateTime::Now)->ToString("HH:mm:ss");
 				pet->LastTimeFeD = LastTimeFed;
@@ -1578,10 +1613,12 @@ private: System::Void cmbDispenser_SelectedIndexChanged(System::Object^ sender, 
 			if (!arduinoPort->IsOpen) {
 				arduinoPort->Open();
 			}
-			arduinoPort->WriteLine("envio");
+
+			RecibiendoDatos = true;
+			/*arduinoPort->WriteLine("envio");
 			Thread::Sleep(2000);
 			String^ data = arduinoPort->ReadLine();
-			ProcessData(data);
+			ProcessData(data);*/
 		}
 		Pet^ pet = Service::ConsultarMascotaAsignadaADispensador(dispenserSelect->Id);
 		if (pet != nullptr) {
