@@ -727,11 +727,11 @@ int ServiceBarry::Service::DispenseFoodMovement(int petId)
 	String^ dateNow = ((DateTime^)DateTime::Now)->ToString("yyyy/MM/dd");
 	Pet^ pet = SQLQueryPetById(petId);
 	try {
-		//OpenPort2();
-		//ArduinoPort2->Write("1");
+		OpenPort2();
+		ArduinoPort2->Write("1");
 		String^ receivedData="0";
 		try {
-			//receivedData = ArduinoPort2->ReadLine();
+			receivedData = ArduinoPort2->ReadLine();
 		}
 		catch (TimeoutException^ ex) {
 			receivedData = "0";
@@ -775,7 +775,7 @@ int ServiceBarry::Service::DispenseFoodMovement(int petId)
 		throw ex;
 	}
 	finally {
-		//ClosePort2();
+		ClosePort2();
 	}
 	return detected;
 }
